@@ -1,0 +1,3736 @@
+\documentclass[11pt,a4paper,openany,oneside]{book}
+
+
+
+\usepackage[UTF8]{ctex}
+
+\usepackage{amsmath,amssymb,mathdots}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+%\usepackage{geometry}
+
+%页眉
+\usepackage{bookmark}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\renewcommand{\headwidth}{\textwidth}
+
+\pagestyle{fancy}                       
+\renewcommand{\headrulewidth}{0.5pt}
+\fancyhf{}                                                
+\fancyhead[LE,RO]{\thepage}                      
+\fancyhead[RE]{\leftmark}                               
+\fancyhead[LO]{\rightmark}
+
+\fancypagestyle{plain}{
+	\fancyhf{}                               
+	\renewcommand{\headrulewidth}{0.5pt}                              
+	\fancyhead[LE,RO]{\thepage}                         
+	\fancyhead[RE]{\leftmark}                               
+	\fancyhead[LO]{\rightmark} 
+}
+
+\newcommand{\headodd}[2]{\fancypagestyle{myplain}{% 
+		\fancyhf{} %  
+		\pagestyle{fancy}                              
+		\renewcommand{\headrulewidth}{0.5pt}                                    
+		\fancyhead[LE,RO]{\thepage}                        
+		\fancyhead[RE]{\leftmark} 
+		\hypersetup{   
+			colorlinks=false,
+			pdfborder={0 0 0},
+		}                            
+		\fancyhead[LO]{ \ref{#1} #2}  %#1表示label, #2表示节名
+	}
+	\thispagestyle{myplain}
+}
+
+
+\def\I{\mathrm{i}}
+
+%定义分数线
+
+%\geometry{left=6.0cm, right=3.0cm, top=3.5cm, bottom=2.5cm}
+\setlength{\parindent}{0pt}
+%\renewcommand{\baselinestretch}{1.2}
+\newcommand\chfrac[2]{\frac{\;#1\;}{\;#2\;}}
+\makeatletter
+\renewcommand*\env@matrix[1][\arraystretch]{%
+	\edef\arraystretch{#1}%
+	\hskip -\arraycolsep
+	\let\@ifnextchar\new@ifnextchar
+	\array{*\c@MaxMatrixCols c}}
+\makeatother
+\usepackage{arydshln}
+\usepackage{galois}
+
+%定理
+\usepackage{lipsum}
+\usepackage[many]{tcolorbox}
+
+\definecolor{greentitle}{RGB}{61,170,61}
+\definecolor{greentitleback}{RGB}{216,233,213}
+%[
+%auto counter,
+%number within=section
+%]
+\newtcolorbox{myexample}[2][]{%
+	breakable,
+	enhanced,
+	colback=white,
+	colbacktitle=white,
+	arc=0pt,
+	leftrule=1.4pt,
+	rightrule=0pt,
+	toprule=0pt,
+	bottomrule=0pt,
+	titlerule=-16pt,
+	colframe=greentitleback,
+	fonttitle=\normalcolor,
+	overlay={
+		\node[
+		outer sep=0pt,
+		anchor=east,
+		text width=2.2cm,
+		minimum height=4ex,
+		fill=greentitleback,
+		font=\color{greentitle}\sffamily\scshape
+		] at (title.west) {problem};
+	},
+	title=#2,
+    #1
+}
+\newcommand\Solution{\noindent\textbf{\textsf{Solution}}\par\medskip}
+
+
+
+
+%%%%%%%%%%%
+
+\usepackage{tikz}
+\usepackage{titletoc}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{times}
+
+\definecolor{doc}{RGB}{61,170,61}
+\definecolor{myblueii}{RGB}{119,136,153}
+
+%~~~~~~~~~~~~~~~~~Hyperref Settings~~~~~~~~~~~~~~~~~~~~~~
+
+\hypersetup{%
+	pdfborder = {0 0 0},
+	colorlinks,
+	citecolor=red,
+	filecolor=green,
+	linkcolor=myblueii,
+	urlcolor=cyan!50!black!90
+}
+
+%~~~~~~~~~~~~~~~~~~~~~Fancy ToC~~~~~~~~~~~~~~~~~~~~~~
+
+\contentsmargin{0cm}
+\titlecontents{chapter}[0pc]
+{\addvspace{30pt}%
+	\begin{tikzpicture}[remember picture, overlay]%
+	\draw[fill=myblueii,draw=myblueii, rounded corners] (-4,-.1) rectangle (-0.15,.5);%
+	\pgftext[left,x=-2.7cm,y=0.2cm]{\color{white}\Large \chaptertitlename\ \thecontentslabel};%
+	\end{tikzpicture}\color{myblueii}\large\bfseries}%
+{}
+{}
+{\hspace*{6pt}\titlerule\hspace*{6pt}\large\bfseries \thecontentspage
+	\begin{tikzpicture}[remember picture, overlay]
+	\draw[fill=doc!25,draw=myblueii, rounded corners=0pt] (2pt,0) rectangle (6,0.1pt);
+	\end{tikzpicture}}%
+\titlecontents{section}[2.4pc]
+{\addvspace{1pt}}
+{\contentslabel[\thecontentslabel]{2.4pc}}
+{}
+{\hfill\small \thecontentspage}
+[]
+\titlecontents{subsection}[4.8pc]
+{\addvspace{1.0pt}}
+{\contentslabel[\thecontentslabel]{2.4pc}}
+{}
+{\hfill\small\thecontentspage}
+[]
+
+\makeatletter
+\renewcommand{\tableofcontents}{%
+	\chapter*{%
+		\vspace*{-20\p@}%
+		\begin{tikzpicture}[remember picture, overlay]%
+		\pgftext[right,x=15cm,y=0.2cm]{\color{myblueii}\Huge \contentsname};%
+		\draw[fill=myblueii,draw=myblueii, rounded corners=15pt] (13,-.75) rectangle (20,1);%
+		\clip (13,-.75) rectangle (20,1);
+		\pgftext[right,x=15cm,y=0.2cm]{\color{white}\Huge \contentsname};%
+		\end{tikzpicture}}%
+	\@starttoc{toc}}
+\makeatother
+
+
+
+ \usepackage{graphicx} 
+ \newcommand{\HRule}{\rule{\linewidth}{0.5mm}} 
+ 
+%~~~~~~~~~~~~~~~~~Main Document~~~~~~~~~~~~~~~~~~~~~~~
+
+\begin{document}
+
+
+\begin{titlepage}
+	
+	\begin{center}
+		
+		
+		% Upper part of the page
+		    
+		
+		%\textsc{\LARGE University of Beer}\\[1.5cm]
+		
+		%\textsc{\Large Final year project}\\[0.5cm]
+		
+		
+		% Title
+		\HRule \\[1cm]
+		{ \Huge \bfseries 高等代数简明教程习题解答}\\[0.5cm]
+		
+		\HRule \\[1.5cm]
+		
+		% Author and supervisor
+		%\begin{minipage}{0.4\textwidth}
+			%\begin{flushleft} \large
+				%\emph{Author:}\\
+		%		John \textsc{Smith}
+		%	\end{flushleft}
+		%\end{minipage}
+		\begin{minipage}{0.9\textwidth}
+			\begin{flushright} \large
+				\LARGE\emph{整理}: 
+				\textsc{\huge Chen}
+			\end{flushright}
+		\end{minipage}
+
+	    \vfill
+		
+		
+		
+		\includegraphics[width=0.048\textwidth]{./logo}%\\[6cm]
+		% Bottom of the page
+		{\hspace{5em}\Large\today\hspace{3em}}
+		\includegraphics[width=0.048\textwidth]{./logo}%\\[6cm]
+	\end{center}
+	
+	\end{titlepage}
+
+
+{   
+	\hypersetup{hidelinks}
+	\tableofcontents% 
+}
+\thispagestyle{empty}
+
+
+\part{上册}
+
+
+\chapter{代数学的经典课题}
+\section{习题一 \quad 若干准备知识}
+\section{习题二 \quad 一元高次代数方程的基础知识}
+\section{习题三 \quad 线性方程组}
+
+\chapter{向量空间与矩阵}
+\section{习题一 \quad  $ m $  维向量空间}	
+\section{习题二 \quad 矩阵的秩}
+\section{习题三 \quad 线性方程组的理论课题}
+\section{习题四 \quad 矩阵的运算}
+\section{习题五 \quad  $ n $  阶方阵}
+\section{习题六 \quad 分块矩阵}
+
+\chapter{行列式}
+\section{习题一 \quad  $ n $  阶方阵的行列式}
+\section{习题二 \quad 行列式的初步应用}
+\section{习题三 \quad Laplace 展开式与 Binet-Cauchy 公式}
+
+\chapter{线性空间与线性变换}
+\section{习题一 \quad 线性空间的基本概念}
+
+
+\begin{myexample}
+\textbf{7.} 
+在  $ \mathbb{Q} $ 上的线性空间  $ \mathbb{Q}(\omega) $ 内判断下列向量组是否线性相关： 
+
+(1)  $ \frac{1}{2} $ ， $ 3 $ ， $ -7 $ ；  \ \ \ \ \ (2)  $ 1 $ ， $ \omega $ ， $ \omega^2 $ ， $ \omega^3 $ ， $ \omega^4 $ ；  \ \ \ \ \ (3)  $ \omega$，$\overline{\omega}$，$\sqrt{3}\I $  . 
+
+其中， $ \mathbb{Q} (\omega) = \{a+b\omega: a, b \in \mathbb{Q} \} $ ,  $ w = \dfrac{-1+\sqrt{3}\I}{2} $ . 
+\end{myexample}
+\Solution
+
+(1) 线性相关. 因为 $ 8\times \frac{1}{2} + 1\times3 + 1\times(-7) = 0 $ . \ \ \ \  $ r(\tfrac{1}{2}, 3, -7) = 1 $ .
+
+(2) 线性相关. 因为 $ 1\times1 + (-1)\times \omega^3 = 0 $  . \ \ \ \  $ r( 1, \omega, \omega^2, \omega^3, \omega^4)=2 $ . 
+
+(3) 线性相关. 因为 $ 1\times w + (-1)\times \overline{w} + (-1)\times \sqrt{3}i = 0 $ . \ \ \ \  $ r(\omega, \overline{\omega}, \sqrt{3}\I) = 2. $   \\  \\  \\
+
+
+
+
+\begin{myexample}
+	\textbf{8.}
+求 $ \mathbb{Q} $ 上线性空间 $ \mathbb{Q}(\omega) $ 的维数和一组基.  
+
+\end{myexample}
+\Solution
+
+注意到对任意 $q \in \mathbb{Q}(\omega)$, 有
+\[ 
+q = a + b \omega\ (a, b \in \mathbb{Q}), 
+\]
+即 $ \mathbb{Q}(\omega) $ 中任意向量 $ q $ 都可由 $ \{1, \omega\} $ 线性表出.  
+设存在 $ k_1, k_2 \in \mathbb{Q} $, 使得 $ k_1 1 + k_2\omega = 0 $, 则有
+\begin{equation*}
+\left\{
+\begin{aligned}
+k_1 - \dfrac{k_2}{2} &= 0 \\
+\dfrac{\sqrt{3}}{2}k_2 &= 0 
+\end{aligned}
+\right.   \Longrightarrow 
+\left\{
+\begin{aligned}
+k_1 = 0  \\
+k_2 = 0
+\end{aligned}
+\right.
+.
+\end{equation*}
+因此 $ 1, \omega $ 线性无关. 于是 $ \{1, \omega\} $ 是 $ \mathbb{Q}(\omega) $ 的一组基, 并且 $ \dim  \mathbb{Q}(\omega) = 2 $ . \\  \\  \\
+
+
+
+\hypertarget{4.1.14}{}
+\begin{myexample}
+\textbf{14.} 
+给定数域 $ K $  上的一个 $ n $ 阶方阵 $ A \neq 0 $ . 设
+ $$  f(\lambda) = a_0\lambda^m + a_1\lambda^{m-1} + \cdots + a_m \ \ \ (a_0 \neq 0, a_i \in K)  $$ 
+是使 $ f(A) = 0 $ 的最低次多项式. 设 $ V $ 是由系数在 $ K $ 内的 $ A $ 的多项式的全体关于矩阵加法、数乘所组成的 $ K $ 上的线性空间，证明：
+\vspace{-1em}
+ $$  E,\ A,\ A^2,\ \cdots,\ A^{m-1}   $$ 
+是 $ V $ 的一组基，从而 $ \dim V = m $. 求 $ V $ 中向量
+\vspace{-1em}
+ $$  (A - aE)^k  \ \ \ \ (a \in K, \ 0 \leq k \leq m) $$ 
+在这组基下的坐标. 
+\end{myexample}
+\Solution
+
+由于 $ a_0 \neq 0 $ , 记 $ m(\lambda) =\dfrac{f(\lambda)}{a_0} = \lambda^m + b_1\lambda^{m-1} + \cdots + b_m $, 所以
+ $$ m(A) = A^m + b_1A^{m-1} + \cdots + b_mE=0\implies A^m = -b_1A^{m-1} - \cdots - b_{m-1}A - b_mE.$$ 
+
+继续迭代，便可用 $ E, A, A^2, \cdots, A^{m-1} $ 线性表出 $ A^{m+1}, A^{m+2}, \cdots $ .
+
+从而 $ V $ 中的任一元素都可以表示为
+ $$  c_0E + c_1A + c_2 A^2 + \cdots + c_{m-1}A^{m-1}.$$ 
+设 $ k_0E + k_1A + k_2 A^2 + \cdots + k_{m-1} A^{m-1} = 0 $ , 则
+ $$  h(\lambda) = k_0 + k_1\lambda + k_2\lambda^2 + \cdots + k_{m-1}\lambda^{m-1}  $$ 
+也是 $ A $ 的一个零化多项式. 但是注意到 $ \deg(h(\lambda)) < \deg(f(\lambda)) $ , 由 $ m(\lambda) $ 的定义可知
+ $$  h(\lambda) = k_0 + k_1\lambda + k_2\lambda^2 + \cdots + k_{m-1}\lambda^{m-1} \equiv 0\implies k_0 = k_1 = k_2 = \cdots = k_{m-1} = 0,$$ 
+即 $ E, A, A^2, \cdots, A^{m-1} $ 线性无关. 从而 $ E, A, A^2, \cdots, A^{m-1} $ 是 $ V $ 的一组基, 且有 $ \dim  V = m $.
+
+由于 $ A $ 与 $ aE $ 可交换，故
+ $$  (A - aE)^k = A^k + k(-a)A^{k-1} + \cdots + (-aE)^k = \sum\limits_{i=0}^k C_k^i(-a)^{i}A^{k-i}.$$ 
+所以向量  $ (A - aE)^k\ \ (a \in K, \ 0 \leq k \leq m) $  在基 $  E,\ A,\ A^2,\ \cdots,\ A^{m-1}   $ 下的坐标为
+ $$ \left((-1)^ka^k,\ \cdots,\ (-1)^{i}C_k^ia^{i},\ \cdots,\ 1,\ 0,\ \cdots,\ 0 \right) \ \ \ (k = 0, 1, \cdots, m-1), $$ 
+ $$ \left(-\dfrac{a_m}{a_0}+(-1)^ma^m,\ \cdots,\ -\dfrac{a_i}{a_0}+(-1)^{i}C_m^ia^{i},\ \cdots,\ -\dfrac{a_1}{a_0} - C_k^1a  \right) \ \ \ (k = m). $$   \\ \\ 
+
+
+\begin{myexample}
+	\textbf{15.} 
+接上题，证明
+ $$  (A - aE)^k \ \ \ \ (k =0, 1, 2, \cdots, m-1 ) $$ 
+也是 $ V $ 的一组基. 求两组基之间的过渡矩阵 $ T $: 
+ $$  (E, A-aE, \cdots, (A-aE)^{m-1}) = (E, A, \cdots, A^{m-1})T  $$   
+\end{myexample}
+\Solution
+
+假设
+ $$  k_0E + k_1(A-aE) + k_2 (A-aE)^2 + \cdots + k_{m-1}(A-aE)^{m-1} = 0, $$ 
+则 
+ $$ g(\lambda) =k_0 + k_1(\lambda-a) + k_2(\lambda-a)^2 + \cdots + k_{m-1}(\lambda-a)^{m-1} $$ 
+也是 $ A $ 的一个零化多项式.  
+
+但是注意到 $ \deg(g(\lambda)) = m-1 < m = \deg(f(\lambda))$，所以由 $ f(\lambda) $ 的定义可知
+ $$  k_0 + k_1(\lambda-a) + k_2(\lambda-a)^2 + \cdots + k_{m-1}(\lambda-a)^{m-1} \equiv 0.$$ 
+因此 $ k_0 = k_1 = k_2 = \cdots = k_{m-1} = 0 $, 即
+\[
+E, (A-aE), (A-aE)^2, \cdots, (A-aE)^{m-1}
+\]
+线性无关. 而 $ \dim V = m $，这就证明 $(A - aE)^k\;(k =0, 1, 2, \cdots, m-1 )$  也是 $ V $ 的一组基.
+
+由习题 \hyperlink{4.1.14}{4.1.14} 的结论可知，向量 $ (A - aE)^k $ 在基 $  E,\ A,\ A^2,\ \cdots,\ A^{m-1}  $ 下的坐标为
+$$ 
+\left((-1)^ka^k,\ \cdots,\ (-1)^{i}C_k^ia^{i},\ \cdots,\ 1,\ 0,\ \cdots,\ 0 \right).  
+$$ 
+于是过渡矩阵 $ T $ 的第 $ k+1 $ 列 $ (k=0,1,2,\cdots, m-1) $ 为
+$$  
+(-1)^ka^k,\ \cdots,\ (-1)^{i}C_k^ia^{i},\ \cdots,\ 1,\ 0,\ \cdots,\ 0 . $$ 
+所以可以写出两组基之间的过渡矩阵
+\begin{gather*}
+T = 
+\begin{bmatrix}
+1  &  -a  &  a^2 & \cdots & (-1)^{m-1}a^{m-1} \\
+0  &   1  &  -2a & \cdots & (-1)^{m-2}C_{m-1}^{m-2}a^{m-2} \\
+0  &   0  &  1   & \cdots & (-1)^{m-3}C_{m-1}^{m-3} a^{m-3} \\
+\vdots & \vdots & \vdots & \cdots & \vdots  \\
+0  &   0  &  0   &  \cdots &  C_{m-1}^2a^2 \\
+0  &  0  &  0    &  \cdots  &  -C_{m-1}^{1}a  \\
+0  &  0  &  0    &  \cdots  &  1  
+\end{bmatrix}.
+\end{gather*}  \\  \\  \\
+
+
+
+\begin{myexample}
+\textbf{16.}
+在 $ K^4 $ 求由基 $ \varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4 $ 到基 $ \eta_1, \eta_2, \eta_3, \eta_4 $ 的过渡矩阵，并求向量 $ \beta $ 在指定的基下的坐标. 
+\begin{enumerate}
+
+\item[(1)]  
+	$\varepsilon_1 = (1, 0, 0, 0)$,\hspace{1.2em}$ \eta_1 = (2, 1, -1, 1),$\\ 
+	$\varepsilon_2 = (0, 1, 0, 0)$,\hspace{1.2em}$ \eta_2 = (0, 3, 1, 0), $\\ 
+	$\varepsilon_3 = (0, 0, 1, 0)$,\hspace{1.2em}$ \eta_3 = (5, 3, 2, 1), $\\  
+	$\varepsilon_4 = (0 ,0, 0, 1)$.\hspace{1.2em}$ \eta_4 = (6 ,6, 1, 3). $\\ 
+求 $ \beta = (b_1, b_2, b_3, b_4) $ 在 $ \eta_1, \eta_2, \eta_3, \eta_4 $ 下的坐标.
+
+\item[(3)]
+	$\varepsilon_1 = (1, 1, 1, 1)$,\hspace{2.7em}$ \eta_1 = (1, 1, 0, 1),$\\ 
+    $\varepsilon_2 = (1, 1, -1, -1)$,\hspace{1.2em}$ \eta_2 = (2, 1, 3, 1), $\\ 
+    $\varepsilon_3 = (1, -1, 1, -1)$,\hspace{1.2em}$ \eta_3 = (1, 1, 0, 0), $\\  
+    $\varepsilon_4 = (1 ,-1, -1, 1)$.\hspace{1.2em}$ \eta_4 = (0 ,1, -1, -1). $\\ 
+求 $ \beta = (1, 0, 0, -1) $ 在 $ \eta_1, \eta_2, \eta_3, \eta_4 $ 下的坐标. \\
+\end{enumerate}
+
+\end{myexample}
+\Solution
+\begin{enumerate}
+\item[(1)]  
+ 分别以 $ \varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4 $ 和 $ \eta_1, \eta_2, \eta_3, \eta_4 $ 作列向量组排列成两个矩阵 $A$ 及 $B$：
+\begin{gather*}
+A = 
+\begin{bmatrix}
+1  &  0  &  0  &  0  \\
+0  &  1  &  0  &  0  \\
+0  &  0  &  1  &  0  \\
+0  &  0  &  0  &  1  
+\end{bmatrix},
+\ \ \ \ \ 
+B=
+\begin{bmatrix}
+2  &  0  &  5  &  6  \\
+1  &  3  &  3  &  6  \\
+-1 &  1  &  2  &  1  \\
+1  &  0  &  1  &  3  
+\end{bmatrix}.
+\end{gather*}
+可以看出， $ \varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4 $ 到 $ \eta_1, \eta_2, \eta_3, \eta_4 $ 的过渡矩阵为
+\begin{gather*}
+T = 
+\begin{bmatrix}
+2  &  0  &  5  &  6  \\
+1  &  3  &  3  &  6  \\
+-1 &  1  &  2  &  1  \\
+1  &  0  &  1  &  3  
+\end{bmatrix}.
+\end{gather*}
+设 $ \beta $ 在基 $ \eta_1, \eta_2, \eta_3, \eta_4 $ 下的坐标为 $ Y=(y_1, y_2, y_3, y_4)' $ ,在基 $ \varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4 $ 下的坐标为 $ X=(x_1, x_2, x_3, x_4)' $ . 注意到 $ X=(b_1, b_2, b_3, b_4) $ ，所以
+ $$ X = TY \implies Y = T^{-1}X $$ 
+又因为
+\begin{gather*}
+T^{-1} = 
+\left[\begin{array}{rrrr}
+\frac{4}{9}  &  \frac{1}{3}  &  -1  &  -\frac{11}{9} \\
+\frac{1}{27} &  \frac{4}{9}  &  -\frac{1}{3} & \frac{23}{27} \\
+\frac{1}{3}  &  0             &     0          &  -\frac{2}{3}  \\
+-\frac{7}{27} & -\frac{1}{9} &  \frac{1}{3}  &  \frac{26}{27}
+\end{array} \right]
+\end{gather*}
+所以 $ \beta $ 在基 $ \eta_1, \eta_2, \eta_3, \eta_4 $ 下的坐标为 $ Y=(y_1, y_2, y_3, y_4)' $, 其中
+
+ $$ 
+\left\{\begin{matrix}[1.8]
+y_1 &=  \dfrac{4}{9}b_1 &+ \dfrac{1}{3}b_2 &- b_3               &-\dfrac{11}{9}b_4  \\
+y_2 &=  \dfrac{1}{27}b_1 &+ \dfrac{4}{9}b_2  &- \dfrac{1}{3}b_3  &-\dfrac{23}{27}b_4 \\
+y_3 &=  \dfrac{1}{3}b_1  &                    &                 &-\dfrac{2}{3}b_4 \\
+y_4 &= -\dfrac{7}{27}b_1 &+ \dfrac{1}{9}b_2  &+ \dfrac{1}{3}b_3  &+\dfrac{26}{27}b_4 
+\end{matrix}
+\right.
+ $$ 
+
+\item[(3)] 分别以 $ \varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4 $ 和 $ \eta_1, \eta_2, \eta_3, \eta_4 $ 作列向量组排列成两个矩阵 $A,B$：
+\begin{gather*}
+A = 
+\begin{bmatrix}
+1  &  1  &  1  &  1  \\
+1  &  1  &  -1  &  -1  \\
+1  &  -1  &  1  &  -1  \\
+1  &  -1 &  -1  &  1  
+\end{bmatrix},
+\ \ \ \ \ 
+B=
+\begin{bmatrix}
+1  &  2  &  1  &  0  \\
+1  &  1  &  1  &  1  \\
+0 &  3  &  0  &   -1  \\
+1  &  1  &  0  &  -1  
+\end{bmatrix}.
+\end{gather*}
+对 $(A,B)$ 做初等行变换
+\begin{flalign*}
+(A, B)
+&= 
+\left[
+\begin{array}{cccc:cccc}
+1 & 1 & 1 & 1 & 1 & 2 & 1 & 0 \\
+1 & 1 & -1 & -1 & 1 & 1 & 1 & 1 \\
+1 & -1 & 1 & -1 & 0 & 3 & 0 & -1 \\
+1& -1 & -1 & 1 & 1 & 1 & 0 & -1 
+\end{array}
+\right] &\\
+&\Rightarrow 
+\left[
+\begin{array}{cccc:cccc}
+1 & 1 & 1 & 1 & 1 & 2 & 1 & 0 \\
+0 & 0 & -2 & -2 & 0 & -1 & 0 & 1 \\
+0 & -2 & 0 & -2 & -1 & 1 & -1 & -1 \\
+0& -2 & -2 & 0 & 0 & -1 & -1 & -1 
+\end{array}
+\right] &\\
+&\Rightarrow
+\left[
+\begin{array}{cccc:cccc}
+1 & 1 & 1 & 1 & 1 & 2 & 1 & 0 \\
+0 & 2 & 0 & 2 & 1 & -1 & 1 & 1 \\
+0 & 2 & 2 & 0 & 0 & 1 & 1 & 1 \\
+0& 0 & 2 & 2 & 0 & 1 & 0 & -1 
+\end{array}
+\right]&\\
+&\Rightarrow 
+\left[
+\begin{array}{cccc:cccc}
+1 & 1 & 1 & 1 & 1 & 2 & 1 & 0 \\
+0 & 2 & 0 & 2 & 1 & -1 & 1 & 1 \\
+0 & 0 & 2 & -2 & -1 & 2 & 0 & 0 \\
+0 & 0 &  0 & 4 & 1 & -1 & 0 & -1 
+\end{array}
+\right] &\\ 
+&\Rightarrow 
+\left[
+\begin{array}{cccc:cccc}
+1 & 1 & 1 & 1 & 1 & 2 & 1 & 0 \\
+0 & 1 & 0 & 0 & \chfrac{1}{4} & -\chfrac{1}{4} & \chfrac{1}{2} & \chfrac{3}{4} \\
+0 & 0 & 1 & 0 & -\chfrac{1}{4} & \chfrac{3}{4} & 0 & -\chfrac{1}{4} \\
+0& 0 &  0 & 1 & \chfrac{1}{4} & -\chfrac{1}{4} & 0 & -\chfrac{1}{4} 
+\end{array}
+\right] &\\ 
+&\Rightarrow 
+\left[
+\begin{array}{cccc:cccc}
+1 & 1 & 1 & 1 & \chfrac{3}{4} & \chfrac{7}{4} & \chfrac{1}{2} & -\chfrac{1}{4} \\
+0 & 1 & 0 & 0 & \chfrac{1}{4} & -\chfrac{1}{4} & \chfrac{1}{2} & \chfrac{3}{4} \\
+0 & 0 & 1 & 0 & -\chfrac{1}{4} & \chfrac{3}{4} & 0 & -\chfrac{1}{4} \\
+0& 0 &  0 & 1 & \chfrac{1}{4} & -\chfrac{1}{4} & 0 & -\chfrac{1}{4} 
+\end{array}
+\right]
+\end{flalign*}
+
+所以， $ \varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4 $ 到 $ \eta_1, \eta_2, \eta_3, \eta_4 $ 的过渡矩阵为：
+\begin{gather*}
+T =  \dfrac{1}{4}
+\begin{bmatrix}
+3 & 7 & 2 & -1 \\
+1 & -1 & 2 & 3 \\
+-1 & 3 & 0 & -1 \\
+1 & -1 & 0 & -1
+\end{bmatrix}
+\end{gather*}
+设 $ \beta $ 在基 $ \eta_1, \eta_2, \eta_3, \eta_4 $ 下的坐标为 $ Y=(y_1, y_2, y_3, y_4)' $ ，从而
+\begin{gather*}
+\beta = (\eta_1, \eta_2, \eta_3, \eta_4)
+\begin{bmatrix}
+y_1\\ y_2\\ y_3\\ y_4
+\end{bmatrix} \ \ \Rightarrow 
+B
+\begin{bmatrix}
+y_1\\ y_2\\ y_3\\ y_4
+\end{bmatrix} =
+\begin{bmatrix}
+1 \\ 0\\ 0\\ -1
+\end{bmatrix} \ \ \Rightarrow
+\begin{bmatrix}
+1  &  2  &  1  &  0  \\
+1  &  1  &  1  &  1  \\
+0 &  3  &  0  &   -1  \\
+1  &  1  &  0  &  -1  
+\end{bmatrix}
+\begin{bmatrix}
+y_1\\ y_2\\ y_3\\ y_4
+\end{bmatrix} =
+\begin{bmatrix}
+1 \\ 0\\ 0\\ -1
+\end{bmatrix}
+\end{gather*}
+解该非齐次线性方程组可得：
+ $$  (y_1, y_2, y_3, y_4) = (-2, -\dfrac{1}{2},4, -\dfrac{3}{2} )  $$ 
+即：
+ $$  \beta = -2\eta_1 -\dfrac{1}{2}\eta_2 + 4\eta_3 - \dfrac{3}{2}\eta_4  $$   \\  \\ 
+\end{enumerate}
+
+
+\begin{myexample}
+	\textbf{17.} 
+接上题(1)，求一非零向量 $ \xi $ ，使得它在基 $ \varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4 $ 与 $ \eta_1, \eta_2, \eta_3, \eta_4 $ 下有相同的坐标.   \\ 
+
+\end{myexample}
+\Solution
+
+设 $ \xi $ 在基 $ \varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4 $ 与 $ \eta_1, \eta_2, \eta_3, \eta_4 $ 下的坐标都为 $ (z_1, z_2, z_3, z_4) $ . 则：
+\begin{gather*}
+\xi = (\varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4)
+\begin{bmatrix}
+z_1 \\ z_2 \\ z_3 \\ z_4 
+\end{bmatrix} = 
+(\eta_1, \eta_2, \eta_3, \eta_4)
+\begin{bmatrix}
+z_1 \\ z_2 \\ z_3 \\ z_4 
+\end{bmatrix} \ \ \Rightarrow \ \ 
+(A - B) 
+\begin{bmatrix}
+z_1 \\ z_2 \\ z_3 \\ z_4 
+\end{bmatrix}
+= 0
+\end{gather*}
+解上述齐次线性方程组：
+\begin{gather*}
+\begin{bmatrix}
+-1 & 0 & -5 & -6 \\
+-1 & -2 & -3 & -6 \\
+1 & -1 & -1 & -1 \\
+-1 & 0 & -1 & -2 
+\end{bmatrix} \ \xrightarrow{\text{初等行变换}} \ 
+\begin{bmatrix}
+1   &  0  &   0   &  1 \\
+0   &  1   &  0  &   1  \\
+0    & 0  &   1   &  1  \\
+0     &0 &    0   &  0
+\end{bmatrix}
+\end{gather*}
+所以，取 $ \xi = (-a, -a, -a, a) \ \ (a \neq 0)  $ .  \\  \\  
+
+
+
+
+\begin{myexample}
+	\textbf{18.} 
+考察数域 $ K $ 上的线性空间 $ K[x]_n $ .给定 $ K $ 上 $ n $ 个两两不等的数 $ a_1, a_2, \cdots, a_n $ . 令
+ $$  f_i(x) = (x-a_1)\cdots(\widehat{x-a_i})\cdots(x-a_n) \ \ \ \ \ (i = 1, 2, \cdots, n)  $$ 
+(记号“\ \  $ \widehat{} $ \ \ ”表示去掉该项). 证明: $ f_1(x), f_2(x), \cdots, f_n(x) $ 为 $ K[x]_n $ 的一组基. \\  
+
+\end{myexample}
+\Solution 
+
+\textbf{方法一:} 
+
+设 $ k_1f_1(x) + k_2f_2(x) + \cdots + k_nf_n(x) = 0 $ . 假设存在不全为 $ 0 $ 的 $ k_1, k_2, \cdots, k_n $ 使得左式成立. 
+
+记 $ k_i \neq 0 $ , 则:
+ $$  0 =k_1f(a_i) + k_2f(a_i) + \cdots + k_if(a_i)  = k_if_i(a_i) \neq 0  $$ 
+矛盾! 所以 $ k_1 = k_2 = \cdots = k_n = 0 $ . 即 $ f_1(x), f_2(x), \cdots, f_n(x) $ 线性无关.
+
+又由于 $ \dim  K_n[x] = n $ , 所以 $ f_1(x), f_2(x), \cdots, f_n(x) $ 是 $ K_n[x] $ 的一组基. \\ 
+
+\textbf{方法二:}
+
+对于 $ \forall f(x) \in K[x]_n $ ，考虑如下插值函数(Lagrange插值函数)：
+ $$  L_{n-1}(x) = \sum\limits_{i=1}^nf(a_i)l_i(x) \ \ \ \ \text{其中，}l_i(x) = \prod\limits_{j \neq i} \dfrac{x-a_j}{a_i-a_j}  $$ 
+引入记号： $ \omega_{n}(x) = (x-a_1)(x-a_1)\cdots(x-a_n) $ ,则拉格朗日插值多项式的余项为：
+ $$  R_{n-1}(x) = f(x) - L_{n-1}(x) = \dfrac{f^{(n)}(\xi)}{n!}w_n(x) \equiv 0 \ \ \ \ \ (\text{因为} f^{(n)}(\xi) ) \equiv 0)  $$ 
+所以 $ f(x) = L_{n-1}(x) = \sum\limits_{i=1}^n \left(f(a_i)\prod\limits_{j \neq i} \dfrac{x-a_j}{a_i-a_j}\right)  = \sum\limits_{i=1}^n \left( \dfrac{f(a_i)}{\prod\limits_{j \neq i} (a_i - a_j)} \prod\limits_{j \neq i} (x-a_j)\right) = \sum\limits_{i=1}^n k_i f_i(x) $ 
+
+其中， $ k_i =\dfrac{f(a_i)}{\prod\limits_{j \neq i} (a_i - a_j)}  $  ,\  $ f_i(x) =\prod\limits_{j \neq i} (x - a_j)  $ 
+
+即：任意 $ f \in K[x]_n $ ,  $ f $ 可以由 $ f_1(x), f_2(x), \cdots, f_n(x) $ 线性表出. 
+
+另一方面， $ \dim (K[x]_n) = n $ , \  $ \therefore $   $ f_1(x), f_2(x), \cdots, f_n(x) $  是 $ K[x]_n $ 的一组基.  \\ \\ 
+
+
+\section{习题二 \quad 子空间与商空间}
+
+\begin{myexample}
+	\textbf{1.} 
+设 $ A \in M_n(K) $ .  \\
+(1)证明：与 $ A $ 可交换的 $ n $ 阶方阵的全体组成 $ M_n(K) $ 的一个子空间. 记此子空间为 $ C(A) $ . \\
+(2)给定对角矩阵 
+\begin{gather*}
+A=
+\begin{bmatrix} 
+1 &    &   &   \\ 
+& 2  &   &   \\
+&    & \ddots & \\
+&    &    &  n  
+\end{bmatrix} 
+\end{gather*}
+求 $ C(A) $ 的维数和一组基.   \\ 
+
+\end{myexample}
+\Solution
+
+(1) 由于 $ E $ 与 $ A $ 可交换，因此 $ C(A) $ 非空集.设 $ B_1, B_2 \in C(A) $ , 则 $ B_1A = AB_1, B_2A = AB_2 $ .
+
+\hspace{4.1em} 从而:
+ $$  (B_1+B_2)A = B_1A + B_2A = AB_1 + AB_1 = A(B_1 + B_2)  $$ 
+ $$  (kB_1)A = k(B_1A) = k(AB_1) = A(kB_1), \ \ \forall k \in K  $$ 
+所以：与 $ A $ 可交换的 $ n $ 阶方阵的全体组成 $ M_n(K) $ 的一个子空间. \\
+
+(2) 令 $  P = (x_{ij})_{n \times n} \in C(A) $ , 则：
+ $$  AP(i,j) = ix_{ij} = jx_{ij} = PA(i,j) \ \ \Rightarrow \ \ (i-j)x_{ij} = 0  $$ 
+所以：
+ $$  x_{ij} = 0 \ (i \neq j), \ \ x_{ij} \in K \ (i = j)  $$ 
+即：与 $ A $ 可交换的矩阵为任意对角矩阵.
+
+由于任意对角矩阵 $ D = diag\{a_1, a_2, \cdots, a_n\} $ 均可由 $ E_{11},E_{22}, \cdots, E_{nn} $ 线性表出,即：
+ $$  D = diag\{a_1, a_2, \cdots, a_n\} = a_1E_{11} + a_2E_{22} + \cdots + a_nE_{nn}  $$ 
+其中， $ E_{ii} $ 为 $ (i,i) $ 元素为 $ 1 $ ，其它元素为 $ 0 $ 的 $ n $ 级矩阵.
+
+且 $ E_{11}, E_{22}, \cdots,E_{nn} $ 线性无关.
+
+所以， $ E_{11}, E_{22}, \cdots,E_{nn} $ 是 $ C(A) $ 的一组基,  $ \dim (C(A)) = n $ . \\  \\  \\
+
+
+\begin{myexample}
+	\textbf{2.} 
+接上题. 取 $ n=3 $ ，令
+\begin{gather*}
+A=
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+3 & 1 & 2 
+\end{bmatrix}
+\end{gather*}
+求 $ C(A) $ 的维数和一组基.  \\  
+
+\end{myexample}
+\Solution
+
+设 $ P = (x_{ij})_{3\times3} $ , 则：
+\begin{gather*}
+PA = 
+\begin{bmatrix}
+x_{11} & x_{12} & x_{13} \\
+x_{21} & x_{22} & x_{23} \\
+x_{31} & x_{32} & x_{33} 
+\end{bmatrix} 
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+3 & 1 & 2 
+\end{bmatrix}
+=
+\begin{bmatrix}
+x_{11} + 3x_{13} & x_{12} + x_{13} & 2x_{13} \\
+x_{21} + 3x_{23} & x_{22} + x_{23} & 2x_{23} \\
+x_{31} + 3x_{33} & x_{32} + x_{33} & 2x_{33}
+\end{bmatrix}
+\end{gather*}
+\begin{gather*}
+AP = 
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+3 & 1 & 2 
+\end{bmatrix}
+\begin{bmatrix}
+x_{11} & x_{12} & x_{13} \\
+x_{21} & x_{22} & x_{23} \\
+x_{31} & x_{32} & x_{33} 
+\end{bmatrix} 
+=
+\begin{bmatrix}
+x_{11} & x_{12} & x_{13} \\
+x_{21} & x_{22} & x_{23} \\
+3x_{11} + x_{21} + 2x_{31} & 3x_{12} + x_{22} + 2x_{32} & 3x_{13} + x_{23} + 2x_{33}
+\end{bmatrix}
+\end{gather*}
+由于 $ PA = AP $ ，则：
+ $$  x_{13} = 0, \ \ x_{23} = 0, \ \ x_{31}+3x_{33} = 3x_{11} + x_{21} + 2x_{31}, \ \ x_{32} + x_{33} = 3x_{12} + x_{22} + 2x_{32}  $$ 
+整理可得：
+ $$  x_{31} = -3x_{11} +  9x_{12} -x_{21} + 3x_{22} + 3x_{32}, \ \ \ x_{33} = 3x_{12} + x_{22} + x_{32}  $$ 
+所以，
+\begin{gather*}
+P = 
+\begin{bmatrix}
+x_{11} & x_{12} & x_{13} \\
+x_{21} & x_{22} & x_{23}\\
+x_{31} & x_{32} & x_{33}
+\end{bmatrix}
+=
+\begin{bmatrix}
+x_{11} & x_{12} & 0 \\
+x_{21} & x_{22} & 0\\
+-3x_{11} +  9x_{12} -x_{21} + 3x_{22} + 3x_{32} & x_{32} & 3x_{12} + x_{22} + x_{32}
+\end{bmatrix} 
+\end{gather*}
+\begin{gather*}
+=x_{11}
+\begin{bmatrix}
+1 &  0  &  0  \\
+0 &  0  &  0  \\
+-3 &  0  &  0  \\
+\end{bmatrix}
++x_{12}
+\begin{bmatrix}
+0 &  1  &  0  \\
+0 &  0  &  0  \\
+9 &  0  &  3  \\
+\end{bmatrix}
++x_{21}
+\begin{bmatrix}
+0 &  0  &  0  \\
+1 &  0  &  0  \\
+-1&  0  &  0  \\
+\end{bmatrix}
++x_{22}
+\begin{bmatrix}
+0 &  0  &  0  \\
+0 &  1  &  0  \\
+3 &  0  &  1  \\
+\end{bmatrix}
++x_{32}
+\begin{bmatrix}
+0 &  0  &  0  \\
+0 &  0  &  0  \\
+3 &  1  &  1  \\
+\end{bmatrix}
+\end{gather*}
+又由于
+\begin{gather*}
+\begin{bmatrix}
+1 &  0  &  0  \\
+0 &  0  &  0  \\
+-3 &  0  &  0  \\
+\end{bmatrix},
+\ \ \ 
+\begin{bmatrix}
+0 &  1  &  0  \\
+0 &  0  &  0  \\
+9 &  0  &  3  \\
+\end{bmatrix},
+\ \ \ 
+\begin{bmatrix}
+0 &  0  &  0  \\
+1 &  0  &  0  \\
+-1&  0  &  0  \\
+\end{bmatrix},
+\ \ \ 
+\begin{bmatrix}
+0 &  0  &  0  \\
+0 &  1  &  0  \\
+3 &  0  &  1  \\
+\end{bmatrix},
+\ \ \ 
+\begin{bmatrix}
+0 &  0  &  0  \\
+0 &  0  &  0  \\
+3 &  1  &  1  \\
+\end{bmatrix}
+\end{gather*}
+线性无关. 所以， $ \dim (C(A))= 5 $ ,  $ C(A) $ 的一组基为：
+\begin{gather*}
+\begin{bmatrix}
+1 &  0  &  0  \\
+0 &  0  &  0  \\
+-3 &  0  &  0  \\
+\end{bmatrix},
+\ \ \ 
+\begin{bmatrix}
+0 &  1  &  0  \\
+0 &  0  &  0  \\
+9 &  0  &  3  \\
+\end{bmatrix},
+\ \ \ 
+\begin{bmatrix}
+0 &  0  &  0  \\
+1 &  0  &  0  \\
+-1&  0  &  0  \\
+\end{bmatrix},
+\ \ \ 
+\begin{bmatrix}
+0 &  0  &  0  \\
+0 &  1  &  0  \\
+3 &  0  &  1  \\
+\end{bmatrix},
+\ \ \ 
+\begin{bmatrix}
+0 &  0  &  0  \\
+0 &  0  &  0  \\
+3 &  1  &  1  \\
+\end{bmatrix}
+\end{gather*} \\  \\  \\  
+
+
+
+\begin{myexample}
+	\textbf{3.} 
+在习题一第 $ 2 $ 题 $ (5) $ 的线性空间中给定子集 $ M = \{(a, 0) | a \in \mathbb{R} \} $ ， $ N = \{(0, b)| b \in \mathbb{R} \} $ . 问 $ M $ ， $ N $ 是否为子空间?全体实数的二元有序数组所成的集合关于下面的定义的运算：
+ $$  (a_1, b_1) \oplus  (a_2, b_2) = (a_1 + a_2, b_1 + b_2 + a_1a_2)  $$ 
+ $$  k \comp (a, b) = \left[ ka, kb+\dfrac{k(k-1)}{2}a^2\right]  $$ 
+
+\end{myexample}
+\Solution
+
+(1)  $ M = \{(a, 0) | a \in \mathbb{R} \} $  不是子空间. 
+
+因为取 $  (a_1, 0), (a_2, 0) \in M  $  且满足 $ a_1a_2 \neq 0 $ ,则：
+ $$  (a_1, 0) \oplus  (a_2, 0) = (a_1 + a_2, a_1a_2) \notin  M  $$ 
+即对加法运算不封闭. 所以 $ M $ 不是子空间. \\
+
+(2)  $ N = \{(0, b)| b \in \mathbb{R} \} $ 是子空间.
+
+显然， $ N $ 非空集. 任取 $ (0, b_1), (0, b_2) \in N $ , 有：
+ $$  (0, b_1) \oplus  (0, b_2) = (0, b_1 + b_2) \in N  $$ 
+ $$  k \comp (0, b) = \left[ 0, kb \right], \ \ \ \ \forall k \in \mathbb{R}  $$  即对加法、数乘运算封闭. 所以 $ N $ 是子空间. \\  \\  \\
+
+\begin{myexample}
+	\textbf{4.} 
+在数域 $ K $ 上的 $ n $ 维向量空间 $ K^n $ 中考察坐标全为有理数的向量所成的子集
+ $$  M = \{(a_1, a_2, \cdots, a_n) \in K^n | a_i \in \mathbb{Q}, i = 1, 2, \cdots, n  \}  $$ 
+问 $ M $ 是否为 $ K^n $ 的子空间.  \\  
+
+\end{myexample}
+\Solution 
+
+(1)当 $ K = \mathbb{Q}  $ 时， $ M $ 是 $ K^n $ 的子空间.显然 $ M $ 非空集.
+
+任取 $ (a_1^{(1)}, a_2^{(1)}, \cdots, a_n^{(1)}),\ \  (a_1^{(2)}, a_2^{(2)}, \cdots, a_n^{(2)}) \in K^n, a_i^{(j)} \in Q  $ ,有：
+ $$  (a_1^{(1)}, a_2^{(1)}, \cdots, a_n^{(1)}) + (a_1^{(2)}, a_2^{(2)}, \cdots, a_n^{(2)}) \in M  $$ 
+ $$  k(a_1, a_2, \cdots, a_n) =  (ka_1, ka_2, \cdots, ka_n)\in M, \ \ \ \forall k \in K = \mathbb{Q}  $$ 
+即对加法运算和数乘运算封闭. 所以 $ M $ 是 $ K^n $ 的子空间.  \\ 
+
+(2) 当 $ \mathbb{Q} \subsetneq K $ 时， $ N $ 不是 $ K^n $ 的子空间.取 $ (a_1, a_2, \cdots, a_n) \in \mathbb{Q}, k \in K \setminus \mathbb{Q} $ , 则：
+ $$  k(a_1, a_2, \cdots, a_n) = (ka_1, ka_2, \cdots, ka_n) \notin M, \ \ \ \ (\text{因为} \;ka_i \notin \mathbb{Q})  $$ 
+即对数乘运算不封闭. 所以 $ M $ 不是 $ K^n $ 的子空间.  \\  \\  \\
+
+
+\begin{myexample}
+	\textbf{5.} 
+把复数域 $ \mathbb{C} $ 看做有理数域 $ \mathbb{Q} $ 上的线性空间(加法为复数加法,与 $ \mathbb{Q} $ 中元素的数乘为有理数与复数的乘法)，问全体实数所成的子集 $ \mathbb{R} $ 是否是一个子空间?  \\  
+
+\end{myexample}
+\Solution 
+
+显然， $ \mathbb{R} $ 不是空集. 任取 $ a_1, a_2 \in \mathbb{R} $ , 则：
+ $$  a_1 + a_2 \in \mathbb{R}  $$ 
+ $$  ka \in R, \ \ \ \ k \in \mathbb{Q}  $$ 
+所以, 全体实数所成的子集 $ \mathbb{R} $ 是该线性空间的一个子空间.   \\  \\   \\ 
+
+
+
+\begin{myexample}
+	\textbf{6.} 
+把复数域 $ \mathbb{C} $ 看做数域 $ \mathbb{Q}(i) $ 上的线性空间(加法为复数加法,数乘为复数乘法). 问全体实数所成的子集 $ \mathbb{R} $ 是否是一个子空间?  \\  
+
+\end{myexample}
+\Solution 
+
+全体实数所成的子集 $ \mathbb{R} $ 不是一个子空间. 任取 $ a \in \mathbb{R} $ , 有
+ $$  (x+iy)a = ax + i(ay), \ \ \ \ x+iy \in \mathbb{Q}(i)   $$ 
+当 $ ay \neq 0 $ 时， $ (x+iy)a \notin R $ . 所以全体实数所成的子集 $ \mathbb{R} $ 不是一个子空间.  \\  \\  \\ 
+
+\begin{myexample}
+	\textbf{10.} 
+证明：有限维向量空间 $ V $ 上的任一子空间 $ M $ 都可以看作是 $ V $ 内一个向量组 $ \alpha_1, \alpha_2, \cdots, \alpha_s $ 生成的子空间.  \\
+
+\end{myexample}
+\Solution
+
+由于子空间 $ M $ 也是线性空间，而线性空间必有基.
+
+记 $ \dim   M = s \leq \dim V $ ，可以找到 $ M $ 中的一组向量：
+ $$  \alpha_1, \alpha_2, \cdots, \alpha_s  \in M \subset V $$ 
+它们是线性空间 $ M $ 的一组基. 记 $ M_1 = span\{\alpha_1, \alpha_2, \cdots, \alpha_s \} $ .
+
+任取 $ \beta \in M $ , 由基的定义可知,  $ \beta $ 可由 $ \alpha_1, \alpha_2, \cdots, \alpha_s $ 线性表出.  $ \Rightarrow \beta \in M_1  $  
+ $$  \Rightarrow M \subset M_1  $$ 
+任取 $ \gamma \in M_1 $ , 则 $ \gamma = k_1\alpha_1 + k_2\alpha_2 + \cdots + k_s\alpha_s  $ 
+
+由于线性空间 $ M $ 对加法和数乘运算封闭,则:  $  \gamma = k_1\alpha_1 + k_2\alpha_2 + \cdots + k_s\alpha_s \in M  $ 
+ $$  \Rightarrow M_1 \subset M   $$ 
+即：
+ $$  M_1 = M  $$ 
+综上所述:有限维向量空间 $ V $ 上的任一子空间 $ M $ 都可以看作是 $ V $ 内一个向量组.
+
+ $ \alpha_1, \alpha_2, \cdots, \alpha_s $ 生成的子空间. \\  \\   \\
+
+\begin{myexample}
+	\textbf{14.} 
+求下列向量 $ \alpha_i $ 所生成的子空间与下列由 $ \beta_i $ 生成的子空间的交与和的维数和一组基: \\
+(3)  $ \alpha_1 = (1, 2, -1, -2), \ \alpha_2 = (3, 1, 1, 1), \ \alpha_3 = (-1, 0, 1, -1) $  
+
+\hspace{1em}  $ \beta_1 = (2, 5, -6, -5), \ \beta_2 = (-1, 2, -7, 3) $  \\
+
+\end{myexample}
+\Solution 
+
+(i) 求 $ L(\alpha_1, \alpha_2, \alpha_3) + L(\beta_1, \beta_2) $ 的维数和一组基. 因为
+ $$  L(\alpha_1, \alpha_2, \alpha_3) + L(\beta_1, \beta_2) = L(\alpha_1, \alpha_2, \alpha_3, \beta_1, \beta_2)  $$ 
+只要求 $ \alpha_1, \alpha_2, \alpha_3, \beta_1, \beta_2 $ 的一个极大线性无关组即可.
+\begin{gather*}
+\begin{bmatrix}
+1  &  2  &  -1  &  -2  &  \alpha_1  \\
+3  &  1  &  1  &  1  &  \alpha_2  \\
+-1  &  0  &  1  &  -1  &  \alpha_3  \\
+2  &  5  &  -6  &  -5  &  \beta_1  \\
+-1  &  2  &  -7  &  3  &  \beta_2  
+\end{bmatrix} \longrightarrow
+\begin{bmatrix}
+1  &  2  &  -1  &  -2  &  \alpha_1  \\
+0  &  -5  &  4  &  7  &  \alpha_2 - 3\alpha_1 \\
+0  &  2  &  0  &  -3  &  \alpha_1 + \alpha_3  \\
+0  &  1  &  -4  &  -1  &  \beta_1 - 2\alpha_1  \\
+0  &  4  &  -8  &  1  &  \beta_2 + \alpha_1 
+\end{bmatrix} \longrightarrow 
+\begin{bmatrix}
+1  &  2  &  -1  &  -2  &  \alpha_1  \\
+0  &  1  &  -4  &  -1  &  \beta_1 - 2\alpha_1  \\
+0  &  2  &  0  &  -3  &  \alpha_1 + \alpha_3  \\
+0  &  -5  &  4  &  7  &  \alpha_2 - 3\alpha_1 \\
+0  &  4  &  -8  &  1  &  \beta_2 + \alpha_1 
+\end{bmatrix}
+\end{gather*}
+\begin{gather*}
+\longrightarrow
+\begin{bmatrix}
+1  &  2  &  -1  &  -2  &  \alpha_1  \\
+0  &  1  &  -4  &  -1  &  \beta_1 - 2\alpha_1  \\
+0  &  0  &  8  &  -1  &  5\alpha_1 + \alpha_3 - 2\beta_1 \\
+0  &  0  & -16 &  2   &  -13\alpha_1 + \alpha_2 + 5\beta_1  \\
+0  &  0  &  8  &  5  &  9\alpha_1 - 4\beta_1 + \beta_2
+\end{bmatrix} \longrightarrow 
+\begin{bmatrix}
+1  &  2  &  -1  &  -2  &  \alpha_1  \\
+0  &  1  &  -4  &  -1  &  \beta_1 - 2\alpha_1  \\
+0  &  0  &  8  &  -1  &  5\alpha_1 + \alpha_3 - 2\beta_1 \\
+0  &  0  &  0  &  6   &  4\alpha_1 - \alpha_3 -2\beta_1 + \beta_2 \\
+0  &  0  &  0  &  0  &  -3\alpha_1 + \alpha_2 + 2\alpha_3 -\beta_1 
+\end{bmatrix}
+\end{gather*} 
+所以向量组 $ \alpha_1, \alpha_2, \alpha_3, \beta_1, \beta_2 $ 的秩为4. 又因为
+ $$   -3\alpha_1 + \alpha_2 + 2\alpha_3 -\beta_1 = 0 \ \ \ \Rightarrow \ \ \ \beta_1 = -3\alpha_1 + 2\alpha_3 + \alpha_2  $$ 
+所以 $ \alpha_1, \alpha_2, \alpha_3, \beta_2 $ 是 $ L(\alpha_1, \alpha_2, \alpha_3) + L(\beta_1, \beta_2) $ 的一组基, 其维数为4.  \\
+
+(ii) 求 $ L(\alpha_1, \alpha_2, \alpha_2) \cap L(\beta_1, \beta_2) $ 的维数和一组基. 因为
+ $$  \dim L(\alpha_1, \alpha_2, \alpha_3) = 3, \ \ \ \dim L(\beta_1, \beta_2) = 2  $$ 
+从而:  $ \dim L(\alpha_1, \alpha_2, \alpha_2) \cap L(\beta_1, \beta_2) = 1 $ 
+
+从(i)中可知:
+ $$  -3\alpha_1 + \alpha_2 + 2\alpha_3 -\beta_1 = 0 \ \ \ \Rightarrow \ \ \ -3\alpha_1 + \alpha_2 + 2\alpha_3 = \beta_1 \in L(\alpha_1, \alpha_2, \alpha_2) \cap L(\beta_1, \beta_2)  $$ 
+\hspace{3.3em} 而  $ \beta_1 = (2, 5, -6, -5) \neq (0, 0, 0, 0) $ , 所以 $ \beta_1 $ 是 $ L(\alpha_1, \alpha_2, \alpha_2) \cap L(\beta_1, \beta_2) $ 的一组基.  \\  \\  \\
+
+
+
+\begin{myexample}
+	\textbf{16.} 
+设 $ M $ 是线性空间 $ M_n(K) $ 内全体对称矩阵所成的子空间,  $ N $ 是由全体反对称矩阵所成的子空间. 证明:
+ $$  M_n(K) = M \oplus  N  $$    \\  
+
+\end{myexample}
+\Solution
+
+任取 $ A \in M_n(K) $ , 有:
+ $$  (A + A')' = A' + A , \ \ \ (A - A')' = A' - A  = -(A - A)'   $$ 
+\hspace{3em} 即:  $ A + A' \in M $ , \  $ A - A' \in N $ . 又因为:
+ $$  A = \dfrac{A+A'}{2} + \dfrac{A - A'}{2}  $$ 
+所以: $ A \in M + N $ . 从而 $ M_n(K) \subset M + N $ . 而 $ M + N \subset M_n(K) $ , 所以  $ M_n(K) = M + N $ . 
+
+再证明 $ M_n(K) = M \oplus  N $ , 只需要证明 $ M \cap N = 0 $ .任取 $ B \in M \cap N $ , 则:
+ $$  B' = B, \ \ B' = -B \ \ \Rightarrow -B = B \ \ \Rightarrow B = 0  $$ 
+\hspace{3em} 从而 $ M \cap N = 0 $ . 综上:  $ M_n(K) = M \oplus  N $ .  \\  \\ \\
+
+
+\begin{myexample}
+	\textbf{17.} 
+在线性空间 $ M_n(K) $ 中,命 $ M $ ， $ N $ 分别表示全体上三角 、下三角矩阵所成的子空间. 问是否有 $ M_n(K) = M \oplus  N $ ?为什么?   \\ 
+
+\end{myexample}
+\Solution
+
+ $ M_n(K) $ 不是 $ M $ 与 $ N $ 的直和. 因为对于任意对角矩阵 $ D = diag\{a_1, a_2, \cdots, a_n\} $ , 都有:
+ $$  D \in M \cap N  $$ 
+\hspace{1.7em} 当 $ a_1a_2\cdots a_n \neq 0 $ 时,  $ 0 \neq D \in M \cap N $ .所以 $ M_n(K) \neq M \oplus  N $ . \\  \\ \\
+
+
+
+\begin{myexample}
+	\textbf{18.} 
+设 $ M_1 $ 是齐次方程
+ $$  x_1 + x_2 + \cdots + x_n = 0  $$ 
+的解空间, 而 $ M_2 $ 是齐次线性方程组
+ $$  x_1 = x_2 = \cdots = x_n  $$ 
+的解空间. 证明:  $  K^n = M_1 \oplus  M_2  $ .  \\  
+
+\end{myexample}
+\Solution 
+
+任取 $ \alpha = (a_1, a_2, \cdots, a_n) \in K^n $ , 下证明:  $ \alpha = \alpha_1 + \alpha_2 $ , 其中  $ \alpha_1 \in M_1, \ \alpha_2 \in M_2 $  
+
+考虑到 $ M_1, M_2 $ 中向量坐标的特点, 设 $ \alpha_1 = (b_1, b_2, \cdots, b_n) $ , \  $ \alpha_2 = (c, c, \cdots, c) $ . 则: 
+ $$  (a_1, a_2, \cdots, a_n) = (b_1 + c, b_2 + c, \cdots, b_n + c) \ \ \text{且} \ \ b_1 + b_2 + \cdots + b_n = 0  $$ 
+即: 
+ $$  b_1 + b_2 + \cdots + b_n = a_1 + a_2 + \cdots + a_n - nc = 0 \ \ \Rightarrow \ \ c = \dfrac{a_1 + a_2 + \cdots + a_n}{n}  $$ 
+即对于 $ \forall \alpha=(a_1, a_2, \cdots, a_n) \in K^n $ , 可以找到
+ $$ \alpha_1 = \left(a_1 - \frac{\sum\limits_{i=1}^{n}a_i}{n}, a_2 -\frac{\sum\limits_{i=1}^{n}a_i}{n}, \cdots, a_n-\frac{\sum\limits_{i=1}^{n}a_i}{n} \right) \in M_1, \ \  \alpha_2 = \left(\frac{\sum\limits_{i=1}^{n}a_i}{n}, \frac{\sum\limits_{i=1}^{n}a_i}{n}, \cdots, \frac{\sum\limits_{i=1}^{n}a_i}{n} \right) \in M_2 $$ 
+使得 $ \alpha = \alpha_1 + \alpha_2 $ . 
+
+从而 $ K^n \subset M_1 + M_2 $ . 显然,  $ M_1 + M_2 \subset K^n $ , 所以  $ K^n = M_1 + M_2 $ .  
+
+下证明:  $ M_1 \cap M_2 = 0 $ . 任取 $ \beta = (d_1, d_2, \cdots, d_n) \in M_1 \cap M_2 $ , 有:
+ $$  d_1 + d_2 + \cdots + d_n = 0, \ \ d_1 = d_2 = \cdots = d_n  $$ 
+解得:\  $ d_1 = d_2 = \cdots = d_n $ . 即:  $ M_1 \cap M_2 = 0 $ .
+
+综上所述:  $ K^n = M_1 \oplus  M_2 $ .   \\  \\  \\ 
+
+
+\begin{myexample}
+	\textbf{21.} 
+设 $ M, N $ 是数域 $ K $ 上线性空间 $ V $ 的两个子空间且 $ M \subseteq N $ . 设 $ M $ 的另一个补空间为 $ L $ , 即 $ V = M\oplus L $ , 证明： $ N = M \oplus (N \bigcap L) $ . \\ 
+
+\end{myexample}
+\Solution
+
+先证明: $ N = M + (N \bigcap L) = N \cap M + N \cap L $ . 由于 $ V = M \oplus  L $ , 所以 $ N \subset M+L $ , 从而:
+ $$  N = N \cap (M + L)  $$ 
+
+任取 $ \alpha \in N $ , 由于 $ N \subset M+L $ , 所以 $ \alpha \in M + L $ . 从而:
+ $$  \alpha = \alpha_1 + \alpha_2, \ \ \ \alpha_1 \in M, \ \ \alpha_2 \in L  $$  
+由于 $ \alpha_1 \in M \subset N $ , 所以 $ \alpha_2 = \alpha - \alpha_1 \in N $ . 即: $ \alpha_2 \in N \cap L  $ 
+
+所以 $ \alpha = \alpha_1 + \alpha_2 \in (N \cap M) +  (N \cap L) $ . 进而:  $ N \subset (N \cap M) +  (N \cap L)  $ 
+
+任取 $ \beta_1 \in (N \cap M) \subset N  $ ,  $ \beta_2 \in (N \cap L) \subset N $ , 由线性空间对加法封闭可知 $ \beta_1 + \beta_2 \in N $ 
+
+所以 $ (N \cap M) +  (N \cap L) \subset N $ . 
+
+综上所述,  $ N =(N \cap M) +  (N \cap L) = M +  (N \cap L) $ 
+
+另一方面, 
+ $$  M \cap (N \cap L ) = N \cap (M \cap L ) = N \cap {0} = 0 \ \ \ (\text{因为}M+L\text{是直和})  $$ 
+
+\hspace{2.5em} 所以 $ N = M \oplus   (N \cap L) $   \\  \\  \\
+
+\begin{myexample}
+	\textbf{23.} 
+设 $ M_1, M_2, \cdots, M_k $ 为数域 $ K $ 上线性空间 $ V $ 的子空间. 证明和 $ \sum\limits_{i=1}^{k}M_i $ 为直和的充分必要条件是
+ $$  M_i \cap \left(\sum\limits_{j=1}^{i-1} M_j \right) = {0} \ \ \ \ (i = 2, 3, \cdots, k)  $$   
+
+
+\end{myexample}
+\Solution 
+
+必要性:
+
+设 $ \sum\limits_{i=1}^k M_i $ 是直和, 则:
+ $$  M_i \cap \left(\sum\limits_{j \neq i} M_j \right) = {0} \ \ \ i=\{1, 2, \cdots, k \} $$ 
+注意到: 
+ $$  M_i \cap \left(\sum\limits_{j=1}^{i-1} M_j \right) \subset  M_i \cap \left(\sum\limits_{j \neq i} M_j \right)={0} \ \ \ \ (i = 2, 3, \cdots, k)  $$ 
+从而:  $ M_i \cap \left(\sum\limits_{j=1}^{i-1} M_j \right) = {0}, \ \ i = (2, 3, \cdots, k) $ . \\
+
+充分性:
+
+设 $ \alpha_i \in M_i \ (i = 1, 2, \cdots, k) $ , 使得:
+ $$  \alpha_1 + \alpha_2 + \cdots + \alpha_k = 0 \in \sum\limits_{i=1}^k M_i  $$ 
+\hspace{2.5em} 从而,  $ \alpha_k = -\alpha_1 - \alpha_2 - \cdots - \alpha_{k-1} \in M_k \cap \left(\sum\limits_{i=1}^{k-1}M_i \right) $ . 
+
+又因为  $ M_k \cap \left(\sum\limits_{i=1}^{k-1}M_i \right) = {0} $ , 所以,  $ \alpha_k = 0 $ . 从而,  $ \alpha_1 + \alpha_2 + \cdots + \alpha_{k-1} = 0 $ . 
+
+继续做上述步骤, 可以得到:  $ \alpha_1 = \alpha_2 = \cdots = \alpha_{k-1} = 0 $ . 即: $ \sum\limits_{i=1}^k M_i $ 中 $ 0 $ 向量表示方法唯一.
+
+所以,  $ \sum\limits_{i=1}^k M_i $ 是直和.  \\  \\  \\
+
+
+
+\begin{myexample}
+	\textbf{26}  \\
+令 $ M $ 为 $ M_n(K) $ 内全体反对称矩阵所成的子空间. 试求 $ M_n(K)/M $ 的维数和一组基. \\ 
+
+\end{myexample}
+\Solution 
+
+由于 $ \dim  M_n(K) = n^2 $ , \  $ \dim  M = \dfrac{n(n-1)}{2} $ , 所以:
+ $$  \dim \left(M_n(K)/M \right) = \dim M_n(k) - \dim  M = n^2 - \dfrac{n(n-1)}{2} = \dfrac{n(n+1)}{2}  $$ 
+取 $ M $ 的一组基 $ E_{ij} - E_{ji} \ \ (1 \leq i < j \leq n) $ , 将它扩充为 $ M_n(K) $ 中的向量组:
+ $$  E_{ij} - E_{ji},\ \ E_{ji}, \ \  E_{kk} \ \ \ \ \ \ \  (1 \leq i < j \leq n, \ 1 \leq k \leq n) \ \ \ \ (*) $$ 
+下证明该向量组是 $ M_n(K) $ 的一组基. 设:
+ $$  \sum\limits_{1 \leq i < j \leq n} \left[ k_{ij}(E_{ij} - E_{ji})+k_{ji}E_{ji} \right] + \sum\limits_{s=1}^n k_sE_{ss} = 0  $$ 
+\hspace{1.7em} 可得到如下矩阵:
+\begin{gather*}
+\begin{bmatrix}
+k_{11}         &  k_{12}  &  k_{13} &  \cdots  &  k_{1n} \\
+k_{21}-k_{12}  &  k_{22}  &  k_{23} &  \cdots  &  k_{2n}  \\
+k_{31}-k_{13}  &  k_{32} - k_{23} & k_{33} & \cdots & k_{3n} \\
+\vdots         &  \vdots          & \vdots & \cdots  & \vdots \\
+k_{n1}-k_{1n}  & k_{n2}-k_{2n} &  k_{n3} -k_{3n}  & \cdots & k_{nn} 
+\end{bmatrix} = 0
+\end{gather*}
+从而 $ k_{ij} = 0,\ \ (1 \leq i, j \leq n ) $ . 从而向量组 $ (*) $ 线性无关. 
+
+而 $ \dim  M_n(K) = n^2 $ , 所以 $ (*) $ 是 $ M_n(K) $ 的一组基.
+
+对于 $ M_n(K)/M $ 中任意向量 $ A + M $ ,有:
+ $$  A + M = \sum\limits_{1\leq i < j \leq n} \left[ c_{ij}(E_{ij} - E{ji}) + c_{ji}E_{ji}\right] + \sum\limits_{s=1}^n c_{ss}E_{ss} + M = \sum\limits_{1 \leq i \leq j \leq n } c_{ji}E_{ji} + M  = \sum\limits_{1 \leq i \leq j \leq n} c_{ji}(E_{ji} + M)  $$ 
+\hspace{1.7em} 而 $ \dim \left(M_n(K)/M \right) = \dfrac{n(n+1)}{2} $ , 所以 $ E_{ji}+M \ \ (1 \leq i \leq j \leq n) $ 是 $ M_n(K)/M $ 的一组基. \\  \\   \\
+
+\begin{myexample}
+	\textbf{27.} 
+设 $ M $ 为线性空间 $ V $ 的一个子空间. 在 $ M $ 内取定一组基 $ \varepsilon_1, \varepsilon_2, \cdots, \varepsilon_r $ , 用两种方式扩充为 $ V $ 的基
+ $$  \varepsilon_1, \varepsilon_2, \cdots, \varepsilon_r, \varepsilon_{r+1}, \cdots, \varepsilon_n  $$ 
+ $$  \varepsilon_1, \varepsilon_2, \cdots, \varepsilon_r, \eta_{r+1}, \cdots, \eta_n  $$ 
+这两组基之间的过渡矩阵为 $ T $ , 即
+ $$  (\varepsilon_1, \varepsilon_2, \cdots, \varepsilon_r, \eta_{r+1}, \cdots, \eta_n) = (\varepsilon_1, \varepsilon_2, \cdots, \varepsilon_r, \varepsilon_{r+1}, \cdots, \varepsilon_n)T  $$ 
+其中,
+\begin{gather*}
+T = 
+\begin{bmatrix}
+E_r  &  *  \\
+0    &  T_0 
+\end{bmatrix}
+\end{gather*}
+证明:  $ V/M $ 内两组基
+ $$  \overline{\varepsilon}_{r+1} = \varepsilon_{r+1} + M,\  \overline{\varepsilon}_{r+2} = \varepsilon_{r+2} + M,\  \cdots,\  \overline{\varepsilon}_{n} = \varepsilon_{n}+ M,  $$ 
+ $$  \overline{\eta}_{r+1} = \eta_{r+1} + M,\  \overline{\eta}_{r+2} = \eta_{r+2} + M,\  \cdots,\  \overline{\eta}_{n} = \eta_{n} + M,  $$ 
+之间的过渡矩阵为:
+ $$  (\overline{\eta}_{r+1}, \cdots, \overline{\eta}_{n}) = (\overline{\varepsilon}_{r+1}, \cdots, \overline{\varepsilon}_{n})T_0  $$  
+
+\end{myexample}
+\Solution 
+
+由题目条件可知:
+ $$  \eta_i = t_{1,i}\varepsilon_1 + t_{2,i}\varepsilon_2 + \cdots + t_{n.i}\varepsilon_n \ \ \ \ \ (i = r+1, r+2, \cdots, n) $$ 
+其中,  $ t_{i,j} $ 表示矩阵 $ T $ 的第 $ i $ 行第 $ j $ 列元素. 从而:
+ $$  \overline{\eta}_i = \eta_i + M =t_{1,i}\varepsilon_1 + t_{2,i}\varepsilon_2 + \cdots + t_{n.i}\varepsilon_n + M = \sum\limits_{j=r+1}^{n}t_{j,i}\varepsilon_j + M = \sum\limits_{j=r+1}^{n}t_{j,i}\left(\varepsilon_j + M \right) = \sum\limits_{j=r+1}^{n} t_{j,i}\overline{\varepsilon}_i.   $$ 
+
+即 $ T_0 $ 是一个 $ (n-r)\times(n-r) $ 矩阵, 它为基 $  \overline{\varepsilon}_{r+1}, \cdots, \overline{\varepsilon}_n  $ 到基 $  ,  \overline{\eta}_{r+1}, \cdots, \overline{\eta}_n  $ 的
+
+过渡矩阵, 即:
+ $$  (\overline{\eta}_{r+1}, \cdots, \overline{\eta}_{n}) = (\overline{\varepsilon}_{r+1}, \cdots, \overline{\varepsilon}_{n})T_0  $$  
+
+\begin{myexample}
+	\textbf{4.3.1}
+
+设 $ m,n $ 为正整数且 $ m<n $ . 定义 $ K^n $ 到 $ K^m $ 的映射 $ f $ 如下:若 $ \alpha = (a_1, a_2, \cdots, a_n) $ , 则令
+ $$  f(\alpha) = (a_1, a_2, \cdots, a_m) \in K^m.  $$ 
+又定义 $ K^m $ 到 $ K^n $ 的映射 $ g $ 如下:若 $ \alpha = (a_1, a_2, \cdots, a_m) $ , 则令
+ $$  g(\alpha) = (a_1, a_2, \cdots, a_m, 0, \cdots, 0) \in K^n  $$ 
+证明 $ f,g $ 均为线性映射, 并求 $mathrm{Ker}$  $ f $ , Im $ f $ , Coker $ f $ ,  $mathrm{Ker}$  $ g $ , Im $ g $ , Coker $ g $ .  \\ 
+
+\end{myexample}
+\Solution 
+
+(1) 对于 $ \forall \alpha=(a_1, a_2, \cdots, a_n), \beta=(b_1, b_2, \cdots, b_n) \in K^n, k_1, k_2 \in K $ , 有:
+\begin{align*}
+f(k_1\alpha + k_2\beta) &= (k_1a_1+k_2b_1, k_1a_2+k_2b_2, \cdots, k_1a_m+k_2b_m) \\
+&= k_1(a_1, a_2, \cdots, a_m) + k_2(b_1, b_2, \cdots, b_m) \\
+&= k_1f(\alpha) + k_2f(\beta) 
+\end{align*}
+所以 $ f $ 为线性映射. 下求 $mathrm{Ker}$  $ f $ , Im $ f $ , Coker $ f $ . 
+
+ $$  f(\alpha)=0  \Leftrightarrow a_1 = a_2 = \cdots = a_m = 0  $$ 
+所以 $mathrm{Ker}$  $ f $   $ = \{(0,0,\cdots, 0, a_{m+1}, \cdots, a_n) | a_{m+i} \in K \} $ ;
+
+并且Im $ f = K^m $ , Coker $ f $  =  $ V $ /Im $ f = \{ 0 + K^m\} $ .  \\ 
+
+(2)对于映射 $ g $ 的证明求解与(1)类似, 便不赘述.
+ $$   \mathrm{Ker} g = \{ 0 \}, \ \ \  \mathrm{Im} g = \{(a_1, \cdots, a_m, 0, \cdots, 0)|a_i \in K \}, \ \ \   \mathrm{Coker} g = L \{ \varepsilon_{m+1}+ \mathrm{Im} g, \cdots, \varepsilon_n +  \mathrm{Im} g \}  $$  
+其中,  $ \varepsilon_i $ 是 $ K^n $ 中的坐标向量. \\  \\  \\
+
+
+
+\begin{myexample}
+\textbf{4.3.5} 
+
+将数域 $ \mathbb{Q}(i) $ 与 $ \mathbb{Q}(\sqrt{2}) $ 都看作 $ \mathbb{Q} $ 上的线性空间(加法为复数加法, 数乘为有理数与复数的乘法), 找出它们之间的一个同构映射. \\  
+
+\end{myexample}
+\Solution 
+
+注意到 $ \mathbb{Q}(i) = a + bi $ ,  $ \mathbb{Q}(\sqrt{2}) = a + b\sqrt{2} $ , 其中, $ a, b \in \mathbb{Q} $ .建立如下映射 $ \tau $ :
+\begin{center}
+	\begin{tabular}{cccc}
+		 $ \tau :  $  &  $ \mathbb{Q}(i) $   &    $ \longrightarrow $   &   $ \mathbb{Q}(\sqrt{2}) $   \\
+		&  $ a + bi $          &    $ \longmapsto $   &   $ a+b\sqrt{2} $  
+	\end{tabular}
+\end{center}
+下证明,  $ \tau $ 为 $ \mathbb{Q}(i) $ 到 $ \mathbb{Q}(\sqrt{2}) $ 的同构映射. 任取 $ a+bi, c+di \in \mathbb{Q}(i) $ , 有
+\begin{align*}
+\tau ((a+bi) + (c+di)) &= \tau((a+c)+(b+d)i) = (a+c) + (b+d)\sqrt{2} \\
+&= (a+b\sqrt{2}) + (c + d\sqrt{2}) \\
+&= \tau(a+bi) + \tau(c+di)
+\end{align*}
+任取 $ a+bi \in \mathbb{Q}(i), k \in Q $ , 有
+ $$  \tau(k(a+bi)) = \tau(ka+kbi) = ka + kb\sqrt{2} = k(a+b\sqrt{2}) = k\tau(a+bi)  $$ 
+所以 $ \tau $ 是线性映射.  $ \tau $ 显然是一个双射, 所以 $ \tau $ 是 $ \mathbb{Q}(i) $ 到 $ \mathbb{Q}(\sqrt{2}) $ 的同构映射. \\  \\  \\ 
+
+
+
+
+
+\begin{myexample}
+	\textbf{4.3.6} 
+
+定义 $ K^4 $ 到 $ K^3 $ 的映射
+\begin{gather*}
+f
+\begin{bmatrix}
+x_1 \\ x_2 \\ x_3 \\ x_4
+\end{bmatrix}
+=
+\begin{bmatrix}
+-x_1 + x_2 + 2x_3 + x_4 \\ 
+-2x_2 + x_3 \\
+-x_1 -x_2 + 3x_3 + x_4
+\end{bmatrix}
+\end{gather*}
+证明 $ f $ 是一个线性映射, 求 $mathrm{Ker}$  $ f $ , Im $ f $ , Coker $ f $ . 在 $ K^4 $ 内取一组基
+ $$  \varepsilon_1 = (1,0,1,1)', \ \ \varepsilon_2=(0,1,0,1)', \ \ \varepsilon_3=(0,0,1,0)', \ \ \varepsilon_4=(0,0,2,1)'  $$ 
+又在 $ K^3 $ 内取定一组基
+ $$  \eta_1 = (1,1,1)', \ \ \ \eta_2 = (1, 0, -1)', \ \ \ \eta_3=(0,1,0)'  $$ 
+求 $ f $ 在给定基下的矩阵. \\ 
+
+\end{myexample}
+\Solution 
+
+对于 $ \forall X = (x_1, x_2, x_3, x_4)' \in K^4 $ 
+\begin{gather*}
+f
+\begin{bmatrix}
+x_1 \\ x_2 \\ x_3 \\ x_4
+\end{bmatrix}
+=
+\begin{bmatrix}
+-x_1 + x_2 + 2x_3 + x_4 \\ 
+-2x_2 + x_3 \\
+-x_1 -x_2 + 3x_3 + x_4
+\end{bmatrix}
+=
+\begin{bmatrix}
+-1 & 1 & 2 & 1 \\
+0  & -2 & 1 & 0 \\
+-1 & -1 & 3 & 1 
+\end{bmatrix}
+\begin{bmatrix}
+x_1 \\ x_2 \\ x_3 \\ x_4
+\end{bmatrix}
+=AX
+\end{gather*}
+所以对于 $ \forall X, Y \in K^4, \forall k_1,k_2 \in K $ , 有:
+ $$  f(k_1X + k_2Y) = A(k_1X + k_2Y) = k_1AX + k_2AY = k_1f(X)+k_2f(Y)   $$ 
+所以,  $ f $ 是 $ K^4 $ 到 $ K^3 $ 的线性映射.根据线性映射的核与象的定义,  $mathrm{Ker}$  $ f $ 与Im $ f $ 实际上分别为为四元齐次方程组 $ AX=0 $ 的解空间与矩阵A的列空间, 于是:
+\begin{gather*}
+A=
+\begin{bmatrix}
+-1 & 1 & 2 & 1 \\
+0  & -2 & 1 & 0 \\
+-1 & -1 & 3 & 1 
+\end{bmatrix}
+\xrightarrow{\text{初等行变换}}
+\begin{bmatrix}
+1 & 0 & -\frac{5}{2} & -1  \\
+0 & 1 & -\frac{1}{2} &  0  \\
+0 & 0 &         0      &  0
+\end{bmatrix}
+\end{gather*}
+
+于是 $ AX=0 $ 的一个基础解系为:
+ $$  \alpha_1 = ( 5,1 ,2,0)', \ \ \ \alpha_2 = (1, 0, 0, 1)'  $$ 
+从而 $mathrm{Ker}$  $ f = L(\alpha_1, \alpha_2) $ . 同时, 从 $ A $ 的约化阶梯型矩阵可以看出,  $ A $ 的列向量组的一个极大线性无关组是:
+ $$  \beta_1 = (1, 0, -1)', \ \ \ \beta_2=(1, -2, -1)'  $$  
+所以, Im $ f = L(\beta_1, \beta_2) $ . 考虑 $ (\beta_1, \beta_2)' $ 
+\begin{gather*}
+(\beta_1, \beta_2)'=
+\begin{bmatrix}
+1  &  0  &  -1  \\
+1  &  -2  &  -1
+\end{bmatrix}
+\xrightarrow{初等行变换}
+\begin{bmatrix}
+1  &  0  &  -1  \\
+0  &  -2 &  0  
+\end{bmatrix}
+\end{gather*}
+所以, 可以添加 $ \beta_3=(0, 0, 1)' $ 进入 $ \{\beta_1, \beta_2\} $ 中, 使得 $ \{\beta_1, \beta_2, \beta_3 \} $ 成为 $ K^3 $ 的一组基.
+
+从而, Coker $ f = L(\beta_3 +  \mathrm{Im} f)  $ 
+
+又由于:
+ $$  f\varepsilon_1 = (2, 1, 3)', \ \ \ f\varepsilon_2=(2, -2, 0)', \ \ \ f\varepsilon_3=(2,1,3)', \ \ \ f\varepsilon_4=(5,2,7)'  $$ 
+并且, 
+ $$  f(\varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4)= (\eta_1, \eta_2, \eta_3)T  $$  
+从而 $ f $ 在 $ K^4 $ 的基 $ \varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4 $ 和 $ K^3 $ 的基 $ \eta_1, \eta_2, \eta_3 $ 下的矩阵 $ T $ 为:
+\begin{gather*}
+T =(\eta_1, \eta_2, \eta_3)^{-1}f(\varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4) =
+\begin{bmatrix}
+1  &  1  &  0  \\
+1  &  0  &  1 \\
+1  &  -1  &  0
+\end{bmatrix}^{-1}
+\begin{bmatrix}
+2  &  2  &  2  & 5 \\
+1  &  -2  &  1 &  2 \\
+3  &  0  &  3  &  7
+\end{bmatrix}
+= 
+\begin{bmatrix}
+\frac{5}{2}  &   1   &   \frac{5}{2}   &  6 \\
+-\frac{1}{2} &   1   &   -\frac{1}{2}  &  -1 \\
+-\frac{3}{2} &  -3   &  -\frac{3}{2}   &  -4
+\end{bmatrix}
+\end{gather*}  \\  \\  \\
+
+
+
+
+\begin{myexample}
+	\textbf{4.3.7}
+
+定义 $ K^3 $ 到 $ K^4 $ 的映射 $ f $ 如下:
+\begin{gather*}
+f
+\begin{bmatrix}
+x_1 \\ x_2 \\ x_3
+\end{bmatrix}
+=
+\begin{bmatrix}
+x_1+x_3 \\
+-x_1 + x_2 + x_3 \\
+2x_1 + x_3 \\
+x_2 + 2x_3
+\end{bmatrix}
+\end{gather*}
+(1) 证明 $ f $ 是一个线性映射, 求 $mathrm{Ker}$  $ f $ , Im $ f $ , Coker $ f $ .
+
+(2) 在 $ K^3 $ 内取定一组基
+ $$  \eta_1 = (1,1,1),  \ \ \ \eta_2=(1,0,-1), \ \ \ \eta_3=(0,1,1)  $$ 
+在 $ K^4 $ 内取一组基
+ $$  \varepsilon_1=(1,0,1,1), \ \ \varepsilon_2=(0,1,0,1), \ \ \varepsilon_3=(0,0,1,0), \ \ \varepsilon_4=(0,0,2,1)  $$ 
+求 $ f $ 在给定基下的矩阵.  \\
+
+\end{myexample}
+\Solution  
+
+(1)对于 $ \forall X = (x_1, x_2, x_3) \in K^3 $ , 有:
+\begin{gather*}
+f
+\begin{bmatrix}
+x_1 \\ x_2 \\ x_3 
+\end{bmatrix}
+=
+\begin{bmatrix}
+x_1+x_3 \\
+-x_1 + x_2 + x_3 \\
+2x_1 + x_3 \\
+x_2 + 2x_3
+\end{bmatrix}
+=
+\begin{bmatrix}
+1  &  0  &  1  \\
+-1 &  1  &  1  \\
+2  &  0  &  1  \\
+0  &  1  &  2
+\end{bmatrix}
+\begin{bmatrix}
+x_1 \\ x_2  \\ x_3 
+\end{bmatrix}
+=AX
+\end{gather*}
+对于 $ \forall X, Y \in K^3 $ ,  $ k_1, k_2 \in K $ , 有:
+ $$  f(k_1X + k_2Y) = A(k_1X+k_2Y) = k_1AX + k_2AY = k_1f(X) + k_2f(Y)   $$ 
+所以,  $ f $ 是 $ K^3 $ 到 $ K^4 $ 的一个线性映射.根据线性映射的核与象的定义,  $mathrm{Ker}$  $ f $ 与Im $ f $ 实际上分别为为三元齐次方程组 $ AX=0 $ 的解空间与矩阵A的列空间, 于是:
+\begin{gather*}
+A=
+\begin{bmatrix}
+1  &  0  &  1  \\
+-1 &  1  &  1  \\
+2  &  0  &  1  \\
+0  &  1  &  2
+\end{bmatrix}
+\xrightarrow{\text{初等行变换}}
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1  \\
+0 & 0 & 0
+\end{bmatrix}
+\end{gather*}
+于是,  $mathrm{Ker}$  $ f $  = {0}, 从 $ A $ 的约化阶梯型矩阵可以看出,  $ A $ 的列向量的一个极大线性无关组为:
+ $$  \alpha_1 = (1, -1, 2, 0), \ \ \ \alpha_2 =(0,1,0,1), \ \ \ \ \alpha_3=(1,1,1,2)  $$  
+
+所以,Im $ f = L(\alpha_1, \alpha_2, \alpha_3) $ , 考虑 $ (\alpha_1, \alpha_2, \alpha_3)' $ 
+\begin{gather*}
+(\alpha_1, \alpha_2, \alpha_3)' =
+\begin{bmatrix}
+1  &  -1  &  2  &  0 \\
+0  &  1  &  0  &  1  \\
+1  &  1  &  1  &  2
+\end{bmatrix}
+\xrightarrow{初等行变换}
+\begin{bmatrix}
+1   &  0 &    0  &   1  \\
+0   &  1 &    0  &   1  \\
+0   &  0 &    1  &   0
+\end{bmatrix}
+\end{gather*}
+所以可以添加 $ \alpha_4 = (0,0,0,1) $ 进入 $ \{\alpha_1, \alpha_2, \alpha_3 \} $ , 使得 $ \{\alpha_1, \alpha_2, \alpha_3, \alpha_4\} $ 成为 $ K^4 $ 的一组基.
+
+从而, Coker $ f = L(\alpha_4 +  \mathrm{Im} f)  $ .  \\ 
+
+(2)注意到:
+ $$  f\eta_1 = (2, 1, 3, 3)', \ \ \ f\eta_2 = (0,-2,1,-2)', \ \ \ f\eta_3=(0, 1, 0, 1)  $$ 
+并且
+ $$  f(\eta_1, \eta_2, \eta_3) = (\varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4)T  $$ 
+从而,  $ f $ 在 $ K^3 $ 的基 $ \eta_1, \eta_2, \eta_3 $ 和 $ \varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4 $ 下的矩阵 $ T $ 为:
+\begin{gather*}
+T = (\varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4)^{-1}f(\eta_1, \eta_2, \eta_3)=
+\begin{bmatrix}
+1  &  0  &  0  &  0 \\
+0  &  1  &  0  &  0  \\
+1  &  0  &  1  &  2  \\
+1  &  1  &  0  &  1
+\end{bmatrix}^{-1}
+\begin{bmatrix}
+2  &  0  &  0\\
+1  &  -2  &  1  \\
+3  &  1  &  0  \\
+3  &  -2  &  1
+\end{bmatrix}
+=
+\begin{bmatrix}
+2  &   0  &   0  \\
+1  &  -2   &  1\\
+1  &  1  &   0\\
+0 &    0   &  0
+\end{bmatrix}
+\end{gather*}  \\  \\  \\
+
+
+
+
+
+
+\begin{myexample}
+	\textbf{4.3.9}
+
+判断下面定义的变换哪些是线性的, 哪些则不是:
+
+(1)在线性空间 $ V $ 中,  $ \mathcal{A}\xi = \xi + \alpha $ , 其中 $ \alpha \in V $ 是一个固定的向量;
+
+(2)在线性空间 $ V $ 中, 令 $ \mathcal{A}\xi = \alpha $ , 其中 $ \alpha \in V $ 是一个固定的向量;
+
+(3)在 $ K^3 $ 中, 令 $ \mathcal{A}(x_1, x_2, x_3) = (x_1^2, x_2+x_3, x_3^2) $ ;
+
+(4)在 $ K^3 $ 中, 令 $ \mathcal{A}(x_1, x_2, x_3) = (2x_1-x_2, x_2 + x_3 , x_1) $ ;
+
+(5)在 $ K[x] $ 中, 令 $ \mathcal{A}f(x) = f(x+1) $ ;
+
+(6)在 $ K[x] $ 中, 令 $ \mathcal{A}f(x) = f(x_0) $ , 其中 $ x_0 \in K $ 是一个固定的数;
+
+(7)把复数域看做复数域上的线性空间, 令 $ \mathcal{A}\xi = \overline{\xi} $ ;
+
+(8)在 $ M_n(K) $ 中, 令 $ \mathcal{A}(X) = BXC $ , 其中 $ B,C $ 是 $ K $ 上两个固定的 $ n $ 阶方阵.  \\
+
+\end{myexample}
+\Solution
+
+(1) 当 $ \alpha \neq 0 $ 时, 不是线性的, 因为
+ $$  \mathcal{A}(k_1\xi_1 + k_2\xi_2) = k_1\xi_1 + k_2\xi_2 + \alpha   $$  
+ $$  k_1\mathcal{A}\xi_1 + k_2\mathcal{A}\xi_2 = k_1(\xi_1 + \alpha) + k_2(\xi_2 + \alpha)  $$ 
+ $$  \Longrightarrow \ \ \mathcal{A}(k_1\xi_1 + k_2\xi_2) \neq k_1\mathcal{A}\xi_1 + k_2\mathcal{A}\xi_2  $$ 
+\hspace{1.5em} 当 $ \alpha = 0 $ 时, 是线性的, 因为
+ $$  \mathcal{A}(k_1\xi_1 + k_2\xi_2) = k_1\xi_1 + k_2\xi_2   $$  
+ $$  k_1\mathcal{A}\xi_1 + k_2\mathcal{A}\xi_2 = k_1\xi_1  + k_2\xi_2   $$ 
+ $$  \Longrightarrow \ \ \mathcal{A}(k_1\xi_1 + k_2\xi_2) = k_1\mathcal{A}\xi_1 + k_2\mathcal{A}\xi_2  $$ 
+
+(2) 当 $ \alpha \neq 0 $ 时, 不是线性的, 因为
+ $$  \mathcal{A}(k_1\xi_1 + k_2\xi_2) = \alpha     $$ 
+ $$  k_1\mathcal{A}\xi_1 + k_2\mathcal{A}\xi_2 = k_1\alpha + k_2\alpha  $$ 
+ $$  \Longrightarrow \ \ \mathcal{A}(k_1\xi_1 + k_2\xi_2) \neq  k_1\mathcal{A}\xi_1 + k_2\mathcal{A}\xi_2  $$ 
+\hspace{1.5em} 当 $ \alpha = 0 $ 时, 是线性的, 因为
+ $$  \mathcal{A}(k_1\xi_1 + k_2\xi_2) = 0    $$ 
+ $$  k_1\mathcal{A}\xi_1 + k_2\mathcal{A}\xi_2 =0  $$ 
+ $$  \Longrightarrow \ \ \mathcal{A}(k_1\xi_1 + k_2\xi_2) =  k_1\mathcal{A}\xi_1 + k_2\mathcal{A}\xi_2  $$ 
+
+(3) 不是线性的, 取 $ \alpha_1 = (1, 0, 1)', \alpha_2 = (2, 0, 3)' $ , 则 $ \alpha_1 + \alpha_2 = (3,0,4)' $ 
+ $$  \mathcal{A}\alpha_1 = (1, 1, 1),  \ \ \ \mathcal{A}\alpha_2 = (4, 2, 9), \ \ \ \mathcal{A}(\alpha_1 + \alpha_2) = (9, 3, 16)  $$ 
+ $$  \Longrightarrow \ \ \mathcal{A}(\alpha_1 + \alpha_2) \neq \mathcal{A}\alpha_1 + \mathcal{A}\alpha_2  $$ 
+
+(4) 是线性的, 因为:
+\begin{gather*}
+\mathcal{A}(x_1, x_2, x_3) = (2x_1-x_2, x_2 + x_3 , x_1)'=
+\begin{bmatrix}
+2  &  -1  &  0  \\
+0  &  1  &  1  \\
+1  &  0  &  0
+\end{bmatrix}
+\begin{bmatrix}
+x_1 \\ x_2  \\ x_3
+\end{bmatrix}
+=A
+\begin{bmatrix}
+x_1 \\ x_2  \\ x_3
+\end{bmatrix}
+\end{gather*}
+对于 $ \forall \xi_1, \xi_2 \in K^3 $ ,  $ \forall k_1, k_2 \in K $ , 有
+ $$  \mathcal{A}(k_1\xi_1 + k_2\xi_2) = A(k_1\xi_1 + k_2\xi_2) = k_1A\xi_1 + k_2\xi_2 = k_1\mathcal{A}\xi_1 + k_2\mathcal{A}\xi_2  $$ 
+所以映射 $ \mathcal{A} $ 是线性的. \\
+
+(5)是线性的, 因为对于 $ \forall f, g \in K[x] $ ,  $ \forall k \in K $ , 有:
+ $$  \mathcal{A}(f(x) + g(x)) = (f+g)(x+1) = f(x+1) + g(x+1) = \mathcal{A}f(x) + \mathcal{A}g(x)  $$ 
+ $$  \mathcal{A}(kf(x)) = (kf)(x+1) = kf(x+1) = k\mathcal{A}f(x)  $$ 
+所以, 映射 $ \mathcal{A} $ 是线性的. \\
+
+(6)是线性的, 因为对于 $ \forall f, g \in K[x] $ ,  $ \forall k \in K $ , 有:
+ $$  \mathcal{A}(f(x)+g(x)) = (f+g)(x_0) = f(x_0) + g(x_0) = \mathcal{A}f(x) + \mathcal{A}g(x)  $$ 
+ $$  \mathcal{A}(kf(x)) = (kf)(x_0) = kf(x_0) = k\mathcal{A}f(x)  $$ 
+所以, 映射 $ \mathcal{A} $ 是线性的. \\
+
+(7)不是线性的, 因为:
+ $$  \mathcal{A}(k\xi) = \overline{k\xi} = \overline{k}\overline{\xi}  $$ 
+当 $ k \in \mathbb{C} \setminus \mathbb{R}  $ 时,  $ \mathcal{A}(k\xi) \neq k\mathcal{A}\xi $ . \\
+
+(8)是线性的, 因为 $ \forall X_1,X_2 \in M_n(K) $ ,  $ \forall k_1, k_2 \in K $ , 有
+ $$  \mathcal{A}(k_1X_1 + k_2X_2) = B(k_1X_1 + k_2X_2)C = k_1BX_1C + k_2BX_2C = k_1\mathcal{A}(X_1) + k_2\mathcal{A}(X_2)  $$   \\  \\  \\
+
+
+\begin{myexample}
+	\textbf{4.3.10}
+
+在实数域上线性空间 $ D_0(a,b) $ ( $ D_0(a,b) $ 是区间 $ (a,b) $ 内全体任意次可微的实函数 $ f(x) $ 所成的集合)中定义变换如下
+ $$  \mathcal{A}f(x) = \dfrac{\mathrm{d}^2f(x)}{\mathrm{d}x^2} + x \cdot \dfrac{\mathrm{d}f(x)}{\mathrm{d}x} + \sin x \cdot f(x)  $$ 
+证明 $ \mathcal{A} $ 是一个线性变换. 定义
+ $$  \mathcal{B}f(x) = \left[\dfrac{\mathrm{d}^2f(x)}{\mathrm{d}x^2} \right]^2 + x \cdot \dfrac{\mathrm{d}f(x)}{\mathrm{d}x} + \sin x \cdot f(x)   $$ 
+举例说明 $ \mathcal{B} $ 不是线性变换.   \\ 
+
+\end{myexample}
+\Solution 
+
+(1) 对于 $ \forall f, g \in D_0(a,b) $ ,  $ \forall k_1, k_2 \in \mathbb{R} $ , 有:
+\begin{align*}
+\mathcal{A}(k_1f(x)+k_2g(x)) &=\dfrac{\mathrm{d}^2(k_1f(x)+k_2g(x))}{\mathrm{d}x^2} + x \cdot \dfrac{\mathrm{d}k_1(f(x)+k_2g(x))}{\mathrm{d}x} + \sin x \cdot (k_1f(x)+ k_2g(x)  \\
+&=k_1(\dfrac{\mathrm{d}^2f(x)}{\mathrm{d}x^2} + x \cdot \dfrac{\mathrm{d}f(x)}{\mathrm{d}x} + \sin x \cdot f(x)) + k_2(\dfrac{\mathrm{d}^2g(x)}{\mathrm{d}x^2} + x \cdot \dfrac{\mathrm{d}g(x)}{\mathrm{d}x} + \sin x \cdot g(x))  \\ 
+&= k_1 \mathcal{A}f(x) + k_2 \mathcal{A}g(x)
+\end{align*}
+
+所以,  $ \mathcal{A} $ 是一个线性变换. \\ 
+
+(2) 取 $ f(x) = x^3, g(x) = x^2 $ , 则:
+ $$  \mathcal{B}f(x) = \left[\dfrac{\mathrm{d}^2x^3}{\mathrm{d}x^2}\right]^2 + x \cdot \dfrac{\mathrm{d}x^3}{\mathrm{d}x} + \sin x \cdot x^3 = 3x^3 + 36x^2 + x^3\sin x    $$ 
+ $$  \mathcal{B}g(x) = \left[\dfrac{\mathrm{d}^2x^2}{\mathrm{d}x^2}\right]^2 + x \cdot \dfrac{\mathrm{d}x^2}{\mathrm{d}x} + \sin x \cdot x^2 = 2x^2 + x^2\sin x + 4    $$ 
+ $$  \mathcal{B}(f(x)+g(x)) = \left[\dfrac{\mathrm{d}^2(x^3+x^2)}{\mathrm{d}x^2}\right]^2 + x \cdot \dfrac{\mathrm{d}(x^3+x^2)}{\mathrm{d}x} + \sin x \cdot (x^3+x^2) = 3x^3 + 38x^2 + 24x + 4 + (x^3 + x^2)\sin x   $$ 
+ $$  \Longrightarrow \ \ \ \mathcal{B}(f(x)+g(x)) \neq \mathcal{B}f(x) + \mathcal{B}g(x)  $$ 
+所以,  $ \mathcal{B} $ 不是线性变换.  \\  \\  \\
+
+
+
+
+
+
+\begin{myexample}
+	\textbf{4.3.11}
+
+在实数域上线性空间 $ C[a,b] $ 中定义变换如下
+ $$  \mathcal{A}f(x) = \int_{a}^xK(t)f(t)dt  $$ 
+其中,  $ K(x) $ 是 $ [a,b] $ 上的一个连续函数. 证明 $ \mathcal{A} $ 是一个线性变换. \\
+
+\end{myexample}
+\Solution  
+
+对于 $ \forall f(x), g(x) \in C[a,b] $ ,  $ \forall k_1, k_2 \in R $ , 有:
+\begin{align*}
+\mathcal{A}(k_1f(x) + k_2g(x)) &= \int_a^x K(t)(k_1f(t) + k_2g(t))dt\\
+&= k_1\int_a^xK(t)f(t)dt + k_2\int_a^xK(t)g(t)dt = k_1\mathcal{A}f(x) + k_2\mathcal{A}g(x)
+\end{align*}
+又由于被积函数 $ K(t)f(t) $ 连续, 所以变上限函数 $ \mathcal{A}f(x) = \int_a^xK(t)f(t)dt $ 也连续, 
+
+即: $ \mathcal{A}f(x) \in C[a,b] $ .从而 $ \mathcal{A} $ 是 $ C[a,b] $ 到 $ C[a,b] $ 上的一个映射.
+
+综上,  $ \mathcal{A} $ 是 $ C[a,b] $ 上一个线性变换. \\  \\  \\
+
+
+
+
+
+\begin{myexample}
+	\textbf{4.3.13}
+
+在 $ K[x] $ 中定义
+ $$  \mathcal{A}f(x) = f'(x) \ \ \ \ \ \mathcal{B} f(x)= xf(x)  $$ 
+证明 $ \mathcal{A} $ 与 $ \mathcal{B} $ 是两个线性变换, 且 $ \mathcal{A}\mathcal{B} - \mathcal{B}\mathcal{A} = \mathcal{E} $ . \\
+
+\end{myexample}
+\Solution  
+
+对于 $ \forall f(x), g(x) \in K[x] $ ,  $ \forall k_1, k_2 \in K $ , 有
+ $$  \mathcal{A}(k_1f(x) + k_2g(x)) =(k_1f(x) + k_2g(x))' =  k_1f'(x) + k_2g'(x) = k_1\mathcal{A}f(x) + k_2\mathcal{A}g(x)  $$ 
+ $$  \mathcal{B}(k_1f(x) + k_2g(x)) =x(k_1f(x) + k_2g(x)) = k_1xf(x) + k_2xg(x) = k_1\mathcal{B}f(x) + k_2\mathcal{B}g(x)  $$ 
+而 $ \mathcal{A} $ ,  $ \mathcal{B} $ 都是 $ K[x] $ 到 $ K[x] $ 的映射. 
+所以 $ \mathcal{A} $ 与 $ \mathcal{B} $ 是两个线性变换. 
+
+任取 $ h(x) \in K[x] $ , 有:
+\begin{align*}
+(\mathcal{AB} - \mathcal{BA})(h(x)) &= \mathcal{A}\mathcal{B}(h(x)) - \mathcal{B}\mathcal{A}(h(x)) \\
+&= \mathcal{A}(xh(x)) - \mathcal{B}(h'(x))  \\
+&=h(x) + xh'(x) - xh'(x) \\
+&=h(x)
+\end{align*}
+所以,  $ \mathcal{A}\mathcal{B} - \mathcal{B}\mathcal{A} = \mathcal{E} $ .  \\  \\  \\
+
+
+
+\begin{myexample}
+	\textbf{4.3.20}
+
+求下列线性变换在指定基下的坐标:
+
+(5)已知 $ K^3 $ 中线性变换 $ \mathcal{A} $ 在基
+ $$  \eta_1=(-1, 1, 1), \ \ \ \eta_2=(1, 0, -1), \ \ \ \eta_3=(0, 1, 1)  $$ 
+下的矩阵是
+\begin{gather*}
+A=
+\begin{bmatrix}
+1  &  0  &  1  \\
+1  &  1  &  0  \\
+-1  &  2  &  1  
+\end{bmatrix}
+\end{gather*}
+求 $ \mathcal{A} $ 在基
+ $$  \varepsilon_1=(1,0,0), \ \ \ \varepsilon_2=(0, 1, 0), \ \ \ \varepsilon_3=(0, 0, 1)  $$ 
+下的矩阵.  \\ 
+
+\end{myexample}
+\Solution
+
+设基 $ \varepsilon_1, \varepsilon_2, \varepsilon_3 $ 到基 $ \eta_1, \eta_2, \eta_3 $ 下的过渡矩阵为T, 则
+ $$  (\varepsilon_1, \varepsilon_2, \varepsilon_3)   = (\eta_1, \eta_2, \eta_3) T $$ 
+于是,  $ \mathcal{A} $ 在基 $ \varepsilon_1, \varepsilon_2, \varepsilon_3 $ 下的矩阵 $ B $ 为:
+ $$  B = T^{-1}AT  $$ 
+而
+\begin{gather*}
+T = (\eta_1, \eta_2, \eta_3)^{-1}(\varepsilon_1, \varepsilon_2, \varepsilon_3)=
+\begin{bmatrix}
+-1  &  1  &  0  \\
+1  &  0  &  1  \\
+1  &  -1  &  1  
+\end{bmatrix}^{-1}
+\begin{bmatrix}
+1  &  0  &  0  \\
+0  &  1  &  0  \\
+0  &  0  &  1
+\end{bmatrix}=
+\begin{bmatrix}
+-1   &  1 &  -1   \\
+0  &   1 &   -1  \\
+1  &   0   &  1
+\end{bmatrix}
+\end{gather*}
+所以,
+\begin{gather*}
+B = T^{-1}AT=
+\begin{bmatrix}
+-1   &  1 &  -1   \\
+0  &   1 &   -1  \\
+1  &   0   &  1
+\end{bmatrix}^{-1}
+\begin{bmatrix}
+1  &  0  &  1  \\
+1  &  1  &  0  \\
+-1  &  2  &  1  
+\end{bmatrix}
+\begin{bmatrix}
+-1   &  1 &  -1   \\
+0  &   1 &   -1  \\
+1  &   0   &  1
+\end{bmatrix}=
+\begin{bmatrix}
+-1   &  1  &  -2  \\
+2  &  2  &   0  \\
+3  &  0 &    2
+\end{bmatrix}
+\end{gather*}  \\ 
+
+
+(6)在 $ K^3 $ 中定义线性变换 $ \mathcal{A} $ 如下:
+\begin{center}
+	\begin{tabular}{ll}
+		 $ \mathcal{A}\eta_1 = (-5, 0, 3) $ , &  $ \eta_1=(-1, 0, 2) $  \\
+		 $ \mathcal{A}\eta_2 = (0, -1, 6) $ , &  $ \eta_2=(0, 1, 1) $  \\
+		 $ \mathcal{A}\eta_3 = (-5, -1, 9) $ , &  $ \eta_3=(3, -1, 0) $  \\
+	\end{tabular}
+\end{center}
+
+
+
+\begin{myexample}
+	
+求 $ \mathcal{A} $ 在基
+ $$  \varepsilon_1=(1,0,0), \ \ \ \varepsilon_2=(0, 1, 0), \ \ \ \varepsilon_3=(0, 0, 1)   $$ 
+下的矩阵. 
+
+\end{myexample}
+\Solution
+
+首先, 用基 $ \varepsilon_1, \varepsilon_2, \varepsilon_3 $ 线性表出 $ \eta_1, \eta_2, \eta_3 $ :
+ $$  \eta_1 = -\varepsilon_1 + 2\varepsilon_3, \ \ \eta_2 = \varepsilon_2 + \varepsilon_3, \ \ \ \eta_3=3\varepsilon_1 - \varepsilon_2  $$ 
+从而
+ $$  \mathcal{A}\eta_1 = \mathcal{A}(-\varepsilon_1 + 2\varepsilon_3) = -\mathcal{A}\varepsilon_1 + 2\mathcal{A}\varepsilon_3 = (-5, 0, 3)  $$ 
+ $$  \mathcal{A}\eta_2 = \mathcal{A}(\varepsilon_2 + \varepsilon_3) = \mathcal{A}\varepsilon_2 + \mathcal{A}\varepsilon_3 = (0, -1, 6)  $$ 
+ $$ \mathcal{A}\eta_3 = \mathcal{A}(3\varepsilon_1 - \varepsilon_2 ) = 3\mathcal{A}\varepsilon_1 -\mathcal{A}\varepsilon_2 = (-5, -1, 9) $$ 
+解得:
+ $$  \mathcal{A}\varepsilon_1 =\dfrac{1}{7}(-\mathcal{A}\eta_1 + 2\mathcal{A}\eta_2 +2\mathcal{A}\eta_3) =\dfrac{1}{7}( -5,-4 , 27)  $$ 
+ $$  \mathcal{A}\varepsilon_2 =\dfrac{1}{7}(-3\mathcal{A}\eta_1+6\mathcal{A}\eta_1-\mathcal{A}\eta_3)=\dfrac{1}{7}(20 ,-5 ,18 )  $$   
+ $$  \mathcal{A}\varepsilon_3 =\dfrac{1}{7}(3\mathcal{A}\eta_1+\mathcal{A}\eta_2+\mathcal{A}\eta_3)=\dfrac{1}{7}(-20 ,-2 ,24 )  $$ 
+所以,  $ \mathcal{A} $ 在基 $ \varepsilon_1, \varepsilon_2, \varepsilon_3 $ 下的矩阵为:
+
+\begin{gather*}
+A = (\varepsilon_1, \varepsilon_2, \varepsilon_2)^{-1}( \mathcal{A}\varepsilon_1,  \mathcal{A}\varepsilon_2,  \mathcal{A}\varepsilon_3)=\dfrac{1}{7}
+\begin{bmatrix}
+1  &  0  &  1 \\
+0  &  1  &  0  \\
+0  &  0  &  1
+\end{bmatrix}^{-1}
+\begin{bmatrix}
+-5  &  20  &  -20  \\
+-4  &  -5  &  -2  \\
+27  &  18  &  24
+\end{bmatrix} =\dfrac{1}{7}
+\begin{bmatrix}
+-5  &  20  &  -20  \\
+-4  &  -5  &  -2  \\
+27  &  18  &  24
+\end{bmatrix}
+\end{gather*}  \\  \\  \\
+
+
+
+
+\begin{myexample}
+	\textbf{4.3.21}
+
+在 $ M_2(K) $ 中定义变换如下:
+ $$  \mathcal{A}X = AX -XA, \ \ \ X \in M_2(K)  $$ 
+其中 $ A $ 是 $ K $ 上一个固定的二阶方阵, 证明:
+
+(1) $ \mathcal{A} $ 是 $ M_2(K) $ 上的一个线性变换;
+
+(2)在 $ M_2(K) $ 中取一组基
+\begin{gather*}
+\varepsilon_{11} = 
+\begin{bmatrix}
+1 & 0 \\
+0 & 0
+\end{bmatrix}, \ \ 
+\varepsilon_{12}=
+\begin{bmatrix}
+0 & 1 \\
+0 & 0
+\end{bmatrix}, \ \ 
+\varepsilon_{21}=
+\begin{bmatrix}
+0 & 0 \\
+1 & 0
+\end{bmatrix}, \ \ 
+\varepsilon_{22}=
+\begin{bmatrix}
+0 & 0 \\
+0 & 1
+\end{bmatrix}
+\end{gather*}
+求 $ \mathcal{A} $ 在这组基下的矩阵. \\  
+
+\end{myexample}
+\Solution
+
+(1)首先,  $ \forall X \in M_2(K) $ , 有
+ $$  \mathcal{A}X = AX - XA \in M_2(K)  $$ 
+所以,  $ \mathcal{A} $ 是 $ M_2(K) $ 到 $ M_2(K) $ 的一个映射. 对于 $ \forall X, Y \in M_2(K) $ ,  $ k_1, k_2 \in K $ , 有
+\begin{align*}
+\mathcal{A}(k_1X + k_2Y) &= A(k_1X+k_2Y) - (k_1X+k_2Y)A  \\
+&= k_1AX+k_2AY - k_1XA-k_2YA  \\
+&=k_1(AX-XA) + k_2(AY-YA)  \\ 
+&=k_1\mathcal{A}X + k_2\mathcal{A}Y 
+\end{align*}
+所以,  $ \mathcal{A} $ 是 $ M_2(K) $ 上的线性变换. \\
+
+(2) 不妨设:
+\begin{gather*}
+A = 
+\begin{bmatrix}
+a_{11}  &  a_{12}  \\
+a_{21}  &  a_{22}
+\end{bmatrix}
+\end{gather*}
+则有:
+\begin{gather*}
+\mathcal{A}\varepsilon_1 = 
+\begin{bmatrix}
+0  &  -a_{12} \\
+a_{21} &  0   
+\end{bmatrix}=-a_{12}\varepsilon_2 + a_{21}\varepsilon_3
+\end{gather*}
+\begin{gather*}
+\mathcal{A}\varepsilon_2 = 
+\begin{bmatrix}
+-a_{21}  &  a_{11}-a_{22} \\
+0   &  a_{21}   
+\end{bmatrix} = -a_{21}\varepsilon_1 + (a_{11} - a_{22})\varepsilon_2 + a_{21}\varepsilon_4
+\end{gather*}
+\begin{gather*}
+\mathcal{A}\varepsilon_3 = 
+\begin{bmatrix}
+a_{12}  &    0  \\
+a_{22} - a_{11} &  -a_{12}   
+\end{bmatrix}= a_{12}\varepsilon_1 + (a_{22}-a_{11})\varepsilon_3 - a_{12}\varepsilon_4
+\end{gather*}
+\begin{gather*} 
+\mathcal{A}\varepsilon_4 = 
+\begin{bmatrix}
+0  &    a_{12}  \\
+-a_{21} &  0    
+\end{bmatrix} = a_{12}\varepsilon_2 - a_{21}\varepsilon_3
+\end{gather*}
+所以,  $ \mathcal{A} $ 在基 $ \varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4 $ 下的矩阵为:
+\begin{gather*}
+\begin{bmatrix}
+0  &  -a_{21}  &  a_{12}  & 0  \\
+-a_{21} & a_{11}-a_{22} & 0 & a_{12} \\
+a_{21}  &  0  &  a_{22} - a_{11} &  -a_{21} \\
+0  &  a_{21}  &  -a_{12}  &  0
+\end{bmatrix}
+\end{gather*} \\  \\  \\
+
+
+\begin{myexample}
+	\textbf{4.3.26}
+
+设四维线性空间 $ V $ 内的一个线性变换 $ \mathcal{A} $ 在基 $ \varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4 $ 下的矩阵为
+\begin{gather*}
+A =
+\begin{bmatrix}
+1  &  0  &  2  &  1  \\
+-1  &  2  &  1  &  3  \\
+1  &  2  &  5  &  5  \\
+2  &  -2  &  1  &  -2
+\end{bmatrix}
+\end{gather*}
+求 $ \mathcal{A} $ 在 $ \eta_1 = \varepsilon_1-2\varepsilon_2+\varepsilon_4, \eta_2 = 3\varepsilon_2-\varepsilon_3 - \varepsilon_4, \eta_3 = \varepsilon_3 + \varepsilon_4, \eta_4 = 2\varepsilon_4 $ 下的矩阵. \\  
+
+\end{myexample}
+\Solution
+
+首先, 对于基 $ \eta_1, \eta_2, \eta_3, \eta_4 $ 与基 $ \varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4 $ , 有如下关系:
+\begin{gather*}
+(\eta_1, \eta_2, \eta_3, \eta_4) = (\varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4)
+\begin{bmatrix}
+1  &  0  &  0  &  0 \\
+-2  &  3  &  0  &  0  \\
+0  &  -1  &  1  &  0  \\
+1  &  -1  &  1  &  2
+\end{bmatrix}=(\varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4)T
+\end{gather*}
+注意到 $ T $ 实际上为可逆矩阵(因为 $ det(T) \neq 0 $ ),所以 $ \eta_1, \eta_2, \eta_3, \eta_4 $ 实际上也为线性空间的基.从而 $ \mathcal{A} $ 在基 $ \eta_1. \eta_2, \eta_3, \eta_4 $ 下的矩阵B为:
+\begin{gather*}
+B = T^{-1}AT =
+\begin{bmatrix}
+1  &  0  &  0  &  0 \\
+-2  &  3  &  0  &  0  \\
+0  &  -1  &  1  &  0  \\
+1  &  -1  &  1  &  2
+\end{bmatrix}^{-1}
+\begin{bmatrix}
+1  &  0  &  2  &  1  \\
+-1  &  2  &  1  &  3  \\
+1  &  2  &  5  &  5  \\
+2  &  -2  &  1  &  -2
+\end{bmatrix}
+\begin{bmatrix}
+1  &  0  &  0  &  0 \\
+-2  &  3  &  0  &  0  \\
+0  &  -1  &  1  &  0  \\
+1  &  -1  &  1  &  2
+\end{bmatrix} =
+\begin{bmatrix}
+2  &  -3  &  3  &  2  \\
+\frac{2}{3}  &  -\frac{4}{3}  &  \frac{10}{3}  &  \frac{10}{3} \\
+\frac{8}{3}  &  -\frac{16}{3} &  \frac{40}{3}  &  \frac{40}{3}  \\
+0  &  1  &  -7  &  -8
+\end{bmatrix}
+\end{gather*}  \\  \\  \\
+
+
+
+\begin{myexample}
+	\textbf{4.3.28}
+
+在 $ K^3 $ 中给定两组基
+\begin{center}
+	\begin{tabular}{ll}
+		 $ \varepsilon_1 = (1, 0, 1) $ ,  &   $ \eta_1 = (1, 2, -1) $   \\
+		 $ \varepsilon_2 = (2, 1, 0) $ ,  &   $ \eta_2 = (2, 2, -1) $   \\
+		 $ \varepsilon_3 = (1, 1, 1) $ ,  &   $ \eta_3 = (2, -1, -1) $ 
+	\end{tabular}
+\end{center}
+定义线性变换
+ $$  \mathcal{A}\varepsilon_i = \eta_i, \ \ \ (i=1, 2, 3)  $$ 
+(1) 求 $ \mathcal{A} $ 在基 $ \varepsilon_1, \varepsilon_2, \varepsilon_3 $ 下的矩阵; 
+
+(2) 求 $ \mathcal{A} $ 在基 $ \eta_1, \eta_2, \eta_3 $ 下的矩阵. \\ 
+
+\end{myexample}
+\Solution
+
+首先, 求出基 $ \eta_1, \eta_2, \eta_3 $ 到基 $ \varepsilon_1, \varepsilon_2, \varepsilon_3 $ 的过渡矩阵 $ T $ :
+\begin{gather*}
+T = (\varepsilon_1, \varepsilon_2, \varepsilon_3)^{-1}(\eta_1, \eta_2, \eta_3) =
+\begin{bmatrix}
+1  &  2  &  1  \\
+0  &  1  &  1  \\
+1  &  0  &  1  
+\end{bmatrix}^{-1}
+\begin{bmatrix}
+1  &  2  &  2  \\
+2  &  2  &  -1 \\
+-1  &  -1  &  -1  
+\end{bmatrix}=
+\begin{bmatrix}
+-2  &  -\frac{3}{2}  &  \frac{3}{2}  \\
+1  &  \frac{3}{2}    &  \frac{3}{2}  \\
+1  &  \frac{1}{2}    &  -\frac{5}{2}
+\end{bmatrix}
+\end{gather*} \\
+
+(1)  $ \mathcal{A}(\varepsilon_1, \varepsilon_2, \varepsilon_3) = (\eta_1, \eta_2, \eta_3)=(\varepsilon_1, \varepsilon_2, \varepsilon_3)T $ 
+所以,  $ \mathcal{A} $ 在基 $ \varepsilon_1, \varepsilon_2, \varepsilon_3 $ 下的矩阵即为 $ T $ :
+\begin{gather*}
+T=
+\begin{bmatrix}
+-2  &  -\frac{3}{2}  &  \frac{3}{2}  \\
+1  &  \frac{3}{2}    &  \frac{3}{2}  \\
+1  &  \frac{1}{2}    &  -\frac{5}{2}
+\end{bmatrix}
+\end{gather*} \\
+
+(2)由题意
+\begin{align*}
+\mathcal{A}(\eta_1, \eta_2, \eta_3) &= \mathcal{A}[(\varepsilon_1, \varepsilon_2, \varepsilon_3)T]  \\ 
+&=[\mathcal{A}(\varepsilon_1, \varepsilon_2, \varepsilon_3)]T  \\
+&=(\eta_1, \eta_2, \eta_3)T
+\end{align*}
+所以,  $ \mathcal{A} $ 在基 $ \eta_1, \eta_2, \eta_3 $ 下的矩阵即为 $ T $ :
+\begin{gather*}
+T=
+\begin{bmatrix}
+-2  &  -\frac{3}{2}  &  \frac{3}{2}  \\
+1  &  \frac{3}{2}    &  \frac{3}{2}  \\
+1  &  \frac{1}{2}    &  -\frac{5}{2}
+\end{bmatrix}
+\end{gather*} \\  \\  \\
+
+
+\begin{myexample}
+	\textbf{4.3.32}
+
+设 $ V $ 是数域 $ K $ 上的 $ n $ 维线性空间, 证明:
+
+(1) $ V $ 内全体线性变换所成的 $ K $ 上的线性空间 $ End(V) $ 的维数等于 $ n^2 $ ;
+
+(2)对 $ V $ 内任一线性变换 $ \mathcal{A} $ , 存在一个次数 $ \leq n^2 $ 的多项式 $ f(\lambda) $ (系数在 $ K $ 内), 使 $ f(\mathcal{A}) = \textbf{0} $ . \\  
+
+\end{myexample}
+\Solution
+
+(1)由于 $ Hom(U,V) $ 与 $ M_{m,n} $ 同构, 所以 $ End(V) = Hom(V,V) $ 与 $ M_n(K) $ 同构. 所以,
+ $$  \dim (End(V)) = \dim (Hom(V,V)) = \dim (M_n(K)) = n^2  $$ 
+
+(2)由于 $ \dim (End(V))= n^2 $ , 所以对于 $ \forall \mathcal{A} \in End(V) $ ,  $ End(V) $ 中的 $ n^2+1 $ 个向量:
+ $$  E, \mathcal{A}, \mathcal{A}^2, \cdots, \mathcal{A}^{n^2}  $$ 
+必定线性相关. 所以存在不全为 $ 0 $ 的 $ k_0, k_1, k_2, \cdots, k_{n^2} \in K $ , 使得:
+ $$  k_0E + k_1\mathcal{A} + k_2\mathcal{A}^2 + \cdots + k_{n^2}\mathcal{A^{n^2}} = 0   $$ 
+所以, 存在次数不超过 $ n^2 $ 的多项式 $ f(\lambda) = k_0 + k_1\lambda + k_2\lambda^2 + \cdots + k_{n^2}\lambda^{n^2} $ , 使得 $ f(\mathcal{A}) = 0 $ . \\  \\  \\
+
+
+
+\begin{myexample}
+	\textbf{4.3.35}
+
+设 $ \mathcal{A} $ 是数域 $ K $ 上 $ n $ 维线性空间 $ V $ 内的线性变换. 证明下面的命题互相等价:
+
+(1) $ \mathcal{A} $ 是可逆变换; 
+
+(2)对 $ V $ 内任意非零向量 $ \alpha $ ,  $ \mathcal{A}\alpha \neq 0 $ ;
+
+(3)若 $ \varepsilon_1, \cdots, \varepsilon_n $ 是 $ V $ 的一组基, 则 $ \mathcal{A}\varepsilon_1, \cdots, \mathcal{A}\varepsilon_n $ 也是 $ V $ 的一组基; 
+
+(4)如果 $ V $ 分解为子空间 $ M,N $ 的直和:  $ V = M \oplus  N $ , 那么有 $ V = \mathcal{A}(M) \oplus  \mathcal{A}(N) $ . \\
+
+\end{myexample}
+\Solution
+
+
+(1)  $ \Longrightarrow $  (2)
+
+由于 $ \mathcal{A} $ 是可逆变换, 所以 $ \mathcal{A} $ 是单射.任取 $ \alpha \in V $ , 则:
+ $$  \mathcal{A}(\alpha) = 0 = \mathcal{A}(0)  $$ 
+从而 $ \alpha=0 $ , 得证. \\
+
+(2)   $ \Longrightarrow $  (1) 
+
+假设 $ \alpha_1, \alpha_2 \in V $ , 且 $ \mathcal{A}\alpha_1 = \mathcal{A}\alpha_2 $ , 则:
+ $$  0 = \mathcal{A}\alpha_1 - \mathcal{A}\alpha_2 = \mathcal{A}(\alpha_1 - \alpha_2)  $$ 
+由于 $ V $ 内任意非零向量 $ \alpha $ ,  $ \mathcal{A}\alpha \neq 0 $ , 所以 $ \alpha_1 - \alpha_2 =0 $ , 即 $ \alpha_1 = \alpha_2 $ . 即 $ \mathcal{A} $ 是单射.
+
+另一方面,  $ V $ 内任意非零向量 $ \alpha $ ,  $ \mathcal{A}\alpha \neq 0 $ 意味着 $mathrm{Ker}$  $ \mathcal{A}=0 $ . 于是:
+ $$  \dim ( \mathrm{Im} \mathcal{A}) = \dim V - \dim ( \mathrm{Ker} \mathcal{A}) = n  $$ 
+而Im $ \mathcal{A} \subset V $ , 所以Im $ \mathcal{A} = V $ . 即: $ \mathcal{A} $ 是满射.
+
+所以 $ \mathcal{A} $ 是双射, 从而 $ \mathcal{A} $ 是可逆映射. \\
+
+(1)  $ \Longrightarrow $  (3) 
+
+由于 $ \mathcal{A} $ 是可逆映射, 所以 $ \mathcal{A} $ 是双射. 若 $ \varepsilon_1, \cdots, \varepsilon_n $ 是 $ V $ 的一组基, 由命题3.2可知:
+ $$  \mathcal{A}\varepsilon_1, \cdots, \mathcal{A}\varepsilon_n   $$ 
+也是 $ V $ 的一组基. \\ 
+
+(3)  $ \Longrightarrow $  (1) 
+
+设 $ \alpha = \sum\limits_{i=1}^n a_i\varepsilon_i $ ,  $ \beta=\sum\limits_{i=1}^n b_i\varepsilon_i $ . 下证明: $ \mathcal{A} $ 是双射.
+
+若 $ \mathcal{A}\alpha = \mathcal{A}\beta $ , 则有 $ \mathcal{A}(\sum\limits_{i=1}^n a_i\varepsilon_i) = \mathcal{A}(\sum\limits_{i=1}^n b_i\varepsilon_i) $ , 即 $ \sum\limits_{i=1}^n a_i\mathcal{A}\varepsilon_1 = \sum\limits_{i=1}^n b_i\mathcal{A}\varepsilon_i $ .
+由于 $ \mathcal{A}\varepsilon_1, \mathcal{A}\varepsilon_2, \cdots, \mathcal{A}\varepsilon_n $ 是 $ V $ 的一组基, 所以 $ a_i = b_i $ ,\ ( i = 1, 2,  $ \cdots $ , n).
+
+从而有 $ \alpha = \beta $ . 即 $ \mathcal{A} $ 是单射. 任取 $ \gamma \in V $ , 由于 $ \mathcal{A}\varepsilon_1, \cdots, \mathcal{A}\varepsilon_n $ 是 $ V $ 的一组基, 则:
+ $$  \gamma = \sum\limits_{i=1}^n c_i\mathcal{A}\varepsilon_i = \mathcal{A}(\sum\limits_{i=1}^n c_i\varepsilon_i) $$ 
+所以 $ \mathcal{A} $ 是满射. 所以 $ \mathcal{A} $ 是双射. 从而 $ \mathcal{A} $ 可逆. \\ 
+
+(1)  $ \Longrightarrow $  (4) 
+
+由于 $ \mathcal{A} $ 是 $ V $ 上可逆的线性变换,  $ M, N $ 是 $ V $ 的子空间,所以 $ \mathcal{A}^{-1} $ 也是 $ V $ 上的可逆线性变换, 且 $ \mathcal{A}(M), \mathcal{A}(N) $ 也是 $ V $ 的子空间.
+
+任取 $ \alpha \in V $ , 由于 $ V = M \oplus  N $ , 所以有:
+ $$  \mathcal{A}^{-1}\alpha = \beta_1 + \beta_2,  \ \ \beta_1 \in M, \ \ \beta_2 \in N  $$ 
+从而 $ \forall \alpha \in V, \alpha =\mathcal{A}(\beta_1 + \beta_2) = \mathcal{A}\beta_1 + \mathcal{A}\beta_2  $ , 其中 $ \mathcal{A}\beta_1 \in A(M), \mathcal{A}(N) $ .
+由子空间的和的定义可知,  $ V = \mathcal{A}(M) + \mathcal{A}N $ . 
+
+下证明该和为直和, 只需要证明两个子空间的交集为 $ 0 $ . 
+
+任取 $ \gamma \in \mathcal{A}(M) \bigcap \mathcal{A}(N) $ , 则存在 $ \eta_1 \in M, \eta_2 \in N $ , 使得:
+ $$  \gamma = \mathcal{A}\eta_1 = \mathcal{A}\eta_2  \ \ \Longrightarrow \ \ \eta_1=\mathcal{A}^{-1}(\gamma), \eta_2=\mathcal{A}^{-1}(\gamma) $$ 
+由于 $ \mathcal{A}^{-1} $ 也是双射, 所以 $ \eta_1 = \eta_2 $ . 而 $ M \bigcap N = 0 $ , 所以 $ \eta_1 = \eta_2 = 0 $ .
+
+从而 $ \beta = \mathcal{A}\eta_1 = \mathcal{A}\eta_2 =0 $ . 由于 $ \beta $ 是从 $ \mathcal{A}(M) \bigcap \mathcal{A}(N) $ 中任取的向量, 所以 $ \mathcal{A}(M) \bigcap \mathcal{A}(N)=0 $ .
+
+综上,  $ V = \mathcal{A}(M) \oplus  \mathcal{A}(N) $ . \\ 
+
+(4)  $ \Longrightarrow $  (1)
+
+设 $ V = M \oplus  N $ 且 $ V = \mathcal{A}(M) \oplus  \mathcal{A}(N) $ .
+
+任取 $ \mathcal{A}\alpha \in \mathcal{A}(V) $ , 由于 $ V = M \oplus  N $ , 所以 $ \alpha = \alpha_1 + \alpha_2, \ \alpha_1 \in M , \alpha_2 \in N  $ .
+
+所以,  $ \mathcal{A}\alpha = \mathcal{A}\alpha_1 + \mathcal{A}\alpha_2 $ , 其中,  $ \mathcal{A}\alpha_1 \in \mathcal{A}(M), \mathcal{A}\alpha_2 \in \mathcal{A}(N) $ .从而,  $ \mathcal{A}(V) = \mathcal{A}(M) + \mathcal{A}(N) $ .
+
+由于 $ V= \mathcal{A}(M) \oplus  \mathcal{A}(N)  $ , 所以 $ \mathcal{A}(M) \bigcap \mathcal{A}(N)=0 $ . 所以:
+ $$  \mathcal{A}(V) = \mathcal{A}(M) \oplus  \mathcal{A}(N) = V $$ 
+即: $ \mathcal{A}(V) = V $ . 即, 线性变换 $ \mathcal{A} $ 是满射.从而,
+ $$  \dim ( mathrm{Ker} \mathcal{A}) = \dim V - \dim ( \mathrm{Im} \mathcal{A}) = n - n = 0  $$ 
+所以, Ker $ \mathcal{A} $  = {0}. 由(2) $ \Longrightarrow $ (1)的证明过程可知,  $ \mathcal{A} $ 是单射.
+
+综上,  $ \mathcal{A} $ 是双射. 从而,  $ \mathcal{A} $ 是可逆变换.  \\
+
+(2)  $ \Longrightarrow $  (3)
+
+取 $ \varepsilon_1, \varepsilon_2, \cdots, \varepsilon_n $ 为 $ V $ 的一组基. 令 $  0 = k_1\mathcal{A}\varepsilon_1 + k_2\mathcal{A}\varepsilon_2 + \cdots + k_n\mathcal{A}\varepsilon_n = \mathcal{A}(k_1\varepsilon_1 + k_2\varepsilon_2 + \cdots + k_n\varepsilon_n)  $ 
+
+由(2)可知:  $ k_1\varepsilon_1 + k_2\varepsilon_2 + \cdots + k_n\varepsilon_n = 0 $ , 而 $ \varepsilon_1, \varepsilon_2, \cdots, \varepsilon_n $ 是 $ V $ 的一组基
+
+所以,  $ k_1 = k_2 = \cdots = k_n = 0 $ . 所以 $ \mathcal{A}\varepsilon_1, \mathcal{A}\varepsilon_2, \cdots, \mathcal{A}\varepsilon_n $ 线性无关.
+
+而 $ \dim V = n $ , 所以 $ \mathcal{A}\varepsilon_1, \mathcal{A}\varepsilon_2, \cdots, \mathcal{A}\varepsilon_n $ 也是 $ V $ 的一组基.  \\ 
+
+(3)  $ \Rightarrow $  (4) 
+
+取 $ M $ 的一组基 $ \varepsilon_1, \varepsilon_2, \cdots, \varepsilon_m $ , 将其扩充为 $ V $ 的基:
+ $$  \varepsilon_1, \varepsilon_2, \cdots, \varepsilon_m, \varepsilon_{m+1}, \cdots, \varepsilon_n  $$ 
+由于 $  V = M \oplus  N $ , 所以 $ \varepsilon_{m+1}, \cdots, \varepsilon_n $ 是 $ N $ 的一组基.
+
+记 $ \mathcal{A}(M) = \{\mathcal{A}\alpha | \alpha \in M  \} $ , 由于 $ M = L(\varepsilon_1, \varepsilon_2, \cdots, \varepsilon_n) $ , 易证明: $ \mathcal{A}(M) = L(\mathcal{A}\varepsilon_1, \mathcal{A}\varepsilon_2, \cdots, \mathcal{A}\varepsilon_m) $ 
+
+从而:
+ $$  \mathcal{A}(M) = L(\mathcal{A}\varepsilon_1, \mathcal{A}\varepsilon_2, \cdots, \mathcal{A}\varepsilon_m), \ \ \ \mathcal{A}(N) = L(\mathcal{A}\varepsilon_{m+1}, \mathcal{A}\varepsilon_{m+2}, \cdots, \mathcal{A}\varepsilon_{n})  $$ 
+所以:
+\begin{align*}
+\mathcal{A}(M) + \mathcal{A}(N) &=  L(\mathcal{A}\varepsilon_1, \mathcal{A}\varepsilon_2, \cdots, \mathcal{A}\varepsilon_m) +  L(\mathcal{A}\varepsilon_{m+1}, \mathcal{A}\varepsilon_{m+2}, \cdots, \mathcal{A}\varepsilon_{n})\\
+&= L(\mathcal{A}\varepsilon_1,\cdots, \mathcal{A}\varepsilon_m, \mathcal{A}\varepsilon_{m+1},\cdots, \mathcal{A}\varepsilon_{n}) 
+\end{align*}
+由于 $ \mathcal{A}\varepsilon_1, \cdots, \mathcal{A}\varepsilon_n $ 也是 $ V $ 的一组基, 所以
+ $$  V = L(\mathcal{A}\varepsilon_1,\cdots, \mathcal{A}\varepsilon_m, \mathcal{A}\varepsilon_{m+1},\cdots, \mathcal{A}\varepsilon_{n}) = \mathcal{A}(M) + \mathcal{A}(N)  $$ 
+
+而 $ \mathcal{A}\varepsilon_1, \cdots, \mathcal{A}\varepsilon_n $ 线性无关, 所以:
+ $$  \mathcal{A}\varepsilon_1, \mathcal{A}\varepsilon_2, \cdots, \mathcal{A}\varepsilon_m  $$ 
+ $$  \mathcal{A}\varepsilon_{m+1}, \mathcal{A}\varepsilon_{m+2}, \cdots, \mathcal{A}\varepsilon_n  $$ 
+都是线性无关的向量组.又由于 $  \mathcal{A}(M) = L(\mathcal{A}\varepsilon_1, \mathcal{A}\varepsilon_2, \cdots, \mathcal{A}\varepsilon_m),\mathcal{A}(N) = L(\mathcal{A}\varepsilon_{m+1}, \mathcal{A}\varepsilon_{m+2}, \cdots, \mathcal{A}\varepsilon_{n}) $ 
+
+所以 $ \{\mathcal{A}\varepsilon_1, \cdots, \mathcal{A}\varepsilon_m \} $ ,  $ \{\mathcal{A}\varepsilon_{m+1}, \cdots, \mathcal{A}\varepsilon_n\} $ 分别是 $ \mathcal{A}(M), \mathcal{A}(N) $ 的基.
+
+所以 $ \mathcal{A}(M) $ 的基与 $ \mathcal{A}(N) $ 的基合起来是 $ V = \mathcal{A}(M) + \mathcal{A}(N) $ 的基, 所以
+ $$  V = \mathcal{A}(M) \oplus  \mathcal{A}(N)  $$ 
+
+\newpage
+
+\textbf{作业反馈:}
+
+\textbf{1.} 本次作业错的最多的是4.3.9(7), 90多份作业只有不到十个人写对.  有以下两种错误:
+
+\hspace{0.5em} (i)  $ \mathcal{A}(k\xi) = \overline{k\xi} = k\overline{\xi} $ 
+
+\hspace{0.5em} (ii)  $ \mathcal{A}(\xi_1 + \xi_2) = \overline{\xi_1 + \xi_2} \neq \overline{\xi_1} + \overline{\xi_2} $ 
+
+\hspace{0.5em} 错误的原因是对共轭运算不理解. 对于 $ \forall c_1, c_2 \in \mathbb{C} $ , 有
+ $$  \overline{c_1 + c_2} = \overline{c_1} + \overline{c_2}, \ \overline{c_1c_2} = \overline{c}_1 \overline{c}_2,\ \overline{\left(\dfrac{c_1}{c_2}\right)} = \dfrac{\overline{c_1}}{\overline{c_2}}  $$ 
+\hspace{0.5em} 这些基本运算的证明通过设 $ c_1=a_1 + ib_1, c_2 = a_2 + ib_2, a_i,b_i \in \mathbb{R} $ 都可以很容易的得到证明.  \\ 
+
+\textbf{2.} 4.3.6与4.3.7这样的证明 $ f $ 是一个线性映射, 建议先把 $ f(x_1, x_2, x_3, x_4) $ 写成矩阵乘以向量的形式, 这样验证线性的时候会方便很多. 如:
+\begin{gather*}
+f
+\begin{bmatrix}
+x_1 \\ x_2 \\ x_3 \\ x_4
+\end{bmatrix}
+=
+\begin{bmatrix}
+-x_1 + x_2 + 2x_3 + x_4 \\ 
+-2x_2 + x_3 \\
+-x_1 -x_2 + 3x_3 + x_4
+\end{bmatrix}
+=
+\begin{bmatrix}
+-1 & 1 & 2 & 1 \\
+0  & -2 & 1 & 0 \\
+-1 & -1 & 3 & 1 
+\end{bmatrix}
+\begin{bmatrix}
+x_1 \\ x_2 \\ x_3 \\ x_4
+\end{bmatrix}
+=AX
+\end{gather*}
+在求Im $ f $ 的时候, 要清楚Im $ f $ 实际上是矩阵 $ A $ 的列向量生成的空间, 因为:
+\begin{gather*}
+f
+\begin{bmatrix}
+x_1  \\  x_2  \\  x_3  \\ x_4
+\end{bmatrix}=
+\begin{bmatrix}
+-1 & 1 & 2 & 1 \\
+0  & -2 & 1 & 0 \\
+-1 & -1 & 3 & 1 
+\end{bmatrix}
+\begin{bmatrix}
+x_1  \\  x_2  \\  x_3  \\ x_4
+\end{bmatrix}=x_1
+\begin{bmatrix}
+-1  \\  0  \\ -1  
+\end{bmatrix}+x_2
+\begin{bmatrix}
+1  \\  -2  \\  -1 
+\end{bmatrix}+x_3 
+\begin{bmatrix}
+2  \\  1  \\  3  
+\end{bmatrix}+x_4
+\begin{bmatrix}
+1  \\  0  \\  1
+\end{bmatrix}
+\end{gather*}
+只要求出矩阵 $ A $ 的列向量的极大无关组, 它们生成的子空间即为Im $ f $ .
+
+另外, 在求Coker $ f $ 时需要把矩阵 $ A $ 的列向量的极大无关组补全为整个线性空间的基, 大部分同学都补对了, 但是只有一位同学说明了添加的向量与原向量组线性无关. 对于基扩充, 以4.3.6为例, 有如下办法:
+
+ $ \beta_1=(1, 0, -1), \beta_2=(1, -2, -1) $ 为矩阵 $ A $ 的列向量的极大无关组, 作以下矩阵并作初等行变换:
+\begin{gather*}
+\begin{bmatrix}
+1  &  0  &  -1 \\
+1&  -2 &  -1  
+\end{bmatrix} \xrightarrow{初等行变换}
+\begin{bmatrix}
+1  &  0  &  -1  \\
+0  &  -2  &  0
+\end{bmatrix}
+\end{gather*}
+此时, 对上述矩阵补上一行, 使得新矩阵的行列式不为0的添加行, 即为与原向量组线性无关的向量. 一个很自然的添加方法就是添加 $ (0, 0, 1) $ , 使得新矩阵成为对角阵. 当然添加 $ (1,0,0) $ 也可以, 但是 $ (0,1,0) $ 不行. \\
+
+\textbf{3.} 4.3.35, 证明四个命题的等价性, 可以采用"循环"的证明, 通过如下路径: $ (1) \Rightarrow (2) \Rightarrow (3) \Rightarrow (4) \Rightarrow (1) $ , 很多同学从 $ (1) $ 证明到 $ (4) $ 就结束了, 没有证明 $ (4) \Rightarrow (1) $ . 如果有别的路径证明比较简单的话, 也可以从别的路径证明, 如 $ (1) \Leftrightarrow (2),(1) \Leftrightarrow (3), (1) \Leftrightarrow (4) $ , 只要保证任意两个命题都可以互相推导即可. 根据同学们的作业, 整理了以上两个路径的证明.  \\ 
+
+\textbf{4.}计算问题. 大部分同学的作业都是自己算过的, 但是正确率却不太高. 希望大家在平时的练习中既要自己好好算一算, 也要注意计算的准确性. \\
+
+\textbf{5.} 希望大家可以自己完成作业, 不会的题可以和同学一起讨论一下, 但是完全copy不可取. 15, 16级中都有高度相似的作业, 步骤一样, 错的也一样, 这样很尴尬. \\
+
+
+\begin{myexample}
+	\textbf{1.} 
+
+设 $ \mathcal{A} $ 是数域 $ K $ 上线性空间 $ V $ 内的线性变换, 若 $ \mathcal{A}\alpha = \lambda_0\alpha $ , 又设 $ f(\lambda) = a_0\lambda^m + a_1\lambda^{m-1} + \cdots + a_m $ 为 $ K $ 上一多项式. 证明:
+ $$  f(\mathcal{A})\alpha = f(\lambda_0)\alpha  $$ 
+
+\end{myexample}
+\Solution 
+
+由于 $ \mathcal{A}\alpha = \lambda_0 \alpha $ , 所以有:
+ $$  \mathcal{A}^2\alpha = \mathcal{A}(\mathcal{A}\alpha) = \mathcal{A}(\lambda_0\alpha) = \lambda_0\mathcal{A}\alpha = \lambda_0^2\alpha   $$ 
+ $$  \mathcal{A}^3\alpha = \mathcal{A}(\mathcal{A}^2\alpha) = \mathcal{A}(\lambda_0^2\alpha) = \lambda_0^2\mathcal{A}\alpha = \lambda_0^3\alpha   $$ 
+ $$  \cdots \ \cdots  $$ 
+ $$  \mathcal{A}^m\alpha = \mathcal{A}(\mathcal{A}^{m-1}\alpha) = \mathcal{A}(\lambda_0^{m-1}\alpha) = \lambda_0^{m-1}\mathcal{A}\alpha = \lambda_0^m\alpha   $$ 
+所以,
+\begin{align*}
+f(\mathcal{A})\alpha &= \left(a_0\mathcal{A}^m + a_1\mathcal{A}^{m-1} + \cdots + a_{m-1}\mathcal{A} + a_m\mathcal{E} \right)\alpha  \\
+&=a_0\mathcal{A}^m\alpha + a_1\mathcal{A}^{m-1}\alpha + \cdots + a_{m-1}\mathcal{A}\alpha + a_m\mathcal{E}\alpha  \\
+&=a_0\lambda_0^m\alpha + a_1\lambda_0^{m-1}\alpha + \cdots + a_{m-1}\lambda_0\alpha + a_m\alpha  \\
+&=f(\lambda_0)\alpha
+\end{align*}  \\  \\ 
+
+\begin{myexample}
+	\textbf{2.}
+
+设 $ \mathcal{A} $ , $ \mathcal{B} $ 是线性空间 $ V $ 内的两个线性变换, 且 $ \mathcal{AB} = \mathcal{BA} $ . 证明:若 $ \mathcal{A}\alpha = \lambda_0a $ , 则 $ \mathcal{B}\alpha \in V_{\lambda_0} $ , 这里 $ V_{\lambda_0} $ 为 $ \mathcal{A} $ 的特征值 $ \lambda_0 $ 的特征子空间.  \\
+
+\end{myexample}
+\Solution 
+
+由题意, 有:
+\begin{align*}
+\mathcal{A}(\mathcal{B}\alpha) &= (\mathcal{AB})\alpha = (\mathcal{BA})\alpha  \\
+&= \mathcal{B}(\mathcal{A}\alpha)  \\
+&= \mathcal{B}(\lambda_0\alpha)  \\
+&= \lambda_0\mathcal{B}\alpha
+\end{align*}
+根据 $ V_{\lambda_0} $ 的定义可知,  $ \mathcal{B}\alpha \in V_{\lambda_0} $ . \\  \\  \\
+
+
+
+
+\begin{myexample}
+	\textbf{5.}
+
+设 $ \mathcal{A} $ 是复数域上线性空间 $ V $ 内的一个线性变换, 且它在某一组基 $ \{\varepsilon_i \} $ 下的矩阵为 $ A $ . 求 $ A $ 的全部特征值和每个特征值 $ \lambda_i $ 所属特征子空间 $ V_{\lambda_i} $ 的一组基, 其中:
+\begin{gather*}
+A=
+\begin{bmatrix}
+0  &  2  &  1 \\
+-2  &  0  &  3  \\
+-1  &  -3  &  0
+\end{bmatrix}
+\end{gather*}  \\
+
+\end{myexample}
+\Solution
+
+先求出 $ A $ 的特征多项式 $ f(\lambda) $ :
+\begin{eqnarray}
+f(\lambda)=det(\lambda E-A)&=&
+\begin{vmatrix}
+\lambda   &   -2  &  -1  \\
+2         &  \lambda  &  -3  \\
+1  &  3  &  \lambda
+\end{vmatrix}=
+\begin{vmatrix}
+\lambda  &  -2           &  -1  \\
+0        &  \lambda - 6  &  -3-2\lambda  \\
+1        &  3            &  \lambda
+\end{vmatrix}=\dfrac{1}{3}
+\begin{vmatrix}
+3\lambda  &  -\lambda   &  2\lambda  \\
+0        &  \lambda - 6  &  -3-2\lambda  \\
+1        &  3            &  \lambda
+\end{vmatrix} \notag\\ 
+&=& \dfrac{\lambda}{3}
+\begin{vmatrix}
+3  &  -1  &  2  \\
+0  &  \lambda-6  &  -3-2\lambda  \\
+1  &  3   &  \lambda
+\end{vmatrix}=\dfrac{\lambda}{3}
+\begin{vmatrix}
+0  &  -10  &  2-3\lambda  \\
+0  &  \lambda-6  &  -3-2\lambda  \\
+1  &  3   &  \lambda
+\end{vmatrix}
+=\dfrac{\lambda}{3}
+\begin{vmatrix}
+-10  &  2-3\lambda  \\
+\lambda-6  &  -3-2\lambda 
+\end{vmatrix} \notag \\
+&=&\lambda(\lambda^2 + 14)=0  \notag
+\end{eqnarray}
+解得 $ \lambda=0, \pm \sqrt{14}i $ . 接下来求每个特征值对应的特征向量:
+
+(i) $ \lambda_1 = 0 $ 时, 解线性齐次方程组 $ (\lambda_1E - A)X=0 $ , 有:
+\begin{gather*}
+\lambda_1E-A = 
+\begin{bmatrix}
+0  &  -2  &  -1  \\
+2  &  0  &  -3  \\
+1  &  3  &  0 
+\end{bmatrix} \ \ \xrightarrow{初等行变换} \ \ 
+\begin{bmatrix}
+1   &  0 &  -1.5  \\
+0  &  1 &   0.5   \\
+0  &    0   &    0
+\end{bmatrix}
+\end{gather*}
+令 $ x_3 = 2 $ , 得基础解系 $ \eta_1 = (3, -1, 2) $ , 它对应于特征向量
+ $$ 3\varepsilon_1-\varepsilon_2+2\varepsilon_3 $$ . 
+所以,  $ V_{\lambda_1} = L(3\varepsilon_1-\varepsilon_2+2\varepsilon_3) $ .  \\
+
+(ii) $ \lambda_2=\sqrt{14}i $ 时, 解线性齐次方程组 $ (\lambda_2E - A)X = 0 $ , 有:
+\begin{gather*}
+\lambda_2E - A=
+\begin{bmatrix}
+\sqrt{14}i  &  -2  &  -1  \\
+2  &  \sqrt{14}i  &  -3  \\
+1  &  3  &  \sqrt{14}i
+\end{bmatrix} \ \ \xrightarrow{初等行变换}
+\begin{bmatrix}
+1  &  0  &   \frac{6+\sqrt{14}i}{10} \\
+0  &  1  &   \frac{-2+3\sqrt{14}i}{10} \\
+0  &  0  &  0  
+\end{bmatrix}
+\end{gather*}
+令 $ x_3 =2+3\sqrt{14}i $ , 得基础解系 $ \eta_2 = (3-2\sqrt{14}i,13, 2 +3\sqrt{14}i) $ , 它对应于特征向量
+ $$ (3-2\sqrt{14}i)\varepsilon_1 + 13\varepsilon_2 +( 2 +3\sqrt{14}i)\varepsilon_3 $$ 
+所以,  $ V_{\lambda_2} = L((3-2\sqrt{14}i)\varepsilon_1 + 13\varepsilon_2 +( 2 +3\sqrt{14}i)\varepsilon_3) $ . \\
+
+(iii) $ \lambda_3=-\sqrt{14}i $ 时, 解线性齐次方程组 $ (\lambda_3E -A)X=0 $ , 有:
+\begin{gather*}
+\lambda_3E-A=
+\begin{bmatrix}
+-\sqrt{14}i  &  -2  &  -1  \\
+2  &  \sqrt{14}i  &  -3  \\
+1  &  3  &  -\sqrt{14}i
+\end{bmatrix} \ \ \xrightarrow{初等行变换}
+\begin{bmatrix}
+1  &  0  &   \frac{6-\sqrt{14}i}{10} \\
+0  &  1  &   \frac{-2-3\sqrt{14}i}{10} \\
+0  &  0  &  0  
+\end{bmatrix}
+\end{gather*}
+令 $ x_3 =2-3\sqrt{14}i $ , 得基础解系 $ \eta_2 = (3+2\sqrt{14}i,13, 2 - 3\sqrt{14}i) $ , 它对应于特征向量
+ $$ (3+2\sqrt{14}i)\varepsilon_1 + 13\varepsilon_2 +( 2 -3\sqrt{14}i)\varepsilon_3 $$ 
+所以,  $ V_{\lambda_3} = L((3+2\sqrt{14}i)\varepsilon_1 + 10\varepsilon_2 +( 2 -3\sqrt{14}i)\varepsilon_3) $ . \\  \\  \\
+
+
+
+
+\begin{myexample}
+	\textbf{6.}
+
+给定数域 $ K $ 上 $ 3 $ 阶方阵
+\begin{gather*}
+A=
+\begin{bmatrix}
+2  &  2  &  -2  \\
+2  &  5  &  -4 \\
+-2  &  -4  &  5
+\end{bmatrix}, \ \ \ 
+B=
+\begin{bmatrix}
+2  &  -2  &  0  \\
+-2  &  x  &  -2  \\
+-2  &  -2  &  0
+\end{bmatrix}, \ \ \ 
+C=
+\begin{bmatrix}
+2  &  0  &  0  \\
+0  &  2  &  0  \\
+0  &  0  &  y
+\end{bmatrix}
+\end{gather*}
+(1)求 $ K $ 上 $ 3 $ 阶可逆方阵 $ T $ , 使 $ T^{-1}AT=D $ 为对角阵. 
+
+(2)如已知 $ B $ 与 $ C $ 特征多项式相同, 求 $ x, y $ 的值, 判断 $ B $ 与 $ C $ 是否相似. \\
+
+\end{myexample}
+\Solution 
+
+(1)首先, 求出 $ A $ 的特征多项式 $ f(\lambda) $ :
+\begin{eqnarray}
+f(\lambda) = det(\lambda E-A) &=&
+\begin{vmatrix}
+\lambda-2  &  -2  &  2    \\
+-2  & \lambda-5  &  4   \\
+2  &  4  &  \lambda-5
+\end{vmatrix}=
+\begin{vmatrix}
+\lambda-2  &  -2  &  2    \\
+0  &  \lambda-1  &  \lambda-1  \\
+2  &  4  &  \lambda-5
+\end{vmatrix} =(\lambda-1)
+\begin{vmatrix}
+\lambda-2  &  -2  &  2    \\
+0  &  1  &  1  \\
+2  &  4  &  \lambda-5
+\end{vmatrix} \notag\\
+&=&(\lambda-1)
+\begin{vmatrix}
+\lambda-2  &  -2  &  4  \\
+0  &  1  &  0  \\
+2  &  4  &  \lambda -9 
+\end{vmatrix}=(\lambda-1)
+\begin{vmatrix}
+\lambda-2  &  4  \\
+2  &  \lambda -9 \\
+\end{vmatrix} \notag\\
+&=&
+(\lambda-1)^2(\lambda-10)=0  \notag
+\end{eqnarray}
+解得 $ \lambda=1(\text{二重}), 10 $ . 接下来求特征值对应的特征向量. \\
+
+(i) $ \lambda_1 = 1 $ 时, 解线性齐次方程组 $ (\lambda_1E -A)X = 0 $ , 有:
+\begin{gather*}
+\lambda_1E - A =
+\begin{bmatrix}
+-1  &  -2  &  2  \\
+-2  &  -4  &  4  \\
+2  &  4  &  -4  
+\end{bmatrix} \xrightarrow{初等行变换}
+\begin{bmatrix}
+1  &  2  &  -3  \\
+0  &  0  &  0  \\
+0  &  0  &  0
+\end{bmatrix}
+\end{gather*}
+令 $ x_2 = 1, x_3 = 0 $ 与 $ x_2 = 0, x_3 =1 $ 可以得到基础解系 $ \eta_1 = (-2, 1, 0), \eta_2=(2, 0, 1) $ , 同时, 这也为矩阵 $ A $ 的属于特征值 $ \lambda_1 = 1 $ 的特征向量. \\
+
+(ii) $ \lambda_2 = 10 $ 时, 解线性齐次方程组 $ (\lambda_2E-A)X = 0 $ , 有:
+\begin{gather*}
+\lambda_2E-A=
+\begin{bmatrix}
+8  &  -2  &  2  \\
+-2  &  5  &  4  \\
+2  &  4  &  5  
+\end{bmatrix} \xrightarrow{初等行变换}
+\begin{bmatrix}
+1  &  0  &  \frac{1}{2}  \\
+0  &  1  &  1  \\
+0  &  0  &  0
+\end{bmatrix}
+\end{gather*}
+令 $ x_3 = 2 $ , 可以得到基础解系 $ \eta_3 = (-1, -2, 2) $ , 同时, 这也为矩阵 $ A $ 属于特征值 $ \lambda_2=10 $ 的特征向量. 
+
+所以, 矩阵 $ A $ 可对角化, 取
+\begin{gather*}
+T = 
+\begin{bmatrix}
+-2  &  2  &  -1  \\
+1  &  0  &  -2  \\
+0  &  1  &  2
+\end{bmatrix} \ \ \text{使得} \ \ T^{-1}AT =D =
+\begin{bmatrix}
+1  &  0  &  0  \\
+0  &  1  &  0  \\
+0  &  0  &  10
+\end{bmatrix}
+\end{gather*}   \\ 
+
+(2) 由于 $ B $ 与 $ C $ 的特征多项式相同, 所以
+ $$  det(B)= -16 = det(C) = 4y, \ \ tr(B) = 2+x = tr(C) = 4+y \ \ \Rightarrow \ \ x = -2,\  y=-4   $$ 
+从而, 可以求得 $ B $ 的特征多项式为: $ f_B(\lambda) = (\lambda-2)^2(\lambda-4)=0 \ \Rightarrow \ \lambda_1 = 2, \lambda_2 = 4 $ .
+对于 $ \lambda_1=2 $ , 
+\begin{gather*}
+\lambda_1E - B =
+\begin{bmatrix}
+0  &  2  &  0  \\
+2  &  4  &  2  \\
+2  &  2  &  2
+\end{bmatrix}
+\end{gather*}
+ $ rank(\lambda_1E-B) = 2 $ , 所以 $ \dim V_{\lambda_1} = 3 - rank(\lambda_1E-B)=1 \neq 2 $ , 即几何重数 $ \neq $ 代数重数. 所以矩阵 $ B $ 不可对角化. 注意到 $ C $ 是一个对角矩阵, 所以 $ B $ 与 $ C $ 不相似.
+\\  \\  \\
+
+
+
+
+\begin{myexample}
+	\textbf{8.} 
+
+设 $ \lambda_1, \lambda_2 $ 是线性变换 $ \mathcal{A} $ 的两个不同特征值,  $ \xi_1, \xi_2 $ 是分别属于 $ \lambda_1, \lambda_2 $ 的特征向量. 证明:  $ \xi_1 + \xi_2 $ 不是 $ \mathcal{A} $ 的特征向量. \\
+
+\end{myexample}
+\Solution
+
+假设 $ \xi_1, \xi_2 $ 是 $ \mathcal{A} $ 属于特征值 $ \lambda_3 $ 的特征向量, 那么有:
+ $$  \mathcal{A}(\xi_1 + \xi_2) = \lambda_3(\xi_1 + \xi_2) = \lambda_3 \xi_1 + \lambda_3 \xi_2  $$ 
+而 $ \xi_1, \xi_2 $ 是分别属于 $ \lambda_1, \lambda_2 $ 的特征向量, 所以:
+ $$  \mathcal{A}(\xi_1 + \xi_1) = \mathcal{A}\xi_1 + \mathcal{A}\xi_2 = \lambda_1\xi_1 + \lambda_2 \xi_2  $$ 
+两式相减, 可得:
+ $$  (\lambda_3 - \lambda_1)\xi_1 + (\lambda_3 - \lambda_2)\xi_2 = 0  $$ 
+由命题4.3可知,  $ \xi_1, \xi_2 $ 线性无关. 所以 $ \lambda_3 - \lambda_1 = \lambda_2 - \lambda_1 = 0 $ , 即 $ \lambda_1 = \lambda_2 $ , 矛盾!
+
+所以,   $ \xi_1 + \xi_2 $ 不是 $ \mathcal{A} $ 的特征向量.  \\  \\  \\
+
+
+\begin{myexample}
+	\textbf{15.}
+
+设 $ \mathcal{A} $ 是线性空间 $ V $ 内的一个线性变换,  $ M,N $ 是 $ \mathcal{A} $ 的两个不变子空间. 证明: $ M+N $ 与 $ M \bigcap N $ 都是 $ \mathcal{A} $ 的不变子空间.  \\
+
+\end{myexample}
+\Solution  
+
+(1) 任取 $ \alpha = \alpha_1 + \alpha_2 \in (M + N) $ , 其中,  $ \alpha_1 \in M, \alpha_2 \in N $ , 有:
+ $$ \mathcal{A}\alpha = \mathcal{A}(\alpha_1 + \alpha_2) = \mathcal{A}\alpha_1 + \mathcal{A}\alpha_2 $$ 
+由于 $ M, N $ 是 $ A $ 的不变子空间, 所以 $ \mathcal{A}\alpha_1 \in M , \mathcal{A}\alpha_2 \in N $ .
+
+从而,  $ \mathcal{A}\alpha \in (M+N) $ . 所以 $ M+N $ 是 $ \mathcal{A} $ 的不变子空间. \\
+
+(2) 任取 $ \beta \in M \bigcap N $ , 有 $ \beta \in M $ 且 $ \beta \in N $ . 由于 $ M, N $ 都是 $ \mathcal{A} $ 的不变子空间, 所以:
+ $$  \mathcal{A}\beta \in M, \  \mathcal{A}\beta \in N \ \ \ \Rightarrow \ \ \ \mathcal{A}\beta \in M \bigcap N  $$ 
+所以,  $ M \bigcap N $ 也是 $ \mathcal{A} $ 的不变子空间.  \\  \\  \\ 
+
+
+
+\begin{myexample}
+	\textbf{16.}
+
+设 $ \mathcal{A} $ 是数域 $ K $ 上 $ n $ 维线性空间 $ V $ 内的一个线性变换, 在 $ V $ 的一组基下其矩阵为
+\begin{gather*}
+J =
+\begin{bmatrix}
+\lambda_0  &  1  &   &    &     \\
+&  \lambda_0  &  1  &    &   \\
+&         &   \ddots & \ddots &  \\
+&      &        &  \ddots  &  1  \\
+&    &        &          &   \lambda_0 
+\end{bmatrix}
+\end{gather*}
+证明: 当 $ n>1 $ 时, 对 $ \mathcal{A} $ 的任意非平凡不变子空间 $ M $ , 都不存在 $ \mathcal{A} $ 的不变子空间 $ N $ , 使:
+ $$  V = M \oplus  N  $$ 
+
+\end{myexample}
+\Solution  
+
+设 $ \mathcal{A} $ 在基 $ \varepsilon_1, \varepsilon_2, \cdots, \varepsilon_n $ 下的矩阵为 $ J $ . 取 $ \alpha \in M $ , 且记:
+ $$  \alpha = a_1\varepsilon_1 + a_2\varepsilon_2 + \cdots + a_k\varepsilon_k \ \ \text{其中, }a_k \neq 0  $$ 
+于是, 有(取 $ \varepsilon_0 = 0 $ ):
+ $$  \mathcal{A}\alpha = \sum\limits_{i=1}^k a_i \mathcal{A}\varepsilon_i = \sum\limits_{i=1}^k a_i(\lambda_0 \varepsilon_i + \varepsilon_{i-1}) = \lambda_0 \alpha + \sum\limits_{i=1}^{k-1}a_i\varepsilon_i \in M  $$ 
+所以,
+ $$  \alpha_1 = \sum\limits_{i=1}^{k-1} a_i\varepsilon_i = \mathcal{A}\alpha - \lambda_0 \alpha \in M   $$ 
+继续做以上步骤, 可以得到:  $ k_s \varepsilon_1 \in M $ , 所以: $ \varepsilon_1 \in M $ .
+
+这说明, 对于 $ \mathcal{A} $ 的任意非平凡不变子空间 $ M $ , 都有 $ \varepsilon_1 \in M $ . 即:  $ \mathcal{A} $ 的任意两个非平凡不变子空间都含有公共向量 $ \varepsilon_1 $ , 所以 $ V $ 不能分解为 $ \mathcal{A} $ 的两个非平凡不变子空间的直和.  \\  \\  \\
+
+
+\begin{myexample}
+	\textbf{20.}
+
+ $ \mathcal{A}, \mathcal{B} $ 是 $ n $ 维线性空间 $ V $ 内的两个线性变换, 且 $ \mathcal{AB} = \mathcal{BA} $ . $ \lambda $ 是 $ \mathcal{A} $ 的一个特征值,  $ V_{\lambda} $ 是属于特征值 $ \lambda $ 的特征子空间. 则 $ V_{\lambda} $ 是 $ B $ 的不变子空间. \\
+
+\end{myexample}
+\Solution
+
+任取 $ \alpha \in V_{\lambda} $ , 有 $ \mathcal{A}\alpha = \lambda\alpha $ , 从而:
+ $$   \mathcal{A}(\mathcal{B}\alpha)  = \mathcal{BA}\alpha = \mathcal{B}(\lambda \alpha)  = \lambda\mathcal{B}\alpha  $$ 
+即:  $ \mathcal{B}\alpha \in V_{\lambda} $ . 所以 $ V_{\lambda} $ 是 $ \mathcal{B} $ 的不变子空间.\\  \\  \\
+
+
+\begin{myexample}
+	\textbf{21.} 
+
+设 $ V $ 是数域 $ K $ 上的 $ n $ 维线性空间,  $ \mathcal{A}, \mathcal{B} $ 是 $ V $ 内两个线性变换, 且 $ \mathcal{AB}=\mathcal{BA} $ . 如果 $ \mathcal{A}, \mathcal{B} $ 的矩阵都可对角化, 证明: $ V $ 内存在一组基, 使 $ \mathcal{A},\mathcal{B} $ 在这组基下的矩阵同时成对角形. \\
+
+\end{myexample}
+\Solution
+
+由于 $ \mathcal{A} $ 可以对角化, 所以空间 $ V $ 可以分解为 $ \mathcal{A} $ 的特征子空间的直和:
+ $$   V = V_{\lambda_1} \oplus  V_{\lambda_2} \oplus  \cdots \oplus  V_{\lambda_r}  $$ 
+由上题结论可知,  $ V_{\lambda_1}. V_{\lambda_2}, \cdots, V_{\lambda_r} $ 是 $ \mathcal{B} $ 的不变子空间. 所以,  $ \mathcal{B}|_{V_{\lambda_1}}, \mathcal{B}|_{V_{\lambda_2}}, \cdots, \mathcal{B}|_{V_{\lambda_r}} $ 的矩阵也可对角化.对于 $ V_{\lambda_i} $ , 将其分解为 $ \mathcal{B}|_{V_{\lambda_i}} $ 的特征子空间的直和:
+ $$  V_{\lambda_i} = V_{\xi_{i1}} \oplus  V_{\xi_{i2}} \oplus  \cdots \oplus  V_{\xi_{is_i}}  $$ 
+则:
+ $$  V = V_{\xi_{11}} \oplus  \cdots \oplus  V_{\xi_{1s_1}} \oplus  \cdots \oplus  V_{\xi_{r1}} \oplus  \cdots \oplus  V_{\xi_{rs_r}}  $$ 
+在  $ V_{\xi_{i1}},  V_{\xi_{i2}},  \cdots , V_{\xi_{is_i}} $ 各取一组基合成为 $ V_{\lambda_i} $ 一组基:
+ $$  \eta_{i1}, \eta_{i2}, \cdots, \eta_{im_i}  $$  
+则 $ \mathcal{B}|_{\lambda_i} $ 在这组基下可以对角化, 对所有的 $ V_{\lambda_i}, \ (i=1, 2, \cdots, r) $ 做如上步骤, 则 $ \mathcal{B} $ 在
+ $$  \eta_{11}, \eta_{12}, \cdots, \eta_{1m_1}, \cdots, \eta_{r1}, \eta_{r2}, \cdots, \eta_{rm_r}  $$  
+可以对角化. 注意到 $ \mathcal{A} $ 在这组基下也可以对角化, 命题得证.  \\  \\  
+
+
+\begin{myexample}
+	\textbf{******}
+
+也有同学是用矩阵做的, 或多或少写的都有点问题. 有两位同学是直接从矩阵 $ AB = BA $ 开始写, 最后找到了矩阵 $ P $ , 使得 $ P^{-1}AP, P^{-1}BP $ 同时为对角阵. 但是这样还没有和题目完全联系起来, 可以用以下方法: \\ 
+
+\end{myexample}
+\Solution
+
+取 $ V $ 的一组基 $ \varepsilon_i = (0, \cdots, 0, 1, 0, \cdots, 0), \ (i=1, 2, \cdots, n) $ ,  $ \mathcal{A}, \mathcal{B} $ 在这组基下的矩阵分别为 $ A, B $ :
+ $$  \mathcal{A}(\varepsilon_1, \varepsilon_2, \cdots, \varepsilon_n) = (\varepsilon_1, \varepsilon_2, \cdots, \varepsilon_n)A  $$ 
+ $$  \mathcal{B}(\varepsilon_1, \varepsilon_2, \cdots, \varepsilon_n) = (\varepsilon_1, \varepsilon_2, \cdots, \varepsilon_n)B  $$ 
+易证明,  $ AB = BA $ . 下证明,  $ A, B $ 可同时对角化.
+
+因为 $ A $ 相似于对角阵, 所以必定存在 $ P_1 $ 使
+\begin{gather*}
+P_1^{-1}AP_1 = 
+\begin{bmatrix}
+\lambda_1E_{n_1}  &         &          \\
+&  \ddots &          \\
+&         &  \lambda_sE_{n_s}
+\end{bmatrix}, \ \ \ \text{其中}, \lambda_1, \dots, \lambda_s \text{互异}.
+\end{gather*}
+由于 $ AB = BA $ , 所以:
+ $$  P_1^{-1}ABP_1 = P_1^{-1}BAP_1 \ \ \Rightarrow \ \ (P_1^{-1}AP_1)(P_1^{-1}BP_1) = (P_1^{-1}BP_1)(P_1^{-1}AP_1)   $$ 
+设 $ (P_1^{-1}BP_1) = (B_{ij}) $ , 其中分块方法使得 $ (P_1^{-1}BP_1)(P_1^{-1}AP_1) $ 与 $ (P_1^{-1}AP_1)(P_1^{-1}BP_1) $ 都可乘.
+
+由于 $ (P_1^{-1}BP_1) $ 与 $ (P_1^{-1}AP_1) $ 可交换, 有:
+ $$  \lambda_iB_{ij} = B_{ij}\lambda_j  $$ 
+所以当 $ i \neq j $ 时,  $ B_{ij} = 0 $ . 所以有:  $ P_1^{-1}BP_1 = diag\{ B_{11}, B_{22}, \cdots, B_{ss} \} $ .
+
+由 $ B $ 可对角化可知,  $ B_{ii} $ 也可以对角化, 即 $ \exists Q_i $ , 使得 $ Q_i^{-1}B_{ii}Q_i $ 为对角阵. $ (i=1, 2, \cdots, s) $ . 记:
+\begin{gather*}
+P_2 = 
+\begin{bmatrix}
+Q_1  &      &       \\
+&  \ddots  &    \\
+&              & Q_s 
+\end{bmatrix}
+\end{gather*}
+取 $ P = P_1P_2 $ , 有 $ P^{-1}AP $ ,  $ P^{-1}BP $ 同时为对角阵. 记 $ P=(\eta_1, \eta_2, \cdots, \eta_n) $ , 此时:
+ $$  \mathcal{A}(\eta_1, \eta_2, \cdots, \eta_n) = \mathcal{A}[(\varepsilon_1, \varepsilon_2, \cdots, \varepsilon_n)P] = [\mathcal{A}(\varepsilon_1, \varepsilon_2, \cdots, \varepsilon_n)]P = AP = P(P^{-1}AP)=(\eta_1, \cdots, \eta_n)(P^{-1}AP)  $$ 
+ $$  \mathcal{B}(\eta_1, \eta_2, \cdots, \eta_n) = \mathcal{B}[(\varepsilon_1, \varepsilon_2, \cdots, \varepsilon_n)P] = [\mathcal{B}(\varepsilon_1, \varepsilon_2, \cdots, \varepsilon_n)]P = BP =P(P^{-1}BP)= (\eta_1, \cdots, \eta_n)(P^{-1}BP)  $$ 
+矩阵 $ P $ 的列向量即为题目中要找的基.
+
+
+
+\newpage
+\textbf{作业反馈:} \\ 
+
+\textbf{1.} 4.4.6题中, 判断矩阵 $ B, C $ 是否相似, 有的同学认为特征值相同, 对应特征值的代数重数相同, 两个矩阵就应该相似. 但是实际上有一个结论: 相似矩阵有相同的特征多项式, 但是具有相同特征多项式的矩阵却不一定相似. 在本题中只需要判断矩阵 $ B $ 可否对角化即可. 
+
+关于矩阵 $ A $ 与 $ B $ 相似, 有如下一些结论:
+\begin{itemize}
+	\item 必要条件:\  $ det(A) = det(B) $ ,  $ tr(A) =tr(B) $ ,  $ rank(A) = rank(B) $ ,  $ f_A(\lambda) = f_B(\lambda) $ 
+\end{itemize}
+更一般地说, 方阵的行列式, 迹, 秩, 特征值, 特征多项式, 最小多项式是方阵在相似下的不变量, 但不是全系不变量. 关于矩阵相似也有充要条件, 但是相关知识点目前还没学到, 暂且不提.  \\ 
+
+\textbf{2.} 4.4.21题中, 采用线性变换方法证明的同学中, 很多证明了 $ \mathcal{A} $ 的特征子空间是 $ \mathcal{B} $ 的不变子空间之后, 得到 $ \mathcal{B} $ 在这些空间上的限制也可以对角化, 然后就直接在这些特征子空间中取基, 便断言 $ \mathcal{B} $ 在这组基下可以对角化. 但是实际上,  $ V_{\lambda} $ 只是 $ \mathcal{B} $ 的不变子空间而非特征子空间, 这样随意取的基, 并不一定能使 $ \mathcal{B}|_{V_{\lambda}} $ 在该基下的矩阵是对角阵; 另外也有同学直接说在 $ V_{\lambda} $ 中一定存在 $ \xi_i, \eta_j $ 使得 $ \mathcal{B}\eta_j = \xi_i\eta_j $ , 虽然说本质上确实有这样的关系, 但总感觉这样写还是有点没写清楚.
+
+一个能把问题说清楚的方法就是继续将 $ V_{\lambda} $ 继续分解为 $ \mathcal{B}|_{V_{\lambda}} $ 的特征子空间的直和, 然后在这些特征子空间中取基,再把所有的基拼成 $ V $ 的一组基, 便既可以说出这些基是怎么来的, 也可以使 $ \mathcal{A}, \mathcal{B} $ 在这组基下的矩阵同时为对角形.  \\ 
+
+\textbf{3.} 关于矩阵的特征值的计算. 一般的题目都是三阶矩阵, 建议先通过初等行列变换将行列式降阶, 最好能提出来一个一次式, 这样对接下来的二次多项式进行因式分解会很方便. 如果直接展开为最一般的多项式, 对三次方程的求根有时候可能会很麻烦. 
+
+
+\begin{myexample}
+	\textbf{5.1.5}
+
+在实数域上线性空间 $ C[a,b] $ 内定义二元函数如下: 对 $ f(x), g(x) \in C[a,b] $ , 令:
+ $$  I(f, g) = \int_a^b f(x)g(x) dx  $$ 
+证明这是一个双线性函数.  \\
+
+\end{myexample}
+\Solution  
+
+对 $ \forall k_1, k_2 \in \mathbb{R}, f_1, f_2 \in C[a, b] $ , 有:
+ $$  I(k_1f_1+k_2f_2, g) = \int_a^b (k_1f_1(x) + k_2f_2(x))g(x)dx = k_1\int_a^bf_1(x)g(x)dx + k_2\int_a^b f_2(x)g(x) dx  $$ 
+对 $ \forall l_1, l_2 \in \mathbb{R}, g_1, g_2 \in C[a, b] $ , 有:
+ $$  I(f, l_1g_1 + l_2g_2) = \int_a^b f(x)(l_1g_1(x) + l_2g_2(x))dx = l_1\int_a^b f(x)g_1(x)dx + l_2\int_a^b f(x)g_2(x) dx  $$ 
+所以,  $ I(f, g) $ 是 $ C[a, b] $ 上的一个双线性函数. \\  \\  \\
+
+
+\begin{myexample}
+	\textbf{5.1.8}
+
+在 $ M_n(K) $ 内定义函数如下:
+ $$  f(A,B) = Tr(AB).  $$ 
+(1) 证明 $ f(A,B) $ 是一个对称双线性函数; 
+
+(2) 令 $ n=2 $ , 在 $ M_2(K) $ 内取一组基
+\begin{gather*}
+\varepsilon_{11} = 
+\begin{bmatrix}
+1  &  0  \\
+0  &  0
+\end{bmatrix}, \ \ \ 
+\varepsilon_{12} =
+\begin{bmatrix}
+0  &  1  \\
+0  &  0
+\end{bmatrix}, \ \ \ 
+\varepsilon_{21} =
+\begin{bmatrix}
+0  &  0  \\
+1  &  0
+\end{bmatrix}, \ \ \ 
+\varepsilon_{22} = 
+\begin{bmatrix}
+0  &  0  \\
+0  &  1
+\end{bmatrix}
+\end{gather*}
+求 $ f(A,B) $ 在这组基下的矩阵; 
+
+(3)在 $ M_2(K) $ 内另取一组基
+\begin{gather*}
+\eta_1 = 
+\begin{bmatrix}
+1  &  0  \\
+0  &  1
+\end{bmatrix}, \ \ \ 
+\eta_2 =
+\begin{bmatrix}
+1  &  0  \\
+0  &  -1
+\end{bmatrix}, \ \ \ 
+\eta_3 =
+\begin{bmatrix}
+0  &  1  \\
+1  &  0
+\end{bmatrix}, \ \ \ 
+\eta_4 = 
+\begin{bmatrix}
+0  &  1  \\
+-1  &  0
+\end{bmatrix}
+\end{gather*}
+求出两组基之间的过渡矩阵 $ T $ :
+ $$  (\eta_1, \eta_2, \eta_3, \eta_4) = (\varepsilon_{11}, \varepsilon_{12}, \varepsilon_{21}, \varepsilon_{22})T  $$ 
+再求 $ f(A, B) $ 在基 $ \eta_1, \eta_2, \eta_3, \eta_4 $ 下的矩阵. 
+
+(4) 在 $ n=2 $ 的情况下求 $ f(A,B) $ 的秩. 
+
+\end{myexample}
+\Solution 
+
+(1) 对于 $ \forall k_1, k_2 \in K, A_1, A_1 \in M_n(K) $ , 有:
+ $$  f(k_1A_1+k_2A_2, B) = Tr((k_1A_1+k_2A_2)B) =k_1Tr(A_1B) + k_2Tr(A_2B) = k_1f(A_1, B) + k_2f(A_2, B)  $$ 
+对于 $ \forall l_1, l_2 \in K, B_1, B_2 \in M_n(K) $ , 有:
+ $$  f(A, l_1B_1 + l_2B_2) = Tr(A(l_1B_1 + l_2B_2)) = l_1Tr(A, B_1) + l_2f(A, B_2) = l_1f(A, B_1) + l_2f(A, B_2)  $$ 
+另外又注意到:
+ $$  f(A,B) = Tr(AB) = Tr(BA) = f(B,A)  $$ 
+所以 $ f(A,B) $ 是一个对称双线性函数. \\
+
+(2) 经计算可知:
+ $$  f(\varepsilon_{11}, \varepsilon_{11}) = 1, \ f(\varepsilon_{11}, \varepsilon_{12}) = 0, \ f(\varepsilon_{11}, \varepsilon_{21}) = 0, \ f(\varepsilon_{11}, \varepsilon_{22}) = 0  $$ 
+ $$  f(\varepsilon_{12}, \varepsilon_{11}) = 0, \ f(\varepsilon_{12}, \varepsilon_{12}) = 0, \ f(\varepsilon_{12}, \varepsilon_{21}) = 1, \ f(\varepsilon_{12}, \varepsilon_{22}) = 0  $$ 
+ $$  f(\varepsilon_{21}, \varepsilon_{11}) = 0, \ f(\varepsilon_{21}, \varepsilon_{12}) = 1, \ f(\varepsilon_{21}, \varepsilon_{21}) = 0, \ f(\varepsilon_{21}, \varepsilon_{22}) = 0  $$ 
+ $$  f(\varepsilon_{22}, \varepsilon_{11}) = 0, \ f(\varepsilon_{22}, \varepsilon_{12}) = 0, \ f(\varepsilon_{22}, \varepsilon_{21}) = 0, \ f(\varepsilon_{22}, \varepsilon_{22}) = 1  $$ 
+所以,  $ f(A,B) $ 在这组基下的矩阵为:
+\begin{gather*}
+M = 
+\begin{bmatrix}
+1  &  0  &  0  &  0  \\
+0  &  0  &  1  &  0  \\
+0  &  1  &  0  &  0  \\
+0  &  0  &  0  &  1
+\end{bmatrix}
+\end{gather*}
+(3)注意到
+ $$  \eta_1 = \varepsilon_{11} + \varepsilon_{22}, \ \eta_2 = \varepsilon_{11} - \varepsilon_{22}, \ \eta_3 = \varepsilon_{12} + \varepsilon_{21}, \ \eta_4 = \varepsilon_{12} - \varepsilon_{21}  $$ 
+所以, 两组基之间的过渡矩阵为:
+\begin{gather*}
+T = 
+\begin{bmatrix}
+1  &  1  &  0  &  0 \\
+0  &  0  &  1  &  1  \\
+0  &  0  &  1  & -1  \\
+1  & -1  &  0  &  0
+\end{bmatrix}
+\end{gather*}
+则 $ f(A,B) $ 在基 $ \eta_1, \eta_2, \eta_3, \eta_4 $ 下的矩阵为:
+\begin{gather*}
+N = T'MT=
+\begin{bmatrix}
+1  &  0  &  0  &  1  \\
+1  &  0  &  0  &  -1  \\
+0  &  1  &  1  &  0  \\
+0  &  1  &  -1 &  0
+\end{bmatrix}
+\begin{bmatrix}
+1  &  0  &  0  &  0  \\
+0  &  0  &  1  &  0  \\
+0  &  1  &  0  &  0  \\
+0  &  0  &  0  &  1
+\end{bmatrix}
+\begin{bmatrix}
+1  &  1  &  0  &  0 \\
+0  &  0  &  1  &  1  \\
+0  &  0  &  1  & -1  \\
+1  & -1  &  0  &  0
+\end{bmatrix}=
+\begin{bmatrix}
+2  &  0  &  0  &  0  \\
+0  &  2  &  0  &  0  \\
+0  &  0  &  2  &  0 \\
+0  &  0  &  0  &  -2
+\end{bmatrix}
+\end{gather*}
+
+(4) 由第(3)问的结果可知,  $ f(A,B) $ 的秩为4. \\  \\  \\
+
+
+
+
+\begin{myexample}
+	\textbf{5.1.9}
+
+设 $ V $ 是数域 $ K $ 上的 $ n $ 维线性空间,  $ f(\alpha, \beta) $ 是 $ V $ 上的一个双线性函数. 证明:  $ f(\alpha, \beta) $ 满秩的充分必要条件是: 当对一切 $ \beta \in V $ 有 $ f(\alpha, \beta) = 0 $ 时, 必定有 $ \alpha = 0 $ .   \\
+
+\end{myexample}
+\Solution 
+
+记 $ f $ 在 $ V $ 的基 $ \alpha_1, \alpha_2, \cdots, \alpha_n $ 下的矩阵为 $ A $ . 任取 $ \alpha, \beta \in V $ , 设:
+ $$  \alpha = (\alpha_1, \alpha_2, \cdots, \alpha_n)X, \ \ \beta = (\alpha_1, \alpha_2, \cdots, \alpha_n)Y, \ \ X, Y \in K^n  $$ 
+(1) 充分性:
+
+设 $ f(\alpha, \beta)=0 $ ,  $ \forall \beta \in V $ , 则有:
+ $$  f(\alpha, \beta) = X'AY =0, \ \ \forall Y \in K^n  $$ 
+不妨取 $ Y=\varepsilon_i = (0,\cdots,0,1,0,\cdots, 0) $ , 则: $ X'A\varepsilon_i = 0,\ (i=1, 2, \cdots, n) $ . 
+
+所以有,  $ 0 = X'A(\varepsilon_1, \cdots, \varepsilon_n) = X'AE = X'A, \ \ \Rightarrow \ \ A'X = 0  $ .
+
+由题目条件可知, 当对一切 $ \beta \in V $ 有 $ f(\alpha, \beta) = 0 $ 时, 即上述方程组只有零解. 
+
+所以,  $ rank(A) = rank(A') = n $ , 即 $ f(\alpha, \beta) $ 满秩. \\
+
+(2) 必要性:
+
+由于 $ f(\alpha, \beta) $ 满秩, 所以矩阵 $ A $ 满秩. 
+
+设对于任意 $ Y \in K^n $ ,  $ f(\alpha, \beta) = X'AY = 0 $ .下推导X只能为0向量.
+
+取Y依次为 $ \varepsilon_1, \varepsilon_2, \cdots, \varepsilon_n $ , 则可得到:
+
+ $$  X'A(\varepsilon_1, \varepsilon_2, \cdots, \varepsilon_n) = X'AE = 0 \ \ \Rightarrow \ \ A'X =0   $$ 
+
+由于矩阵 $ A $ 满秩, 则上述线性齐次方程组只有零解. 即:当对一切 $ \beta \in V $ 有 $ f(\alpha, \beta) = 0 $ 时, 必定有 $ \alpha = 0 $ . \\  \\  \\
+
+
+
+
+
+
+\begin{myexample}
+	\textbf{5.1.10}
+
+证明第8题中的双线性函数 $ f(A,B) $ 是满秩的. \\  
+
+\end{myexample}
+\Solution  
+
+设对于一切 $ B \in M_n(K) $ ,  $ f(A, B) = Tr(AB) $ . 下证明 $ A=0 $ . 设 $ A = (a_{ij})_{n \times n} $ ,  $ B = (b_{ij})_{n \times n} $ , 则:
+ $$  f(A,B) = Tr(AB) = \sum\limits_{i=1}^n AB(i,i) = \sum\limits_{i=1}^n(\sum\limits_{j=1}^n a_{ij}b_{ji})  $$ 
+依次取 $ B = E_{ij} $ , 则可以得到 $ f(A, B) = \sum\limits_{i=1}^n(\sum\limits_{j=1}^n a_{ij}b_{ji}) = a_{ji} = 0, \ (1 \leq i, j \leq n) $ .
+
+所以可以得到 $ A = 0 $ .由5.1.9结论可知, 双线性函数 $ f(A,B) $ 是满秩的.  \\  
+
+*********
+
+也可以直接取一组基, 求出双线性函数 $ f $ 在这组基下的矩阵, 并判断该矩阵满秩来证明此命题. \\
+
+
+\Solution
+
+在 $ M_n(K) $ 内选取一组基
+ $$  E_{ij}, \ \ (i=1, 2, \cdots, n)  $$ 
+ $$  E_{ij} + E_{ji}, \ \ (i,j =1,2, \cdots, n, \ i < j)  $$ 
+ $$  E_{ij} - E_{ji}, \ \ (i,j =1,2, \cdots, n, \ i < j)  $$ 
+下证明在这组基下 $ f $ 的矩阵成对角形. 首先, 有
+\begin{equation}
+E_{ij}E_{kl} = \left\{
+\begin{aligned}
+E_{il}, \ &\text{若} j=k;\\
+0, \ \ &\text{若} j \neq k. \\
+\end{aligned}
+\right. \ \ \ \ \ \ 
+Tr(E_{ij}E_{kl}) = \left\{
+\begin{aligned}
+1, \ \ &\text{若}i=l, j=k; \\
+0, \ \ &\text{其他}. \\
+\end{aligned}
+\right.
+\end{equation}
+
+(1) 对于 $ E_{ii} $ , 有:
+\begin{equation}
+f(E_{ii}, E_{jj}) = \left\{
+\begin{aligned}
+1, \ \ &\text{若}i=j; \\
+0, \ \ &\text{若}i\neq j. \\
+\end{aligned}
+\right.
+\end{equation}
+对于 $ k < l $ , 有:
+ $$  f(E_{ii}, E_{kl} \pm E_{lk}) = Tr(E_{ii}E_{kl}) \pm Tr(E_{ii}E_{lk}) = 0.  $$ 
+(2) 对于 $ E_{ij} + E_{ji}, \ (1 \leq i < j \leq n) $ , 有
+\begin{align*}
+f(E_{ij}+E_{ji}, E_{kl}+E_{lk}) &= Tr(E_{ij}E_{kl}) + Tr(E_{ij}E_{lk}) + Tr(E_{ji}E_{kl}) + Tr(E_{ji}E_{lk}) \\
+&= Tr(E_{ji}E_{kl}) + Tr(E_{ij}E_{lk}) \\
+&=\left\{
+\begin{aligned}
+2, \ \ &\text{若}i=k, j=l; \\
+0, \ \ &\text{其他}.
+\end{aligned}
+\right.
+\end{align*}
+ $$  f(E_{ij}+E_{ji}, E_{kl}- E_{lk}) = Tr(E_{ji}E_{kl}) - Tr(E_{ij}E_{lk}) = 0.  $$ 
+(3) 对于 $ E_{ij} - E_{ij}, \ (1 \leq i, j \leq n) $ , 有:
+\begin{align*}
+f(E_{ij}-E_{ji}, E_{kl}-E_{lk}) &= Tr(E_{ij}E_{kl}) - Tr(E_{ij}E_{lk}) - Tr(E_{ji}E_{kl}) + Tr(E_{ji}E_{lk}) \\
+&= -Tr(E_{ji}E_{kl}) - Tr(E_{ij}E_{lk}) \\
+&=\left\{
+\begin{aligned}
+-2, \ \ &\text{若}i=k, j=l; \\
+0, \ \ &\text{其他}.
+\end{aligned}
+\right.
+\end{align*}
+经过上述计算可以发现,  $ f $ 在所选的基下成对角阵, 主对角线上有 $ n $ 个1,  $ \dfrac{n(n-1)}{2} $ 个 $ 2 $ 和 $ \dfrac{n(n-1)}{2} $ 个 $ -2 $ . 从而 $ f $ 是满秩的. \\  \\  \\  
+
+
+
+
+
+
+\begin{myexample}
+	\textbf{5.1.18} 
+
+设 $ V $ 是数域 $ K $ 上的 $ n $ 维线性空间,  $ f(\alpha, \beta) $ 是 $ V $ 内的双线性函数. 对 $ V $ 的子空间 $ M $ , 定义:
+ $$  L(M) = \{\alpha \in V | f(\alpha, \beta)=0, \forall \beta \in M  \}  $$ 
+ $$  R(M) = \{\alpha \in V | f(\beta, \alpha)=0, \forall \beta \in M  \}  $$ 
+证明 $ L(M), R(M) $ 为 $ V $ 的子空间. 如果 $ f(\alpha, \beta) $ 为 $ V $ 内满秩双线性函数, 证明:
+ $$  \dim L(M) = \dim R(M) = n - \dim M   $$ 
+同时又有:
+ $$  R(L(M)) = L(R(M)) = M  $$ 
+
+\end{myexample}
+\Solution 
+
+(1) 先证明 $ L(M), R(M) $ 为 $ V $ 的子空间. 任取 $ \alpha_1, \alpha_2 \in L(M), k_1, k_2 \in K $ , 有:
+ $$ f(k_1\alpha_1 + k_2\alpha_2, \beta ) = k_1f(\alpha_1, \beta) + k_2f(\alpha_2, \beta) = 0 $$ 
+所以 $ L(M) $ 是 $ V $ 的子空间. 同理,  $ R(M) $ 也是 $ V $ 的子空间. \\
+
+(2) 再证明: 如果 $ f(\alpha, \beta) $ 为 $ V $ 内满秩双线性函数,则有
+ $$  \dim L(M) = \dim R(M) = n - \dim M, \ \  R(L(M)) = L(R(M)) = M  $$  
+
+在 $ M $ 内取一组基 $ \varepsilon_1, \cdots, \varepsilon_r $ , 将其扩充为 $ V $ 的一组基 $ \varepsilon_1, \cdots, \varepsilon_r, \varepsilon_{r+1}, \cdots, \varepsilon_n $ .
+
+对任意的 $ \alpha \in V $ , 记 $ \alpha = a_1\varepsilon_1 + a_2\varepsilon_2 + \cdots + a_n \varepsilon_n $ , 则 $ \alpha \in L(M) $ 等价于:
+ $$  f(\varepsilon_1, \varepsilon_i)a_1 + \cdots + f(\varepsilon_r, \varepsilon_i)a_r + \cdots + f(\varepsilon_{r+1}, \varepsilon_i)a_{r+1} + \cdots + f(\varepsilon_n, \varepsilon_i)a_n = 0, \ (i=1, 2 \cdots, r) $$ 
+ $ f $ 满秩意味着系数矩阵满秩, 为 $ r = \dim M $ . 其解空间 $ W $ 的维数为
+ $$ \dim W = n -r = n- \dim (M) $$ 
+
+由于 $ \alpha $ 对应到它的坐标 $ X $ 是 $ V $ 到 $ F^n $ 的一个同构映射, 且 $ L(M) $ 在该映射下的象为上述方程组的解空间 $ W $ , 所以:
+ $$  \dim L(M) = \dim  W = n - \dim (M)  $$ 
+同理可得,  $ \dim R(M) = n -\dim (M) $ . 即 $ \dim L(M) = \dim  R(M) = n-r $ .
+
+注意到 $ R(L(M)) = \{ \beta \in V | f(\alpha, \beta) =0, \forall \alpha \in L(M) \} $ , 任取 $ \gamma \in M $ , 当 $ \alpha \in L(M) $ 时,
+ $$  f(\alpha, \gamma ) = 0 \ \ \ (\text{由}R(L(M))\text{的定义可得})  $$ 
+
+所以 $ M \subset R(L(M)) $ . 由前面的证明过程可知,  $ \dim R(L(M)) = n - \dim L(M) = n-(n-r) = r  $ ,所以 $ M = R(L(M)) $ .
+同理可得:  $ M = L(R(M)) $ . 即:  $ L(R(M)) = R(L(M)) = M $ . \\  \\  \\ 
+
+
+
+
+
+
+\begin{myexample}
+	\textbf{5.1.19}
+
+设 $ V $ 是数域 $ K $ 上的 $ n $ 维线性空间,  $ M, N $ 是 $ V $ 的两个子空间,  $ f(\alpha, \beta) $ 为 $ V $ 内双线性函数, 使用上题记号. 证明:
+ $$  L(M+N) = L(M) \cap L(N), \ \ \ R(M+N) = R(M) \cap R(N)  $$ 
+如果 $ f(\alpha, \beta) $ 满秩, 则:
+ $$  L(M \cap N) = L(M) + L(N), \ \ \ R(M \cap N) = R(M) + R(N)  $$   
+
+\end{myexample}
+\Solution  
+
+(1) 任取 $ \alpha \in L(M+N) $ , 则对于 $ \forall \beta \in M+N $ 有 $ f(\alpha, \beta) = 0 $ .
+
+由于 $ M \subset M+N, N \subset M+N $ , 所以 $ \alpha \in L(M), \alpha \in L(N) $ , 即:  $ \alpha \in L(M) \cap L(N) $ .
+
+从而:  $ L(M + N) \subset L(M) \cap L(N) $ .
+
+任取 $ \alpha \in L(M) \cap L(N) $ , 则对于 $ \forall \beta_1 \in M, \beta_2 \in N $ , 有
+ $$  f(\alpha, \beta_1) = 0, \ \ f(\alpha, \beta_2) = 0  $$ 
+任取 $ \beta \in M+N $ , 则 $ \exists \beta_1 \in M, \beta_2 \in N $ , 使得 $ \beta = \beta_1+\beta_2 $ , 从而:
+ $$  f(\alpha, \beta) = f(\alpha, \beta_1+ \beta_2) = f(\alpha, \beta_1) + f(\alpha, \beta_2) = 0  $$ 
+从而:  $ L(M) \cap L(N) \subset L(M + N) $ .
+
+综上,  $ L(M + N ) = L(M) \cap L(N) $ . 同理可得,  $ R(M+N) = R(M) \cap R(N) $ . \\
+
+(2)对于 $ \forall \alpha \in L(M) +L(N) $ , 有 $ \alpha = \alpha_1 + \alpha_2, \ \alpha_1 \in L(M), \alpha_2 \in L(N) $ .
+
+对于 $ \forall \beta \in M \cap N $ , 可知 $ f(\alpha, \beta) = f(\alpha_1, \beta) + f(\alpha_2, \beta) = 0 $ , 即:  $  \alpha \in L(M \cap N) $ .
+
+所以: $ L(M) + L(N) \subset L(M \cap N) $ .
+
+由于 $ f(\alpha, \beta) $ 满秩, 5.1.18的结论及维数公式可得:
+\begin{align*}
+\dim (L(M) + L(N)) &= \dim L(M) + \dim L(N) - \dim (L(M) \cap L(n))  \\
+&=(n - \dim M) + (n - \dim N) - \dim (L(M + N))  \\
+&= 2n - (\dim M + \dim N) - (n - \dim (M+N))  \\
+&= n - (\dim M + \dim N - \dim (M+N)) \\
+&= n -\dim (M \cap N) \\ 
+&= \dim L(M \cap N)
+\end{align*}
+所以,  $ L(M) + L(N) = L(M \cap N) $ . 同理可得,  $ R(M) + R(N) = R(M \cap N) $ . \\ \\  \\
+
+
+
+
+\begin{myexample}
+	\textbf{5.2.2}
+
+在 $ K^4 $ 中给定如下对称双线性函数: 若
+ $$  \alpha = (x_1, x_2, x_3, x_4), \ \ \beta = (y_1, y_2, y_3, y_4)  $$ 
+令
+ $$  f(\alpha, \beta) = -x_1y_1 + 2x_1y_2 + 2x_2y_1 - 3x_2y_2 + x_2y_4 - 2x_1y_4 + x_4y_2 - 2x_4y_1 + 2x_4y_4  $$ 
+(1) 写出 $ f(\alpha, \beta) $ 在基
+ $$  \varepsilon_1=(1,0,0,0), \ \ \varepsilon_2 =(0,1,0,0), \ \ \varepsilon_3=(0,0,1,0), \ \ \varepsilon_4=(0,0,0,1)  $$ 
+下的矩阵, 并写出 $ f(\alpha, \alpha) $ 在此组基下的解析表达式. 
+
+(2)做基变换
+\begin{gather*}
+(\eta_1, \eta_2, \eta_3, \eta_4) = (\varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4)
+\begin{bmatrix}
+2  &  1  &  \tfrac{4}{\sqrt{3}} &  0  \\
+1  &  0  &  \tfrac{3}{\sqrt{3}} &  0  \\
+0  &  0  &  0  &  1  \\
+0  &  0  &  \tfrac{1}{\sqrt{3}} & 0
+\end{bmatrix}
+\end{gather*}
+求 $ f(\alpha, \beta) $ 在基 $ \eta_1, \eta_2, \eta_3, \eta_4 $ 下的矩阵, 并求 $ f(\alpha, \alpha) $ 在这组基下的解析表达式;
+
+(3)求可逆线性变数替换 $ X=TY $ , 使二次型
+ $$  f = -x_1^2 + 4x_1x_2 - 4x_1x_4 - 3x_2^2 + 2x_2x_4 + 2x_4^2  $$ 
+化成标准型.    \\
+
+\end{myexample}
+\Solution 
+
+由题意:
+\begin{gather*}
+f(\alpha, \beta) = 
+\begin{pmatrix}
+x_1  &  x_2  &  x_3  &  x_4
+\end{pmatrix}
+\begin{pmatrix}
+-1 &  2  &  0  &  -2  \\
+2  & -3  &  0  &  1  \\
+0  &  0  &  0  &  0  \\
+-2 &  1  &  0  &  2
+\end{pmatrix}
+\begin{pmatrix}
+x_1 \\ x_2 \\ x_3 \\ x_4
+\end{pmatrix}
+\end{gather*}
+(1) 可以看出,  $ f(\alpha, \beta) $ 在基 $ \varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4 $ 下的矩阵为:
+\begin{gather*}
+A =
+\begin{pmatrix}
+-1 &  2  &  0  &  -2  \\
+2  & -3  &  0  &  1  \\
+0  &  0  &  0  &  0  \\
+-2 &  1  &  0  &  2
+\end{pmatrix}
+\end{gather*}
+可以看出,  $ f(\alpha, \alpha) $ 在这组基下的解析表达式为:
+ $$  f(\alpha, \alpha) = -x_1^2 + 4x_1x_2 - 4x_1x_4 - 3x_2^2 +2x_2x_4 + 2x_4^2  $$ 
+(2)设 $ f(\alpha, \beta) $ 在这组基下的矩阵为 $ B $ , 则:
+\begin{gather*}
+B = T'AT =
+\begin{pmatrix}
+-1 &  2  &  0  &  -2  \\
+2  & -3  &  0  &  1  \\
+0  &  0  &  0  &  0  \\
+-2 &  1  &  0  &  2
+\end{pmatrix}
+\begin{pmatrix}
+2  &  1  &  \tfrac{4}{\sqrt{3}} &  0  \\
+1  &  0  &  \tfrac{3}{\sqrt{3}} &  0  \\
+0  &  0  &  0  &  1  \\
+0  &  0  &  \tfrac{1}{\sqrt{3}} & 0
+\end{pmatrix}
+\begin{pmatrix}
+-1 &  2  &  0  &  -2  \\
+2  & -3  &  0  &  1  \\
+0  &  0  &  0  &  0  \\
+-2 &  1  &  0  &  2
+\end{pmatrix} =
+\begin{pmatrix}
+1  &  0  &  0  &  0  \\
+0  & -1  &  0  &  0  \\
+0  &  0  & -1  &  0  \\
+0  &  0  &  0  &  0
+\end{pmatrix}
+\end{gather*}
+所以 $ f(\alpha, \alpha) $ 在这组基下的解析表达式为:
+ $$  f(\alpha, \alpha) = x_1^2 - x_2^2 - x_3^2  $$ 
+(3)由第(2)问结论可知:
+\begin{gather*}
+T = 
+\begin{pmatrix}
+2  &  1  &  \tfrac{4}{\sqrt{3}} &  0  \\
+1  &  0  &  \tfrac{3}{\sqrt{3}} &  0  \\
+0  &  0  &  0  &  1  \\
+0  &  0  &  \tfrac{1}{\sqrt{3}} & 0
+\end{pmatrix}
+\end{gather*} \\  \\  \\ 
+
+\begin{myexample}
+	\textbf{5.2.3}
+
+给定四个变量的二次型 $ f $ , 试在 $ K^4 $ 内找出对称双线性函数 $ f(\alpha, \beta) $ , 使 $ f(\alpha, \alpha) $ 在基:
+ $$  \varepsilon_1 = (1,0,0,0), \ \ \varepsilon_2=(0,1,0,0), \ \ \varepsilon_3 = (0,0,1,0), \ \ \varepsilon_4=(0,0,0,1)  $$ 
+下的解析式为:
+ $$  f=x_1x_2 + x_1x_3 + x_1x_4 + x_2x_3 + x_2x_4 + x_3x_4  $$ 
+
+\end{myexample}
+\Solution
+
+对于该二次型, 有:
+\begin{gather*}
+f = 
+\begin{pmatrix}
+x_1  &  x_2  &  x_3  &  x_4  
+\end{pmatrix}
+\begin{pmatrix}
+0            &  \frac{1}{2}  &  \frac{1}{2}  &  \frac{1}{2}  \\
+\frac{1}{2}  &        0      &  \frac{1}{2}  &  \frac{1}{2}  \\
+\frac{1}{2}  &  \frac{1}{2}  &       0       &  \frac{1}{2}  \\
+\frac{1}{2}  &  \frac{1}{2}  &  \frac{1}{2}  &       0
+\end{pmatrix}
+\begin{pmatrix}
+x_1 \\ x_2 \\ x_3 \\ x_4
+\end{pmatrix}
+\end{gather*}
+所以,双线性函数 $ f(\alpha, \beta) $ 为:
+\begin{align*} 
+f(\alpha, \beta) = \dfrac{1}{2}(&x_1y_2 + x_1y_3 + x_1y_4 + x_2y_1 + x_2y_3 + x_2y_4 + \\
+&x_3y_1 + x_3y_2 + x_3y_4 + x_4y_1 + x_4y_2 + x_4y_3) 
+\end{align*} \\  \\  \\
+
+
+
+
+\begin{myexample}
+	\textbf{5.2.7}
+
+给定二次型
+ $$  f = \sum\limits_{i=1}^s (a_{i1}x_1 + a_{i2}x_2 + \cdots + a_{in}x_n)^2  $$ 
+其中
+\begin{gather*}
+A = 
+\begin{bmatrix}
+a_{11}  &  a_{12}  &  \cdots  &  a_{1n}  \\
+a_{21}  &  a_{22}  &  \cdots  &  a_{2n}  \\
+\vdots  &  \vdots  &          &  \vdots  \\
+a_{s1}  &  a_{s2}  &  \cdots  &  a_{sn}
+\end{bmatrix}
+\end{gather*}
+是一个实数矩阵. 证明 $ f $ 的秩等于 $ r(A) $ .  \\
+
+\end{myexample}
+\Solution
+
+记 $ X = (x_1, x_2, \cdots, x_n)' $ , 则:
+\begin{eqnarray}
+f &=& \sum\limits_{i=1}^s(a_{i1}x_1 + a_{i2}x_2 + \cdots + a_{in}x_n)^2  \notag\\
+&=& \sum\limits_{i=1}^s \left[(a_{i1}, a_{i2}, \cdots , a_{in}) 
+\begin{pmatrix}
+x_1 \\  x_2 \\ \cdots \\ x_n \\
+\end{pmatrix} \right]^2  \notag\\
+&=& \sum\limits_{i=1}^s \left [(x_1, \cdots, x_n)
+\begin{pmatrix}
+a_{i1} \\ a_{i2} \\ \cdots \\ a_{in} 
+\end{pmatrix}
+(a_{i1}, a_{i2}, \cdots , a_{in})
+\begin{pmatrix}
+x_1 \\ \cdots \\  x_n  
+\end{pmatrix} \right] \notag\\
+&=& 
+\begin{pmatrix}
+x_1 &  \cdots  &  x_n
+\end{pmatrix}
+\left[\sum\limits_{i=1}^s
+\begin{pmatrix}
+a_{i1} \\ a_{i2} \\ \cdots \\ a_{in} 
+\end{pmatrix}
+(a_{i1}, a_{i2}, \cdots , a_{in})
+\right]
+\begin{pmatrix}
+x_1 \\  x_2 \\ \cdots \\ x_n \\
+\end{pmatrix} = X'(A'A)X \notag\\
+\end{eqnarray}
+由于 $ (A'A)' = A'A $ , 即 $ A'A $ 为对称矩阵, 所以 $ A'A $ 即为二次型 $ f $ 的方阵. 下证明: $ r(A'A) = r(A) $ .
+
+考虑两个线性齐次方程组:(1)  $ AX = 0 $ ; (2)  $ A'AX = 0 $ . 即二者的解空间分别为 $ W_1, W_2 $ .
+
+任取 $ X \in W_1 $ ,  $ AX = 0 \ \Rightarrow \ A'AX = 0 $ , 即: $ X \in W_2 $ . 所以: $ W_1 \subset W_2 $ .
+
+任取 $ X \in W_2 $ ,  $ A'AX=0 \ \Rightarrow \ 0 = X'A'AX = (AX)'(AX) = 0 \ \Rightarrow \ AX = 0 $ .
+
+即: $ X \in W_1 $ . 所以: $ W_2 \subset W_1 $ .
+
+综上,  $ W_1 = W_2 $ . 所以 $ r(A) = n - \dim W_1 = n - \dim W_2 = r(A'A) $ .即: $ f $ 的秩为 $ r(A) $ .   
+
+
+\begin{myexample}
+	\textbf{6.2.1}
+
+设 $ \eta $ 是 $ n $ 维欧式空间 $ V $ 内的一个单位向量, 定义 $ V $ 内一个线性变换如下:
+ $$  \mathcal{A}\alpha = \alpha - 2(\eta, \alpha)\eta  $$ 
+称这样的线性变换 $ \mathcal{A} $ 为一个镜面反射. 证明:
+
+(1)  $ \mathcal{A} $ 是正交变换; 
+
+(2)  $ \mathcal{A} $ 是第二类的;
+
+(3)  $ \mathcal{A}^2 = \mathcal{E} $ ; 
+
+(4) 设 $ \mathcal{B} $ 是 $ V $ 内一个第二类正交变换, 则必有:
+ $$  \mathcal{B} = \mathcal{A} \cdot \mathcal{B}_1   $$ 
+其中,  $ \mathcal{B}_1 $ 是 $ V $ 内的一个第一类正交变换. \\ 
+
+\end{myexample}
+\Solution 
+
+(1)对于镜面反射 $ \mathcal{A} $ , 有:
+\begin{align*}
+(\mathcal{A}\alpha, \mathcal{A}\beta) &= (\alpha - 2(\eta, \alpha)\eta, \beta - 2(\eta, \beta)\eta)  \\
+&= (\alpha, \beta) - 2(\alpha, \eta)(\eta, \beta) - 2(\eta, \beta)(\eta, \alpha) + 4(\eta, \alpha)(\eta, \beta)(\eta, \eta)  \\
+&= (\alpha, \beta) 
+\end{align*}
+所以 $ \mathcal{A} $ 是正交变换.  \\
+
+(2) 将 $ \eta = \varepsilon_1 $ 扩充为 $ V $ 的一组标准正交基 $ \varepsilon_1, \cdots, \varepsilon_n $ , 有:
+ $$  \mathcal{A}\varepsilon_1 = \varepsilon_1 - 2(\eta, \varepsilon_1)\eta = \varepsilon_1 - 2\eta = -\varepsilon_1  $$ 
+ $$  \mathcal{A}\varepsilon_i = \varepsilon_i - 2(\eta, \varepsilon_i)\eta = \varepsilon_i, \ \ (i=2,3, \cdots, n)  $$ 
+所以 $ \mathcal{A} $ 在这组基下的矩阵为:
+\begin{gather*}
+A = 
+\begin{bmatrix}
+-1  &       &       &        \\
+&   1   &       &         \\
+&       & \ddots &       \\
+&       &        &  1
+\end{bmatrix}
+\end{gather*}
+可以得到,  $ |A| = -1 $ . 由于线性变换在不同基下的矩阵是相似的, 相似的矩阵行列式相等. 所以 $ \mathcal{A} $ 在任意一组基下的矩阵的行列式都为 $ -1 $ , 所以 $ \mathcal{A} $ 是第二类的. \\
+
+(3)对于 $ \forall \alpha \in V $ , 有:
+\begin{align*}
+\mathcal{A}^2\alpha &= \mathcal{A}(\mathcal{A}\alpha) = \mathcal{A}\alpha - 2(\eta, \mathcal{A}\alpha)\eta \\
+&= \alpha - 2(\eta, \alpha)\eta - 2(\eta, \alpha-2(\eta,\alpha)\eta)\eta \\
+&= \alpha - 2(\eta, \alpha)\eta - 2(\eta, \alpha)\eta +\ 4(\eta, \alpha)(\eta, \eta)\eta \\ 
+&= \alpha
+\end{align*}
+所以,  $ \mathcal{A}^2 = \mathcal{E} $ . \\
+
+(4) 设 $ \mathcal{B} $ 是 $ V $ 内一个第二类正交变换, 记 $ \mathcal{B}_1 = \mathcal{A}^{-1}\mathcal{B} $ , 下证明 $ \mathcal{B}_1 $ 是 $ V $ 内的第一类正交变换.
+
+\hspace{1em} 由(3)可知 $ \mathcal{A}^2 = \mathcal{E} $ , 所以 $ \mathcal{A}^{-1}=\mathcal{A} $ . 则 $ \mathcal{B}_1 = \mathcal{A}\mathcal{B} $ . 
+
+\hspace{1em} 取 $ V $ 的一组标准正交基 $ \{\xi_1, \xi_2 \cdots, \xi_n \} $ , 则 $ (\xi_i, \xi_j) = \delta_{ij} $ , 从而
+\begin{align*}
+(\mathcal{B}_1\xi_i, \mathcal{B}_1\xi_j) &= (\mathcal{A}\mathcal{B}\xi_i, \mathcal{A}\mathcal{B}\xi_j) \\
+&=\left(\mathcal{B}\xi_i - 2(\eta, \mathcal{B}\xi_i)\eta,\ \mathcal{B}\xi_j - 2(\eta, \mathcal{B}\xi_j)\eta\right)  \\
+&= (\mathcal{B}\xi_i, \mathcal{B}\xi_j) -2(\mathcal{B}\xi_i, \eta)(\eta, \mathcal{B}\xi_j) -2(\eta, \mathcal{B}_i)(\mathcal{B}\xi_j, \eta) + 4(\eta,\mathcal{B}_i)(\eta, \mathcal{B}\xi_j)(\eta, \eta) \\
+&= (\mathcal{B}\xi_i, \mathcal{B}\xi_j) = (\xi_i, \xi_j) = \delta_{ij}  
+\end{align*}
+\hspace{1em} 所以 $ \mathcal{B}_1\xi_1, \mathcal{B}_1\xi_2, \cdots, \mathcal{B}_1\xi_n $ 也是 $ V $ 的一组标准正交基. 即线性变换 $ \mathcal{B}_1 $ 把 $ V $ 的标准正交基映
+
+\hspace{1em} 成标准正交基. 所以 $ \mathcal{B}_1 $ 是一个正交变换. \\
+
+********** 
+
+上述推理也可由课本P20命题2得出:
+ $$ \mathcal{A}, \mathcal{B} \in O(n) \ \Rightarrow \ \mathcal{A}^{-1}, \mathcal{A}^{-1}\mathcal{B} \in O(n) $$ 
+**********  \\ 
+
+
+设 $ \mathcal{A} $ ,  $ \mathcal{B} $ 在 $ V $ 的基下的矩阵分别为 $ A,B $ , 则 $ \mathcal{B}_1 $ 在这组基下的矩阵为 $ B_1 = AB $ , 从而:
+ $$  det(B_1) = det(AB) = det(A)det(B) = (-1) \times (-1) = 1  $$ 
+由于线性变换在不同基下的矩阵是相似的, 相似的矩阵行列式相等. 所以 $ \mathcal{B}_1 $ 在任意一组基下的矩阵的行列式都为 $ 1 $ , 所以 $ \mathcal{B}_1 $ 是第一类的正交变换. 且满足:
+ $$  \mathcal{A}\mathcal{B}_1 = \mathcal{A}\mathcal{A}\mathcal{B} = \mathcal{B}  $$  \\  
+
+
+
+
+
+\begin{myexample}
+	\textbf{6.2.6}
+
+设 $ \mathcal{A} $ 是欧式空间 $ V $ 内的一个变换, 对任意 $ \alpha, \beta \in V $ , 有 $ (\mathcal{A}\alpha, \mathcal{A}\beta) = (\alpha, \beta) $ . 证明 $ \mathcal{A} $ 是一个正交变换.  \\ 
+
+\end{myexample}
+\Solution  
+
+只需要证明变换 $ \mathcal{A} $ 是线性的.
+\begin{align*}
+&(\mathcal{A}(\alpha + \beta)-(\mathcal{A}\alpha+\mathcal{A}\beta),\ \mathcal{A}(\alpha + \beta)-(\mathcal{A}\alpha+\mathcal{A}\beta))  \\
+=& (\mathcal{A}(\alpha+\beta), \mathcal{A}(\alpha + \beta)) -2(\mathcal{A}(\alpha+\beta), \mathcal{A}\alpha + \mathcal{A}\beta) + (\mathcal{A}\alpha + \mathcal{A}\beta, \ \mathcal{A}\alpha + \mathcal{A}\beta)  \\
+=& (\mathcal{A}(\alpha+\beta), \mathcal{A}(\alpha + \beta)) - 2(\mathcal{A}(\alpha+\beta),\mathcal{A}\alpha) - 2(\mathcal{A}(\alpha+\beta), \mathcal{\beta}) + (\mathcal{A}\alpha, \ \mathcal{A}\alpha) + 2(\mathcal{A}\alpha, \ \mathcal{A}\beta) + (\mathcal{A}\beta, \ \mathcal{A}\beta) \\
+=& (\alpha+\beta, \ \alpha+\beta) -2(\alpha+\beta, \alpha) -2(\alpha+\beta, \beta) + (\alpha,\alpha) + 2(\alpha, \beta) + (\beta, \beta)\\
+=& 0
+\end{align*}
+由内积的正定性可知,  $ \mathcal{A}(\alpha + \beta) = \mathcal{A}\alpha + \mathcal{A}\beta $ . 
+
+对于 $ \forall k \in \mathbb{R}, \alpha \in V $ , 有:
+\begin{align*}
+(\mathcal{A}(k\alpha) - k\mathcal{A}\alpha,\ \mathcal{A}(k\alpha) - k\mathcal{A}\alpha) &= (\mathcal{A}(k\alpha),\ \mathcal{A}(k\alpha)) - 2k(\mathcal{A}(k\alpha),\ \mathcal{A}\alpha) + k^2(\mathcal{A}\alpha,\ \mathcal{A}\alpha) \\
+&= (k\alpha, k\alpha) - 2k(k\alpha, \alpha) + k^2(\alpha, \alpha) \\
+&= 0
+\end{align*}
+由内积的正定性可知,  $ \mathcal{A}(k\alpha) = k\mathcal{A}\alpha $ . 
+
+所以,  $ \mathcal{A} $ 是线性的. 从而 $ A $ 是一个正交变换. \\  \\  \\  
+
+
+
+
+\begin{myexample}
+	\textbf{6.2.7}
+
+设 $ V $ 是 $ n $ 维欧式空间,  $ \mathcal{A} $ 是第 $ 1 $ 题中定义的镜面反射,  $ \mathcal{B} $ 是 $ V $ 内一正交变换. 证明 $ \mathcal{B}^{-1}\mathcal{AB} $ 也是 $ V $ 内一镜面反射. \\
+
+\end{myexample}
+\Solution  
+
+考查 $ \mathcal{B}^{-1}\mathcal{AB} $ 的作用. 由于 $ \mathcal{B} $ 是正交变换, 所以 $ \mathcal{B}^{-1} $ 也是正交变换. 对于 $ \forall \alpha \in V $ , 有:
+\begin{align*}
+\mathcal{B}^{-1}\mathcal{AB}(\alpha) &= B^{-1}(\mathcal{B}\alpha - 2(\eta, \mathcal{B}\alpha)\eta) \\
+&= \alpha - 2(\eta, \mathcal{B}\alpha)\mathcal{B}^{-1}\eta \\
+&= \alpha - 2(\mathcal{B}^{-1}\eta, \alpha)\mathcal{B}^{-1}\eta 
+\end{align*}
+由于 $ (\mathcal{B}^{-1}\eta, \mathcal{B}^{-1}\eta) = (\eta, \eta)=1 $ , 所以 $ \mathcal{B}^{-1}\eta $ 也是 $ V $ 中的一个单位向量. 
+
+由镜面反射的定义可知,  $ \mathcal{B}^{-1}\mathcal{AB} $ 是关于超平面 $ L(\mathcal{B}^{-1}\eta)^{\perp} $ 的镜面反射.\\ \\ \\
+
+
+
+
+
+\begin{myexample}
+	\textbf{6.2.10}
+
+设 $ V $ 为 $ n $ 维欧式空间,  $ \mathcal{A} $ 与 $ \mathcal{A}^* $ 为 $ V $ 内两个线性变换. 如果对任意 $ \alpha, \beta \in V $ 有
+ $$  (\mathcal{A}\alpha, \beta) = (\alpha, \mathcal{A}^*\beta)  $$ 
+则称 $ \mathcal{A}^* $ 为 $ \mathcal{A} $ 的共轭变换. 证明: $ \mathcal{A} $ 与 $ \mathcal{A}^* $ 在 $ V $ 的任一组标准正交基下的矩阵互为转置. \\
+
+\end{myexample}
+\Solution  
+
+设线性变换 $ \mathcal{A} $ 在 $ V $ 的一组标准正交基 $ \xi_1, \xi_2, \cdots, \xi_n $ 下的矩阵为 $ A = (a_{ij})_{n \times n} $ , 即 :
+ $$  \mathcal{A}(\xi_1, \xi_2, \cdots, \xi_n) = (\xi_1, \xi_2, \cdots, \xi_n)A  $$ 
+则有 $ \mathcal{A}\xi_i = \sum\limits_{k=1}^n a_{ki}\xi_k $ . 再设 $ \mathcal{A}^* $ 在这组基下的矩阵为 $ B = (b_{ij})_{n \times n} $ , 即:
+ $$  \mathcal{A}^*(\xi_1, \xi_2, \cdots, \xi_n) = (\xi_1, \xi_2, \cdots, \xi_n)B  $$ 
+于是 $ \mathcal{A}^*\xi_i = \sum\limits_{k=1}^n b_{ki}\xi_k $ . 再由共轭变换的定义可得:
+ $$  (\mathcal{A}\xi_i, \xi_j) = (\xi_i, \mathcal{A}^*\xi_j)   $$ 
+即:
+ $$  (\sum\limits_{k=1}^n a_{ki}\xi_k, \xi_j) = (\xi_i, \sum\limits_{m=1}^n b_{mj}\xi_m) \ \ \Rightarrow \ \ \sum\limits_{k=1}^n a_{ki}(\xi_k, \xi_j) = \sum\limits_{m=1}^n b_{mj}(\xi_i,\xi_m)  $$ 
+而 $ \xi_1, \xi_2, \cdots, \xi_n $ 是 $ V $ 的一组标准正交基, 所以 $ (\xi_i, \xi_j) = \delta_{ij} $ . 从而:
+ $$  \sum\limits_{k=1}^n a_{ki}\delta_{kj} = \sum\limits_{m=1}^n b_{mj}\delta_{im} \ \ \Rightarrow \ \ a_{ji} = b_{ij}, \ (i,j = 1, \cdots, n) $$ 
+即: $ B=A' $ ,  $ \mathcal{A} $ 与 $ \mathcal{A}^* $ 在 $ V $ 的任一组标准正交基下的矩阵互为转置.  \\  \\  \\
+
+
+
+
+
+\begin{myexample}
+	\textbf{6.2.11}
+
+续上题. 
+
+(1)证明: 对 $ V $ 内每个线性变换 $ \mathcal{A} $ , 其共轭变换是存在且唯一的, 而且 $ (\mathcal{A}^*)^* = \mathcal{A} $ .
+
+(2)证明:  $ \mathcal{A} $ 是对称变换的充分必要条件是 $ \mathcal{A}^* = \mathcal{A} $ .\\
+
+\end{myexample}
+\Solution 
+
+(1) \textbf{存在性:}
+
+分两个步骤去证明线性变换 $ \mathcal{A} $ 的共轭变换是存在的. 
+
+(i) 对于给定的 $ \beta \in V $ , 存在唯一的向量 $ \widetilde{\beta} \in V $ , 使得对于任意 $ \alpha \in V $ , 有:
+ $$  (\mathcal{A}\alpha, \beta) = (\alpha, \widetilde{\beta})  $$ 
+利用Euclid空间的内积,定义从线性空间 $ V $ 到其对偶空间 $ V^* $ 的映射 $ \sigma $ :
+\begin{center}
+	\begin{tabular}{cccc}
+		 $ \sigma: $   &   $ V $      &   $ \rightarrow $   &   $ V^* $   \\
+		&   $ \beta $  &   $ \mapsto $       &  $ f_{\beta}(\alpha)=(\alpha, \beta) $  
+	\end{tabular}
+\end{center}
+下证明 $ \sigma $ 是一个双射. 首先证明 $ \sigma $ 是单射.设 $ \beta_1, \beta_2 \in V $ , 且 $ \sigma(\beta_1) = \sigma(\beta_2) $ .
+
+于是对于 $ \forall \alpha \in V $ , 有:
+ $$  f_{\beta_1}(\alpha) = f_{\beta_2}(\alpha) \ \ \Rightarrow \ \ (\alpha, \beta_1) = (\alpha, \beta_2) \ \ \Rightarrow \ \ (\alpha, \beta_1-\beta_2) = 0  $$ 
+由于 $ \alpha $ 是任意的, 取 $ \alpha=\beta_1-\beta_2 $ 可得:
+ $$  (\beta_1-\beta_2, \beta_1-\beta_2)=0 \ \ \Rightarrow \ \ \beta_1 - \beta_2 = 0  $$ 
+即: $ \beta_1 = \beta_2 $ ,  $ \sigma $ 是单射. 
+
+其次证明 $ \sigma $ 是满射. 事实上, 设 $ f \in V^* $ , 即 $ f $ 是 $ V $ 上的线性函数. 设 $ \xi_1, \cdots, \xi_n $ 是 $ V $ 的一组标准正交基, 且
+ $$  \alpha = x_1\xi_1 + x_2\xi_2 + \cdots + x_n\xi_n  $$ 
+则有:
+ $$  f(\alpha) = f(\sum\limits_{i=1}^n x_i\xi_i) = \sum\limits_{i=1}^n x_if(\xi_i)  $$ 
+另一方面, 取 $ \beta = f(\xi_1)\xi_1 + f(\xi_2)\xi_2 + \cdots + f(\xi_n)\xi_n \in V $ , 则:
+ $$  f_{\beta}(\alpha) = (\alpha, \beta) = (\sum\limits_{i=1}^nx_i\xi_i, \sum\limits_{k=1}^nf(\xi_k)\xi_k)=\sum\limits_{i=1}^n\sum\limits_{k=1}^n x_if(\xi_k)(\xi_i, \xi_k)  $$ 
+由于 $ \xi_1, \xi_2, \cdots, \xi_n $ 是 $ V $ 的标准正交基, 所以 $ (\xi_i, \xi_j) = \delta_{ij} $ . 所以:
+ $$  f_{\beta}(\alpha) = \sum\limits_{i=1}^n\sum\limits_{k=1}^n x_if(\xi_k)\delta_{ik} = \sum\limits_{i=1}^nx_if(\xi_i) = f(\alpha)  $$ 
+由 $ \alpha $ 的任意性可知 $ f = f_{\beta} $ , 即存在向量 $ \beta \in V $ , 使得 $ \sigma(\beta) = f_{\beta}=f $ . 所以 $ \sigma $ 是满射.
+综上,  $ \sigma $ 是从 $ V $ 到 $ V^* $ 的双射.(事实上, 可以进一步验证,  $ \sigma $ 是保加法和保乘法的, 所以 $ \sigma $ 是从 $ V $ 到 $ V^* $ 的一个同构映射, 从而欧几里得空间 $ V $ 与它的对偶空间 $ V^* $ 同构.)
+
+考虑函数 $ f(\alpha) = (\mathcal{A}(\alpha), \beta) $ , 它是 $ V $ 上的一个实函数.对任意的 $ \lambda_1, \lambda_2 \in \mathbb{R} $ ,  $ \alpha_1, \alpha_2 \in V $ , 有:
+\begin{align*}
+f(\lambda_1\alpha_1+\lambda_2\alpha_2, \beta) &= (\mathcal{A}(\lambda_1\alpha_1 + \lambda_2\alpha_2), \beta) \\
+&=(\lambda_1\mathcal{A}(\alpha_1) + \lambda_2\mathcal{A}(\alpha_2), \beta)  \\
+&=\lambda_1(\mathcal{A}(\alpha_1), \beta) + \lambda_2(\mathcal{A}(\alpha_2), \beta) \\
+&=\lambda_1f(\alpha_1) + \lambda_2f(\alpha_2)
+\end{align*}
+所以 $ f(\alpha) $ 是 $ V $ 的线性函数, 即 $ f(\alpha) \in V^* $ . 所以存在唯一的 $ \widetilde{\beta} \in V $ , 使得 $ f=f_{\widetilde{\beta}} $ . 因此 $ f(\alpha) = f_{\widetilde{\beta}}(\alpha) $ , 即: $ (\mathcal{A}(\alpha), \beta) = (\alpha, \widetilde{\beta}) $ . \\
+
+**********
+
+有同学直接用Riesz表示定理来证明 $ \widetilde{\beta} $ 的存在性. 那么也需要先定义 $ f(\alpha) = (\mathcal{A}\alpha, \beta) $ , 证明 $ f(\alpha) \in V^* $ , 再由Riesz表示定理得到存在唯一的 $ \widetilde{\beta} $ , 使得 $ (\mathcal{A}\alpha, \beta) = (\alpha, \widetilde{\beta}) $ . 
+
+**********  \\
+
+
+(ii) 建立映射 $ \mathcal{A}^*(\beta) = \widetilde{\beta} $ , 并证明所定义的映射 $ \mathcal{A}^* $ 是线性的. 
+
+定义 $ A^*(\beta) = \widetilde{\beta} $ . 设 $ \lambda_1, \lambda_2 \in \mathbb{R} $ ,  $ \beta_1, \beta_2 \in V $ , 由定义, 有:
+\begin{align*}
+(\alpha, \mathcal{A}^*(\lambda_1\beta_1+\lambda_2\beta_2)) &= (\mathcal{A}(\alpha), \lambda_1\beta_1 + \lambda_2\beta_2) \\
+&= \lambda_1(\mathcal{A}(\alpha), \beta_1) + \lambda_2(\mathcal{A}(\alpha_2), \beta_2) \\
+&= \lambda_1(\alpha, \mathcal{A}^*(\beta_1)) + \lambda_2(\alpha, \mathcal{A}^*(\beta_2)) \\
+&= (\alpha, \lambda_1\mathcal{A}^*(\beta_1) + \lambda_2\mathcal{A}^*(\beta_2))
+\end{align*}
+即:
+ $$  (\alpha, \mathcal{A}^*(\lambda_1\beta_1 + \lambda_2\beta_2) - \lambda_1\mathcal{A}^*(\beta_1)-\lambda_2\mathcal{A}^*(\beta_2)) =0  $$ 
+由 $ \alpha $ 的任意性以及内积的正定性可知,  $ \mathcal{A}^*(\lambda_1\beta_1 + \lambda_2\beta_2) = \lambda_1\mathcal{A}^*(\beta_1) + \lambda_2\mathcal{A}^*(\beta_2) $ .
+
+综上, 对于 $ V $ 内每个线性变换 $ \mathcal{A} $ , 其共轭变换是存在的. \\
+
+\textbf{唯一性:}
+
+假设另有线性变换 $ \mathcal{B} $ 使得:
+ $$  (\mathcal{A}\alpha, \beta) = (\alpha, \mathcal{B}(\beta)), \ \ \forall \alpha, \beta \in V  $$ 
+则:
+ $$  (\alpha, \mathcal{A}^*(\beta)) = (\alpha, \mathcal{B}\beta), \ \ \forall \alpha, \beta \in V  $$ 
+由 $ \alpha $ 的任意性可知,  $ \mathcal{A}^*(\beta) = \mathcal{B}(\beta),\ \forall \beta \in V $ . 从而 $ \mathcal{A}^* = \mathcal{B} $ . 
+
+综上所述, 线性变换 $ \mathcal{A} $ 的共轭变换的存在唯一性得证.  \\
+
+下面证明 $ (\mathcal{A}^*)^* = \mathcal{A} $ .
+ $$  (\alpha, (\mathcal{A}^*)^*(\beta)) = (\mathcal{A}^*\alpha, \beta) = (\beta, \mathcal{A}^*\alpha) = (\mathcal{A}\beta, \alpha) = (\alpha, \mathcal{A}(\beta))  $$   
+由 $ \alpha $ 的任意性可知(取 $ \alpha =(\mathcal{A}^*)^*(\beta)-\mathcal{A}(\beta))  $ ), 则可知:
+ $$  (\mathcal{A}^*)^*(\beta) = \mathcal{A}(\beta), \ \forall \beta \in V \ \ \Rightarrow \ \ (\mathcal{A}^*)^* = \mathcal{A}   $$ 
+
+(2)
+
+\textbf{充分性:}
+
+若 $ \mathcal{A}^* = \mathcal{A} $ , 任取 $ \alpha, \beta \in V $ , 有:
+ $$  (\mathcal{A}(\alpha), \beta) = (\alpha, \mathcal{A}^*(\beta)) = (\alpha, \mathcal{A}(\beta))  $$ 
+所以 $ \mathcal{A} $ 是对称变换. \\
+
+\textbf{必要性:}
+
+若 $ \mathcal{A} $ 是对称变换, 则:
+ $$  (\alpha, \mathcal{A}^*(\beta)) = (\mathcal{A}(\alpha), \beta) = (\alpha, \mathcal{A}(\beta)), \ \ \Rightarrow \ \ (\alpha, \mathcal{A}^*(\beta) - \mathcal{A}(\beta))  $$ 
+由于 $ \alpha $ 是任取的, 取 $ \alpha = \mathcal{A}^*(\beta) - \mathcal{A}(\beta)  $ , 由内积的正定性可知:
+ $$  \mathcal{A}^*(\beta) - \mathcal{A}(\beta) = 0, \ \ \forall \beta \in V  $$ 
+从而可得:  $ \mathcal{A}^* = \mathcal{A} $ .
+
+综上,  $ \mathcal{A} $ 是对称变换的充分必要条件是 $ \mathcal{A}^* = \mathcal{A} $ . \\  \\  \\
+
+
+
+
+
+
+
+\begin{myexample}
+	\textbf{6.2.12}
+
+证明: 对 $ n $ 维欧式空间 $ V $ 内的任一线性变换 $ \mathcal{A} $ ,  $ \mathcal{A}+\mathcal{A}^* $ 是一个对称变换. \\
+
+\end{myexample}
+\Solution 
+
+先证明两个结论: 对于 $ V $ 内的线性变换 $ \mathcal{A}, \mathcal{B} $ ,
+ $$  (\mathcal{A}+\mathcal{B})^* = \mathcal{A}^* + \mathcal{B}^*, \ \ (\mathcal{A}^*)^* = \mathcal{A}  $$ 
+任取 $ \alpha, \beta \in V $ , 有:
+\begin{align*}
+(\alpha, (\mathcal{A}+\mathcal{B})^*(\beta)) &= ((\mathcal{A+B})\alpha, \beta) = (\mathcal{A}\alpha, \beta) + (\mathcal{B}\alpha, \beta) = (\alpha, \mathcal{A}^*\beta) + (\alpha, \mathcal{B}^*\beta) \\
+&= (\alpha, (\mathcal{A}^* + \mathcal{B}^*)\beta) \\ 
+(\alpha, (\mathcal{A}^*)^*\beta) &= (\mathcal{A}^*\alpha, \beta) = (\beta, \mathcal{A}^*\alpha) = (\mathcal{A}\beta, \alpha) = (\alpha, \mathcal{A}\beta) 
+\end{align*}
+所以由 $ \alpha, \beta $ 的任意性以及内积的正定性(具体步骤自行补充完整),可得: 
+ $$ (\mathcal{A}+\mathcal{B})^* = \mathcal{A}^* + \mathcal{B}^*, \ \ (\mathcal{A}^*)^* = \mathcal{A} $$ 
+
+于是,
+ $$  (\mathcal{A} + \mathcal{A}^*)^* = \mathcal{A}^* + (\mathcal{A}^*)^* = \mathcal{A}^* + \mathcal{A}  $$ 
+由 $ 6.2.11(2) $ 可知,  $ \mathcal{A} + \mathcal{A}^* $ 是一个对称变换.  \\
+
+**********
+
+也可以直接做, 模仿上面两个结论证明步骤即可.
+\begin{align*}
+((\mathcal{A}+\mathcal{A}^*)\alpha, \beta) &= (\mathcal{A}\alpha, \beta) + (\mathcal{A}^*\alpha, \beta) = (\alpha, \mathcal{A}^*\beta) + (\beta, \mathcal{A}^*\alpha) \\
+&= (\alpha, \mathcal{A}^*\beta) + (\mathcal{A}\beta, \alpha) = (\alpha, \mathcal{A}^\beta) + (\alpha, \mathcal{A}\beta) \\
+&= (\alpha, (\mathcal{A}+\mathcal{A})^*\beta)
+\end{align*}
+由对称变换的定义可知,  $ \mathcal{A} + \mathcal{A}^* $ 是对称变换.  \\
+
+**********
+
+其实本质上都是就是用共轭变换的定义以及实内积的线性性、对称性换来换去换来换去换来换去就换出来最后的结果了. \\ 
+
+**********
+
+关于共轭变换的一些性质:
+
+设 $ \mathcal{A} $ 与 $ \mathcal{B} $ 是 $ n $ 维Euclid空间 $ V $ 的线性变换,  $ \lambda \in \mathbb{R} $ , 则:
+ $$  (\mathcal{A}+\mathcal{B})^* = \mathcal{A}^* + \mathcal{B}^*, \ (\lambda\mathcal{A})^* = \lambda\mathcal{A}^*, \ (\mathcal{AB})^* = \mathcal{B}^*\mathcal{A}^*, \ (\mathcal{A}^*)^* = \mathcal{A}  $$ 
+证明方法如上一段话所述. \\  \\  \\ 
+
+
+\begin{myexample}
+	\textbf{6.2.13}
+
+设 $ \mathcal{A} $ 是 $ n $ 维欧式空间 $ V $ 中的一个线性变换, 如果 $ \mathcal{A}^* = - \mathcal{A} $ , 即对任意 $ \alpha, \beta \in V $ , 有:
+ $$  (\mathcal{A}\alpha, \beta) = - (\alpha, \mathcal{A}\beta)  $$ 
+则称 $ \mathcal{A} $ 是一个反对称变换. 证明:
+
+(1)  $ \mathcal{A} $ 是反对称变换的充分必要条件是:  $ \mathcal{A} $ 在某一组标准正交基下的矩阵是反对称矩阵. 
+
+(2) 如果 $ M $ 是反对称变换 $ \mathcal{A} $ 的不变子空间, 则 $ M $ 的正交补 $ M^{\perp} $ 也是 $ \mathcal{A} $ 的不变子空间.\\
+
+\end{myexample}
+\Solution
+
+(1)取 $ V $ 的一组标准正交基 $ \xi_1, \xi_2, \cdots, \xi_n $ , 设线性变换在这组基下的矩阵为 $ A $ , 即:
+ $$  \mathcal{A}(\xi_1, \xi_2, \cdots, \xi_n) = (\xi_1, \xi_2, \cdots, \xi_n)A  $$ 
+任取 $ \alpha, \beta \in V $ , 设 $ \alpha = \sum\limits_{i=1}^n x_i\xi_i $ , \  $ \beta=\sum\limits_{i=1}^n y_i\xi_i $ , 则它们在这组基下的坐标分别为:
+ $$  X = (x_1, x_2, \cdots, x_n)' \ \ \ Y = (y_1, y_2, \cdots, y_n)'  $$ 
+且可以得到,  $ \mathcal{A}\alpha, \mathcal{A}\beta $ 在这组基下的坐标分别为 $ AX, AY $ . 所以:
+ $$  (\mathcal{A}\alpha, \beta) = (AX)'Y = X'A'Y = -X'AY  $$ 
+ $$  (\alpha, \mathcal{A}\beta) = X'AY  $$ 
+比较上面两式可知 $ \mathcal{A} $ 是反对称变换. 即:  $ (\mathcal{A}\alpha, \beta) = -(\alpha, \mathcal{A}\beta) $ 的充分必要条件是
+ $$ X'A'Y = -X'AY = X'(-A)Y $$ 
+即 $ A' = -A $ ,  $ A $ 为反对称矩阵. \\
+
+(2) 任取 $ \alpha \in M^{\perp} $ , 对于 $ \forall \beta \in M $ , 有 $ \mathcal{A}\beta \in M $ , 且:
+ $$  (\mathcal{A}\alpha, \beta) = -(\alpha, \mathcal{A}\beta) = 0  $$ 
+即: $ \mathcal{A}\alpha \in M^{\perp} $ . 所以 $ M^{\perp} $ 也是 $ \mathcal{A} $ 的不变子空间.
+
+
+\section{习题三 \quad 线性映射与线性变换}
+\section{习题四 \quad 线性变换的特征值与特征向量}
+
+\chapter{双线性函数与二次型}
+\section{习题一 \quad 双线性函数}	
+\section{习题二 \quad 二次型}
+\section{习题三 \quad 实与复二次型的分类}
+\section{习题四 \quad 正定二次型}
+
+
+\part{下册}
+
+\chapter{带度量的线性空间}
+\section{习题一 \quad 欧几里得空间的定义和基本性质}	
+\section{习题二 \quad 欧几里得空间中的特殊线性变换}
+\section{习题三 \quad 酉空间}
+
+\chapter{线性变换的 Jordan 标准形}
+\section{习题一 \quad 幂零线性变换的 Jordan 标准形}	
+\section{习题二 \quad 一般线性变换的 Jordan 标准形}
+
+\chapter{问题}
+\section{插值问题}
+\textbf{\large{插值问题}} \\
+\textbf{1. 基本概念} \\ 
+设 $ y=f(x) $ 在 $ [a,b] $ 上有定义,  $ a \leq x_0 < x_1 < \cdots < x_n \leq b $ .且已知它在 $ x_i $ 处的函数值 $ y_i = f(x_i) (i=0, 1, 2, \cdots, n) $ , 即已知函数值表
+\begin{center}
+	\begin{tabular}{c|ccccc}
+		 $ x_i $  &  $ x_0 $  &  $ x_1 $  &  $ x_2 $  &  $ \cdots $  &  $ x_n $  \\
+		\hline
+		 $ y_i $  &  $ y_0 $  &  $ y_1 $  &  $ y_2 $  &  $ \cdots $  &  $ y_n $  \\
+	\end{tabular}
+\end{center}
+选取较简单的函数 $ y = P(x) $ 来近似表示 $ y = f(x) $ ，使得满足条件:
+ $$  P(x_i) = f(x_i) \ \ \ \ \ (i = 0, 1, 2, \cdots, n)  $$ 
+则 $ P(x) $ 称为\underline{插值函数},  $ f(x) $ 称为\underline{被插值函数},  $ x_0, x_1, \cdots, x_n $ 称为\underline{插值节点}. \\
+
+\textbf{2. 插值多项式的存在唯一性}  \\
+当选取插值函数 $ P(x) $ 为多项式函数时，即选取：
+ $$  P_n(x) = a_0 + a_1x + a_2x^2 + \cdots + a_nx^n  $$ 
+使得满足插值条件
+ $$  P(x_i) = f(x_i) \ \ \ \ \ (i = 0, 1, 2, \cdots, n)  $$ 
+这样的问题称为\underline{n次多项式插值问题}， $ y = P_n(x) $ 称为 $ y=f(x) $ 的\underline{n次插值多项式}. \\
+
+\begin{myexample}
+	\textbf{定理：}给定 $ x_i $ (两两不等)以及 $ y_i = f(x_i)\ (i = 0, 1, 2, \cdots, n) $ ， $ n $ 次插值多项式 $ P_n(x) $ 存在且唯一. 
+	
+\end{myexample}
+\Solution
+请自行证明. (Hint: 待定系数法，Vandermonde行列式). \\
+
+\begin{myexample}
+	\textbf{3. 插值余项} \\ 
+	在 $ [a,b] $ 上用 $ P_n(x) $ 近似表示 $ f(x) $ ，在插值节点 $ x_i $ 处时没有误差的，但是在其它点 $ x $ 处，一般 $ P_n(x) $ 与 $ f(x) $ 不相等. 记：
+	 $$  R_n(x) = f(x) - P_n(x)  $$ 
+	称 $ R_n(x) $ 时插值多项式的\underline{余项}或\underline{截断误差}.引入记号：
+	 $$  \omega_{n+1}(x) = (x-x_0)(x-x_1)\cdots(x-x_n)  $$ 
+	\textbf{定理：}设 $ f(x) $ 在 $ [a,b] $ 上 $ n+1 $ 阶导数存在，则插值多项式 $ P_n(x) $ 的余项为：
+	 $$  R_n(x) = \dfrac{f^{(n+1)}(\xi)}{(n+1)!}\omega_{n+1}(x) \ \ \ \ (*)  $$ 
+	\hspace{2.3em} 其中， $ \xi \in (a,b) $ 且依赖于 $ x $ ，而 $ x \in [a,b] $ . \\
+	
+\end{myexample}
+\Solution 当 $ x = x_i\ (i = 0, 1, \cdots, n) $ 时，
+ $$  R_n(x) = f(x) - P_n(x) = 0  $$ 
+\hspace{2.7em} 而 $ \omega_{n+1}(x) = 0 $ . 所以 $ (*) $ 成立. 
+
+\hspace{2.7em} 当 $ x \neq x_i\ (i=0, 1, \cdots, n) $ 时，作辅助函数：
+ $$  \phi(t) = f(t) - P_n(t) - \dfrac{f(x) - P_n(x)}{\omega_{n+1}(x)}\omega_{n+1}(t)  $$  
+\hspace{2.7em} 则 $ \phi(t) $ 在 $ t \in [a,b] $ 上 $ n+1 $ 阶可导. 易知 $ t = x, x_0,\cdots, x_n $ 是 $ \phi(t) $ 的 $ n+2 $ 个不同零点
+
+\hspace{2.7em} 由Rolle定理，在 $ \phi(t) $ 的每两个零点之间至少存在一个 $ \phi'(t) $ 的零点. 
+
+\hspace{2.7em} 因此 $ \phi'(t) $ 在 $ (a,b) $ 内至少有 $ n+1 $ 个互异零点.反复对 $ \phi'(t), \phi''(t), \cdots, \phi^{n}(t) $ 用Rolle定
+
+\hspace{2.7em} 理，可以得到：至少存在一点 $ \xi \in (a,b) $ ，使得 $ \phi^{(n+1)}(\xi)=0 $ .由于：
+ $$  \dfrac{\mathrm{d}^{n+1}}{\mathrm{d}t^{n+1}}P_n(t) = 0,\ \ \ \ \ \dfrac{\mathrm{d}^{n+1}}{\mathrm{d}t^{n+1}}w_{n+1}(t) = (n+1)!   $$ 
+\hspace{2.7em} 因此：
+ $$  \phi^{(n+1)}(\xi) = f^{(n+1)}(\xi) - \dfrac{f(x) - P_n(x)}{w_{n+1}(x)}\cdot(n+1)! = 0  $$ 
+\hspace{2.7em} 即: $ R_n(x) = f(x) - P_n(x) =\dfrac{f^{(n+1)}(\xi)}{(n+1)!}\omega_{n+1}(x)  $  \\
+
+\textbf{4. Lagrange插值函数} \\
+(1)拉格朗日插值基函数：
+ $$ l_i(x) = \dfrac{(x-x_0)(x-x_1)\cdots(x-x_{i-1})(x-x_{i+1})\cdots(x-x_n)}{(x_i-x_0)(x_i-x_1)\cdots(x_i-x_{i-1})(x_i-x_{i+1})\cdots(x_i-x_n)} = \prod\limits_{k\neq i} \dfrac{x-x_k}{x_i-x_k} $$ 
+
+(2)拉格朗日插值函数：
+ $$  L_n(x) = y_0l_0(x) + y_1l_1(x) + \cdots + y_nl_n(x) = \sum\limits_{k=0}^n y_kl_k(x) = \sum\limits_{k=0}^n\dfrac{w_{n+1}(x)}{(x-x_i)w'_{n+1}(x_i)}y_i  $$  \\  \\  
+
+\section{基与同构}
+\begin{myexample}
+	\textbf{1.} 
+	证明  $ \sum\limits_{m=0}^{\infty}\dfrac{1}{(2m+1)^2}=\dfrac{\pi^2}{8} $ .
+\end{myexample}
+
+
+
+
+
+
+\end{document}
