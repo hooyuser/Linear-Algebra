@@ -16,23 +16,23 @@
 \contentsline {section}{\numberline {3.3}习题三 \hskip 1em\relax Laplace 展开式与 Binet-Cauchy 公式}{6}{section.3.3}
 \contentsline {chapter}{\numberline {4}线性空间与线性变换}{7}{chapter.4}
 \contentsline {section}{\numberline {4.1}习题一 \hskip 1em\relax 线性空间的基本概念}{7}{section.4.1}
-\contentsline {section}{\numberline {4.2}习题二 \hskip 1em\relax 子空间与商空间}{15}{section.4.2}
-\contentsline {section}{\numberline {4.3}习题三 \hskip 1em\relax 线性映射与线性变换}{79}{section.4.3}
-\contentsline {section}{\numberline {4.4}习题四 \hskip 1em\relax 线性变换的特征值与特征向量}{79}{section.4.4}
-\contentsline {chapter}{\numberline {5}双线性函数与二次型}{80}{chapter.5}
-\contentsline {section}{\numberline {5.1}习题一 \hskip 1em\relax 双线性函数}{80}{section.5.1}
-\contentsline {section}{\numberline {5.2}习题二 \hskip 1em\relax 二次型}{80}{section.5.2}
-\contentsline {section}{\numberline {5.3}习题三 \hskip 1em\relax 实与复二次型的分类}{80}{section.5.3}
-\contentsline {section}{\numberline {5.4}习题四 \hskip 1em\relax 正定二次型}{80}{section.5.4}
-\contentsline {part}{II\hspace {1em}下册}{81}{part.2}
-\contentsline {chapter}{\numberline {6}带度量的线性空间}{82}{chapter.6}
-\contentsline {section}{\numberline {6.1}习题一 \hskip 1em\relax 欧几里得空间的定义和基本性质}{82}{section.6.1}
-\contentsline {section}{\numberline {6.2}习题二 \hskip 1em\relax 欧几里得空间中的特殊线性变换}{82}{section.6.2}
-\contentsline {section}{\numberline {6.3}习题三 \hskip 1em\relax 酉空间}{82}{section.6.3}
-\contentsline {chapter}{\numberline {7}线性变换的 Jordan 标准形}{83}{chapter.7}
-\contentsline {section}{\numberline {7.1}习题一 \hskip 1em\relax 幂零线性变换的 Jordan 标准形}{83}{section.7.1}
-\contentsline {section}{\numberline {7.2}习题二 \hskip 1em\relax 一般线性变换的 Jordan 标准形}{83}{section.7.2}
-\contentsline {chapter}{\numberline {8}问题}{84}{chapter.8}
-\contentsline {section}{\numberline {8.1}插值问题}{84}{section.8.1}
-\contentsline {section}{\numberline {8.2}基与同构}{86}{section.8.2}
+\contentsline {section}{\numberline {4.2}习题二 \hskip 1em\relax 子空间与商空间}{16}{section.4.2}
+\contentsline {section}{\numberline {4.3}习题三 \hskip 1em\relax 线性映射与线性变换}{80}{section.4.3}
+\contentsline {section}{\numberline {4.4}习题四 \hskip 1em\relax 线性变换的特征值与特征向量}{80}{section.4.4}
+\contentsline {chapter}{\numberline {5}双线性函数与二次型}{81}{chapter.5}
+\contentsline {section}{\numberline {5.1}习题一 \hskip 1em\relax 双线性函数}{81}{section.5.1}
+\contentsline {section}{\numberline {5.2}习题二 \hskip 1em\relax 二次型}{81}{section.5.2}
+\contentsline {section}{\numberline {5.3}习题三 \hskip 1em\relax 实与复二次型的分类}{81}{section.5.3}
+\contentsline {section}{\numberline {5.4}习题四 \hskip 1em\relax 正定二次型}{81}{section.5.4}
+\contentsline {part}{II\hspace {1em}下册}{82}{part.2}
+\contentsline {chapter}{\numberline {6}带度量的线性空间}{83}{chapter.6}
+\contentsline {section}{\numberline {6.1}习题一 \hskip 1em\relax 欧几里得空间的定义和基本性质}{83}{section.6.1}
+\contentsline {section}{\numberline {6.2}习题二 \hskip 1em\relax 欧几里得空间中的特殊线性变换}{83}{section.6.2}
+\contentsline {section}{\numberline {6.3}习题三 \hskip 1em\relax 酉空间}{83}{section.6.3}
+\contentsline {chapter}{\numberline {7}线性变换的 Jordan 标准形}{84}{chapter.7}
+\contentsline {section}{\numberline {7.1}习题一 \hskip 1em\relax 幂零线性变换的 Jordan 标准形}{84}{section.7.1}
+\contentsline {section}{\numberline {7.2}习题二 \hskip 1em\relax 一般线性变换的 Jordan 标准形}{84}{section.7.2}
+\contentsline {chapter}{\numberline {8}问题}{85}{chapter.8}
+\contentsline {section}{\numberline {8.1}插值问题}{85}{section.8.1}
+\contentsline {section}{\numberline {8.2}基与同构}{87}{section.8.2}
 \contentsfinish 

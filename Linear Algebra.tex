@@ -1,6 +1,5 @@
+% !TeX spellcheck = en_US
 \documentclass[11pt,a4paper,openany,oneside]{book}
-
-
 
 \usepackage[UTF8]{ctex}
 
@@ -47,6 +46,7 @@
 
 
 \def\I{\mathrm{i}}
+\def\diag{\mathrm{diag}}
 
 %定义分数线
 
@@ -260,9 +260,9 @@
 \textbf{7.} 
 在  $ \mathbb{Q} $ 上的线性空间  $ \mathbb{Q}(\omega) $ 内判断下列向量组是否线性相关： 
 
-(1)  $ \frac{1}{2} $ ， $ 3 $ ， $ -7 $ ；  \ \ \ \ \ (2)  $ 1 $ ， $ \omega $ ， $ \omega^2 $ ， $ \omega^3 $ ， $ \omega^4 $ ；  \ \ \ \ \ (3)  $ \omega$，$\overline{\omega}$，$\sqrt{3}\I $  . 
+(1)  $ \frac{1}{2} $ ,  $ 3 $ ,  $ -7 $ ；  \ \ \ \ \ (2)  $ 1 $ ,  $ \omega $ ,  $ \omega^2 $ ,  $ \omega^3 $ ,  $ \omega^4 $ ；  \ \ \ \ \ (3)  $ \omega$, $\overline{\omega}$, $\sqrt{3}\I $  . 
 
-其中， $ \mathbb{Q} (\omega) = \{a+b\omega: a, b \in \mathbb{Q} \} $ ,  $ w = \dfrac{-1+\sqrt{3}\I}{2} $ . 
+其中,  $ \mathbb{Q} (\omega) = \{a+b\omega: a, b \in \mathbb{Q} \} $ ,  $ w = \dfrac{-1+\sqrt{3}\I}{2} $ . 
 \end{myexample}
 \Solution
 
@@ -312,10 +312,10 @@ k_2 = 0
 \textbf{14.} 
 给定数域 $ K $  上的一个 $ n $ 阶方阵 $ A \neq 0 $ . 设
  $$  f(\lambda) = a_0\lambda^m + a_1\lambda^{m-1} + \cdots + a_m \ \ \ (a_0 \neq 0, a_i \in K)  $$ 
-是使 $ f(A) = 0 $ 的最低次多项式. 设 $ V $ 是由系数在 $ K $ 内的 $ A $ 的多项式的全体关于矩阵加法、数乘所组成的 $ K $ 上的线性空间，证明：
+是使 $ f(A) = 0 $ 的最低次多项式. 设 $ V $ 是由系数在 $ K $ 内的 $ A $ 的多项式的全体关于矩阵加法、数乘所组成的 $ K $ 上的线性空间, 证明：
 \vspace{-1em}
  $$  E,\ A,\ A^2,\ \cdots,\ A^{m-1}   $$ 
-是 $ V $ 的一组基，从而 $ \dim V = m $. 求 $ V $ 中向量
+是 $ V $ 的一组基, 从而 $ \dim V = m $. 求 $ V $ 中向量
 \vspace{-1em}
  $$  (A - aE)^k  \ \ \ \ (a \in K, \ 0 \leq k \leq m) $$ 
 在这组基下的坐标. 
@@ -325,7 +325,7 @@ k_2 = 0
 由于 $ a_0 \neq 0 $ , 记 $ m(\lambda) =\dfrac{f(\lambda)}{a_0} = \lambda^m + b_1\lambda^{m-1} + \cdots + b_m $, 所以
  $$ m(A) = A^m + b_1A^{m-1} + \cdots + b_mE=0\implies A^m = -b_1A^{m-1} - \cdots - b_{m-1}A - b_mE.$$ 
 
-继续迭代，便可用 $ E, A, A^2, \cdots, A^{m-1} $ 线性表出 $ A^{m+1}, A^{m+2}, \cdots $ .
+继续迭代, 便可用 $ E, A, A^2, \cdots, A^{m-1} $ 线性表出 $ A^{m+1}, A^{m+2}, \cdots $ .
 
 从而 $ V $ 中的任一元素都可以表示为
  $$  c_0E + c_1A + c_2 A^2 + \cdots + c_{m-1}A^{m-1}.$$ 
@@ -335,16 +335,16 @@ k_2 = 0
  $$  h(\lambda) = k_0 + k_1\lambda + k_2\lambda^2 + \cdots + k_{m-1}\lambda^{m-1} \equiv 0\implies k_0 = k_1 = k_2 = \cdots = k_{m-1} = 0,$$ 
 即 $ E, A, A^2, \cdots, A^{m-1} $ 线性无关. 从而 $ E, A, A^2, \cdots, A^{m-1} $ 是 $ V $ 的一组基, 且有 $ \dim  V = m $.
 
-由于 $ A $ 与 $ aE $ 可交换，故
+由于 $ A $ 与 $ aE $ 可交换, 故
  $$  (A - aE)^k = A^k + k(-a)A^{k-1} + \cdots + (-aE)^k = \sum\limits_{i=0}^k C_k^i(-a)^{i}A^{k-i}.$$ 
 所以向量  $ (A - aE)^k\ \ (a \in K, \ 0 \leq k \leq m) $  在基 $  E,\ A,\ A^2,\ \cdots,\ A^{m-1}   $ 下的坐标为
  $$ \left((-1)^ka^k,\ \cdots,\ (-1)^{i}C_k^ia^{i},\ \cdots,\ 1,\ 0,\ \cdots,\ 0 \right) \ \ \ (k = 0, 1, \cdots, m-1), $$ 
- $$ \left(-\dfrac{a_m}{a_0}+(-1)^ma^m,\ \cdots,\ -\dfrac{a_i}{a_0}+(-1)^{i}C_m^ia^{i},\ \cdots,\ -\dfrac{a_1}{a_0} - C_k^1a  \right) \ \ \ (k = m). $$   \\ \\ 
+ $$ \left(-\dfrac{a_m}{a_0}+(-1)^ma^m,\ \cdots,\ -\dfrac{a_i}{a_0}+(-1)^{i}C_m^ia^{i},\ \cdots,\ -\dfrac{a_1}{a_0} - C_k^1a  \right) \ \ \ (k = m). $$   \\ \\ \\
 
 
 \begin{myexample}
 	\textbf{15.} 
-接上题，证明
+接上题, 证明
  $$  (A - aE)^k \ \ \ \ (k =0, 1, 2, \cdots, m-1 ) $$ 
 也是 $ V $ 的一组基. 求两组基之间的过渡矩阵 $ T $: 
  $$  (E, A-aE, \cdots, (A-aE)^{m-1}) = (E, A, \cdots, A^{m-1})T  $$   
@@ -357,15 +357,15 @@ k_2 = 0
  $$ g(\lambda) =k_0 + k_1(\lambda-a) + k_2(\lambda-a)^2 + \cdots + k_{m-1}(\lambda-a)^{m-1} $$ 
 也是 $ A $ 的一个零化多项式.  
 
-但是注意到 $ \deg(g(\lambda)) = m-1 < m = \deg(f(\lambda))$，所以由 $ f(\lambda) $ 的定义可知
+但是注意到 $ \deg(g(\lambda)) = m-1 < m = \deg(f(\lambda))$, 所以由 $ f(\lambda) $ 的定义可知
  $$  k_0 + k_1(\lambda-a) + k_2(\lambda-a)^2 + \cdots + k_{m-1}(\lambda-a)^{m-1} \equiv 0.$$ 
 因此 $ k_0 = k_1 = k_2 = \cdots = k_{m-1} = 0 $, 即
 \[
 E, (A-aE), (A-aE)^2, \cdots, (A-aE)^{m-1}
 \]
-线性无关. 而 $ \dim V = m $，这就证明 $(A - aE)^k\;(k =0, 1, 2, \cdots, m-1 )$  也是 $ V $ 的一组基.
+线性无关. 而 $ \dim V = m $, 这就证明 $(A - aE)^k\;(k =0, 1, 2, \cdots, m-1 )$  也是 $ V $ 的一组基.
 
-由习题 \hyperlink{4.1.14}{4.1.14} 的结论可知，向量 $ (A - aE)^k $ 在基 $  E,\ A,\ A^2,\ \cdots,\ A^{m-1}  $ 下的坐标为
+由习题 \hyperlink{4.1.14}{4.1.14} 的结论可知, 向量 $ (A - aE)^k $ 在基 $  E,\ A,\ A^2,\ \cdots,\ A^{m-1}  $ 下的坐标为
 $$ 
 \left((-1)^ka^k,\ \cdots,\ (-1)^{i}C_k^ia^{i},\ \cdots,\ 1,\ 0,\ \cdots,\ 0 \right).  
 $$ 
@@ -390,7 +390,7 @@ T =
 
 \begin{myexample}
 \textbf{16.}
-在 $ K^4 $ 求由基 $ \varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4 $ 到基 $ \eta_1, \eta_2, \eta_3, \eta_4 $ 的过渡矩阵，并求向量 $ \beta $ 在指定的基下的坐标. 
+在 $ K^4 $ 求由基 $ \varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4 $ 到基 $ \eta_1, \eta_2, \eta_3, \eta_4 $ 的过渡矩阵, 并求向量 $ \beta $ 在指定的基下的坐标. 
 \begin{enumerate}
 
 \item[(1)]  
@@ -430,7 +430,7 @@ B=
 1  &  0  &  1  &  3  
 \end{bmatrix}.
 \end{gather*}
-可以看出， $ \varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4 $ 到 $ \eta_1, \eta_2, \eta_3, \eta_4 $ 的过渡矩阵为
+可以看出,  $ \varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4 $ 到 $ \eta_1, \eta_2, \eta_3, \eta_4 $ 的过渡矩阵为
 \begin{gather*}
 T = 
 \begin{bmatrix}
@@ -440,7 +440,7 @@ T =
 1  &  0  &  1  &  3  
 \end{bmatrix}.
 \end{gather*}
-设 $ \beta $ 在基 $ \eta_1, \eta_2, \eta_3, \eta_4 $ 下的坐标为 $ Y=(y_1, y_2, y_3, y_4)' $ ,在基 $ \varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4 $ 下的坐标为 $ X=(x_1, x_2, x_3, x_4)' $ . 注意到 $ X=(b_1, b_2, b_3, b_4) $ ，所以
+设 $ \beta $ 在基 $ \eta_1, \eta_2, \eta_3, \eta_4 $ 下的坐标为 $ Y=(y_1, y_2, y_3, y_4)' $ ,在基 $ \varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4 $ 下的坐标为 $ X=(x_1, x_2, x_3, x_4)' $ . 注意到 $ X=(b_1, b_2, b_3, b_4) $ , 所以
  $$ X = TY \implies Y = T^{-1}X $$ 
 又因为
 \begin{gather*}
@@ -538,10 +538,10 @@ B=
 0 & 0 & 1 & 0 & -\chfrac{1}{4} & \chfrac{3}{4} & 0 & -\chfrac{1}{4} \\
 0& 0 &  0 & 1 & \chfrac{1}{4} & -\chfrac{1}{4} & 0 & -\chfrac{1}{4} 
 \end{array}
-\right]
+\right].
 \end{flalign*}
 
-所以， $ \varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4 $ 到 $ \eta_1, \eta_2, \eta_3, \eta_4 $ 的过渡矩阵为：
+所以, $ \varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4 $ 到 $ \eta_1, \eta_2, \eta_3, \eta_4 $ 的过渡矩阵为
 \begin{gather*}
 T =  \dfrac{1}{4}
 \begin{bmatrix}
@@ -549,21 +549,18 @@ T =  \dfrac{1}{4}
 1 & -1 & 2 & 3 \\
 -1 & 3 & 0 & -1 \\
 1 & -1 & 0 & -1
-\end{bmatrix}
+\end{bmatrix}.
 \end{gather*}
-设 $ \beta $ 在基 $ \eta_1, \eta_2, \eta_3, \eta_4 $ 下的坐标为 $ Y=(y_1, y_2, y_3, y_4)' $ ，从而
+设 $ \beta $ 在基 $ \eta_1, \eta_2, \eta_3, \eta_4 $ 下的坐标为 $ Y=(y_1, y_2, y_3, y_4)' $, 从而
 \begin{gather*}
 \beta = (\eta_1, \eta_2, \eta_3, \eta_4)
 \begin{bmatrix}
 y_1\\ y_2\\ y_3\\ y_4
-\end{bmatrix} \ \ \Rightarrow 
-B
-\begin{bmatrix}
-y_1\\ y_2\\ y_3\\ y_4
-\end{bmatrix} =
+\end{bmatrix} \implies
 \begin{bmatrix}
 1 \\ 0\\ 0\\ -1
-\end{bmatrix} \ \ \Rightarrow
+\end{bmatrix}
+=
 \begin{bmatrix}
 1  &  2  &  1  &  0  \\
 1  &  1  &  1  &  1  \\
@@ -572,26 +569,23 @@ y_1\\ y_2\\ y_3\\ y_4
 \end{bmatrix}
 \begin{bmatrix}
 y_1\\ y_2\\ y_3\\ y_4
-\end{bmatrix} =
-\begin{bmatrix}
-1 \\ 0\\ 0\\ -1
-\end{bmatrix}
+\end{bmatrix} 
+.
 \end{gather*}
-解该非齐次线性方程组可得：
- $$  (y_1, y_2, y_3, y_4) = (-2, -\dfrac{1}{2},4, -\dfrac{3}{2} )  $$ 
-即：
- $$  \beta = -2\eta_1 -\dfrac{1}{2}\eta_2 + 4\eta_3 - \dfrac{3}{2}\eta_4  $$   \\  \\ 
+解该非齐次线性方程组可得
+ $$  (y_1, y_2, y_3, y_4) = (-2, -\dfrac{1}{2},4, -\dfrac{3}{2} ) , $$ 
+即
+ $$  \beta = -2\eta_1 -\dfrac{1}{2}\eta_2 + 4\eta_3 - \dfrac{3}{2}\eta_4.  $$   \\  \\  \\
 \end{enumerate}
 
 
 \begin{myexample}
-	\textbf{17.} 
-接上题(1)，求一非零向量 $ \xi $ ，使得它在基 $ \varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4 $ 与 $ \eta_1, \eta_2, \eta_3, \eta_4 $ 下有相同的坐标.   \\ 
+\textbf{17.} 接上题 (1), 求一非零向量 $\xi$, 使得它在基 $\varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4$ 与 $\eta_1, \eta_2, \eta_3, \eta_4 $ 下有相同的坐标. 
 
 \end{myexample}
 \Solution
 
-设 $ \xi $ 在基 $ \varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4 $ 与 $ \eta_1, \eta_2, \eta_3, \eta_4 $ 下的坐标都为 $ (z_1, z_2, z_3, z_4) $ . 则：
+设 $ \xi $ 在基 $ \varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4 $ 与 $ \eta_1, \eta_2, \eta_3, \eta_4 $ 下的坐标都为 $ (z_1, z_2, z_3, z_4) $, 则
 \begin{gather*}
 \xi = (\varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4)
 \begin{bmatrix}
@@ -600,14 +594,14 @@ z_1 \\ z_2 \\ z_3 \\ z_4
 (\eta_1, \eta_2, \eta_3, \eta_4)
 \begin{bmatrix}
 z_1 \\ z_2 \\ z_3 \\ z_4 
-\end{bmatrix} \ \ \Rightarrow \ \ 
+\end{bmatrix} \implies
 (A - B) 
 \begin{bmatrix}
 z_1 \\ z_2 \\ z_3 \\ z_4 
 \end{bmatrix}
-= 0
+= 0.
 \end{gather*}
-解上述齐次线性方程组：
+解上述齐次线性方程组:
 \begin{gather*}
 \begin{bmatrix}
 -1 & 0 & -5 & -6 \\
@@ -620,54 +614,86 @@ z_1 \\ z_2 \\ z_3 \\ z_4
 0   &  1   &  0  &   1  \\
 0    & 0  &   1   &  1  \\
 0     &0 &    0   &  0
-\end{bmatrix}
+\end{bmatrix}.
 \end{gather*}
-所以，取 $ \xi = (-a, -a, -a, a) \ \ (a \neq 0)  $ .  \\  \\  
+所以, 取 $ \xi = (-a, -a, -a, a) \ \ (a \neq 0)$ 即可满足题意.  \\  \\  \\
 
 
 
 
 \begin{myexample}
 	\textbf{18.} 
-考察数域 $ K $ 上的线性空间 $ K[x]_n $ .给定 $ K $ 上 $ n $ 个两两不等的数 $ a_1, a_2, \cdots, a_n $ . 令
+考察数域 $ K $ 上的线性空间 $ K[x]_n $. 给定 $ K $ 上 $ n $ 个两两不等的数 $ a_1, a_2, \cdots, a_n $. 令
  $$  f_i(x) = (x-a_1)\cdots(\widehat{x-a_i})\cdots(x-a_n) \ \ \ \ \ (i = 1, 2, \cdots, n)  $$ 
-(记号“\ \  $ \widehat{} $ \ \ ”表示去掉该项). 证明: $ f_1(x), f_2(x), \cdots, f_n(x) $ 为 $ K[x]_n $ 的一组基. \\  
-
+（记号“\ \  $ \widehat{} $ \ \ ”表示去掉该项）. 证明: $ f_1(x), f_2(x), \cdots, f_n(x) $ 为 $ K[x]_n $ 的一组基. 
 \end{myexample}
 \Solution 
 
-\textbf{方法一:} 
+\textbf{方法一} 
 
 设 $ k_1f_1(x) + k_2f_2(x) + \cdots + k_nf_n(x) = 0 $ . 假设存在不全为 $ 0 $ 的 $ k_1, k_2, \cdots, k_n $ 使得左式成立. 
 
-记 $ k_i \neq 0 $ , 则:
- $$  0 =k_1f(a_i) + k_2f(a_i) + \cdots + k_if(a_i)  = k_if_i(a_i) \neq 0  $$ 
-矛盾! 所以 $ k_1 = k_2 = \cdots = k_n = 0 $ . 即 $ f_1(x), f_2(x), \cdots, f_n(x) $ 线性无关.
+记 $ k_i \neq 0 $ , 则
+ $$  0 =k_1f(a_i) + k_2f(a_i) + \cdots + k_if(a_i)  = k_if_i(a_i) \neq 0 ,$$ 
+矛盾! 所以 $ k_1 = k_2 = \cdots = k_n = 0 $, 即 $ f_1(x), f_2(x), \cdots, f_n(x) $ 线性无关.
 
-又由于 $ \dim  K_n[x] = n $ , 所以 $ f_1(x), f_2(x), \cdots, f_n(x) $ 是 $ K_n[x] $ 的一组基. \\ 
+又由于 $ \dim  K_n[x] = n $, 所以 $ f_1(x), f_2(x), \cdots, f_n(x) $ 是 $ K_n[x] $ 的一组基. \\ 
 
-\textbf{方法二:}
+\textbf{方法二}
 
-对于 $ \forall f(x) \in K[x]_n $ ，考虑如下插值函数(Lagrange插值函数)：
- $$  L_{n-1}(x) = \sum\limits_{i=1}^nf(a_i)l_i(x) \ \ \ \ \text{其中，}l_i(x) = \prod\limits_{j \neq i} \dfrac{x-a_j}{a_i-a_j}  $$ 
-引入记号： $ \omega_{n}(x) = (x-a_1)(x-a_1)\cdots(x-a_n) $ ,则拉格朗日插值多项式的余项为：
- $$  R_{n-1}(x) = f(x) - L_{n-1}(x) = \dfrac{f^{(n)}(\xi)}{n!}w_n(x) \equiv 0 \ \ \ \ \ (\text{因为} f^{(n)}(\xi) ) \equiv 0)  $$ 
-所以 $ f(x) = L_{n-1}(x) = \sum\limits_{i=1}^n \left(f(a_i)\prod\limits_{j \neq i} \dfrac{x-a_j}{a_i-a_j}\right)  = \sum\limits_{i=1}^n \left( \dfrac{f(a_i)}{\prod\limits_{j \neq i} (a_i - a_j)} \prod\limits_{j \neq i} (x-a_j)\right) = \sum\limits_{i=1}^n k_i f_i(x) $ 
+对于 $ \forall f(x) \in K[x]_n $ , 考虑如下插值函数（Lagrange插值函数）：
+ $$  L_{n-1}(x) = \sum\limits_{i=1}^nf(a_i)l_i(x) \ \ \ \ \text{其中, }l_i(x) = \prod\limits_{j \neq i} \dfrac{x-a_j}{a_i-a_j}.$$ 
+引入记号： $ \omega_{n}(x) = (x-a_1)(x-a_1)\cdots(x-a_n) $ ,则拉格朗日插值多项式的余项为
+ $$  R_{n-1}(x) = f(x) - L_{n-1}(x) = \dfrac{f^{(n)}(\xi)}{n!}w_n(x) \equiv 0 \ \ \ \ \ (\text{因为} f^{(n)}(\xi) ) \equiv 0) . $$ 
+所以 
+\begin{align*}
+ f(x) = L_{n-1}(x) &= \sum\limits_{i=1}^n \left(f(a_i)\prod\limits_{j \neq i} \dfrac{x-a_j}{a_i-a_j}\right)\\ 
+ &= \sum\limits_{i=1}^n \left( \dfrac{f(a_i)}{\prod\limits_{j \neq i} (a_i - a_j)} \prod\limits_{j \neq i} (x-a_j)\right) \\
+ &= \sum\limits_{i=1}^n k_i f_i(x),
+\end{align*}
+其中 $ k_i =\dfrac{f(a_i)}{\prod\limits_{j \neq i} (a_i - a_j)} $, $ f_i(x) =\prod\limits_{j \neq i} (x - a_j)$, 即 $\forall f \in K[x]_n $, $f$ 可以由 $ f_1(x), f_2(x), \cdots, f_n(x) $ 线性表出.
 
-其中， $ k_i =\dfrac{f(a_i)}{\prod\limits_{j \neq i} (a_i - a_j)}  $  ,\  $ f_i(x) =\prod\limits_{j \neq i} (x - a_j)  $ 
+另一方面, $ \dim K[x]_n = n $, 由此知  $f_1(x), f_2(x), \cdots, f_n(x)$  是 $ K[x]_n $ 的一组基.  \\ \\ \\
 
-即：任意 $ f \in K[x]_n $ ,  $ f $ 可以由 $ f_1(x), f_2(x), \cdots, f_n(x) $ 线性表出. 
 
-另一方面， $ \dim (K[x]_n) = n $ , \  $ \therefore $   $ f_1(x), f_2(x), \cdots, f_n(x) $  是 $ K[x]_n $ 的一组基.  \\ \\ 
+\begin{myexample}
+	\textbf{18.} 证明线性空间定义的八条公理，其中向量加法的交换律可以由其
+	他七条公理推导出来.
+\end{myexample}
+\Solution 
+公理 (iv) 保证右逆存在, 即对任一 $\alpha\in V$ 都存在 $\beta\in V$，使 $\alpha +\beta = 0$.
+\begin{align*}
+(\beta+\alpha)+(\beta+\alpha)&=\beta+(\alpha+\beta)+\alpha&(\text{结合律})\\
+&=(\beta+0)+\alpha&\\
+&=\beta+\alpha. &(\text{右零元})
+\end{align*}
+
+由右消去律得 $\beta+\alpha=0$. 这说明左逆存在且等于右逆.
+公理 (iii) 保证右单位元存在, 即存在一个元素 $0\in V$, 使得对一切
+$\alpha\in V$, 有 $\alpha+0=\alpha$. 因为 $0+\alpha=\alpha+(-\alpha)+\alpha=\alpha+0=\alpha$, 所以左单位元存在, 且等于右单位元，从而有左消去律成立.
+
+
+
+一方面，
+$$
+(1+1)(\alpha+\beta)=(1+1)\alpha+(1+1)\beta=\alpha+\alpha+\beta+\beta.
+$$
+另一方面，
+$$
+(1+1)(\alpha+\beta)=1(\alpha+\beta)+1(\alpha+\beta)=\alpha+\beta+\alpha+\beta.
+$$
+再由消去律得 $\alpha+\beta=\beta+\alpha$. 这就证明了向量加法满足交换律.
+
 
 
 \section{习题二 \quad 子空间与商空间}
 
 \begin{myexample}
 	\textbf{1.} 
-设 $ A \in M_n(K) $ .  \\
-(1)证明：与 $ A $ 可交换的 $ n $ 阶方阵的全体组成 $ M_n(K) $ 的一个子空间. 记此子空间为 $ C(A) $ . \\
-(2)给定对角矩阵 
+设 $ A \in M_n(K) $.
+\begin{enumerate}[(1)]
+\item 证明：与 $ A $ 可交换的 $ n $ 阶方阵的全体组成 $ M_n(K) $ 的一个子空间. 记此子空间为 $ C(A) $ . 
+\item 给定对角矩阵 
 \begin{gather*}
 A=
 \begin{bmatrix} 
@@ -677,12 +703,12 @@ A=
 &    &    &  n  
 \end{bmatrix} 
 \end{gather*}
-求 $ C(A) $ 的维数和一组基.   \\ 
-
+求 $ C(A) $ 的维数和一组基. 
+\end{enumerate}
 \end{myexample}
 \Solution
 
-(1) 由于 $ E $ 与 $ A $ 可交换，因此 $ C(A) $ 非空集.设 $ B_1, B_2 \in C(A) $ , 则 $ B_1A = AB_1, B_2A = AB_2 $ .
+(1) 由于 $ E $ 与 $ A $ 可交换, 因此 $ C(A) $ 非空集.设 $ B_1, B_2 \in C(A) $ , 则 $ B_1A = AB_1, B_2A = AB_2 $ .
 
 \hspace{4.1em} 从而:
  $$  (B_1+B_2)A = B_1A + B_2A = AB_1 + AB_1 = A(B_1 + B_2)  $$ 
@@ -695,18 +721,18 @@ A=
  $$  x_{ij} = 0 \ (i \neq j), \ \ x_{ij} \in K \ (i = j)  $$ 
 即：与 $ A $ 可交换的矩阵为任意对角矩阵.
 
-由于任意对角矩阵 $ D = diag\{a_1, a_2, \cdots, a_n\} $ 均可由 $ E_{11},E_{22}, \cdots, E_{nn} $ 线性表出,即：
- $$  D = diag\{a_1, a_2, \cdots, a_n\} = a_1E_{11} + a_2E_{22} + \cdots + a_nE_{nn}  $$ 
-其中， $ E_{ii} $ 为 $ (i,i) $ 元素为 $ 1 $ ，其它元素为 $ 0 $ 的 $ n $ 级矩阵.
+由于任意对角矩阵 $ D = \diag\{a_1, a_2, \cdots, a_n\} $ 均可由 $ E_{11},E_{22}, \cdots, E_{nn} $ 线性表出,即：
+ $$  D = \diag\{a_1, a_2, \cdots, a_n\} = a_1E_{11} + a_2E_{22} + \cdots + a_nE_{nn}  $$ 
+其中,  $ E_{ii} $ 为 $ (i,i) $ 元素为 $ 1 $ , 其它元素为 $ 0 $ 的 $ n $ 级矩阵.
 
 且 $ E_{11}, E_{22}, \cdots,E_{nn} $ 线性无关.
 
-所以， $ E_{11}, E_{22}, \cdots,E_{nn} $ 是 $ C(A) $ 的一组基,  $ \dim (C(A)) = n $ . \\  \\  \\
+所以,  $ E_{11}, E_{22}, \cdots,E_{nn} $ 是 $ C(A) $ 的一组基,  $ \dim C(A) = n $ . \\  \\  \\
 
 
 \begin{myexample}
 	\textbf{2.} 
-接上题. 取 $ n=3 $ ，令
+接上题. 取 $ n=3 $ , 令
 \begin{gather*}
 A=
 \begin{bmatrix}
@@ -759,11 +785,11 @@ x_{21} & x_{22} & x_{23} \\
 3x_{11} + x_{21} + 2x_{31} & 3x_{12} + x_{22} + 2x_{32} & 3x_{13} + x_{23} + 2x_{33}
 \end{bmatrix}
 \end{gather*}
-由于 $ PA = AP $ ，则：
+由于 $ PA = AP $ , 则：
  $$  x_{13} = 0, \ \ x_{23} = 0, \ \ x_{31}+3x_{33} = 3x_{11} + x_{21} + 2x_{31}, \ \ x_{32} + x_{33} = 3x_{12} + x_{22} + 2x_{32}  $$ 
 整理可得：
  $$  x_{31} = -3x_{11} +  9x_{12} -x_{21} + 3x_{22} + 3x_{32}, \ \ \ x_{33} = 3x_{12} + x_{22} + x_{32}  $$ 
-所以，
+所以, 
 \begin{gather*}
 P = 
 \begin{bmatrix}
@@ -842,7 +868,7 @@ x_{21} & x_{22} & 0\\
 3 &  1  &  1  \\
 \end{bmatrix}
 \end{gather*}
-线性无关. 所以， $ \dim (C(A))= 5 $ ,  $ C(A) $ 的一组基为：
+线性无关. 所以,  $ \dim C(A)= 5 $ ,  $ C(A) $ 的一组基为：
 \begin{gather*}
 \begin{bmatrix}
 1 &  0  &  0  \\
@@ -879,7 +905,7 @@ x_{21} & x_{22} & 0\\
 
 \begin{myexample}
 	\textbf{3.} 
-在习题一第 $ 2 $ 题 $ (5) $ 的线性空间中给定子集 $ M = \{(a, 0) | a \in \mathbb{R} \} $ ， $ N = \{(0, b)| b \in \mathbb{R} \} $ . 问 $ M $ ， $ N $ 是否为子空间?全体实数的二元有序数组所成的集合关于下面的定义的运算：
+在习题一第 $ 2 $ 题 $ (5) $ 的线性空间中给定子集 $ M = \{(a, 0) | a \in \mathbb{R} \} $ ,  $ N = \{(0, b)| b \in \mathbb{R} \} $ . 问 $ M $ ,  $ N $ 是否为子空间?全体实数的二元有序数组所成的集合关于下面的定义的运算：
  $$  (a_1, b_1) \oplus  (a_2, b_2) = (a_1 + a_2, b_1 + b_2 + a_1a_2)  $$ 
  $$  k \comp (a, b) = \left[ ka, kb+\dfrac{k(k-1)}{2}a^2\right]  $$ 
 
@@ -894,7 +920,7 @@ x_{21} & x_{22} & 0\\
 
 (2)  $ N = \{(0, b)| b \in \mathbb{R} \} $ 是子空间.
 
-显然， $ N $ 非空集. 任取 $ (0, b_1), (0, b_2) \in N $ , 有：
+显然,  $ N $ 非空集. 任取 $ (0, b_1), (0, b_2) \in N $ , 有：
  $$  (0, b_1) \oplus  (0, b_2) = (0, b_1 + b_2) \in N  $$ 
  $$  k \comp (0, b) = \left[ 0, kb \right], \ \ \ \ \forall k \in \mathbb{R}  $$  即对加法、数乘运算封闭. 所以 $ N $ 是子空间. \\  \\  \\
 
@@ -907,26 +933,26 @@ x_{21} & x_{22} & 0\\
 \end{myexample}
 \Solution 
 
-(1)当 $ K = \mathbb{Q}  $ 时， $ M $ 是 $ K^n $ 的子空间.显然 $ M $ 非空集.
+(1)当 $ K = \mathbb{Q}  $ 时,  $ M $ 是 $ K^n $ 的子空间.显然 $ M $ 非空集.
 
 任取 $ (a_1^{(1)}, a_2^{(1)}, \cdots, a_n^{(1)}),\ \  (a_1^{(2)}, a_2^{(2)}, \cdots, a_n^{(2)}) \in K^n, a_i^{(j)} \in Q  $ ,有：
  $$  (a_1^{(1)}, a_2^{(1)}, \cdots, a_n^{(1)}) + (a_1^{(2)}, a_2^{(2)}, \cdots, a_n^{(2)}) \in M  $$ 
  $$  k(a_1, a_2, \cdots, a_n) =  (ka_1, ka_2, \cdots, ka_n)\in M, \ \ \ \forall k \in K = \mathbb{Q}  $$ 
 即对加法运算和数乘运算封闭. 所以 $ M $ 是 $ K^n $ 的子空间.  \\ 
 
-(2) 当 $ \mathbb{Q} \subsetneq K $ 时， $ N $ 不是 $ K^n $ 的子空间.取 $ (a_1, a_2, \cdots, a_n) \in \mathbb{Q}, k \in K \setminus \mathbb{Q} $ , 则：
+(2) 当 $ \mathbb{Q} \subsetneq K $ 时,  $ N $ 不是 $ K^n $ 的子空间.取 $ (a_1, a_2, \cdots, a_n) \in \mathbb{Q}, k \in K \setminus \mathbb{Q} $ , 则：
  $$  k(a_1, a_2, \cdots, a_n) = (ka_1, ka_2, \cdots, ka_n) \notin M, \ \ \ \ (\text{因为} \;ka_i \notin \mathbb{Q})  $$ 
 即对数乘运算不封闭. 所以 $ M $ 不是 $ K^n $ 的子空间.  \\  \\  \\
 
 
 \begin{myexample}
 	\textbf{5.} 
-把复数域 $ \mathbb{C} $ 看做有理数域 $ \mathbb{Q} $ 上的线性空间(加法为复数加法,与 $ \mathbb{Q} $ 中元素的数乘为有理数与复数的乘法)，问全体实数所成的子集 $ \mathbb{R} $ 是否是一个子空间?  \\  
+把复数域 $ \mathbb{C} $ 看做有理数域 $ \mathbb{Q} $ 上的线性空间(加法为复数加法,与 $ \mathbb{Q} $ 中元素的数乘为有理数与复数的乘法), 问全体实数所成的子集 $ \mathbb{R} $ 是否是一个子空间?  \\  
 
 \end{myexample}
 \Solution 
 
-显然， $ \mathbb{R} $ 不是空集. 任取 $ a_1, a_2 \in \mathbb{R} $ , 则：
+显然,  $ \mathbb{R} $ 不是空集. 任取 $ a_1, a_2 \in \mathbb{R} $ , 则：
  $$  a_1 + a_2 \in \mathbb{R}  $$ 
  $$  ka \in R, \ \ \ \ k \in \mathbb{Q}  $$ 
 所以, 全体实数所成的子集 $ \mathbb{R} $ 是该线性空间的一个子空间.   \\  \\   \\ 
@@ -942,7 +968,7 @@ x_{21} & x_{22} & 0\\
 
 全体实数所成的子集 $ \mathbb{R} $ 不是一个子空间. 任取 $ a \in \mathbb{R} $ , 有
  $$  (x+iy)a = ax + i(ay), \ \ \ \ x+iy \in \mathbb{Q}(i)   $$ 
-当 $ ay \neq 0 $ 时， $ (x+iy)a \notin R $ . 所以全体实数所成的子集 $ \mathbb{R} $ 不是一个子空间.  \\  \\  \\ 
+当 $ ay \neq 0 $ 时,  $ (x+iy)a \notin R $ . 所以全体实数所成的子集 $ \mathbb{R} $ 不是一个子空间.  \\  \\  \\ 
 
 \begin{myexample}
 	\textbf{10.} 
@@ -951,9 +977,9 @@ x_{21} & x_{22} & 0\\
 \end{myexample}
 \Solution
 
-由于子空间 $ M $ 也是线性空间，而线性空间必有基.
+由于子空间 $ M $ 也是线性空间, 而线性空间必有基.
 
-记 $ \dim   M = s \leq \dim V $ ，可以找到 $ M $ 中的一组向量：
+记 $ \dim   M = s \leq \dim V $ , 可以找到 $ M $ 中的一组向量：
  $$  \alpha_1, \alpha_2, \cdots, \alpha_s  \in M \subset V $$ 
 它们是线性空间 $ M $ 的一组基. 记 $ M_1 = span\{\alpha_1, \alpha_2, \cdots, \alpha_s \} $ .
 
@@ -1057,12 +1083,12 @@ x_{21} & x_{22} & 0\\
 
 \begin{myexample}
 	\textbf{17.} 
-在线性空间 $ M_n(K) $ 中,命 $ M $ ， $ N $ 分别表示全体上三角 、下三角矩阵所成的子空间. 问是否有 $ M_n(K) = M \oplus  N $ ?为什么?   \\ 
+在线性空间 $ M_n(K) $ 中,命 $ M $ ,  $ N $ 分别表示全体上三角 、下三角矩阵所成的子空间. 问是否有 $ M_n(K) = M \oplus  N $ ?为什么?   \\ 
 
 \end{myexample}
 \Solution
 
- $ M_n(K) $ 不是 $ M $ 与 $ N $ 的直和. 因为对于任意对角矩阵 $ D = diag\{a_1, a_2, \cdots, a_n\} $ , 都有:
+ $ M_n(K) $ 不是 $ M $ 与 $ N $ 的直和. 因为对于任意对角矩阵 $ D = \diag\{a_1, a_2, \cdots, a_n\} $ , 都有:
  $$  D \in M \cap N  $$ 
 \hspace{1.7em} 当 $ a_1a_2\cdots a_n \neq 0 $ 时,  $ 0 \neq D \in M \cap N $ .所以 $ M_n(K) \neq M \oplus  N $ . \\  \\ \\
 
@@ -2691,7 +2717,7 @@ P_1^{-1}AP_1 =
 
 由于 $ (P_1^{-1}BP_1) $ 与 $ (P_1^{-1}AP_1) $ 可交换, 有:
  $$  \lambda_iB_{ij} = B_{ij}\lambda_j  $$ 
-所以当 $ i \neq j $ 时,  $ B_{ij} = 0 $ . 所以有:  $ P_1^{-1}BP_1 = diag\{ B_{11}, B_{22}, \cdots, B_{ss} \} $ .
+所以当 $ i \neq j $ 时,  $ B_{ij} = 0 $ . 所以有:  $ P_1^{-1}BP_1 = \diag\{ B_{11}, B_{22}, \cdots, B_{ss} \} $ .
 
 由 $ B $ 可对角化可知,  $ B_{ii} $ 也可以对角化, 即 $ \exists Q_i $ , 使得 $ Q_i^{-1}B_{ii}Q_i $ 为对角阵. $ (i=1, 2, \cdots, s) $ . 记:
 \begin{gather*}
@@ -3668,48 +3694,48 @@ f(\lambda_1\alpha_1+\lambda_2\alpha_2, \beta) &= (\mathcal{A}(\lambda_1\alpha_1 
 		 $ y_i $  &  $ y_0 $  &  $ y_1 $  &  $ y_2 $  &  $ \cdots $  &  $ y_n $  \\
 	\end{tabular}
 \end{center}
-选取较简单的函数 $ y = P(x) $ 来近似表示 $ y = f(x) $ ，使得满足条件:
+选取较简单的函数 $ y = P(x) $ 来近似表示 $ y = f(x) $ , 使得满足条件:
  $$  P(x_i) = f(x_i) \ \ \ \ \ (i = 0, 1, 2, \cdots, n)  $$ 
 则 $ P(x) $ 称为\underline{插值函数},  $ f(x) $ 称为\underline{被插值函数},  $ x_0, x_1, \cdots, x_n $ 称为\underline{插值节点}. \\
 
 \textbf{2. 插值多项式的存在唯一性}  \\
-当选取插值函数 $ P(x) $ 为多项式函数时，即选取：
+当选取插值函数 $ P(x) $ 为多项式函数时, 即选取：
  $$  P_n(x) = a_0 + a_1x + a_2x^2 + \cdots + a_nx^n  $$ 
 使得满足插值条件
  $$  P(x_i) = f(x_i) \ \ \ \ \ (i = 0, 1, 2, \cdots, n)  $$ 
-这样的问题称为\underline{n次多项式插值问题}， $ y = P_n(x) $ 称为 $ y=f(x) $ 的\underline{n次插值多项式}. \\
+这样的问题称为\underline{n次多项式插值问题},  $ y = P_n(x) $ 称为 $ y=f(x) $ 的\underline{n次插值多项式}. \\
 
 \begin{myexample}
-	\textbf{定理：}给定 $ x_i $ (两两不等)以及 $ y_i = f(x_i)\ (i = 0, 1, 2, \cdots, n) $ ， $ n $ 次插值多项式 $ P_n(x) $ 存在且唯一. 
+	\textbf{定理：}给定 $ x_i $ (两两不等)以及 $ y_i = f(x_i)\ (i = 0, 1, 2, \cdots, n) $ ,  $ n $ 次插值多项式 $ P_n(x) $ 存在且唯一. 
 	
 \end{myexample}
 \Solution
-请自行证明. (Hint: 待定系数法，Vandermonde行列式). \\
+请自行证明. (Hint: 待定系数法, Vandermonde行列式). \\
 
 \begin{myexample}
 	\textbf{3. 插值余项} \\ 
-	在 $ [a,b] $ 上用 $ P_n(x) $ 近似表示 $ f(x) $ ，在插值节点 $ x_i $ 处时没有误差的，但是在其它点 $ x $ 处，一般 $ P_n(x) $ 与 $ f(x) $ 不相等. 记：
+	在 $ [a,b] $ 上用 $ P_n(x) $ 近似表示 $ f(x) $ , 在插值节点 $ x_i $ 处时没有误差的, 但是在其它点 $ x $ 处, 一般 $ P_n(x) $ 与 $ f(x) $ 不相等. 记：
 	 $$  R_n(x) = f(x) - P_n(x)  $$ 
 	称 $ R_n(x) $ 时插值多项式的\underline{余项}或\underline{截断误差}.引入记号：
 	 $$  \omega_{n+1}(x) = (x-x_0)(x-x_1)\cdots(x-x_n)  $$ 
-	\textbf{定理：}设 $ f(x) $ 在 $ [a,b] $ 上 $ n+1 $ 阶导数存在，则插值多项式 $ P_n(x) $ 的余项为：
+	\textbf{定理：}设 $ f(x) $ 在 $ [a,b] $ 上 $ n+1 $ 阶导数存在, 则插值多项式 $ P_n(x) $ 的余项为：
 	 $$  R_n(x) = \dfrac{f^{(n+1)}(\xi)}{(n+1)!}\omega_{n+1}(x) \ \ \ \ (*)  $$ 
-	\hspace{2.3em} 其中， $ \xi \in (a,b) $ 且依赖于 $ x $ ，而 $ x \in [a,b] $ . \\
+	\hspace{2.3em} 其中,  $ \xi \in (a,b) $ 且依赖于 $ x $ , 而 $ x \in [a,b] $ . \\
 	
 \end{myexample}
-\Solution 当 $ x = x_i\ (i = 0, 1, \cdots, n) $ 时，
+\Solution 当 $ x = x_i\ (i = 0, 1, \cdots, n) $ 时, 
  $$  R_n(x) = f(x) - P_n(x) = 0  $$ 
 \hspace{2.7em} 而 $ \omega_{n+1}(x) = 0 $ . 所以 $ (*) $ 成立. 
 
-\hspace{2.7em} 当 $ x \neq x_i\ (i=0, 1, \cdots, n) $ 时，作辅助函数：
+\hspace{2.7em} 当 $ x \neq x_i\ (i=0, 1, \cdots, n) $ 时, 作辅助函数：
  $$  \phi(t) = f(t) - P_n(t) - \dfrac{f(x) - P_n(x)}{\omega_{n+1}(x)}\omega_{n+1}(t)  $$  
 \hspace{2.7em} 则 $ \phi(t) $ 在 $ t \in [a,b] $ 上 $ n+1 $ 阶可导. 易知 $ t = x, x_0,\cdots, x_n $ 是 $ \phi(t) $ 的 $ n+2 $ 个不同零点
 
-\hspace{2.7em} 由Rolle定理，在 $ \phi(t) $ 的每两个零点之间至少存在一个 $ \phi'(t) $ 的零点. 
+\hspace{2.7em} 由Rolle定理, 在 $ \phi(t) $ 的每两个零点之间至少存在一个 $ \phi'(t) $ 的零点. 
 
 \hspace{2.7em} 因此 $ \phi'(t) $ 在 $ (a,b) $ 内至少有 $ n+1 $ 个互异零点.反复对 $ \phi'(t), \phi''(t), \cdots, \phi^{n}(t) $ 用Rolle定
 
-\hspace{2.7em} 理，可以得到：至少存在一点 $ \xi \in (a,b) $ ，使得 $ \phi^{(n+1)}(\xi)=0 $ .由于：
+\hspace{2.7em} 理, 可以得到：至少存在一点 $ \xi \in (a,b) $ , 使得 $ \phi^{(n+1)}(\xi)=0 $ .由于：
  $$  \dfrac{\mathrm{d}^{n+1}}{\mathrm{d}t^{n+1}}P_n(t) = 0,\ \ \ \ \ \dfrac{\mathrm{d}^{n+1}}{\mathrm{d}t^{n+1}}w_{n+1}(t) = (n+1)!   $$ 
 \hspace{2.7em} 因此：
  $$  \phi^{(n+1)}(\xi) = f^{(n+1)}(\xi) - \dfrac{f(x) - P_n(x)}{w_{n+1}(x)}\cdot(n+1)! = 0  $$ 
