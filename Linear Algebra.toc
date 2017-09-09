@@ -1,38 +1,38 @@
-\contentsline {part}{I\hspace {1em}上册}{3}{part.1}
-\contentsline {chapter}{\numberline {1}代数学的经典课题}{4}{chapter.1}
-\contentsline {section}{\numberline {1.1}习题一 \hskip 1em\relax 若干准备知识}{4}{section.1.1}
-\contentsline {section}{\numberline {1.2}习题二 \hskip 1em\relax 一元高次代数方程的基础知识}{4}{section.1.2}
-\contentsline {section}{\numberline {1.3}习题三 \hskip 1em\relax 线性方程组}{4}{section.1.3}
-\contentsline {chapter}{\numberline {2}向量空间与矩阵}{5}{chapter.2}
-\contentsline {section}{\numberline {2.1}习题一 \hskip 1em\relax $ m $ 维向量空间}{5}{section.2.1}
-\contentsline {section}{\numberline {2.2}习题二 \hskip 1em\relax 矩阵的秩}{5}{section.2.2}
-\contentsline {section}{\numberline {2.3}习题三 \hskip 1em\relax 线性方程组的理论课题}{5}{section.2.3}
-\contentsline {section}{\numberline {2.4}习题四 \hskip 1em\relax 矩阵的运算}{5}{section.2.4}
-\contentsline {section}{\numberline {2.5}习题五 \hskip 1em\relax $ n $ 阶方阵}{5}{section.2.5}
-\contentsline {section}{\numberline {2.6}习题六 \hskip 1em\relax 分块矩阵}{5}{section.2.6}
-\contentsline {chapter}{\numberline {3}行列式}{6}{chapter.3}
-\contentsline {section}{\numberline {3.1}习题一 \hskip 1em\relax $ n $ 阶方阵的行列式}{6}{section.3.1}
-\contentsline {section}{\numberline {3.2}习题二 \hskip 1em\relax 行列式的初步应用}{6}{section.3.2}
-\contentsline {section}{\numberline {3.3}习题三 \hskip 1em\relax Laplace 展开式与 Binet-Cauchy 公式}{6}{section.3.3}
-\contentsline {chapter}{\numberline {4}线性空间与线性变换}{7}{chapter.4}
-\contentsline {section}{\numberline {4.1}习题一 \hskip 1em\relax 线性空间的基本概念}{7}{section.4.1}
-\contentsline {section}{\numberline {4.2}习题二 \hskip 1em\relax 子空间与商空间}{16}{section.4.2}
-\contentsline {section}{\numberline {4.3}习题三 \hskip 1em\relax 线性映射与线性变换}{80}{section.4.3}
-\contentsline {section}{\numberline {4.4}习题四 \hskip 1em\relax 线性变换的特征值与特征向量}{80}{section.4.4}
-\contentsline {chapter}{\numberline {5}双线性函数与二次型}{81}{chapter.5}
-\contentsline {section}{\numberline {5.1}习题一 \hskip 1em\relax 双线性函数}{81}{section.5.1}
-\contentsline {section}{\numberline {5.2}习题二 \hskip 1em\relax 二次型}{81}{section.5.2}
-\contentsline {section}{\numberline {5.3}习题三 \hskip 1em\relax 实与复二次型的分类}{81}{section.5.3}
-\contentsline {section}{\numberline {5.4}习题四 \hskip 1em\relax 正定二次型}{81}{section.5.4}
-\contentsline {part}{II\hspace {1em}下册}{82}{part.2}
-\contentsline {chapter}{\numberline {6}带度量的线性空间}{83}{chapter.6}
-\contentsline {section}{\numberline {6.1}习题一 \hskip 1em\relax 欧几里得空间的定义和基本性质}{83}{section.6.1}
-\contentsline {section}{\numberline {6.2}习题二 \hskip 1em\relax 欧几里得空间中的特殊线性变换}{83}{section.6.2}
-\contentsline {section}{\numberline {6.3}习题三 \hskip 1em\relax 酉空间}{83}{section.6.3}
-\contentsline {chapter}{\numberline {7}线性变换的 Jordan 标准形}{84}{chapter.7}
-\contentsline {section}{\numberline {7.1}习题一 \hskip 1em\relax 幂零线性变换的 Jordan 标准形}{84}{section.7.1}
-\contentsline {section}{\numberline {7.2}习题二 \hskip 1em\relax 一般线性变换的 Jordan 标准形}{84}{section.7.2}
-\contentsline {chapter}{\numberline {8}问题}{85}{chapter.8}
-\contentsline {section}{\numberline {8.1}插值问题}{85}{section.8.1}
-\contentsline {section}{\numberline {8.2}基与同构}{87}{section.8.2}
+\contentsline {part}{I\hspace {1em}上册}{4}{part.1}
+\contentsline {chapter}{\numberline {1}代数学的经典课题}{5}{chapter.1}
+\contentsline {section}{\numberline {1.1}习题一 \hskip 1em\relax 若干准备知识}{5}{section.1.1}
+\contentsline {section}{\numberline {1.2}习题二 \hskip 1em\relax 一元高次代数方程的基础知识}{5}{section.1.2}
+\contentsline {section}{\numberline {1.3}习题三 \hskip 1em\relax 线性方程组}{5}{section.1.3}
+\contentsline {chapter}{\numberline {2}向量空间与矩阵}{6}{chapter.2}
+\contentsline {section}{\numberline {2.1}习题一 \hskip 1em\relax $ m $ 维向量空间}{6}{section.2.1}
+\contentsline {section}{\numberline {2.2}习题二 \hskip 1em\relax 矩阵的秩}{6}{section.2.2}
+\contentsline {section}{\numberline {2.3}习题三 \hskip 1em\relax 线性方程组的理论课题}{6}{section.2.3}
+\contentsline {section}{\numberline {2.4}习题四 \hskip 1em\relax 矩阵的运算}{6}{section.2.4}
+\contentsline {section}{\numberline {2.5}习题五 \hskip 1em\relax $ n $ 阶方阵}{6}{section.2.5}
+\contentsline {section}{\numberline {2.6}习题六 \hskip 1em\relax 分块矩阵}{6}{section.2.6}
+\contentsline {chapter}{\numberline {3}行列式}{7}{chapter.3}
+\contentsline {section}{\numberline {3.1}习题一 \hskip 1em\relax $ n $ 阶方阵的行列式}{7}{section.3.1}
+\contentsline {section}{\numberline {3.2}习题二 \hskip 1em\relax 行列式的初步应用}{7}{section.3.2}
+\contentsline {section}{\numberline {3.3}习题三 \hskip 1em\relax Laplace 展开式与 Binet-Cauchy 公式}{7}{section.3.3}
+\contentsline {chapter}{\numberline {4}线性空间与线性变换}{8}{chapter.4}
+\contentsline {section}{\numberline {4.1}习题一 \hskip 1em\relax 线性空间的基本概念}{8}{section.4.1}
+\contentsline {section}{\numberline {4.2}习题二 \hskip 1em\relax 子空间与商空间}{19}{section.4.2}
+\contentsline {section}{\numberline {4.3}习题三 \hskip 1em\relax 线性映射与线性变换}{83}{section.4.3}
+\contentsline {section}{\numberline {4.4}习题四 \hskip 1em\relax 线性变换的特征值与特征向量}{83}{section.4.4}
+\contentsline {chapter}{\numberline {5}双线性函数与二次型}{84}{chapter.5}
+\contentsline {section}{\numberline {5.1}习题一 \hskip 1em\relax 双线性函数}{84}{section.5.1}
+\contentsline {section}{\numberline {5.2}习题二 \hskip 1em\relax 二次型}{84}{section.5.2}
+\contentsline {section}{\numberline {5.3}习题三 \hskip 1em\relax 实与复二次型的分类}{84}{section.5.3}
+\contentsline {section}{\numberline {5.4}习题四 \hskip 1em\relax 正定二次型}{84}{section.5.4}
+\contentsline {part}{II\hspace {1em}下册}{85}{part.2}
+\contentsline {chapter}{\numberline {6}带度量的线性空间}{86}{chapter.6}
+\contentsline {section}{\numberline {6.1}习题一 \hskip 1em\relax 欧几里得空间的定义和基本性质}{86}{section.6.1}
+\contentsline {section}{\numberline {6.2}习题二 \hskip 1em\relax 欧几里得空间中的特殊线性变换}{86}{section.6.2}
+\contentsline {section}{\numberline {6.3}习题三 \hskip 1em\relax 酉空间}{86}{section.6.3}
+\contentsline {chapter}{\numberline {7}线性变换的 Jordan 标准形}{87}{chapter.7}
+\contentsline {section}{\numberline {7.1}习题一 \hskip 1em\relax 幂零线性变换的 Jordan 标准形}{87}{section.7.1}
+\contentsline {section}{\numberline {7.2}习题二 \hskip 1em\relax 一般线性变换的 Jordan 标准形}{87}{section.7.2}
+\contentsline {chapter}{\numberline {8}问题}{88}{chapter.8}
+\contentsline {section}{\numberline {8.1}插值问题}{88}{section.8.1}
+\contentsline {section}{\numberline {8.2}基与同构}{90}{section.8.2}
 \contentsfinish 

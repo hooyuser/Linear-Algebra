@@ -45,9 +45,14 @@
 }
 
 
-\def\I{\mathrm{i}}
-\def\diag{\mathrm{diag}}
-
+\newcommand{\ii}{\mathrm i}
+\newcommand{\Tr}{\mathrm Tr}
+\newcommand{\diag}{\mathrm diag}
+\newcommand{\Ker}{\mathrm Ker}
+\newcommand{\Image}{\mathrm Im}
+\newcommand{\Coker}{\mathrm Coker}
+\newcommand{\Hom}{\mathrm Hom}
+\newcommand{\End}{\mathrm End}
 %定义分数线
 
 %\geometry{left=6.0cm, right=3.0cm, top=3.5cm, bottom=2.5cm}
@@ -223,6 +228,21 @@
 	
 	\end{titlepage}
 
+\newpage
+
+~\\
+
+\vfill
+
+\textbf{版权声明}:
+本作品采用\href{http://creativecommons.org/licenses/by-nc-sa/3.0/cn/}{知识共享署名-非商业性使用-相同方式共享 3.0 中国大陆许可协议}进行许可。
+
+\begin{figure}[h]
+\centering\includegraphics[width=0.48\textwidth]{./BY-NC-SA}
+\end{figure}
+
+
+
 
 {   
 	\hypersetup{hidelinks}
@@ -255,14 +275,83 @@
 \chapter{线性空间与线性变换}
 \section{习题一 \quad 线性空间的基本概念}
 
+\hypertarget{4.1.2}{}
+\begin{myexample}
+	\textbf{2.} 检验以下集合对于所指定的运算是否构成实数域上的线性空间:
+	\begin{enumerate}
+	\item[(5)] 全体实数的二元有序数组所成的集合关于下面定义的运算:
+	\[
+	(a_1,b_1)\oplus(a_2,b_2)=(a_1+a_2,b_1+b_2+a_1a_2),
+	\]
+	\[
+	k\circ (a,b)=\left[ka,kb+\frac{k(k-1)}{2}a^2\right];
+	\]
+	\end{enumerate}
+	
+\end{myexample}
+\Solution
+
+(5) 容易验证本题定义的加法 $\oplus$ 和数乘 $\circ$ 运算在 $\mathbb{R}^2$ 中的封闭性. 下面依次检验线性空间的八条法则. 
+\begin{enumerate}[(\romannumeral1)]
+\item 加法结合律
+\begin{align*}
+	&[(a_1,b_1)\oplus(a_2,b_2)]\oplus(a_3,b_3)\\
+	=&(a_1+a_2,b_1+b_2+a_1a_2)\oplus(a_3,b_3)\\
+	=&(a_1+a_2+a_3,b_1+b_2+b_3+a_1a_2+a_1a_3+a_2a_3)\\
+	=&(a_1,b_1)\oplus(a_2+a_3,b_2+b_3+a_2a_3)\\
+	=&(a_1,b_1)\oplus[(a_2,b_2)\oplus(a_3,b_3)];
+\end{align*}
+\item 加法交换律
+\[
+(a_1,b_1)\oplus(a_2,b_2)=(a_1+a_2,b_1+b_2+a_1a_2)=(a_2,b_2)\oplus(a_1,b_1);
+\]
+\item 存在加法零元 $(0,0)$, 
+\[
+\forall (a,b)\in \mathbb{R}, (a,b)\oplus(0,0)=(a,b);
+\]
+\item 对任意 $(a,b)\in\mathbb{R}^2$, 存在加法负元 $(-a,a^2-b)$, 使得
+\[
+(a,b)\oplus(-a,a^2-b)=(0,b+a^2-b+a(-a))=(0,0);
+\]
+\item 对任意 $(a,b)\in\mathbb{R}^2$,
+\[
+1\circ(a,b)=\left[1a,1b+\frac{1\times(1-1)}{2}a^2\right]=(a,b);
+\]
+\item 数乘与域乘法相容, 即 $\forall k,l\in \mathbb{R},\forall(a,b)\in\mathbb{R}^2$,
+\begin{align*}
+k\circ (l\circ(a,b))&=k\circ\left[la,lb+\frac{l(l-1)}{2}a^2\right]\\
+&=\left[kla,klb+\frac{kl(l-1)}{2}a^2+\frac{k(k-1)}{2}(la)^2\right]\\
+&=\left[kla,klb+\frac{kl(kl-1)}{2}a^2\right]\\
+&=(kl)\circ(a,b);
+\end{align*}
+\item 数乘关于域加法的分配律. $\forall k,l\in \mathbb{R},\forall(a,b)\in\mathbb{R}^2$,
+\begin{align*}
+(k+l)\circ(a,b) &=\left[(k+l)a,(k+l)b+\frac{(k+l)(k+l-1)}{2}a^2\right]\\
+&=\left[ka+la,kb+lb+\frac{k(k-1)}{2}a^2+\frac{l(l-1)}{2}a^2+kla^2\right]\\
+&=\left[ka,kb+\frac{k(k-1)}{2}a^2\right]\oplus\left[la,lb+\frac{l(l-1)}{2}a^2\right]\\
+&=k\circ(a,b)\oplus l\circ(a,b);
+\end{align*}
+\item 数乘关于线性空间加法的分配律. $\forall k\in \mathbb{R},\forall(a_1,b_1),(a_2,b_2)\in\mathbb{R}^2$,
+\begin{align*}
+&k\circ[(a_1,b_1)\oplus(a_2,b_2)]\\
+=&k\circ(a_1+a_2,b_1+b_2+a_1a_2)\\
+=&\left[k(a_1+a_2),k(b_1+b_2+a_1a_2)+\frac{k(k-1)}{2}(a_1+a_2)^2\right]\\
+=&\left[ka_1+ka_2,kb_1+kb_2+\frac{k(k-1)}{2}a_1^2+\frac{k(k-1)}{2}a_2^2+k^2a_1a_2\right]\\
+=&\left[ka_1,kb_1+\frac{k(k-1)}{2}a_1^2\right]\oplus\left[ka_2,kb_2+\frac{k(k-1)}{2}a_2^2\right]\\
+=&[k\circ(a_1,b_1)]\oplus [k\circ(a_2,b_2)].\\ \\ \\
+\end{align*}
+\end{enumerate}
+
+
+
 
 \begin{myexample}
 \textbf{7.} 
 在  $ \mathbb{Q} $ 上的线性空间  $ \mathbb{Q}(\omega) $ 内判断下列向量组是否线性相关： 
 
-(1)  $ \frac{1}{2} $ ,  $ 3 $ ,  $ -7 $ ；  \ \ \ \ \ (2)  $ 1 $ ,  $ \omega $ ,  $ \omega^2 $ ,  $ \omega^3 $ ,  $ \omega^4 $ ；  \ \ \ \ \ (3)  $ \omega$, $\overline{\omega}$, $\sqrt{3}\I $  . 
+(1)  $ \frac{1}{2} $ ,  $ 3 $ ,  $ -7 $ ；  \ \ \ \ \ (2)  $ 1 $ ,  $ \omega $ ,  $ \omega^2 $ ,  $ \omega^3 $ ,  $ \omega^4 $ ；  \ \ \ \ \ (3)  $ \omega$, $\overline{\omega}$, $\sqrt{3}\ii $  . 
 
-其中,  $ \mathbb{Q} (\omega) = \{a+b\omega: a, b \in \mathbb{Q} \} $ ,  $ w = \dfrac{-1+\sqrt{3}\I}{2} $ . 
+其中,  $ \mathbb{Q} (\omega) = \{a+b\omega: a, b \in \mathbb{Q} \} $ ,  $ w = \dfrac{-1+\sqrt{3}\ii}{2} $ . 
 \end{myexample}
 \Solution
 
@@ -270,7 +359,7 @@
 
 (2) 线性相关. 因为 $ 1\times1 + (-1)\times \omega^3 = 0 $  . \ \ \ \  $ r( 1, \omega, \omega^2, \omega^3, \omega^4)=2 $ . 
 
-(3) 线性相关. 因为 $ 1\times w + (-1)\times \overline{w} + (-1)\times \sqrt{3}i = 0 $ . \ \ \ \  $ r(\omega, \overline{\omega}, \sqrt{3}\I) = 2. $   \\  \\  \\
+(3) 线性相关. 因为 $ 1\times w + (-1)\times \overline{w} + (-1)\times \sqrt{3}i = 0 $ . \ \ \ \  $ r(\omega, \overline{\omega}, \sqrt{3}\ii) = 2. $   \\  \\  \\
 
 
 
@@ -405,7 +494,7 @@ T =
     $\varepsilon_2 = (1, 1, -1, -1)$,\hspace{1.2em}$ \eta_2 = (2, 1, 3, 1), $\\ 
     $\varepsilon_3 = (1, -1, 1, -1)$,\hspace{1.2em}$ \eta_3 = (1, 1, 0, 0), $\\  
     $\varepsilon_4 = (1 ,-1, -1, 1)$.\hspace{1.2em}$ \eta_4 = (0 ,1, -1, -1). $\\ 
-求 $ \beta = (1, 0, 0, -1) $ 在 $ \eta_1, \eta_2, \eta_3, \eta_4 $ 下的坐标. \\
+求 $ \beta = (1, 0, 0, -1) $ 在 $ \eta_1, \eta_2, \eta_3, \eta_4 $ 下的坐标. 
 \end{enumerate}
 
 \end{myexample}
@@ -701,33 +790,31 @@ A=
 & 2  &   &   \\
 &    & \ddots & \\
 &    &    &  n  
-\end{bmatrix} 
+\end{bmatrix},
 \end{gather*}
 求 $ C(A) $ 的维数和一组基. 
 \end{enumerate}
 \end{myexample}
 \Solution
 
-(1) 由于 $ E $ 与 $ A $ 可交换, 因此 $ C(A) $ 非空集.设 $ B_1, B_2 \in C(A) $ , 则 $ B_1A = AB_1, B_2A = AB_2 $ .
-
-\hspace{4.1em} 从而:
+(1) 由于 $ E $ 与 $ A $ 可交换, 因此 $ C(A) $ 非空集.设 $ B_1, B_2 \in C(A) $ , 则 $ B_1A = AB_1, B_2A = AB_2 $. 从而
  $$  (B_1+B_2)A = B_1A + B_2A = AB_1 + AB_1 = A(B_1 + B_2)  $$ 
  $$  (kB_1)A = k(B_1A) = k(AB_1) = A(kB_1), \ \ \forall k \in K  $$ 
-所以：与 $ A $ 可交换的 $ n $ 阶方阵的全体组成 $ M_n(K) $ 的一个子空间. \\
+所以与 $ A $ 可交换的 $ n $ 阶方阵的全体组成 $ M_n(K) $ 的一个子空间. \\
 
-(2) 令 $  P = (x_{ij})_{n \times n} \in C(A) $ , 则：
- $$  AP(i,j) = ix_{ij} = jx_{ij} = PA(i,j) \ \ \Rightarrow \ \ (i-j)x_{ij} = 0  $$ 
-所以：
- $$  x_{ij} = 0 \ (i \neq j), \ \ x_{ij} \in K \ (i = j)  $$ 
-即：与 $ A $ 可交换的矩阵为任意对角矩阵.
+(2) 令 $  P = (x_{ij})_{n \times n} \in C(A) $ , 则
+\[  
+(AP)_{ij} = ix_{ij} = x_{ij}j = (PA)_{ij} \implies (i-j)x_{ij} = 0. 
+\]
+所以
+ $$  x_{ij} = 0 \ (i \neq j), \ \ x_{ij} \in K \ (i = j),  $$ 
+即与 $ A $ 可交换的矩阵为任意对角矩阵.
 
-由于任意对角矩阵 $ D = \diag\{a_1, a_2, \cdots, a_n\} $ 均可由 $ E_{11},E_{22}, \cdots, E_{nn} $ 线性表出,即：
- $$  D = \diag\{a_1, a_2, \cdots, a_n\} = a_1E_{11} + a_2E_{22} + \cdots + a_nE_{nn}  $$ 
-其中,  $ E_{ii} $ 为 $ (i,i) $ 元素为 $ 1 $ , 其它元素为 $ 0 $ 的 $ n $ 级矩阵.
+由于任意对角矩阵 $ D = \diag(a_1, a_2, \cdots, a_n) $ 均可由 $ E_{11},E_{22}, \cdots, E_{nn} $ 线性表出,即
+ $$  D = \diag(a_1, a_2, \cdots, a_n)= a_1E_{11} + a_2E_{22} + \cdots + a_nE_{nn},  $$ 
+其中 $ E_{ii} $ 为第 $i$ 行第 $i$ 列元素为 $ 1 $ , 其它元素为 $ 0 $ 的 $ n $ 阶矩阵.
 
-且 $ E_{11}, E_{22}, \cdots,E_{nn} $ 线性无关.
-
-所以,  $ E_{11}, E_{22}, \cdots,E_{nn} $ 是 $ C(A) $ 的一组基,  $ \dim C(A) = n $ . \\  \\  \\
+且 $ E_{11}, E_{22}, \cdots,E_{nn} $ 线性无关. 所以 $ E_{11}, E_{22}, \cdots,E_{nn} $ 是 $ C(A) $ 的一组基,  $ \dim C(A) = n $. \\  \\  \\
 
 
 \begin{myexample}
@@ -739,16 +826,15 @@ A=
 1 & 0 & 0 \\
 0 & 1 & 0 \\
 3 & 1 & 2 
-\end{bmatrix}
+\end{bmatrix},
 \end{gather*}
-求 $ C(A) $ 的维数和一组基.  \\  
-
+求 $ C(A) $ 的维数和一组基.  
 \end{myexample}
 \Solution
 
-设 $ P = (x_{ij})_{3\times3} $ , 则：
-\begin{gather*}
-PA = 
+设 $ P = (x_{ij})_{3\times3} $ , 则
+\begin{align*}
+PA &= 
 \begin{bmatrix}
 x_{11} & x_{12} & x_{13} \\
 x_{21} & x_{22} & x_{23} \\
@@ -764,10 +850,8 @@ x_{31} & x_{32} & x_{33}
 x_{11} + 3x_{13} & x_{12} + x_{13} & 2x_{13} \\
 x_{21} + 3x_{23} & x_{22} + x_{23} & 2x_{23} \\
 x_{31} + 3x_{33} & x_{32} + x_{33} & 2x_{33}
-\end{bmatrix}
-\end{gather*}
-\begin{gather*}
-AP = 
+\end{bmatrix},\\
+AP &= 
 \begin{bmatrix}
 1 & 0 & 0 \\
 0 & 1 & 0 \\
@@ -777,19 +861,19 @@ AP =
 x_{11} & x_{12} & x_{13} \\
 x_{21} & x_{22} & x_{23} \\
 x_{31} & x_{32} & x_{33} 
-\end{bmatrix} 
-=
+\end{bmatrix} \\
+&=
 \begin{bmatrix}
 x_{11} & x_{12} & x_{13} \\
 x_{21} & x_{22} & x_{23} \\
 3x_{11} + x_{21} + 2x_{31} & 3x_{12} + x_{22} + 2x_{32} & 3x_{13} + x_{23} + 2x_{33}
-\end{bmatrix}
-\end{gather*}
-由于 $ PA = AP $ , 则：
- $$  x_{13} = 0, \ \ x_{23} = 0, \ \ x_{31}+3x_{33} = 3x_{11} + x_{21} + 2x_{31}, \ \ x_{32} + x_{33} = 3x_{12} + x_{22} + 2x_{32}  $$ 
-整理可得：
- $$  x_{31} = -3x_{11} +  9x_{12} -x_{21} + 3x_{22} + 3x_{32}, \ \ \ x_{33} = 3x_{12} + x_{22} + x_{32}  $$ 
-所以, 
+\end{bmatrix}.
+\end{align*}
+由于 $ PA = AP $, 则
+ $$  x_{13} = 0, \ \ x_{23} = 0, \ \ x_{31}+3x_{33} = 3x_{11} + x_{21} + 2x_{31}, \ \ x_{32} + x_{33} = 3x_{12} + x_{22} + 2x_{32}. $$ 
+整理可得
+ $$  x_{31} = -3x_{11} +  9x_{12} -x_{21} + 3x_{22} + 3x_{32}, \ \ \ x_{33} = 3x_{12} + x_{22} + x_{32} . $$ 
+所以
 \begin{gather*}
 P = 
 \begin{bmatrix}
@@ -834,7 +918,7 @@ x_{21} & x_{22} & 0\\
 0 &  0  &  0  \\
 0 &  0  &  0  \\
 3 &  1  &  1  \\
-\end{bmatrix}
+\end{bmatrix}.
 \end{gather*}
 又由于
 \begin{gather*}
@@ -868,7 +952,7 @@ x_{21} & x_{22} & 0\\
 3 &  1  &  1  \\
 \end{bmatrix}
 \end{gather*}
-线性无关. 所以,  $ \dim C(A)= 5 $ ,  $ C(A) $ 的一组基为：
+线性无关, 所以 $ \dim C(A)= 5 $ ,  $ C(A) $ 的一组基为：
 \begin{gather*}
 \begin{bmatrix}
 1 &  0  &  0  \\
@@ -898,17 +982,13 @@ x_{21} & x_{22} & 0\\
 0 &  0  &  0  \\
 0 &  0  &  0  \\
 3 &  1  &  1  \\
-\end{bmatrix}
+\end{bmatrix}.
 \end{gather*} \\  \\  \\  
 
 
 
 \begin{myexample}
-	\textbf{3.} 
-在习题一第 $ 2 $ 题 $ (5) $ 的线性空间中给定子集 $ M = \{(a, 0) | a \in \mathbb{R} \} $ ,  $ N = \{(0, b)| b \in \mathbb{R} \} $ . 问 $ M $ ,  $ N $ 是否为子空间?全体实数的二元有序数组所成的集合关于下面的定义的运算：
- $$  (a_1, b_1) \oplus  (a_2, b_2) = (a_1 + a_2, b_1 + b_2 + a_1a_2)  $$ 
- $$  k \comp (a, b) = \left[ ka, kb+\dfrac{k(k-1)}{2}a^2\right]  $$ 
-
+	\textbf{3.} 在\hyperlink{4.1.2}{习题一第 $ 2 $ 题} $ (5) $ 的线性空间中给定子集 $ M = \{(a, 0) | a \in \mathbb{R} \}$, $ N = \{(0, b)| b \in \mathbb{R} \} $ . 问 $ M $, $ N $ 是否为子空间?
 \end{myexample}
 \Solution
 
@@ -928,8 +1008,7 @@ x_{21} & x_{22} & 0\\
 	\textbf{4.} 
 在数域 $ K $ 上的 $ n $ 维向量空间 $ K^n $ 中考察坐标全为有理数的向量所成的子集
  $$  M = \{(a_1, a_2, \cdots, a_n) \in K^n | a_i \in \mathbb{Q}, i = 1, 2, \cdots, n  \}  $$ 
-问 $ M $ 是否为 $ K^n $ 的子空间.  \\  
-
+问 $ M $ 是否为 $ K^n $ 的子空间. 
 \end{myexample}
 \Solution 
 
@@ -940,15 +1019,14 @@ x_{21} & x_{22} & 0\\
  $$  k(a_1, a_2, \cdots, a_n) =  (ka_1, ka_2, \cdots, ka_n)\in M, \ \ \ \forall k \in K = \mathbb{Q}  $$ 
 即对加法运算和数乘运算封闭. 所以 $ M $ 是 $ K^n $ 的子空间.  \\ 
 
-(2) 当 $ \mathbb{Q} \subsetneq K $ 时,  $ N $ 不是 $ K^n $ 的子空间.取 $ (a_1, a_2, \cdots, a_n) \in \mathbb{Q}, k \in K \setminus \mathbb{Q} $ , 则：
+(2) 当 $ \mathbb{Q} \subsetneq K $ 时,  $ N $ 不是 $ K^n $ 的子空间.取 $ (a_1, a_2, \cdots, a_n) \in \mathbb{Q}, k \in K \setminus \mathbb{Q} $ , 则
  $$  k(a_1, a_2, \cdots, a_n) = (ka_1, ka_2, \cdots, ka_n) \notin M, \ \ \ \ (\text{因为} \;ka_i \notin \mathbb{Q})  $$ 
 即对数乘运算不封闭. 所以 $ M $ 不是 $ K^n $ 的子空间.  \\  \\  \\
 
 
 \begin{myexample}
 	\textbf{5.} 
-把复数域 $ \mathbb{C} $ 看做有理数域 $ \mathbb{Q} $ 上的线性空间(加法为复数加法,与 $ \mathbb{Q} $ 中元素的数乘为有理数与复数的乘法), 问全体实数所成的子集 $ \mathbb{R} $ 是否是一个子空间?  \\  
-
+把复数域 $ \mathbb{C} $ 看做有理数域 $ \mathbb{Q} $ 上的线性空间(加法为复数加法,与 $ \mathbb{Q} $ 中元素的数乘为有理数与复数的乘法), 问全体实数所成的子集 $ \mathbb{R} $ 是否是一个子空间? 
 \end{myexample}
 \Solution 
 
@@ -972,8 +1050,7 @@ x_{21} & x_{22} & 0\\
 
 \begin{myexample}
 	\textbf{10.} 
-证明：有限维向量空间 $ V $ 上的任一子空间 $ M $ 都可以看作是 $ V $ 内一个向量组 $ \alpha_1, \alpha_2, \cdots, \alpha_s $ 生成的子空间.  \\
-
+证明：有限维向量空间 $ V $ 上的任一子空间 $ M $ 都可以看作是 $ V $ 内一个向量组 $ \alpha_1, \alpha_2, \cdots, \alpha_s $ 生成的子空间.
 \end{myexample}
 \Solution
 
@@ -981,7 +1058,7 @@ x_{21} & x_{22} & 0\\
 
 记 $ \dim   M = s \leq \dim V $ , 可以找到 $ M $ 中的一组向量：
  $$  \alpha_1, \alpha_2, \cdots, \alpha_s  \in M \subset V $$ 
-它们是线性空间 $ M $ 的一组基. 记 $ M_1 = span\{\alpha_1, \alpha_2, \cdots, \alpha_s \} $ .
+它们是线性空间 $ M $ 的一组基. 记 $ M_1 = L(\alpha_1, \alpha_2, \cdots, \alpha_s) $ .
 
 任取 $ \beta \in M $ , 由基的定义可知,  $ \beta $ 可由 $ \alpha_1, \alpha_2, \cdots, \alpha_s $ 线性表出.  $ \Rightarrow \beta \in M_1  $  
  $$  \Rightarrow M \subset M_1  $$ 
@@ -1049,7 +1126,7 @@ x_{21} & x_{22} & 0\\
 \end{bmatrix}
 \end{gather*} 
 所以向量组 $ \alpha_1, \alpha_2, \alpha_3, \beta_1, \beta_2 $ 的秩为4. 又因为
- $$   -3\alpha_1 + \alpha_2 + 2\alpha_3 -\beta_1 = 0 \ \ \ \Rightarrow \ \ \ \beta_1 = -3\alpha_1 + 2\alpha_3 + \alpha_2  $$ 
+ $$   -3\alpha_1 + \alpha_2 + 2\alpha_3 -\beta_1 = 0 \ \ \ \implies \ \ \ \beta_1 = -3\alpha_1 + 2\alpha_3 + \alpha_2  $$ 
 所以 $ \alpha_1, \alpha_2, \alpha_3, \beta_2 $ 是 $ L(\alpha_1, \alpha_2, \alpha_3) + L(\beta_1, \beta_2) $ 的一组基, 其维数为4.  \\
 
 (ii) 求 $ L(\alpha_1, \alpha_2, \alpha_2) \cap L(\beta_1, \beta_2) $ 的维数和一组基. 因为
@@ -1057,7 +1134,7 @@ x_{21} & x_{22} & 0\\
 从而:  $ \dim L(\alpha_1, \alpha_2, \alpha_2) \cap L(\beta_1, \beta_2) = 1 $ 
 
 从(i)中可知:
- $$  -3\alpha_1 + \alpha_2 + 2\alpha_3 -\beta_1 = 0 \ \ \ \Rightarrow \ \ \ -3\alpha_1 + \alpha_2 + 2\alpha_3 = \beta_1 \in L(\alpha_1, \alpha_2, \alpha_2) \cap L(\beta_1, \beta_2)  $$ 
+ $$  -3\alpha_1 + \alpha_2 + 2\alpha_3 -\beta_1 = 0 \ \ \ \implies \ \ \ -3\alpha_1 + \alpha_2 + 2\alpha_3 = \beta_1 \in L(\alpha_1, \alpha_2, \alpha_2) \cap L(\beta_1, \beta_2)  $$ 
 \hspace{3.3em} 而  $ \beta_1 = (2, 5, -6, -5) \neq (0, 0, 0, 0) $ , 所以 $ \beta_1 $ 是 $ L(\alpha_1, \alpha_2, \alpha_2) \cap L(\beta_1, \beta_2) $ 的一组基.  \\  \\  \\
 
 
@@ -1065,8 +1142,7 @@ x_{21} & x_{22} & 0\\
 \begin{myexample}
 	\textbf{16.} 
 设 $ M $ 是线性空间 $ M_n(K) $ 内全体对称矩阵所成的子空间,  $ N $ 是由全体反对称矩阵所成的子空间. 证明:
- $$  M_n(K) = M \oplus  N  $$    \\  
-
+ $$  M_n(K) = M \oplus  N  $$ 
 \end{myexample}
 \Solution
 
@@ -1077,7 +1153,7 @@ x_{21} & x_{22} & 0\\
 所以: $ A \in M + N $ . 从而 $ M_n(K) \subset M + N $ . 而 $ M + N \subset M_n(K) $ , 所以  $ M_n(K) = M + N $ . 
 
 再证明 $ M_n(K) = M \oplus  N $ , 只需要证明 $ M \cap N = 0 $ .任取 $ B \in M \cap N $ , 则:
- $$  B' = B, \ \ B' = -B \ \ \Rightarrow -B = B \ \ \Rightarrow B = 0  $$ 
+ $$  B' = B, \ \ B' = -B \ \ \implies -B = B \ \ \implies B = 0  $$ 
 \hspace{3em} 从而 $ M \cap N = 0 $ . 综上:  $ M_n(K) = M \oplus  N $ .  \\  \\ \\
 
 
@@ -1110,7 +1186,7 @@ x_{21} & x_{22} & 0\\
 考虑到 $ M_1, M_2 $ 中向量坐标的特点, 设 $ \alpha_1 = (b_1, b_2, \cdots, b_n) $ , \  $ \alpha_2 = (c, c, \cdots, c) $ . 则: 
  $$  (a_1, a_2, \cdots, a_n) = (b_1 + c, b_2 + c, \cdots, b_n + c) \ \ \text{且} \ \ b_1 + b_2 + \cdots + b_n = 0  $$ 
 即: 
- $$  b_1 + b_2 + \cdots + b_n = a_1 + a_2 + \cdots + a_n - nc = 0 \ \ \Rightarrow \ \ c = \dfrac{a_1 + a_2 + \cdots + a_n}{n}  $$ 
+ $$  b_1 + b_2 + \cdots + b_n = a_1 + a_2 + \cdots + a_n - nc = 0 \ \ \implies \ \ c = \dfrac{a_1 + a_2 + \cdots + a_n}{n}  $$ 
 即对于 $ \forall \alpha=(a_1, a_2, \cdots, a_n) \in K^n $ , 可以找到
  $$ \alpha_1 = \left(a_1 - \frac{\sum\limits_{i=1}^{n}a_i}{n}, a_2 -\frac{\sum\limits_{i=1}^{n}a_i}{n}, \cdots, a_n-\frac{\sum\limits_{i=1}^{n}a_i}{n} \right) \in M_1, \ \  \alpha_2 = \left(\frac{\sum\limits_{i=1}^{n}a_i}{n}, \frac{\sum\limits_{i=1}^{n}a_i}{n}, \cdots, \frac{\sum\limits_{i=1}^{n}a_i}{n} \right) \in M_2 $$ 
 使得 $ \alpha = \alpha_1 + \alpha_2 $ . 
@@ -1254,46 +1330,45 @@ E_r  &  *  \\
  $$  f(\alpha) = (a_1, a_2, \cdots, a_m) \in K^m.  $$ 
 又定义 $ K^m $ 到 $ K^n $ 的映射 $ g $ 如下:若 $ \alpha = (a_1, a_2, \cdots, a_m) $ , 则令
  $$  g(\alpha) = (a_1, a_2, \cdots, a_m, 0, \cdots, 0) \in K^n  $$ 
-证明 $ f,g $ 均为线性映射, 并求 $mathrm{Ker}$  $ f $ , Im $ f $ , Coker $ f $ ,  $mathrm{Ker}$  $ g $ , Im $ g $ , Coker $ g $ .  \\ 
-
+证明 $ f,g $ 均为线性映射, 并求  $\Ker f $,  $\Image f $,  $\Coker f $,  $\Ker g $, $\Image g $, $\Coker g $. 
 \end{myexample}
 \Solution 
+\begin{enumerate}[(1)]
+	\item 对于 $ \forall \alpha=(a_1, a_2, \cdots, a_n), \beta=(b_1, b_2, \cdots, b_n) \in K^n, k_1, k_2 \in K $ , 有:
+	\begin{align*}
+	f(k_1\alpha + k_2\beta) &= (k_1a_1+k_2b_1, k_1a_2+k_2b_2, \cdots, k_1a_m+k_2b_m) \\
+	&= k_1(a_1, a_2, \cdots, a_m) + k_2(b_1, b_2, \cdots, b_m) \\
+	&= k_1f(\alpha) + k_2f(\beta) 
+	\end{align*}
+	所以 $ f $ 为线性映射. 下求 $\Ker f$, $\Image f $, $\Coker f $ . 
+	
+	$$  f(\alpha)=0  \Leftrightarrow a_1 = a_2 = \cdots = a_m = 0  $$ 
+	所以 $\Ker f= \{(0,0,\cdots, 0, a_{m+1}, \cdots, a_n) | a_{m+i} \in K \} $ ;
+	
+	并且 $\Image f = K^m $, $\Coker f = V/\Image f = \{ 0 + K^m\} $.  
+	
+	\item 对于映射 $ g $ 的证明求解与(1)类似, 便不赘述.
+	$$   \mathrm{Ker} g = \{ 0 \}, \ \ \  \mathrm{Im} g = \{(a_1, \cdots, a_m, 0, \cdots, 0)|a_i \in K \}, \ \ \   \mathrm{Coker} g = L \{ \varepsilon_{m+1}+ \mathrm{Im} g, \cdots, \varepsilon_n +  \mathrm{Im} g \}  $$  
+	其中,  $ \varepsilon_i $ 是 $ K^n $ 中的坐标向量. \\  \\  \\
+\end{enumerate}
 
-(1) 对于 $ \forall \alpha=(a_1, a_2, \cdots, a_n), \beta=(b_1, b_2, \cdots, b_n) \in K^n, k_1, k_2 \in K $ , 有:
-\begin{align*}
-f(k_1\alpha + k_2\beta) &= (k_1a_1+k_2b_1, k_1a_2+k_2b_2, \cdots, k_1a_m+k_2b_m) \\
-&= k_1(a_1, a_2, \cdots, a_m) + k_2(b_1, b_2, \cdots, b_m) \\
-&= k_1f(\alpha) + k_2f(\beta) 
-\end{align*}
-所以 $ f $ 为线性映射. 下求 $mathrm{Ker}$  $ f $ , Im $ f $ , Coker $ f $ . 
-
- $$  f(\alpha)=0  \Leftrightarrow a_1 = a_2 = \cdots = a_m = 0  $$ 
-所以 $mathrm{Ker}$  $ f $   $ = \{(0,0,\cdots, 0, a_{m+1}, \cdots, a_n) | a_{m+i} \in K \} $ ;
-
-并且Im $ f = K^m $ , Coker $ f $  =  $ V $ /Im $ f = \{ 0 + K^m\} $ .  \\ 
-
-(2)对于映射 $ g $ 的证明求解与(1)类似, 便不赘述.
- $$   \mathrm{Ker} g = \{ 0 \}, \ \ \  \mathrm{Im} g = \{(a_1, \cdots, a_m, 0, \cdots, 0)|a_i \in K \}, \ \ \   \mathrm{Coker} g = L \{ \varepsilon_{m+1}+ \mathrm{Im} g, \cdots, \varepsilon_n +  \mathrm{Im} g \}  $$  
-其中,  $ \varepsilon_i $ 是 $ K^n $ 中的坐标向量. \\  \\  \\
 
 
 
 \begin{myexample}
-\textbf{4.3.5} 
-
-将数域 $ \mathbb{Q}(i) $ 与 $ \mathbb{Q}(\sqrt{2}) $ 都看作 $ \mathbb{Q} $ 上的线性空间(加法为复数加法, 数乘为有理数与复数的乘法), 找出它们之间的一个同构映射. \\  
+\textbf{5.} 将数域 $ \mathbb{Q}(i) $ 与 $ \mathbb{Q}(\sqrt{2}) $ 都看作 $ \mathbb{Q} $ 上的线性空间(加法为复数加法, 数乘为有理数与复数的乘法), 找出它们之间的一个同构映射. \\  
 
 \end{myexample}
 \Solution 
 
-注意到 $ \mathbb{Q}(i) = a + bi $ ,  $ \mathbb{Q}(\sqrt{2}) = a + b\sqrt{2} $ , 其中, $ a, b \in \mathbb{Q} $ .建立如下映射 $ \tau $ :
+注意到 $ \mathbb{Q}(i) = a + bi $ ,  $ \mathbb{Q}(\sqrt{2}) = a + b\sqrt{2} $ , 其中, $ a, b \in \mathbb{Q} $ .建立如下映射
 \begin{center}
 	\begin{tabular}{cccc}
 		 $ \tau :  $  &  $ \mathbb{Q}(i) $   &    $ \longrightarrow $   &   $ \mathbb{Q}(\sqrt{2}) $   \\
 		&  $ a + bi $          &    $ \longmapsto $   &   $ a+b\sqrt{2} $  
 	\end{tabular}
 \end{center}
-下证明,  $ \tau $ 为 $ \mathbb{Q}(i) $ 到 $ \mathbb{Q}(\sqrt{2}) $ 的同构映射. 任取 $ a+bi, c+di \in \mathbb{Q}(i) $ , 有
+下证 $ \tau $ 为 $ \mathbb{Q}(i) $ 到 $ \mathbb{Q}(\sqrt{2}) $ 的同构映射. 任取 $ a+bi, c+di \in \mathbb{Q}(i) $ , 有
 \begin{align*}
 \tau ((a+bi) + (c+di)) &= \tau((a+c)+(b+d)i) = (a+c) + (b+d)\sqrt{2} \\
 &= (a+b\sqrt{2}) + (c + d\sqrt{2}) \\
@@ -1323,7 +1398,7 @@ x_1 \\ x_2 \\ x_3 \\ x_4
 -x_1 -x_2 + 3x_3 + x_4
 \end{bmatrix}
 \end{gather*}
-证明 $ f $ 是一个线性映射, 求 $mathrm{Ker}$  $ f $ , Im $ f $ , Coker $ f $ . 在 $ K^4 $ 内取一组基
+证明 $ f $ 是一个线性映射, 求 $\mathrm{Ker}f$,  $ \Image f $ , Coker $ f $ . 在 $ K^4 $ 内取一组基
  $$  \varepsilon_1 = (1,0,1,1)', \ \ \varepsilon_2=(0,1,0,1)', \ \ \varepsilon_3=(0,0,1,0)', \ \ \varepsilon_4=(0,0,2,1)'  $$ 
 又在 $ K^3 $ 内取定一组基
  $$  \eta_1 = (1,1,1)', \ \ \ \eta_2 = (1, 0, -1)', \ \ \ \eta_3=(0,1,0)'  $$ 
@@ -1357,7 +1432,7 @@ x_1 \\ x_2 \\ x_3 \\ x_4
 \end{gather*}
 所以对于 $ \forall X, Y \in K^4, \forall k_1,k_2 \in K $ , 有:
  $$  f(k_1X + k_2Y) = A(k_1X + k_2Y) = k_1AX + k_2AY = k_1f(X)+k_2f(Y)   $$ 
-所以,  $ f $ 是 $ K^4 $ 到 $ K^3 $ 的线性映射.根据线性映射的核与象的定义,  $mathrm{Ker}$  $ f $ 与Im $ f $ 实际上分别为为四元齐次方程组 $ AX=0 $ 的解空间与矩阵A的列空间, 于是:
+所以,  $ f $ 是 $ K^4 $ 到 $ K^3 $ 的线性映射.根据线性映射的核与象的定义, $\Ker f $ 与Im $ f $ 实际上分别为为四元齐次方程组 $ AX=0 $ 的解空间与矩阵A的列空间, 于是:
 \begin{gather*}
 A=
 \begin{bmatrix}
@@ -1375,7 +1450,7 @@ A=
 
 于是 $ AX=0 $ 的一个基础解系为:
  $$  \alpha_1 = ( 5,1 ,2,0)', \ \ \ \alpha_2 = (1, 0, 0, 1)'  $$ 
-从而 $mathrm{Ker}$  $ f = L(\alpha_1, \alpha_2) $ . 同时, 从 $ A $ 的约化阶梯型矩阵可以看出,  $ A $ 的列向量组的一个极大线性无关组是:
+从而 $\Ker f$  $  = L(\alpha_1, \alpha_2) $ . 同时, 从 $ A $ 的约化阶梯型矩阵可以看出,  $ A $ 的列向量组的一个极大线性无关组是:
  $$  \beta_1 = (1, 0, -1)', \ \ \ \beta_2=(1, -2, -1)'  $$  
 所以, Im $ f = L(\beta_1, \beta_2) $ . 考虑 $ (\beta_1, \beta_2)' $ 
 \begin{gather*}
@@ -1439,14 +1514,13 @@ x_1+x_3 \\
 x_2 + 2x_3
 \end{bmatrix}
 \end{gather*}
-(1) 证明 $ f $ 是一个线性映射, 求 $mathrm{Ker}$  $ f $ , Im $ f $ , Coker $ f $ .
+(1) 证明 $ f $ 是一个线性映射, 求 $\mathrm{Ker}$  $ f $ , Im $ f $ , Coker $ f $ .
 
 (2) 在 $ K^3 $ 内取定一组基
  $$  \eta_1 = (1,1,1),  \ \ \ \eta_2=(1,0,-1), \ \ \ \eta_3=(0,1,1)  $$ 
 在 $ K^4 $ 内取一组基
  $$  \varepsilon_1=(1,0,1,1), \ \ \varepsilon_2=(0,1,0,1), \ \ \varepsilon_3=(0,0,1,0), \ \ \varepsilon_4=(0,0,2,1)  $$ 
-求 $ f $ 在给定基下的矩阵.  \\
-
+求 $ f $ 在给定基下的矩阵.  
 \end{myexample}
 \Solution  
 
@@ -1477,7 +1551,7 @@ x_1 \\ x_2  \\ x_3
 \end{gather*}
 对于 $ \forall X, Y \in K^3 $ ,  $ k_1, k_2 \in K $ , 有:
  $$  f(k_1X + k_2Y) = A(k_1X+k_2Y) = k_1AX + k_2AY = k_1f(X) + k_2f(Y)   $$ 
-所以,  $ f $ 是 $ K^3 $ 到 $ K^4 $ 的一个线性映射.根据线性映射的核与象的定义,  $mathrm{Ker}$  $ f $ 与Im $ f $ 实际上分别为为三元齐次方程组 $ AX=0 $ 的解空间与矩阵A的列空间, 于是:
+所以,  $ f $ 是 $ K^3 $ 到 $ K^4 $ 的一个线性映射.根据线性映射的核与象的定义,  $\mathrm{Ker}f$与 $ \mathrm{Im}f $ 实际上分别为为三元齐次方程组 $ AX=0 $ 的解空间与矩阵A的列空间, 于是:
 \begin{gather*}
 A=
 \begin{bmatrix}
@@ -1494,7 +1568,7 @@ A=
 0 & 0 & 0
 \end{bmatrix}
 \end{gather*}
-于是,  $mathrm{Ker}$  $ f $  = {0}, 从 $ A $ 的约化阶梯型矩阵可以看出,  $ A $ 的列向量的一个极大线性无关组为:
+于是,  $\mathrm{Ker}f= \{0\}$, 从 $ A $ 的约化阶梯型矩阵可以看出,  $ A $ 的列向量的一个极大线性无关组为:
  $$  \alpha_1 = (1, -1, 2, 0), \ \ \ \alpha_2 =(0,1,0,1), \ \ \ \ \alpha_3=(1,1,1,2)  $$  
 
 所以,Im $ f = L(\alpha_1, \alpha_2, \alpha_3) $ , 考虑 $ (\alpha_1, \alpha_2, \alpha_3)' $ 
@@ -1550,30 +1624,30 @@ T = (\varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4)^{-1}f(\eta_1, \
 
 
 \begin{myexample}
-	\textbf{4.3.9}
-
-判断下面定义的变换哪些是线性的, 哪些则不是:
-
-(1)在线性空间 $ V $ 中,  $ \mathcal{A}\xi = \xi + \alpha $ , 其中 $ \alpha \in V $ 是一个固定的向量;
-
-(2)在线性空间 $ V $ 中, 令 $ \mathcal{A}\xi = \alpha $ , 其中 $ \alpha \in V $ 是一个固定的向量;
-
-(3)在 $ K^3 $ 中, 令 $ \mathcal{A}(x_1, x_2, x_3) = (x_1^2, x_2+x_3, x_3^2) $ ;
-
-(4)在 $ K^3 $ 中, 令 $ \mathcal{A}(x_1, x_2, x_3) = (2x_1-x_2, x_2 + x_3 , x_1) $ ;
-
-(5)在 $ K[x] $ 中, 令 $ \mathcal{A}f(x) = f(x+1) $ ;
-
-(6)在 $ K[x] $ 中, 令 $ \mathcal{A}f(x) = f(x_0) $ , 其中 $ x_0 \in K $ 是一个固定的数;
-
-(7)把复数域看做复数域上的线性空间, 令 $ \mathcal{A}\xi = \overline{\xi} $ ;
-
-(8)在 $ M_n(K) $ 中, 令 $ \mathcal{A}(X) = BXC $ , 其中 $ B,C $ 是 $ K $ 上两个固定的 $ n $ 阶方阵.  \\
+\textbf{4.3.9} 判断下面定义的变换哪些是线性的, 哪些则不是:
+\begin{enumerate}[(1)]
+	\item 在线性空间 $ V $ 中,  $ \mathcal{A}\xi = \xi + \alpha $ , 其中 $ \alpha \in V $ 是一个固定的向量;
+	
+	\item 在线性空间 $ V $ 中, 令 $ \mathcal{A}\xi = \alpha $ , 其中 $ \alpha \in V $ 是一个固定的向量;
+	
+	\item 在 $ K^3 $ 中, 令 $ \mathcal{A}(x_1, x_2, x_3) = (x_1^2, x_2+x_3, x_3^2) $ ;
+	
+	\item 在 $ K^3 $ 中, 令 $ \mathcal{A}(x_1, x_2, x_3) = (2x_1-x_2, x_2 + x_3 , x_1) $ ;
+	
+	\item 在 $ K[x] $ 中, 令 $ \mathcal{A}f(x) = f(x+1) $ ;
+	
+	\item 在 $ K[x] $ 中, 令 $ \mathcal{A}f(x) = f(x_0) $ , 其中 $ x_0 \in K $ 是一个固定的数;
+	
+	\item 把复数域看做复数域上的线性空间, 令 $ \mathcal{A}\xi = \overline{\xi} $ ;
+	
+	\item 在 $ M_n(K) $ 中, 令 $ \mathcal{A}(X) = BXC $ , 其中 $ B,C $ 是 $ K $ 上两个固定的 $ n $ 阶方阵. 
+\end{enumerate}
 
 \end{myexample}
 \Solution
 
-(1) 当 $ \alpha \neq 0 $ 时, 不是线性的, 因为
+\begin{enumerate}[(1)]
+	\item  当 $ \alpha \neq 0 $ 时, 不是线性的, 因为
  $$  \mathcal{A}(k_1\xi_1 + k_2\xi_2) = k_1\xi_1 + k_2\xi_2 + \alpha   $$  
  $$  k_1\mathcal{A}\xi_1 + k_2\mathcal{A}\xi_2 = k_1(\xi_1 + \alpha) + k_2(\xi_2 + \alpha)  $$ 
  $$  \Longrightarrow \ \ \mathcal{A}(k_1\xi_1 + k_2\xi_2) \neq k_1\mathcal{A}\xi_1 + k_2\mathcal{A}\xi_2  $$ 
@@ -1582,7 +1656,7 @@ T = (\varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4)^{-1}f(\eta_1, \
  $$  k_1\mathcal{A}\xi_1 + k_2\mathcal{A}\xi_2 = k_1\xi_1  + k_2\xi_2   $$ 
  $$  \Longrightarrow \ \ \mathcal{A}(k_1\xi_1 + k_2\xi_2) = k_1\mathcal{A}\xi_1 + k_2\mathcal{A}\xi_2  $$ 
 
-(2) 当 $ \alpha \neq 0 $ 时, 不是线性的, 因为
+\item  当 $ \alpha \neq 0 $ 时, 不是线性的, 因为
  $$  \mathcal{A}(k_1\xi_1 + k_2\xi_2) = \alpha     $$ 
  $$  k_1\mathcal{A}\xi_1 + k_2\mathcal{A}\xi_2 = k_1\alpha + k_2\alpha  $$ 
  $$  \Longrightarrow \ \ \mathcal{A}(k_1\xi_1 + k_2\xi_2) \neq  k_1\mathcal{A}\xi_1 + k_2\mathcal{A}\xi_2  $$ 
@@ -1591,11 +1665,11 @@ T = (\varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4)^{-1}f(\eta_1, \
  $$  k_1\mathcal{A}\xi_1 + k_2\mathcal{A}\xi_2 =0  $$ 
  $$  \Longrightarrow \ \ \mathcal{A}(k_1\xi_1 + k_2\xi_2) =  k_1\mathcal{A}\xi_1 + k_2\mathcal{A}\xi_2  $$ 
 
-(3) 不是线性的, 取 $ \alpha_1 = (1, 0, 1)', \alpha_2 = (2, 0, 3)' $ , 则 $ \alpha_1 + \alpha_2 = (3,0,4)' $ 
+\item  不是线性的, 取 $ \alpha_1 = (1, 0, 1)', \alpha_2 = (2, 0, 3)' $ , 则 $ \alpha_1 + \alpha_2 = (3,0,4)' $ 
  $$  \mathcal{A}\alpha_1 = (1, 1, 1),  \ \ \ \mathcal{A}\alpha_2 = (4, 2, 9), \ \ \ \mathcal{A}(\alpha_1 + \alpha_2) = (9, 3, 16)  $$ 
  $$  \Longrightarrow \ \ \mathcal{A}(\alpha_1 + \alpha_2) \neq \mathcal{A}\alpha_1 + \mathcal{A}\alpha_2  $$ 
 
-(4) 是线性的, 因为:
+\item  是线性的, 因为:
 \begin{gather*}
 \mathcal{A}(x_1, x_2, x_3) = (2x_1-x_2, x_2 + x_3 , x_1)'=
 \begin{bmatrix}
@@ -1615,23 +1689,23 @@ x_1 \\ x_2  \\ x_3
  $$  \mathcal{A}(k_1\xi_1 + k_2\xi_2) = A(k_1\xi_1 + k_2\xi_2) = k_1A\xi_1 + k_2\xi_2 = k_1\mathcal{A}\xi_1 + k_2\mathcal{A}\xi_2  $$ 
 所以映射 $ \mathcal{A} $ 是线性的. \\
 
-(5)是线性的, 因为对于 $ \forall f, g \in K[x] $ ,  $ \forall k \in K $ , 有:
+\item 是线性的, 因为对于 $ \forall f, g \in K[x] $ ,  $ \forall k \in K $ , 有:
  $$  \mathcal{A}(f(x) + g(x)) = (f+g)(x+1) = f(x+1) + g(x+1) = \mathcal{A}f(x) + \mathcal{A}g(x)  $$ 
  $$  \mathcal{A}(kf(x)) = (kf)(x+1) = kf(x+1) = k\mathcal{A}f(x)  $$ 
 所以, 映射 $ \mathcal{A} $ 是线性的. \\
 
-(6)是线性的, 因为对于 $ \forall f, g \in K[x] $ ,  $ \forall k \in K $ , 有:
+\item 是线性的, 因为对于 $ \forall f, g \in K[x] $ ,  $ \forall k \in K $ , 有:
  $$  \mathcal{A}(f(x)+g(x)) = (f+g)(x_0) = f(x_0) + g(x_0) = \mathcal{A}f(x) + \mathcal{A}g(x)  $$ 
  $$  \mathcal{A}(kf(x)) = (kf)(x_0) = kf(x_0) = k\mathcal{A}f(x)  $$ 
 所以, 映射 $ \mathcal{A} $ 是线性的. \\
 
-(7)不是线性的, 因为:
+\item 不是线性的, 因为:
  $$  \mathcal{A}(k\xi) = \overline{k\xi} = \overline{k}\overline{\xi}  $$ 
 当 $ k \in \mathbb{C} \setminus \mathbb{R}  $ 时,  $ \mathcal{A}(k\xi) \neq k\mathcal{A}\xi $ . \\
 
-(8)是线性的, 因为 $ \forall X_1,X_2 \in M_n(K) $ ,  $ \forall k_1, k_2 \in K $ , 有
+\item 是线性的, 因为 $ \forall X_1,X_2 \in M_n(K) $ ,  $ \forall k_1, k_2 \in K $ , 有
  $$  \mathcal{A}(k_1X_1 + k_2X_2) = B(k_1X_1 + k_2X_2)C = k_1BX_1C + k_2BX_2C = k_1\mathcal{A}(X_1) + k_2\mathcal{A}(X_2)  $$   \\  \\  \\
-
+\end{enumerate}
 
 \begin{myexample}
 	\textbf{4.3.10}
@@ -1647,9 +1721,9 @@ x_1 \\ x_2  \\ x_3
 
 (1) 对于 $ \forall f, g \in D_0(a,b) $ ,  $ \forall k_1, k_2 \in \mathbb{R} $ , 有:
 \begin{align*}
-\mathcal{A}(k_1f(x)+k_2g(x)) &=\dfrac{\mathrm{d}^2(k_1f(x)+k_2g(x))}{\mathrm{d}x^2} + x \cdot \dfrac{\mathrm{d}k_1(f(x)+k_2g(x))}{\mathrm{d}x} + \sin x \cdot (k_1f(x)+ k_2g(x)  \\
-&=k_1(\dfrac{\mathrm{d}^2f(x)}{\mathrm{d}x^2} + x \cdot \dfrac{\mathrm{d}f(x)}{\mathrm{d}x} + \sin x \cdot f(x)) + k_2(\dfrac{\mathrm{d}^2g(x)}{\mathrm{d}x^2} + x \cdot \dfrac{\mathrm{d}g(x)}{\mathrm{d}x} + \sin x \cdot g(x))  \\ 
-&= k_1 \mathcal{A}f(x) + k_2 \mathcal{A}g(x)
+&\mathcal{A}(k_1f(x)+k_2g(x))\\ =&\dfrac{\mathrm{d}^2(k_1f(x)+k_2g(x))}{\mathrm{d}x^2} + x \cdot \dfrac{\mathrm{d}k_1(f(x)+k_2g(x))}{\mathrm{d}x} + \sin x \cdot (k_1f(x)+ k_2g(x)  \\
+=&k_1(\dfrac{\mathrm{d}^2f(x)}{\mathrm{d}x^2} + x \cdot \dfrac{\mathrm{d}f(x)}{\mathrm{d}x} + \sin x \cdot f(x)) + k_2(\dfrac{\mathrm{d}^2g(x)}{\mathrm{d}x^2} + x \cdot \dfrac{\mathrm{d}g(x)}{\mathrm{d}x} + \sin x \cdot g(x))  \\ 
+=& k_1 \mathcal{A}f(x) + k_2 \mathcal{A}g(x)
 \end{align*}
 
 所以,  $ \mathcal{A} $ 是一个线性变换. \\ 
@@ -1658,7 +1732,7 @@ x_1 \\ x_2  \\ x_3
  $$  \mathcal{B}f(x) = \left[\dfrac{\mathrm{d}^2x^3}{\mathrm{d}x^2}\right]^2 + x \cdot \dfrac{\mathrm{d}x^3}{\mathrm{d}x} + \sin x \cdot x^3 = 3x^3 + 36x^2 + x^3\sin x    $$ 
  $$  \mathcal{B}g(x) = \left[\dfrac{\mathrm{d}^2x^2}{\mathrm{d}x^2}\right]^2 + x \cdot \dfrac{\mathrm{d}x^2}{\mathrm{d}x} + \sin x \cdot x^2 = 2x^2 + x^2\sin x + 4    $$ 
  $$  \mathcal{B}(f(x)+g(x)) = \left[\dfrac{\mathrm{d}^2(x^3+x^2)}{\mathrm{d}x^2}\right]^2 + x \cdot \dfrac{\mathrm{d}(x^3+x^2)}{\mathrm{d}x} + \sin x \cdot (x^3+x^2) = 3x^3 + 38x^2 + 24x + 4 + (x^3 + x^2)\sin x   $$ 
- $$  \Longrightarrow \ \ \ \mathcal{B}(f(x)+g(x)) \neq \mathcal{B}f(x) + \mathcal{B}g(x)  $$ 
+ $$ \implies\mathcal{B}(f(x)+g(x)) \neq \mathcal{B}f(x) + \mathcal{B}g(x)  $$ 
 所以,  $ \mathcal{B} $ 不是线性变换.  \\  \\  \\
 
 
@@ -1676,7 +1750,7 @@ x_1 \\ x_2  \\ x_3
 \end{myexample}
 \Solution  
 
-对于 $ \forall f(x), g(x) \in C[a,b] $ ,  $ \forall k_1, k_2 \in R $ , 有:
+对于 $ \forall f(x), g(x) \in C[a,b] $ ,  $ \forall k_1, k_2 \in \mathbb{R} $ , 有:
 \begin{align*}
 \mathcal{A}(k_1f(x) + k_2g(x)) &= \int_a^x K(t)(k_1f(t) + k_2g(t))dt\\
 &= k_1\int_a^xK(t)f(t)dt + k_2\int_a^xK(t)g(t)dt = k_1\mathcal{A}f(x) + k_2\mathcal{A}g(x)
@@ -1845,9 +1919,7 @@ A = (\varepsilon_1, \varepsilon_2, \varepsilon_2)^{-1}( \mathcal{A}\varepsilon_1
 
 
 \begin{myexample}
-	\textbf{4.3.21}
-
-在 $ M_2(K) $ 中定义变换如下:
+\textbf{21} 在 $ M_2(K) $ 中定义变换如下:
  $$  \mathcal{A}X = AX -XA, \ \ \ X \in M_2(K)  $$ 
 其中 $ A $ 是 $ K $ 上一个固定的二阶方阵, 证明:
 
@@ -1876,8 +1948,7 @@ A = (\varepsilon_1, \varepsilon_2, \varepsilon_2)^{-1}( \mathcal{A}\varepsilon_1
 0 & 1
 \end{bmatrix}
 \end{gather*}
-求 $ \mathcal{A} $ 在这组基下的矩阵. \\  
-
+求 $ \mathcal{A} $ 在这组基下的矩阵. 
 \end{myexample}
 \Solution
 
@@ -1968,7 +2039,7 @@ A =
 1  &  -1  &  1  &  2
 \end{bmatrix}=(\varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4)T
 \end{gather*}
-注意到 $ T $ 实际上为可逆矩阵(因为 $ det(T) \neq 0 $ ),所以 $ \eta_1, \eta_2, \eta_3, \eta_4 $ 实际上也为线性空间的基.从而 $ \mathcal{A} $ 在基 $ \eta_1. \eta_2, \eta_3, \eta_4 $ 下的矩阵B为:
+注意到 $ T $ 实际上为可逆矩阵（因为 $ \det(T) \neq 0 $ ）, 所以 $ \eta_1, \eta_2, \eta_3, \eta_4 $ 实际上也为线性空间的基.从而 $ \mathcal{A} $ 在基 $ \eta_1. \eta_2, \eta_3, \eta_4 $ 下的矩阵 $B$ 为
 \begin{gather*}
 B = T^{-1}AT =
 \begin{bmatrix}
@@ -2079,7 +2150,7 @@ T=
 \end{myexample}
 \Solution
 
-(1)由于 $ Hom(U,V) $ 与 $ M_{m,n} $ 同构, 所以 $ End(V) = Hom(V,V) $ 与 $ M_n(K) $ 同构. 所以,
+(1)由于 $ \Hom(U,V) $ 与 $ M_{m,n} $ 同构, 所以 $ \End(V) = Hom(V,V) $ 与 $ M_n(K) $ 同构. 所以,
  $$  \dim (End(V)) = \dim (Hom(V,V)) = \dim (M_n(K)) = n^2  $$ 
 
 (2)由于 $ \dim (End(V))= n^2 $ , 所以对于 $ \forall \mathcal{A} \in End(V) $ ,  $ End(V) $ 中的 $ n^2+1 $ 个向量:
@@ -2091,17 +2162,16 @@ T=
 
 
 \begin{myexample}
-	\textbf{4.3.35}
-
-设 $ \mathcal{A} $ 是数域 $ K $ 上 $ n $ 维线性空间 $ V $ 内的线性变换. 证明下面的命题互相等价:
-
-(1) $ \mathcal{A} $ 是可逆变换; 
-
-(2)对 $ V $ 内任意非零向量 $ \alpha $ ,  $ \mathcal{A}\alpha \neq 0 $ ;
-
-(3)若 $ \varepsilon_1, \cdots, \varepsilon_n $ 是 $ V $ 的一组基, 则 $ \mathcal{A}\varepsilon_1, \cdots, \mathcal{A}\varepsilon_n $ 也是 $ V $ 的一组基; 
-
-(4)如果 $ V $ 分解为子空间 $ M,N $ 的直和:  $ V = M \oplus  N $ , 那么有 $ V = \mathcal{A}(M) \oplus  \mathcal{A}(N) $ . \\
+	\textbf{4.3.35} 设 $ \mathcal{A} $ 是数域 $ K $ 上 $ n $ 维线性空间 $ V $ 内的线性变换. 证明下面的命题互相等价:
+\begin{enumerate}[(1)]
+	\item $ \mathcal{A} $ 是可逆变换; 
+	
+	\item 对 $ V $ 内任意非零向量 $ \alpha $ ,  $ \mathcal{A}\alpha \neq 0 $ ;
+	
+	\item 若 $ \varepsilon_1, \cdots, \varepsilon_n $ 是 $ V $ 的一组基, 则 $ \mathcal{A}\varepsilon_1, \cdots, \mathcal{A}\varepsilon_n $ 也是 $ V $ 的一组基; 
+	
+	\item 如果 $ V $ 分解为子空间 $ M,N $ 的直和:  $ V = M \oplus  N $ , 那么有 $ V = \mathcal{A}(M) \oplus  \mathcal{A}(N) $ . 
+\end{enumerate}
 
 \end{myexample}
 \Solution
@@ -2119,9 +2189,9 @@ T=
  $$  0 = \mathcal{A}\alpha_1 - \mathcal{A}\alpha_2 = \mathcal{A}(\alpha_1 - \alpha_2)  $$ 
 由于 $ V $ 内任意非零向量 $ \alpha $ ,  $ \mathcal{A}\alpha \neq 0 $ , 所以 $ \alpha_1 - \alpha_2 =0 $ , 即 $ \alpha_1 = \alpha_2 $ . 即 $ \mathcal{A} $ 是单射.
 
-另一方面,  $ V $ 内任意非零向量 $ \alpha $ ,  $ \mathcal{A}\alpha \neq 0 $ 意味着 $mathrm{Ker}$  $ \mathcal{A}=0 $ . 于是:
+另一方面,  $ V $ 内任意非零向量 $ \alpha $ ,  $ \mathcal{A}\alpha \neq 0 $ 意味着 $ \Ker\mathcal{A}=0 $ . 于是:
  $$  \dim ( \mathrm{Im} \mathcal{A}) = \dim V - \dim ( \mathrm{Ker} \mathcal{A}) = n  $$ 
-而Im $ \mathcal{A} \subset V $ , 所以Im $ \mathcal{A} = V $ . 即: $ \mathcal{A} $ 是满射.
+而 $ \Image\mathcal{A} \subset V $ , 所以 $\Image \mathcal{A} = V $ . 即: $ \mathcal{A} $ 是满射.
 
 所以 $ \mathcal{A} $ 是双射, 从而 $ \mathcal{A} $ 是可逆映射. \\
 
@@ -2172,7 +2242,7 @@ T=
 由于 $ V= \mathcal{A}(M) \oplus  \mathcal{A}(N)  $ , 所以 $ \mathcal{A}(M) \bigcap \mathcal{A}(N)=0 $ . 所以:
  $$  \mathcal{A}(V) = \mathcal{A}(M) \oplus  \mathcal{A}(N) = V $$ 
 即: $ \mathcal{A}(V) = V $ . 即, 线性变换 $ \mathcal{A} $ 是满射.从而,
- $$  \dim ( mathrm{Ker} \mathcal{A}) = \dim V - \dim ( \mathrm{Im} \mathcal{A}) = n - n = 0  $$ 
+ $$  \dim ( \mathrm{Ker} \mathcal{A}) = \dim V - \dim ( \Image \mathcal{A}) = n - n = 0  $$ 
 所以, Ker $ \mathcal{A} $  = {0}. 由(2) $ \Longrightarrow $ (1)的证明过程可知,  $ \mathcal{A} $ 是单射.
 
 综上,  $ \mathcal{A} $ 是双射. 从而,  $ \mathcal{A} $ 是可逆变换.  \\
@@ -2187,7 +2257,7 @@ T=
 
 而 $ \dim V = n $ , 所以 $ \mathcal{A}\varepsilon_1, \mathcal{A}\varepsilon_2, \cdots, \mathcal{A}\varepsilon_n $ 也是 $ V $ 的一组基.  \\ 
 
-(3)  $ \Rightarrow $  (4) 
+(3) $\implies$ (4) 
 
 取 $ M $ 的一组基 $ \varepsilon_1, \varepsilon_2, \cdots, \varepsilon_m $ , 将其扩充为 $ V $ 的基:
  $$  \varepsilon_1, \varepsilon_2, \cdots, \varepsilon_m, \varepsilon_{m+1}, \cdots, \varepsilon_n  $$ 
@@ -2252,7 +2322,7 @@ x_1 \\ x_2 \\ x_3 \\ x_4
 \end{bmatrix}
 =AX
 \end{gather*}
-在求Im $ f $ 的时候, 要清楚Im $ f $ 实际上是矩阵 $ A $ 的列向量生成的空间, 因为:
+在求 $\Image f $ 的时候, 要清楚Im $ f $ 实际上是矩阵 $ A $ 的列向量生成的空间, 因为:
 \begin{gather*}
 f
 \begin{bmatrix}
@@ -2296,7 +2366,7 @@ x_1  \\  x_2  \\  x_3  \\ x_4
 \end{gather*}
 此时, 对上述矩阵补上一行, 使得新矩阵的行列式不为0的添加行, 即为与原向量组线性无关的向量. 一个很自然的添加方法就是添加 $ (0, 0, 1) $ , 使得新矩阵成为对角阵. 当然添加 $ (1,0,0) $ 也可以, 但是 $ (0,1,0) $ 不行. \\
 
-\textbf{3.} 4.3.35, 证明四个命题的等价性, 可以采用"循环"的证明, 通过如下路径: $ (1) \Rightarrow (2) \Rightarrow (3) \Rightarrow (4) \Rightarrow (1) $ , 很多同学从 $ (1) $ 证明到 $ (4) $ 就结束了, 没有证明 $ (4) \Rightarrow (1) $ . 如果有别的路径证明比较简单的话, 也可以从别的路径证明, 如 $ (1) \Leftrightarrow (2),(1) \Leftrightarrow (3), (1) \Leftrightarrow (4) $ , 只要保证任意两个命题都可以互相推导即可. 根据同学们的作业, 整理了以上两个路径的证明.  \\ 
+\textbf{3.} 4.3.35, 证明四个命题的等价性, 可以采用"循环"的证明, 通过如下路径: $ (1) \implies (2) \implies (3) \implies (4) \implies (1) $ , 很多同学从 $ (1) $ 证明到 $ (4) $ 就结束了, 没有证明 $ (4) \implies (1) $ . 如果有别的路径证明比较简单的话, 也可以从别的路径证明, 如 $ (1) \Leftrightarrow (2),(1) \Leftrightarrow (3), (1) \Leftrightarrow (4) $ , 只要保证任意两个命题都可以互相推导即可. 根据同学们的作业, 整理了以上两个路径的证明.  \\ 
 
 \textbf{4.}计算问题. 大部分同学的作业都是自己算过的, 但是正确率却不太高. 希望大家在平时的练习中既要自己好好算一算, 也要注意计算的准确性. \\
 
@@ -2326,10 +2396,7 @@ f(\mathcal{A})\alpha &= \left(a_0\mathcal{A}^m + a_1\mathcal{A}^{m-1} + \cdots +
 \end{align*}  \\  \\ 
 
 \begin{myexample}
-	\textbf{2.}
-
-设 $ \mathcal{A} $ , $ \mathcal{B} $ 是线性空间 $ V $ 内的两个线性变换, 且 $ \mathcal{AB} = \mathcal{BA} $ . 证明:若 $ \mathcal{A}\alpha = \lambda_0a $ , 则 $ \mathcal{B}\alpha \in V_{\lambda_0} $ , 这里 $ V_{\lambda_0} $ 为 $ \mathcal{A} $ 的特征值 $ \lambda_0 $ 的特征子空间.  \\
-
+	\textbf{2.} 设 $ \mathcal{A} $ , $ \mathcal{B} $ 是线性空间 $ V $ 内的两个线性变换, 且 $ \mathcal{AB} = \mathcal{BA} $ . 证明:若 $ \mathcal{A}\alpha = \lambda_0a $ , 则 $ \mathcal{B}\alpha \in V_{\lambda_0} $ , 这里 $ V_{\lambda_0} $ 为 $ \mathcal{A} $ 的特征值 $ \lambda_0 $ 的特征子空间. 
 \end{myexample}
 \Solution 
 
@@ -2346,9 +2413,7 @@ f(\mathcal{A})\alpha &= \left(a_0\mathcal{A}^m + a_1\mathcal{A}^{m-1} + \cdots +
 
 
 \begin{myexample}
-	\textbf{5.}
-
-设 $ \mathcal{A} $ 是复数域上线性空间 $ V $ 内的一个线性变换, 且它在某一组基 $ \{\varepsilon_i \} $ 下的矩阵为 $ A $ . 求 $ A $ 的全部特征值和每个特征值 $ \lambda_i $ 所属特征子空间 $ V_{\lambda_i} $ 的一组基, 其中:
+	\textbf{5.} 设 $ \mathcal{A} $ 是复数域上线性空间 $ V $ 内的一个线性变换, 且它在某一组基 $ \{\varepsilon_i \} $ 下的矩阵为 $ A $ . 求 $ A $ 的全部特征值和每个特征值 $ \lambda_i $ 所属特征子空间 $ V_{\lambda_i} $ 的一组基, 其中:
 \begin{gather*}
 A=
 \begin{bmatrix}
@@ -2356,14 +2421,14 @@ A=
 -2  &  0  &  3  \\
 -1  &  -3  &  0
 \end{bmatrix}
-\end{gather*}  \\
-
+\end{gather*}
 \end{myexample}
 \Solution
 
 先求出 $ A $ 的特征多项式 $ f(\lambda) $ :
-\begin{eqnarray}
-f(\lambda)=det(\lambda E-A)&=&
+\begin{align*}
+f(\lambda)&=det(\lambda E-A)\\
+&=
 \begin{vmatrix}
 \lambda   &   -2  &  -1  \\
 2         &  \lambda  &  -3  \\
@@ -2379,7 +2444,7 @@ f(\lambda)=det(\lambda E-A)&=&
 0        &  \lambda - 6  &  -3-2\lambda  \\
 1        &  3            &  \lambda
 \end{vmatrix} \notag\\ 
-&=& \dfrac{\lambda}{3}
+&= \dfrac{\lambda}{3}
 \begin{vmatrix}
 3  &  -1  &  2  \\
 0  &  \lambda-6  &  -3-2\lambda  \\
@@ -2395,9 +2460,9 @@ f(\lambda)=det(\lambda E-A)&=&
 -10  &  2-3\lambda  \\
 \lambda-6  &  -3-2\lambda 
 \end{vmatrix} \notag \\
-&=&\lambda(\lambda^2 + 14)=0  \notag
-\end{eqnarray}
-解得 $ \lambda=0, \pm \sqrt{14}i $ . 接下来求每个特征值对应的特征向量:
+&=\lambda(\lambda^2 + 14)=0  \notag
+\end{align*}
+解得 $ \lambda=0, \pm \sqrt{14}\ii $ . 接下来求每个特征值对应的特征向量:
 
 (i) $ \lambda_1 = 0 $ 时, 解线性齐次方程组 $ (\lambda_1E - A)X=0 $ , 有:
 \begin{gather*}
@@ -2406,7 +2471,7 @@ f(\lambda)=det(\lambda E-A)&=&
 0  &  -2  &  -1  \\
 2  &  0  &  -3  \\
 1  &  3  &  0 
-\end{bmatrix} \ \ \xrightarrow{初等行变换} \ \ 
+\end{bmatrix} \ \ \xrightarrow{\text{初等行变换}} \ \ 
 \begin{bmatrix}
 1   &  0 &  -1.5  \\
 0  &  1 &   0.5   \\
@@ -2417,41 +2482,41 @@ f(\lambda)=det(\lambda E-A)&=&
  $$ 3\varepsilon_1-\varepsilon_2+2\varepsilon_3 $$ . 
 所以,  $ V_{\lambda_1} = L(3\varepsilon_1-\varepsilon_2+2\varepsilon_3) $ .  \\
 
-(ii) $ \lambda_2=\sqrt{14}i $ 时, 解线性齐次方程组 $ (\lambda_2E - A)X = 0 $ , 有:
+(ii) $ \lambda_2=\sqrt{14}\ii $ 时, 解线性齐次方程组 $ (\lambda_2E - A)X = 0 $ , 有:
 \begin{gather*}
 \lambda_2E - A=
 \begin{bmatrix}
-\sqrt{14}i  &  -2  &  -1  \\
-2  &  \sqrt{14}i  &  -3  \\
-1  &  3  &  \sqrt{14}i
-\end{bmatrix} \ \ \xrightarrow{初等行变换}
+\sqrt{14}\ii  &  -2  &  -1  \\
+2  &  \sqrt{14}\ii  &  -3  \\
+1  &  3  &  \sqrt{14}\ii
+\end{bmatrix} \ \ \xrightarrow{\text{初等行变换}}
 \begin{bmatrix}
-1  &  0  &   \frac{6+\sqrt{14}i}{10} \\
-0  &  1  &   \frac{-2+3\sqrt{14}i}{10} \\
+1  &  0  &   \frac{6+\sqrt{14}\ii}{10} \\
+0  &  1  &   \frac{-2+3\sqrt{14}\ii}{10} \\
 0  &  0  &  0  
 \end{bmatrix}
 \end{gather*}
-令 $ x_3 =2+3\sqrt{14}i $ , 得基础解系 $ \eta_2 = (3-2\sqrt{14}i,13, 2 +3\sqrt{14}i) $ , 它对应于特征向量
- $$ (3-2\sqrt{14}i)\varepsilon_1 + 13\varepsilon_2 +( 2 +3\sqrt{14}i)\varepsilon_3 $$ 
-所以,  $ V_{\lambda_2} = L((3-2\sqrt{14}i)\varepsilon_1 + 13\varepsilon_2 +( 2 +3\sqrt{14}i)\varepsilon_3) $ . \\
+令 $ x_3 =2+3\sqrt{14}\ii $ , 得基础解系 $ \eta_2 = (3-2\sqrt{14}\ii,13, 2 +3\sqrt{14}\ii) $ , 它对应于特征向量
+ $$ (3-2\sqrt{14}\ii)\varepsilon_1 + 13\varepsilon_2 +( 2 +3\sqrt{14}\ii)\varepsilon_3 $$ 
+所以,  $ V_{\lambda_2} = L((3-2\sqrt{14}\ii)\varepsilon_1 + 13\varepsilon_2 +( 2 +3\sqrt{14}i)\varepsilon_3) $ . \\
 
-(iii) $ \lambda_3=-\sqrt{14}i $ 时, 解线性齐次方程组 $ (\lambda_3E -A)X=0 $ , 有:
+(iii) $ \lambda_3=-\sqrt{14}\ii $ 时, 解线性齐次方程组 $ (\lambda_3E -A)X=0 $ , 有:
 \begin{gather*}
 \lambda_3E-A=
 \begin{bmatrix}
 -\sqrt{14}i  &  -2  &  -1  \\
 2  &  \sqrt{14}i  &  -3  \\
-1  &  3  &  -\sqrt{14}i
-\end{bmatrix} \ \ \xrightarrow{初等行变换}
+1  &  3  &  -\sqrt{14}\ii
+\end{bmatrix} \ \ \xrightarrow{\text{初等行变换}}
 \begin{bmatrix}
-1  &  0  &   \frac{6-\sqrt{14}i}{10} \\
-0  &  1  &   \frac{-2-3\sqrt{14}i}{10} \\
+1  &  0  &   \frac{6-\sqrt{14}\ii}{10} \\
+0  &  1  &   \frac{-2-3\sqrt{14}\ii}{10} \\
 0  &  0  &  0  
 \end{bmatrix}
 \end{gather*}
-令 $ x_3 =2-3\sqrt{14}i $ , 得基础解系 $ \eta_2 = (3+2\sqrt{14}i,13, 2 - 3\sqrt{14}i) $ , 它对应于特征向量
- $$ (3+2\sqrt{14}i)\varepsilon_1 + 13\varepsilon_2 +( 2 -3\sqrt{14}i)\varepsilon_3 $$ 
-所以,  $ V_{\lambda_3} = L((3+2\sqrt{14}i)\varepsilon_1 + 10\varepsilon_2 +( 2 -3\sqrt{14}i)\varepsilon_3) $ . \\  \\  \\
+令 $ x_3 =2-3\sqrt{14}\ii $ , 得基础解系 $ \eta_2 = (3+2\sqrt{14}\ii,13, 2 - 3\sqrt{14}\ii) $ , 它对应于特征向量
+ $$ (3+2\sqrt{14}i)\varepsilon_1 + 13\varepsilon_2 +( 2 -3\sqrt{14}\ii)\varepsilon_3 $$ 
+所以,  $ V_{\lambda_3} = L((3+2\sqrt{14}i)\varepsilon_1 + 10\varepsilon_2 +( 2 -3\sqrt{14}\ii)\varepsilon_3) $ . \\  \\  \\
 
 
 
@@ -2543,7 +2608,7 @@ f(\lambda) = det(\lambda E-A) &=&
 8  &  -2  &  2  \\
 -2  &  5  &  4  \\
 2  &  4  &  5  
-\end{bmatrix} \xrightarrow{初等行变换}
+\end{bmatrix} \xrightarrow{\text{初等行变换}}
 \begin{bmatrix}
 1  &  0  &  \frac{1}{2}  \\
 0  &  1  &  1  \\
@@ -2568,8 +2633,8 @@ T =
 \end{gather*}   \\ 
 
 (2) 由于 $ B $ 与 $ C $ 的特征多项式相同, 所以
- $$  det(B)= -16 = det(C) = 4y, \ \ tr(B) = 2+x = tr(C) = 4+y \ \ \Rightarrow \ \ x = -2,\  y=-4   $$ 
-从而, 可以求得 $ B $ 的特征多项式为: $ f_B(\lambda) = (\lambda-2)^2(\lambda-4)=0 \ \Rightarrow \ \lambda_1 = 2, \lambda_2 = 4 $ .
+ $$  \det(B)= -16 = \det(C) = 4y, \Tr(B) = 2+x = \Tr(C) = 4+y \implies x = -2,\  y=-4   $$ 
+从而, 可以求得 $ B $ 的特征多项式为: $ f_B(\lambda) = (\lambda-2)^2(\lambda-4)=0 \ \implies \ \lambda_1 = 2, \lambda_2 = 4 $ .
 对于 $ \lambda_1=2 $ , 
 \begin{gather*}
 \lambda_1E - B =
@@ -2579,7 +2644,7 @@ T =
 2  &  2  &  2
 \end{bmatrix}
 \end{gather*}
- $ rank(\lambda_1E-B) = 2 $ , 所以 $ \dim V_{\lambda_1} = 3 - rank(\lambda_1E-B)=1 \neq 2 $ , 即几何重数 $ \neq $ 代数重数. 所以矩阵 $ B $ 不可对角化. 注意到 $ C $ 是一个对角矩阵, 所以 $ B $ 与 $ C $ 不相似.
+ $ r(\lambda_1E-B) = 2 $ , 所以 $ \dim V_{\lambda_1} = 3 - r(\lambda_1E-B)=1 \neq 2 $ , 即几何重数 $ \neq $ 代数重数. 所以矩阵 $ B $ 不可对角化. 注意到 $ C $ 是一个对角矩阵, 所以 $ B $ 与 $ C $ 不相似.
 \\  \\  \\
 
 
@@ -2605,10 +2670,7 @@ T =
 
 
 \begin{myexample}
-	\textbf{15.}
-
-设 $ \mathcal{A} $ 是线性空间 $ V $ 内的一个线性变换,  $ M,N $ 是 $ \mathcal{A} $ 的两个不变子空间. 证明: $ M+N $ 与 $ M \bigcap N $ 都是 $ \mathcal{A} $ 的不变子空间.  \\
-
+	\textbf{15.} 设 $ \mathcal{A} $ 是线性空间 $ V $ 内的一个线性变换,  $ M,N $ 是 $ \mathcal{A} $ 的两个不变子空间. 证明: $ M+N $ 与 $ M \cap N $ 都是 $ \mathcal{A} $ 的不变子空间.  
 \end{myexample}
 \Solution  
 
@@ -2618,16 +2680,14 @@ T =
 
 从而,  $ \mathcal{A}\alpha \in (M+N) $ . 所以 $ M+N $ 是 $ \mathcal{A} $ 的不变子空间. \\
 
-(2) 任取 $ \beta \in M \bigcap N $ , 有 $ \beta \in M $ 且 $ \beta \in N $ . 由于 $ M, N $ 都是 $ \mathcal{A} $ 的不变子空间, 所以:
- $$  \mathcal{A}\beta \in M, \  \mathcal{A}\beta \in N \ \ \ \Rightarrow \ \ \ \mathcal{A}\beta \in M \bigcap N  $$ 
-所以,  $ M \bigcap N $ 也是 $ \mathcal{A} $ 的不变子空间.  \\  \\  \\ 
+(2) 任取 $ \beta \in M \cap N $ , 有 $ \beta \in M $ 且 $ \beta \in N $ . 由于 $ M, N $ 都是 $ \mathcal{A} $ 的不变子空间, 所以:
+ $$  \mathcal{A}\beta \in M, \  \mathcal{A}\beta \in N \implies \mathcal{A}\beta \in M \cap N  $$ 
+所以,  $ M \cap N $ 也是 $ \mathcal{A} $ 的不变子空间.  \\  \\  \\ 
 
 
 
 \begin{myexample}
-	\textbf{16.}
-
-设 $ \mathcal{A} $ 是数域 $ K $ 上 $ n $ 维线性空间 $ V $ 内的一个线性变换, 在 $ V $ 的一组基下其矩阵为
+	\textbf{16.} 设 $ \mathcal{A} $ 是数域 $ K $ 上 $ n $ 维线性空间 $ V $ 内的一个线性变换, 在 $ V $ 的一组基下其矩阵为
 \begin{gather*}
 J =
 \begin{bmatrix}
@@ -2638,8 +2698,8 @@ J =
 &    &        &          &   \lambda_0 
 \end{bmatrix}
 \end{gather*}
-证明: 当 $ n>1 $ 时, 对 $ \mathcal{A} $ 的任意非平凡不变子空间 $ M $ , 都不存在 $ \mathcal{A} $ 的不变子空间 $ N $ , 使:
- $$  V = M \oplus  N  $$ 
+证明: 当 $ n>1 $ 时, 对 $ \mathcal{A} $ 的任意非平凡不变子空间 $ M $ , 都不存在 $ \mathcal{A} $ 的不变子空间 $ N $ , 使
+ $$  V = M \oplus  N . $$ 
 
 \end{myexample}
 \Solution  
@@ -2656,10 +2716,7 @@ J =
 
 
 \begin{myexample}
-	\textbf{20.}
-
- $ \mathcal{A}, \mathcal{B} $ 是 $ n $ 维线性空间 $ V $ 内的两个线性变换, 且 $ \mathcal{AB} = \mathcal{BA} $ . $ \lambda $ 是 $ \mathcal{A} $ 的一个特征值,  $ V_{\lambda} $ 是属于特征值 $ \lambda $ 的特征子空间. 则 $ V_{\lambda} $ 是 $ B $ 的不变子空间. \\
-
+	\textbf{20.} $ \mathcal{A}, \mathcal{B} $ 是 $ n $ 维线性空间 $ V $ 内的两个线性变换, 且 $ \mathcal{AB} = \mathcal{BA} $ . $ \lambda $ 是 $ \mathcal{A} $ 的一个特征值,  $ V_{\lambda} $ 是属于特征值 $ \lambda $ 的特征子空间. 则 $ V_{\lambda} $ 是 $ B $ 的不变子空间.
 \end{myexample}
 \Solution
 
@@ -2669,10 +2726,7 @@ J =
 
 
 \begin{myexample}
-	\textbf{21.} 
-
-设 $ V $ 是数域 $ K $ 上的 $ n $ 维线性空间,  $ \mathcal{A}, \mathcal{B} $ 是 $ V $ 内两个线性变换, 且 $ \mathcal{AB}=\mathcal{BA} $ . 如果 $ \mathcal{A}, \mathcal{B} $ 的矩阵都可对角化, 证明: $ V $ 内存在一组基, 使 $ \mathcal{A},\mathcal{B} $ 在这组基下的矩阵同时成对角形. \\
-
+	\textbf{21.} 设 $ V $ 是数域 $ K $ 上的 $ n $ 维线性空间,  $ \mathcal{A}, \mathcal{B} $ 是 $ V $ 内两个线性变换, 且 $ \mathcal{AB}=\mathcal{BA} $ . 如果 $ \mathcal{A}, \mathcal{B} $ 的矩阵都可对角化, 证明: $ V $ 内存在一组基, 使 $ \mathcal{A},\mathcal{B} $ 在这组基下的矩阵同时成对角形. 
 \end{myexample}
 \Solution
 
@@ -2712,7 +2766,7 @@ P_1^{-1}AP_1 =
 \end{bmatrix}, \ \ \ \text{其中}, \lambda_1, \dots, \lambda_s \text{互异}.
 \end{gather*}
 由于 $ AB = BA $ , 所以:
- $$  P_1^{-1}ABP_1 = P_1^{-1}BAP_1 \ \ \Rightarrow \ \ (P_1^{-1}AP_1)(P_1^{-1}BP_1) = (P_1^{-1}BP_1)(P_1^{-1}AP_1)   $$ 
+ $$  P_1^{-1}ABP_1 = P_1^{-1}BAP_1 \ \ \implies \ \ (P_1^{-1}AP_1)(P_1^{-1}BP_1) = (P_1^{-1}BP_1)(P_1^{-1}AP_1)   $$ 
 设 $ (P_1^{-1}BP_1) = (B_{ij}) $ , 其中分块方法使得 $ (P_1^{-1}BP_1)(P_1^{-1}AP_1) $ 与 $ (P_1^{-1}AP_1)(P_1^{-1}BP_1) $ 都可乘.
 
 由于 $ (P_1^{-1}BP_1) $ 与 $ (P_1^{-1}AP_1) $ 可交换, 有:
@@ -2742,7 +2796,7 @@ Q_1  &      &       \\
 
 关于矩阵 $ A $ 与 $ B $ 相似, 有如下一些结论:
 \begin{itemize}
-	\item 必要条件:\  $ det(A) = det(B) $ ,  $ tr(A) =tr(B) $ ,  $ rank(A) = rank(B) $ ,  $ f_A(\lambda) = f_B(\lambda) $ 
+	\item 必要条件:\  $ det(A) = det(B) $ ,  $ tr(A) =tr(B) $ ,  $ r(A) = r(B) $ ,  $ f_A(\lambda) = f_B(\lambda) $ 
 \end{itemize}
 更一般地说, 方阵的行列式, 迹, 秩, 特征值, 特征多项式, 最小多项式是方阵在相似下的不变量, 但不是全系不变量. 关于矩阵相似也有充要条件, 但是相关知识点目前还没学到, 暂且不提.  \\ 
 
@@ -2771,10 +2825,8 @@ Q_1  &      &       \\
 
 
 \begin{myexample}
-	\textbf{5.1.8}
-
-在 $ M_n(K) $ 内定义函数如下:
- $$  f(A,B) = Tr(AB).  $$ 
+	\textbf{8.} 在 $ M_n(K) $ 内定义函数如下:
+ $$  f(A,B) = \Tr(AB).  $$ 
 (1) 证明 $ f(A,B) $ 是一个对称双线性函数; 
 
 (2) 令 $ n=2 $ , 在 $ M_2(K) $ 内取一组基
@@ -2835,11 +2887,11 @@ Q_1  &      &       \\
 \Solution 
 
 (1) 对于 $ \forall k_1, k_2 \in K, A_1, A_1 \in M_n(K) $ , 有:
- $$  f(k_1A_1+k_2A_2, B) = Tr((k_1A_1+k_2A_2)B) =k_1Tr(A_1B) + k_2Tr(A_2B) = k_1f(A_1, B) + k_2f(A_2, B)  $$ 
+ $$  f(k_1A_1+k_2A_2, B) = \Tr((k_1A_1+k_2A_2)B) =k_1\Tr(A_1B) + k_2\Tr(A_2B) = k_1f(A_1, B) + k_2f(A_2, B)  $$ 
 对于 $ \forall l_1, l_2 \in K, B_1, B_2 \in M_n(K) $ , 有:
- $$  f(A, l_1B_1 + l_2B_2) = Tr(A(l_1B_1 + l_2B_2)) = l_1Tr(A, B_1) + l_2f(A, B_2) = l_1f(A, B_1) + l_2f(A, B_2)  $$ 
+ $$  f(A, l_1B_1 + l_2B_2) = \Tr(A(l_1B_1 + l_2B_2)) = l_1\Tr(A, B_1) + l_2f(A, B_2) = l_1f(A, B_1) + l_2f(A, B_2)  $$ 
 另外又注意到:
- $$  f(A,B) = Tr(AB) = Tr(BA) = f(B,A)  $$ 
+ $$  f(A,B) = \Tr(AB) = \Tr(BA) = f(B,A)  $$ 
 所以 $ f(A,B) $ 是一个对称双线性函数. \\
 
 (2) 经计算可知:
@@ -2898,16 +2950,13 @@ N = T'MT=
 \end{bmatrix}
 \end{gather*}
 
-(4) 由第(3)问的结果可知,  $ f(A,B) $ 的秩为4. \\  \\  \\
+(4) 由第(3)问的结果可知,  $ f(A,B) $ 的秩为 4. \\  \\  \\
 
 
 
 
 \begin{myexample}
-	\textbf{5.1.9}
-
-设 $ V $ 是数域 $ K $ 上的 $ n $ 维线性空间,  $ f(\alpha, \beta) $ 是 $ V $ 上的一个双线性函数. 证明:  $ f(\alpha, \beta) $ 满秩的充分必要条件是: 当对一切 $ \beta \in V $ 有 $ f(\alpha, \beta) = 0 $ 时, 必定有 $ \alpha = 0 $ .   \\
-
+	\textbf{9.} 设 $ V $ 是数域 $ K $ 上的 $ n $ 维线性空间,  $ f(\alpha, \beta) $ 是 $ V $ 上的一个双线性函数. 证明:  $ f(\alpha, \beta) $ 满秩的充分必要条件是: 当对一切 $ \beta \in V $ 有 $ f(\alpha, \beta) = 0 $ 时, 必定有 $ \alpha = 0 $ .
 \end{myexample}
 \Solution 
 
@@ -2919,11 +2968,11 @@ N = T'MT=
  $$  f(\alpha, \beta) = X'AY =0, \ \ \forall Y \in K^n  $$ 
 不妨取 $ Y=\varepsilon_i = (0,\cdots,0,1,0,\cdots, 0) $ , 则: $ X'A\varepsilon_i = 0,\ (i=1, 2, \cdots, n) $ . 
 
-所以有,  $ 0 = X'A(\varepsilon_1, \cdots, \varepsilon_n) = X'AE = X'A, \ \ \Rightarrow \ \ A'X = 0  $ .
+所以有,  $ 0 = X'A(\varepsilon_1, \cdots, \varepsilon_n) = X'AE = X'A, \ \ \implies \ \ A'X = 0  $ .
 
 由题目条件可知, 当对一切 $ \beta \in V $ 有 $ f(\alpha, \beta) = 0 $ 时, 即上述方程组只有零解. 
 
-所以,  $ rank(A) = rank(A') = n $ , 即 $ f(\alpha, \beta) $ 满秩. \\
+所以,  $ r(A) = r(A') = n $ , 即 $ f(\alpha, \beta) $ 满秩. \\
 
 (2) 必要性:
 
@@ -2933,7 +2982,7 @@ N = T'MT=
 
 取Y依次为 $ \varepsilon_1, \varepsilon_2, \cdots, \varepsilon_n $ , 则可得到:
 
- $$  X'A(\varepsilon_1, \varepsilon_2, \cdots, \varepsilon_n) = X'AE = 0 \ \ \Rightarrow \ \ A'X =0   $$ 
+ $$  X'A(\varepsilon_1, \varepsilon_2, \cdots, \varepsilon_n) = X'AE = 0 \ \ \implies \ \ A'X =0   $$ 
 
 由于矩阵 $ A $ 满秩, 则上述线性齐次方程组只有零解. 即:当对一切 $ \beta \in V $ 有 $ f(\alpha, \beta) = 0 $ 时, 必定有 $ \alpha = 0 $ . \\  \\  \\
 
@@ -2943,15 +2992,12 @@ N = T'MT=
 
 
 \begin{myexample}
-	\textbf{5.1.10}
-
-证明第8题中的双线性函数 $ f(A,B) $ 是满秩的. \\  
-
+	\textbf{10.} 证明第8题中的双线性函数 $ f(A,B) $ 是满秩的. 
 \end{myexample}
 \Solution  
 
-设对于一切 $ B \in M_n(K) $ ,  $ f(A, B) = Tr(AB) $ . 下证明 $ A=0 $ . 设 $ A = (a_{ij})_{n \times n} $ ,  $ B = (b_{ij})_{n \times n} $ , 则:
- $$  f(A,B) = Tr(AB) = \sum\limits_{i=1}^n AB(i,i) = \sum\limits_{i=1}^n(\sum\limits_{j=1}^n a_{ij}b_{ji})  $$ 
+设对于一切 $ B \in M_n(K) $ ,  $ f(A, B) = \Tr(AB) $ . 下证明 $ A=0 $ . 设 $ A = (a_{ij})_{n \times n} $ ,  $ B = (b_{ij})_{n \times n} $ , 则:
+ $$  f(A,B) = \Tr(AB) = \sum\limits_{i=1}^n AB(i,i) = \sum\limits_{i=1}^n(\sum\limits_{j=1}^n a_{ij}b_{ji})  $$ 
 依次取 $ B = E_{ij} $ , 则可以得到 $ f(A, B) = \sum\limits_{i=1}^n(\sum\limits_{j=1}^n a_{ij}b_{ji}) = a_{ji} = 0, \ (1 \leq i, j \leq n) $ .
 
 所以可以得到 $ A = 0 $ .由5.1.9结论可知, 双线性函数 $ f(A,B) $ 是满秩的.  \\  
@@ -2975,7 +3021,7 @@ E_{il}, \ &\text{若} j=k;\\
 0, \ \ &\text{若} j \neq k. \\
 \end{aligned}
 \right. \ \ \ \ \ \ 
-Tr(E_{ij}E_{kl}) = \left\{
+\Tr(E_{ij}E_{kl}) = \left\{
 \begin{aligned}
 1, \ \ &\text{若}i=l, j=k; \\
 0, \ \ &\text{其他}. \\
@@ -2993,11 +3039,11 @@ f(E_{ii}, E_{jj}) = \left\{
 \right.
 \end{equation}
 对于 $ k < l $ , 有:
- $$  f(E_{ii}, E_{kl} \pm E_{lk}) = Tr(E_{ii}E_{kl}) \pm Tr(E_{ii}E_{lk}) = 0.  $$ 
+ $$  f(E_{ii}, E_{kl} \pm E_{lk}) = \Tr(E_{ii}E_{kl}) \pm \Tr(E_{ii}E_{lk}) = 0.  $$ 
 (2) 对于 $ E_{ij} + E_{ji}, \ (1 \leq i < j \leq n) $ , 有
 \begin{align*}
-f(E_{ij}+E_{ji}, E_{kl}+E_{lk}) &= Tr(E_{ij}E_{kl}) + Tr(E_{ij}E_{lk}) + Tr(E_{ji}E_{kl}) + Tr(E_{ji}E_{lk}) \\
-&= Tr(E_{ji}E_{kl}) + Tr(E_{ij}E_{lk}) \\
+f(E_{ij}+E_{ji}, E_{kl}+E_{lk}) &= \Tr(E_{ij}E_{kl}) + \Tr(E_{ij}E_{lk}) + \Tr(E_{ji}E_{kl}) + \Tr(E_{ji}E_{lk}) \\
+&= \Tr(E_{ji}E_{kl}) + \Tr(E_{ij}E_{lk}) \\
 &=\left\{
 \begin{aligned}
 2, \ \ &\text{若}i=k, j=l; \\
@@ -3005,11 +3051,11 @@ f(E_{ij}+E_{ji}, E_{kl}+E_{lk}) &= Tr(E_{ij}E_{kl}) + Tr(E_{ij}E_{lk}) + Tr(E_{j
 \end{aligned}
 \right.
 \end{align*}
- $$  f(E_{ij}+E_{ji}, E_{kl}- E_{lk}) = Tr(E_{ji}E_{kl}) - Tr(E_{ij}E_{lk}) = 0.  $$ 
+ $$  f(E_{ij}+E_{ji}, E_{kl}- E_{lk}) = \Tr(E_{ji}E_{kl}) - \Tr(E_{ij}E_{lk}) = 0.  $$ 
 (3) 对于 $ E_{ij} - E_{ij}, \ (1 \leq i, j \leq n) $ , 有:
 \begin{align*}
-f(E_{ij}-E_{ji}, E_{kl}-E_{lk}) &= Tr(E_{ij}E_{kl}) - Tr(E_{ij}E_{lk}) - Tr(E_{ji}E_{kl}) + Tr(E_{ji}E_{lk}) \\
-&= -Tr(E_{ji}E_{kl}) - Tr(E_{ij}E_{lk}) \\
+f(E_{ij}-E_{ji}, E_{kl}-E_{lk}) &= \Tr(E_{ij}E_{kl}) - \Tr(E_{ij}E_{lk}) - \Tr(E_{ji}E_{kl}) + \Tr(E_{ji}E_{lk}) \\
+&= -\Tr(E_{ji}E_{kl}) - \Tr(E_{ij}E_{lk}) \\
 &=\left\{
 \begin{aligned}
 -2, \ \ &\text{若}i=k, j=l; \\
@@ -3113,32 +3159,31 @@ f(E_{ij}-E_{ji}, E_{kl}-E_{lk}) &= Tr(E_{ij}E_{kl}) - Tr(E_{ij}E_{lk}) - Tr(E_{j
 
 
 \begin{myexample}
-	\textbf{5.2.2}
-
-在 $ K^4 $ 中给定如下对称双线性函数: 若
+	\textbf{2.} 在 $ K^4 $ 中给定如下对称双线性函数: 若
  $$  \alpha = (x_1, x_2, x_3, x_4), \ \ \beta = (y_1, y_2, y_3, y_4)  $$ 
 令
  $$  f(\alpha, \beta) = -x_1y_1 + 2x_1y_2 + 2x_2y_1 - 3x_2y_2 + x_2y_4 - 2x_1y_4 + x_4y_2 - 2x_4y_1 + 2x_4y_4  $$ 
-(1) 写出 $ f(\alpha, \beta) $ 在基
+ \begin{enumerate}[(1)]
+ \item 写出 $ f(\alpha, \beta) $ 在基
  $$  \varepsilon_1=(1,0,0,0), \ \ \varepsilon_2 =(0,1,0,0), \ \ \varepsilon_3=(0,0,1,0), \ \ \varepsilon_4=(0,0,0,1)  $$ 
-下的矩阵, 并写出 $ f(\alpha, \alpha) $ 在此组基下的解析表达式. 
-
-(2)做基变换
-\begin{gather*}
-(\eta_1, \eta_2, \eta_3, \eta_4) = (\varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4)
-\begin{bmatrix}
-2  &  1  &  \tfrac{4}{\sqrt{3}} &  0  \\
-1  &  0  &  \tfrac{3}{\sqrt{3}} &  0  \\
-0  &  0  &  0  &  1  \\
-0  &  0  &  \tfrac{1}{\sqrt{3}} & 0
-\end{bmatrix}
-\end{gather*}
-求 $ f(\alpha, \beta) $ 在基 $ \eta_1, \eta_2, \eta_3, \eta_4 $ 下的矩阵, 并求 $ f(\alpha, \alpha) $ 在这组基下的解析表达式;
-
-(3)求可逆线性变数替换 $ X=TY $ , 使二次型
+ 下的矩阵, 并写出 $ f(\alpha, \alpha) $ 在此组基下的解析表达式. 
+ 
+ \item 做基变换
+ \begin{gather*}
+ (\eta_1, \eta_2, \eta_3, \eta_4) = (\varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4)
+ \begin{bmatrix}
+ 2  &  1  &  \tfrac{4}{\sqrt{3}} &  0  \\
+ 1  &  0  &  \tfrac{3}{\sqrt{3}} &  0  \\
+ 0  &  0  &  0  &  1  \\
+ 0  &  0  &  \tfrac{1}{\sqrt{3}} & 0
+ \end{bmatrix}
+ \end{gather*}
+ 求 $ f(\alpha, \beta) $ 在基 $ \eta_1, \eta_2, \eta_3, \eta_4 $ 下的矩阵, 并求 $ f(\alpha, \alpha) $ 在这组基下的解析表达式;
+ 
+ \item 求可逆线性变数替换 $ X=TY $ , 使二次型
  $$  f = -x_1^2 + 4x_1x_2 - 4x_1x_4 - 3x_2^2 + 2x_2x_4 + 2x_4^2  $$ 
-化成标准型.    \\
-
+ 化成标准型. 
+ \end{enumerate}
 \end{myexample}
 \Solution 
 
@@ -3300,9 +3345,9 @@ x_1 \\  x_2 \\ \cdots \\ x_n \\
 
 考虑两个线性齐次方程组:(1)  $ AX = 0 $ ; (2)  $ A'AX = 0 $ . 即二者的解空间分别为 $ W_1, W_2 $ .
 
-任取 $ X \in W_1 $ ,  $ AX = 0 \ \Rightarrow \ A'AX = 0 $ , 即: $ X \in W_2 $ . 所以: $ W_1 \subset W_2 $ .
+任取 $ X \in W_1 $ ,  $ AX = 0 \ \implies \ A'AX = 0 $ , 即: $ X \in W_2 $ . 所以: $ W_1 \subset W_2 $ .
 
-任取 $ X \in W_2 $ ,  $ A'AX=0 \ \Rightarrow \ 0 = X'A'AX = (AX)'(AX) = 0 \ \Rightarrow \ AX = 0 $ .
+任取 $ X \in W_2 $ ,  $ A'AX=0 \ \implies \ 0 = X'A'AX = (AX)'(AX) = 0 \ \implies \ AX = 0 $ .
 
 即: $ X \in W_1 $ . 所以: $ W_2 \subset W_1 $ .
 
@@ -3379,7 +3424,7 @@ A =
 ********** 
 
 上述推理也可由课本P20命题2得出:
- $$ \mathcal{A}, \mathcal{B} \in O(n) \ \Rightarrow \ \mathcal{A}^{-1}, \mathcal{A}^{-1}\mathcal{B} \in O(n) $$ 
+ $$ \mathcal{A}, \mathcal{B} \in O(n) \ \implies \ \mathcal{A}^{-1}, \mathcal{A}^{-1}\mathcal{B} \in O(n) $$ 
 **********  \\ 
 
 
@@ -3393,10 +3438,7 @@ A =
 
 
 \begin{myexample}
-	\textbf{6.2.6}
-
-设 $ \mathcal{A} $ 是欧式空间 $ V $ 内的一个变换, 对任意 $ \alpha, \beta \in V $ , 有 $ (\mathcal{A}\alpha, \mathcal{A}\beta) = (\alpha, \beta) $ . 证明 $ \mathcal{A} $ 是一个正交变换.  \\ 
-
+	\textbf{6.2.6} 设 $ \mathcal{A} $ 是欧式空间 $ V $ 内的一个变换, 对任意 $ \alpha, \beta \in V $ , 有 $ (\mathcal{A}\alpha, \mathcal{A}\beta) = (\alpha, \beta) $ . 证明 $ \mathcal{A} $ 是一个正交变换.  
 \end{myexample}
 \Solution  
 
@@ -3418,7 +3460,7 @@ A =
 \end{align*}
 由内积的正定性可知,  $ \mathcal{A}(k\alpha) = k\mathcal{A}\alpha $ . 
 
-所以,  $ \mathcal{A} $ 是线性的. 从而 $ A $ 是一个正交变换. \\  \\  \\  
+所以,  $ \mathcal{A} $ 是线性的. 从而 $\mathcal{A}$ 是一个正交变换. \\  \\  \\  
 
 
 
@@ -3462,9 +3504,9 @@ A =
 于是 $ \mathcal{A}^*\xi_i = \sum\limits_{k=1}^n b_{ki}\xi_k $ . 再由共轭变换的定义可得:
  $$  (\mathcal{A}\xi_i, \xi_j) = (\xi_i, \mathcal{A}^*\xi_j)   $$ 
 即:
- $$  (\sum\limits_{k=1}^n a_{ki}\xi_k, \xi_j) = (\xi_i, \sum\limits_{m=1}^n b_{mj}\xi_m) \ \ \Rightarrow \ \ \sum\limits_{k=1}^n a_{ki}(\xi_k, \xi_j) = \sum\limits_{m=1}^n b_{mj}(\xi_i,\xi_m)  $$ 
+ $$  (\sum\limits_{k=1}^n a_{ki}\xi_k, \xi_j) = (\xi_i, \sum\limits_{m=1}^n b_{mj}\xi_m) \ \ \implies \ \ \sum\limits_{k=1}^n a_{ki}(\xi_k, \xi_j) = \sum\limits_{m=1}^n b_{mj}(\xi_i,\xi_m)  $$ 
 而 $ \xi_1, \xi_2, \cdots, \xi_n $ 是 $ V $ 的一组标准正交基, 所以 $ (\xi_i, \xi_j) = \delta_{ij} $ . 从而:
- $$  \sum\limits_{k=1}^n a_{ki}\delta_{kj} = \sum\limits_{m=1}^n b_{mj}\delta_{im} \ \ \Rightarrow \ \ a_{ji} = b_{ij}, \ (i,j = 1, \cdots, n) $$ 
+ $$  \sum\limits_{k=1}^n a_{ki}\delta_{kj} = \sum\limits_{m=1}^n b_{mj}\delta_{im} \ \ \implies \ \ a_{ji} = b_{ij}, \ (i,j = 1, \cdots, n) $$ 
 即: $ B=A' $ ,  $ \mathcal{A} $ 与 $ \mathcal{A}^* $ 在 $ V $ 的任一组标准正交基下的矩阵互为转置.  \\  \\  \\
 
 
@@ -3499,9 +3541,9 @@ A =
 下证明 $ \sigma $ 是一个双射. 首先证明 $ \sigma $ 是单射.设 $ \beta_1, \beta_2 \in V $ , 且 $ \sigma(\beta_1) = \sigma(\beta_2) $ .
 
 于是对于 $ \forall \alpha \in V $ , 有:
- $$  f_{\beta_1}(\alpha) = f_{\beta_2}(\alpha) \ \ \Rightarrow \ \ (\alpha, \beta_1) = (\alpha, \beta_2) \ \ \Rightarrow \ \ (\alpha, \beta_1-\beta_2) = 0  $$ 
+ $$  f_{\beta_1}(\alpha) = f_{\beta_2}(\alpha) \ \ \implies \ \ (\alpha, \beta_1) = (\alpha, \beta_2) \ \ \implies \ \ (\alpha, \beta_1-\beta_2) = 0  $$ 
 由于 $ \alpha $ 是任意的, 取 $ \alpha=\beta_1-\beta_2 $ 可得:
- $$  (\beta_1-\beta_2, \beta_1-\beta_2)=0 \ \ \Rightarrow \ \ \beta_1 - \beta_2 = 0  $$ 
+ $$  (\beta_1-\beta_2, \beta_1-\beta_2)=0 \ \ \implies \ \ \beta_1 - \beta_2 = 0  $$ 
 即: $ \beta_1 = \beta_2 $ ,  $ \sigma $ 是单射. 
 
 其次证明 $ \sigma $ 是满射. 事实上, 设 $ f \in V^* $ , 即 $ f $ 是 $ V $ 上的线性函数. 设 $ \xi_1, \cdots, \xi_n $ 是 $ V $ 的一组标准正交基, 且
@@ -3559,7 +3601,7 @@ f(\lambda_1\alpha_1+\lambda_2\alpha_2, \beta) &= (\mathcal{A}(\lambda_1\alpha_1 
 下面证明 $ (\mathcal{A}^*)^* = \mathcal{A} $ .
  $$  (\alpha, (\mathcal{A}^*)^*(\beta)) = (\mathcal{A}^*\alpha, \beta) = (\beta, \mathcal{A}^*\alpha) = (\mathcal{A}\beta, \alpha) = (\alpha, \mathcal{A}(\beta))  $$   
 由 $ \alpha $ 的任意性可知(取 $ \alpha =(\mathcal{A}^*)^*(\beta)-\mathcal{A}(\beta))  $ ), 则可知:
- $$  (\mathcal{A}^*)^*(\beta) = \mathcal{A}(\beta), \ \forall \beta \in V \ \ \Rightarrow \ \ (\mathcal{A}^*)^* = \mathcal{A}   $$ 
+ $$  (\mathcal{A}^*)^*(\beta) = \mathcal{A}(\beta), \ \forall \beta \in V \ \ \implies \ \ (\mathcal{A}^*)^* = \mathcal{A}   $$ 
 
 (2)
 
@@ -3572,7 +3614,7 @@ f(\lambda_1\alpha_1+\lambda_2\alpha_2, \beta) &= (\mathcal{A}(\lambda_1\alpha_1 
 \textbf{必要性:}
 
 若 $ \mathcal{A} $ 是对称变换, 则:
- $$  (\alpha, \mathcal{A}^*(\beta)) = (\mathcal{A}(\alpha), \beta) = (\alpha, \mathcal{A}(\beta)), \ \ \Rightarrow \ \ (\alpha, \mathcal{A}^*(\beta) - \mathcal{A}(\beta))  $$ 
+ $$  (\alpha, \mathcal{A}^*(\beta)) = (\mathcal{A}(\alpha), \beta) = (\alpha, \mathcal{A}(\beta)), \ \ \implies \ \ (\alpha, \mathcal{A}^*(\beta) - \mathcal{A}(\beta))  $$ 
 由于 $ \alpha $ 是任取的, 取 $ \alpha = \mathcal{A}^*(\beta) - \mathcal{A}(\beta)  $ , 由内积的正定性可知:
  $$  \mathcal{A}^*(\beta) - \mathcal{A}(\beta) = 0, \ \ \forall \beta \in V  $$ 
 从而可得:  $ \mathcal{A}^* = \mathcal{A} $ .
@@ -3586,10 +3628,7 @@ f(\lambda_1\alpha_1+\lambda_2\alpha_2, \beta) &= (\mathcal{A}(\lambda_1\alpha_1 
 
 
 \begin{myexample}
-	\textbf{6.2.12}
-
-证明: 对 $ n $ 维欧式空间 $ V $ 内的任一线性变换 $ \mathcal{A} $ ,  $ \mathcal{A}+\mathcal{A}^* $ 是一个对称变换. \\
-
+	\textbf{12.} 证明: 对 $ n $ 维欧式空间 $ V $ 内的任一线性变换 $ \mathcal{A} $ ,  $ \mathcal{A}+\mathcal{A}^* $ 是一个对称变换.
 \end{myexample}
 \Solution 
 
@@ -3632,20 +3671,19 @@ f(\lambda_1\alpha_1+\lambda_2\alpha_2, \beta) &= (\mathcal{A}(\lambda_1\alpha_1 
 
 
 \begin{myexample}
-	\textbf{6.2.13}
-
-设 $ \mathcal{A} $ 是 $ n $ 维欧式空间 $ V $ 中的一个线性变换, 如果 $ \mathcal{A}^* = - \mathcal{A} $ , 即对任意 $ \alpha, \beta \in V $ , 有:
+	\textbf{13.} 设 $ \mathcal{A} $ 是 $ n $ 维欧式空间 $ V $ 中的一个线性变换, 如果 $ \mathcal{A}^* = - \mathcal{A} $ , 即对任意 $ \alpha, \beta \in V $ , 有:
  $$  (\mathcal{A}\alpha, \beta) = - (\alpha, \mathcal{A}\beta)  $$ 
 则称 $ \mathcal{A} $ 是一个反对称变换. 证明:
-
-(1)  $ \mathcal{A} $ 是反对称变换的充分必要条件是:  $ \mathcal{A} $ 在某一组标准正交基下的矩阵是反对称矩阵. 
-
-(2) 如果 $ M $ 是反对称变换 $ \mathcal{A} $ 的不变子空间, 则 $ M $ 的正交补 $ M^{\perp} $ 也是 $ \mathcal{A} $ 的不变子空间.\\
+\begin{enumerate}[(1)]
+	\item $ \mathcal{A} $ 是反对称变换的充分必要条件是:  $ \mathcal{A} $ 在某一组标准正交基下的矩阵是反对称矩阵. 
+	
+	\item 如果 $ M $ 是反对称变换 $ \mathcal{A} $ 的不变子空间, 则 $ M $ 的正交补 $ M^{\perp} $ 也是 $ \mathcal{A} $ 的不变子空间.
+\end{enumerate}
 
 \end{myexample}
 \Solution
-
-(1)取 $ V $ 的一组标准正交基 $ \xi_1, \xi_2, \cdots, \xi_n $ , 设线性变换在这组基下的矩阵为 $ A $ , 即:
+\begin{enumerate}[(1)]
+\item 取 $ V $ 的一组标准正交基 $ \xi_1, \xi_2, \cdots, \xi_n $ , 设线性变换在这组基下的矩阵为 $ A $ , 即:
  $$  \mathcal{A}(\xi_1, \xi_2, \cdots, \xi_n) = (\xi_1, \xi_2, \cdots, \xi_n)A  $$ 
 任取 $ \alpha, \beta \in V $ , 设 $ \alpha = \sum\limits_{i=1}^n x_i\xi_i $ , \  $ \beta=\sum\limits_{i=1}^n y_i\xi_i $ , 则它们在这组基下的坐标分别为:
  $$  X = (x_1, x_2, \cdots, x_n)' \ \ \ Y = (y_1, y_2, \cdots, y_n)'  $$ 
@@ -3654,11 +3692,12 @@ f(\lambda_1\alpha_1+\lambda_2\alpha_2, \beta) &= (\mathcal{A}(\lambda_1\alpha_1 
  $$  (\alpha, \mathcal{A}\beta) = X'AY  $$ 
 比较上面两式可知 $ \mathcal{A} $ 是反对称变换. 即:  $ (\mathcal{A}\alpha, \beta) = -(\alpha, \mathcal{A}\beta) $ 的充分必要条件是
  $$ X'A'Y = -X'AY = X'(-A)Y $$ 
-即 $ A' = -A $ ,  $ A $ 为反对称矩阵. \\
+即 $ A' = -A $ ,  $ A $ 为反对称矩阵. 
 
-(2) 任取 $ \alpha \in M^{\perp} $ , 对于 $ \forall \beta \in M $ , 有 $ \mathcal{A}\beta \in M $ , 且:
+\item 任取 $ \alpha \in M^{\perp} $ , 对于 $ \forall \beta \in M $ , 有 $ \mathcal{A}\beta \in M $ , 且:
  $$  (\mathcal{A}\alpha, \beta) = -(\alpha, \mathcal{A}\beta) = 0  $$ 
 即: $ \mathcal{A}\alpha \in M^{\perp} $ . 所以 $ M^{\perp} $ 也是 $ \mathcal{A} $ 的不变子空间.
+\end{enumerate}
 
 
 \section{习题三 \quad 线性映射与线性变换}
@@ -3705,14 +3744,14 @@ f(\lambda_1\alpha_1+\lambda_2\alpha_2, \beta) &= (\mathcal{A}(\lambda_1\alpha_1 
  $$  P(x_i) = f(x_i) \ \ \ \ \ (i = 0, 1, 2, \cdots, n)  $$ 
 这样的问题称为\underline{n次多项式插值问题},  $ y = P_n(x) $ 称为 $ y=f(x) $ 的\underline{n次插值多项式}. \\
 
-\begin{myexample}
+
 	\textbf{定理：}给定 $ x_i $ (两两不等)以及 $ y_i = f(x_i)\ (i = 0, 1, 2, \cdots, n) $ ,  $ n $ 次插值多项式 $ P_n(x) $ 存在且唯一. 
 	
-\end{myexample}
-\Solution
+
+
 请自行证明. (Hint: 待定系数法, Vandermonde行列式). \\
 
-\begin{myexample}
+
 	\textbf{3. 插值余项} \\ 
 	在 $ [a,b] $ 上用 $ P_n(x) $ 近似表示 $ f(x) $ , 在插值节点 $ x_i $ 处时没有误差的, 但是在其它点 $ x $ 处, 一般 $ P_n(x) $ 与 $ f(x) $ 不相等. 记：
 	 $$  R_n(x) = f(x) - P_n(x)  $$ 
@@ -3722,8 +3761,9 @@ f(\lambda_1\alpha_1+\lambda_2\alpha_2, \beta) &= (\mathcal{A}(\lambda_1\alpha_1 
 	 $$  R_n(x) = \dfrac{f^{(n+1)}(\xi)}{(n+1)!}\omega_{n+1}(x) \ \ \ \ (*)  $$ 
 	\hspace{2.3em} 其中,  $ \xi \in (a,b) $ 且依赖于 $ x $ , 而 $ x \in [a,b] $ . \\
 	
-\end{myexample}
-\Solution 当 $ x = x_i\ (i = 0, 1, \cdots, n) $ 时, 
+
+\Solution 
+当 $ x = x_i\ (i = 0, 1, \cdots, n) $ 时, 
  $$  R_n(x) = f(x) - P_n(x) = 0  $$ 
 \hspace{2.7em} 而 $ \omega_{n+1}(x) = 0 $ . 所以 $ (*) $ 成立. 
 
